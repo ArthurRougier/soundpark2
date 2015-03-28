@@ -1,6 +1,5 @@
 <?php 
-//echo sexe
-//tarace
+
 	session_start();
 	include_once('../model/connect_sql.php');
 ?>

@@ -27,7 +27,7 @@ include_once("../model/get_untreated_songs.php");
 				}
 				$htmlSelectForm = $htmlSelectForm . "</select>";
 				echo $htmlSelectForm;
-				echo('   <a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'">Add</a>  -   <a href="'.$trackList[9].'">Link</a></br><input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[8].'" type="hidden"/></li>');
+				echo('   <a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'">Add</a>  -   <a target="_blank" href="'.$trackList[9].'">Link</a></br><input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[8].'" type="hidden"/></li>');
 				$index++;
 		} while($trackList = $req->fetch());	
 		echo '</ol>';
