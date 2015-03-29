@@ -41,7 +41,7 @@ function updateFacebookDb()
       var gender = 'unprecised';
       var firstName = 'unprecised';
       var lastName = 'unprecised';
-      FB.api("/10204786902687029", function (response){
+      FB.api("/"+facebookUserId, function (response){
             if (response && !response.error) 
             {
               console.log('3');
