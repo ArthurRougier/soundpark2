@@ -6,7 +6,7 @@
 	}
 	else
 	{
-		header('Location: http://soundpark.fm/view/landing.php');
+		header('Location: ../view/landing.php');
 	}
 	
 

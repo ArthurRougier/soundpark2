@@ -41,7 +41,7 @@
 
 				<h2> Add a curator : </h2>
 				
-			<form accept-charset="UTF-8" action="http://soundpark.fm/control/add_curator.php" class="new_curator" id="new_curator" method="post" enctype="multipart/form-data">
+			<form accept-charset="UTF-8" action="../control/add_curator.php" class="new_curator" id="new_curator" method="post" enctype="multipart/form-data">
 				 <span>Name : </span><input autofocus="autofocus" id="pseudo" name="pseudo" type="text" />
 			      <label for="genre">Style de prédilection ?</label>
 			       <select name="genre" id="genre">

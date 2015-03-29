@@ -30,7 +30,7 @@ if(isset($playlistOrderToSet) AND isset($_GET['title']) AND isset($_GET['artist'
 		'permalink_URL' => $_GET['permalinkUrl'],
 		'playlistOrder' => $playlistOrderToSet
 		));
-	header('Location: http://soundpark.fm/view/create_playlist.php?addTrack=TRUE&idPlaylist='.$_GET['playlist']);
+	header('Location: ../view/create_playlist.php?addTrack=TRUE&idPlaylist='.$_GET['playlist']);
 }
 
 else if(isset($_GET['title']) AND isset($_GET['artist']) AND isset($_GET['trackArtWork']) AND isset($_GET['genre']) AND isset($_GET['trackId']) AND isset($_GET['idCurator']) AND isset($_GET['permalinkUrl']))
@@ -47,7 +47,7 @@ else if(isset($_GET['title']) AND isset($_GET['artist']) AND isset($_GET['trackA
 		'duration' => $_GET['duration'],
 		'permalink_URL' => $_GET['permalinkUrl']
 		));
-	header('Location: http://soundpark.fm/view/create_playlist.php?addTrack=TRUE&idPlaylist='.$_GET['playlist']);
+	header('Location: ../view/create_playlist.php?addTrack=TRUE&idPlaylist='.$_GET['playlist']);
 }
 else if(isset($playlistOrderToSet) AND isset($_GET['title']) AND isset($_GET['artist']) AND isset($_GET['trackArtWork']) AND isset($_GET['trackId']) AND isset($_GET['idCurator']) AND isset($_GET['permalinkUrl']) )
 {
@@ -63,7 +63,7 @@ else if(isset($playlistOrderToSet) AND isset($_GET['title']) AND isset($_GET['ar
 		'permalink_URL' => $_GET['permalinkUrl'],
 		'playlistOrder' => $playlistOrderToSet
 		));
-	header('Location: http://soundpark.fm/view/create_playlist.php?addTrack=TRUE&idPlaylist='.$_GET['playlist']);
+	header('Location: ../view/create_playlist.php?addTrack=TRUE&idPlaylist='.$_GET['playlist']);
 }
 else if(isset($playlistOrderToSet) AND isset($_GET['artist']) AND isset($_GET['trackArtWork']) AND isset($_GET['trackId']) AND isset($_GET['idCurator']) AND isset($_GET['permalinkUrl']) )
 {
@@ -79,7 +79,7 @@ else if(isset($playlistOrderToSet) AND isset($_GET['artist']) AND isset($_GET['t
 		'permalink_URL' => $_GET['permalinkUrl'],
 		'playlistOrder' => $playlistOrderToSet
 		));
-	header('Location: http://soundpark.fm/view/create_playlist.php?addTrack=TRUE&idPlaylist='.$_GET['playlist']);
+	header('Location: ../view/create_playlist.php?addTrack=TRUE&idPlaylist='.$_GET['playlist']);
 }
 else
 {

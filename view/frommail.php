@@ -2,7 +2,6 @@
 	session_start();
 	header('Access-Control-Allow-Origin: *');
 	include_once('../model/connect_sql.php');
-	include_once('../model/find_user_email.php');
 	include_once('../control/control_user.php');
 	setcookie('playlist_url', $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'], time() + 7*24*3600, null, null, false, true);
 	setcookie('current_user', $_GET['pwd'], time() + 7*24*3600, null, null, false, false);

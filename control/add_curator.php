@@ -32,7 +32,7 @@ if(isset($_POST['pseudo']) AND isset($_POST['genre']) AND isset($_POST['link']) 
 					$test =   move_uploaded_file($_FILES['avatar']['tmp_name'], $avatarPath);
 					if($test)
 					{
-						header('Location: http://soundpark.fm/view/create_curator.php?addCurator=TRUE');
+						header('Location: ../view/create_curator.php?addCurator=TRUE');
 					}
 					else
 					{

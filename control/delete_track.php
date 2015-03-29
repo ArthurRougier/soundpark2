@@ -4,7 +4,7 @@
 	{
 		$req = $bdd->prepare('DELETE FROM song WHERE id = ?');
 		$req->execute(array($_GET['idSong']));
-		header('Location: http://soundpark.fm/view/create_playlist.php');
+		header('Location: ../view/create_playlist.php');
 	}
 	else
 	{

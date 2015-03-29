@@ -3,10 +3,10 @@
 	{
 		if($_GET['pwd'] != $password[0])
 		{
-			header('Location: http://soundpark.fm/view/landing.php');
+			header('Location: ../view/landing.php');
 		}
 	}
 	else
 	{
-		header('Location: http://soundpark.fm/view/landing.php');
+		header('Location: ../view/landing.php');
 	}

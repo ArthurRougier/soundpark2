@@ -72,7 +72,7 @@
 			}
 			else if(!isset($_GET['idPlaylist']))
 			{
-				header("Location: http://soundpark.fm/view/create_playlist.php?idPlaylist=".$currentPlaylistId);
+				header("Location: ../view/create_playlist.php?idPlaylist=".$currentPlaylistId);
 			}
 			?>
 

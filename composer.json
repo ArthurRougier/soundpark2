@@ -1,7 +1,7 @@
 {
     "require": {
-        "monolog/monolog": ">=1.0.0", 
-        "drewm/mailchimp-api": "dev-master",
-        "phpmailer/phpmailer": "dev-master"
+        "monolog/monolog": ">=1.0.0",
+        "phpmailer/phpmailer": "dev-master",
+        "drewm/mailchimp-api": "dev-master"
     }
 }
