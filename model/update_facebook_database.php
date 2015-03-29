@@ -57,15 +57,15 @@
 			$Id = $req->fetch();
 			$userId = $Id[0];
 			
-			$req = $bdd->prepare('INSERT INTO facebook_account(ID_user, hashed_token, token_expires, token_date, first_name, last_name, gender) VALUES (?, ?, ?, NOW(), ?, ?, ?)') or die(print_r($bdd->errorInfo()));
+			$req = $bdd->prepare('INSERT INTO facebook_account(ID_user, facebook_id, hashed_token, token_expires, token_date, first_name, last_name, gender) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?)') or die(print_r($bdd->errorInfo()));
 			$req->execute(array(
 				$userId,
+				$_GET['facebookUserId'],
 				sha1($_GET['accessToken']),
 				$_GET['tokenEpiration'],
 				$_GET['firstName'],
 				$_GET['lastName'],
-				$_GET['gender'],
-				$resBis[0]
+				$_GET['gender']
 			));
 			echo('successAddNewUser='. sha1($_GET['accessToken']));
 			
