@@ -49,7 +49,7 @@
 
 			//on lui crée un compte SP
 			$req = $bdd->prepare('INSERT INTO user(email, type, subscription_date) VALUES (?, "1", NOW())') or die(print_r($bdd->errorInfo()));
-			$req->execute(array(sha1($_GET['email'])));
+			$req->execute(array($_GET['email']));
 			
 			// On vient récupérer son tout nouveau userId
 			$req = $bdd->prepare('SELECT ID  FROM user WHERE email = ?') or die(print_r($bdd->errorInfo()));
