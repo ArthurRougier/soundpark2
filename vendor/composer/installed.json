@@ -160,12 +160,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/PHPMailer/PHPMailer.git",
-            "reference": "50eac8739fe8e06fe0c91202a5b2b57279960834"
+            "reference": "580e44da96fab82be9b525b262cfe35fad94b8c8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/50eac8739fe8e06fe0c91202a5b2b57279960834",
-            "reference": "50eac8739fe8e06fe0c91202a5b2b57279960834",
+            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/580e44da96fab82be9b525b262cfe35fad94b8c8",
+            "reference": "580e44da96fab82be9b525b262cfe35fad94b8c8",
             "shasum": ""
         },
         "require": {
@@ -175,7 +175,7 @@
             "phpdocumentor/phpdocumentor": "*",
             "phpunit/phpunit": "4.3.*"
         },
-        "time": "2015-03-25 18:22:55",
+        "time": "2015-03-29 16:15:40",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -207,5 +207,56 @@
             }
         ],
         "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
+    },
+    {
+        "name": "facebook/php-sdk-v4",
+        "version": "4.0.20",
+        "version_normalized": "4.0.20.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/facebook/facebook-php-sdk-v4.git",
+            "reference": "0c8ea23d81e09cc7e2c38b1d7f663fd5006dce84"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/0c8ea23d81e09cc7e2c38b1d7f663fd5006dce84",
+            "reference": "0c8ea23d81e09cc7e2c38b1d7f663fd5006dce84",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "guzzlehttp/guzzle": "~4.0",
+            "mockery/mockery": "dev-master",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "suggest": {
+            "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
+        },
+        "time": "2015-03-03 00:03:54",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Facebook\\": "src/Facebook/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Facebook Platform"
+        ],
+        "authors": [
+            {
+                "name": "Facebook",
+                "homepage": "https://github.com/facebook/facebook-php-sdk-v4/contributors"
+            }
+        ],
+        "description": "Facebook SDK for PHP",
+        "homepage": "https://github.com/facebook/facebook-php-sdk-v4",
+        "keywords": [
+            "facebook",
+            "sdk"
+        ]
     }
 ]

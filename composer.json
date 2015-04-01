@@ -2,6 +2,7 @@
     "require": {
         "monolog/monolog": ">=1.0.0",
         "phpmailer/phpmailer": "dev-master",
-        "drewm/mailchimp-api": "dev-master"
+        "facebook/php-sdk-v4" : "4.0.*",
+         "drewm/mailchimp-api": "dev-master"
     }
 }

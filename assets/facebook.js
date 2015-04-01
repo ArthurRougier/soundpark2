@@ -17,7 +17,7 @@ function facebookLogin()
     }
   }, 
   {
-    scope: 'publish_actions, email, user_friends', 
+    scope: 'public_profile, email, user_friends', 
     return_scopes: true
   });
 } 
@@ -64,24 +64,26 @@ function updateFacebookDb()
                         if(xhrCorrected[0] == 'successUpdateFb') 
                         {
                           //console.log(xhrCorrected[1]);
-                          createFacebookCookie(xhrCorrected[1], email);
+                          //createFacebookCookie(xhrCorrected[1], email);
+                          var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
+                          signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
                         }
                         else if(xhrCorrected[0] == 'successAddFb') 
                         {
                           //console.log(xhr.responseText);
-                          createFacebookCookie(xhrCorrected[1], email);
+                          //createFacebookCookie(xhrCorrected[1], email);
                         }
                         else if(xhrCorrected[0] == 'successAddNewUser') 
                         {
                           //console.log(xhr.responseText);
-                          createFacebookCookie(xhrCorrected[1], email);
+                          //createFacebookCookie(xhrCorrected[1], email);
+                          xhr2.open('GET', '../control/mailchimpUserNewSubscribe.php?user_email='+email); // On envoi la purée
+                          xhr2.send(null); // La requête est prête, on envoie tout !
 
                         }
                         else
                         {
                           console.log('pas la bonne reponse ajax');
-                          xhr2.open('GET', '../control/mailchimpUserNewSubscribe.php?user_email='+email); // On envoi la purée
-                          xhr2.send(null); // La requête est prête, on envoie tout !
                         }
                     }
               };
@@ -108,7 +110,7 @@ function updateFacebookDb()
 
 function createFacebookCookie(fbTokenHash, email)
 {
-  var now = new Date();
+ /* var now = new Date();
   var time = now.getTime();
   time += 3600 * 1000 * 24 * 30;
   now.setTime(time);
@@ -116,10 +118,10 @@ function createFacebookCookie(fbTokenHash, email)
   console.log(getCookie('idType'));
   console.log(now);
   console.log(now.toUTCString());
-  document.cookie = 'fbTokenHash='+fbTokenHash+'; expires=' + now.toUTCString() +'; path=/';
+  document.cookie = 'currentSession='+email+"="+fbTokenHash+'; expires=' + now.toUTCString() +'; path=/';
   console.log(getCookie('fbTokenHash'));
   document.cookie = 'email='+email+'; expires=' + now.toUTCString() +'; path=/';
-  console.log(getCookie('email'));
+  console.log(getCookie('email'));*/
 }
 
   

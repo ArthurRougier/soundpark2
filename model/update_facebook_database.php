@@ -24,6 +24,8 @@
 					$_GET['gender'],
 					$resBis[0]
 				));
+				setcookie('sessionType', 'facebook', time() + 31*24*3600, null, null, false, true);
+				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, null, null, false, true);
 				echo('successUpdateFb='. sha1($_GET['accessToken']));
 			}
 			else
@@ -38,6 +40,8 @@
 					$_GET['lastName'],
 					$_GET['gender']
 				));
+				setcookie('sessionType', 'facebook', time() + 31*24*3600, null, null, false, true);
+				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, null, null, false, true);
 				echo('successAddFb='. sha1($_GET['accessToken']));
 			}
 	     	
@@ -67,6 +71,8 @@
 				$_GET['lastName'],
 				$_GET['gender']
 			));
+			setcookie('sessionType', 'facebook', time() + 31*24*3600, null, null, false, true);
+			setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, null, null, false, true);
 			echo('successAddNewUser='. sha1($_GET['accessToken']));
 			
 		}

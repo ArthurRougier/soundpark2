@@ -72,8 +72,8 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
  		<h1>SOUNDPARK.FM</h1>
  		<ul>
  			<li><a href="">Become a curator</a></li>
- 			<li><a href="">Log in</a></li>
- 			<li><a href="">Sign up</a></li>
+ 			<li><a id="headerLogIn" href="#">Log in</a></li>
+ 			<li><a id="headerSignUp" data-scroll href="#page1">Sign up</a></li>
 		</ul>
 	</header>
 	<div id="page1" data-center-bottom="opacity: 1;" data--530-top="opacity: 0">
@@ -98,9 +98,10 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
           </div>
           <div id="classicLogin">
             <h2>Or sign up the old way: </h2>
-            <form accept-charset="UTF-8" action="" class="signUp" id="signUp" method="post">
-              <input placeholder="Email" id="emailField" name="email" type="email" /></br>
+            <form accept-charset="UTF-8" action="../control/register.php" class="signUp" id="signUp" method="post">
+              <input placeholder="Email" id="emailField" name="user_email" type="email" /></br>
               <input placeholder="Password" id="emailField" name="password" type="password" /></br>
+              <input id="registerSource" name="registerSource" value="newLanding" type="hidden" />
               <input name="commit" type="submit" value="Go" />
              </form>
           </div>
@@ -112,9 +113,9 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
     		<h1>We delight you with <span class="strong"> great new music</br></span> in the <span class="strong">simpliest way.</span></h1>
     		<a class="CTA" id="CTAP1" href="#">Give it a try!</a>
         </br>
-        <svg id="svg_down_chevron" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="36.3 26.1 30.3 16.4" enable-background="new 36.3 26.1 30.3 16.4" xml:space="preserve">
+        <a id="chevronLink" data-scroll href="#page2"><svg id="svg_down_chevron" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="36.3 26.1 30.3 16.4" enable-background="new 36.3 26.1 30.3 16.4" xml:space="preserve">
           <path id="down_chevron" fill="#FFFFFF" d="M50.8,41.5c0.1,0.1,0.3,0.2,0.5,0.2c0.2,0,0.4-0.1,0.5-0.2l13.1-13.1c0.3-0.3,0.3-0.7,0-1c-0.3-0.3-0.7-0.3-1,0L51.3,39.9L38.7,27.4c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.3,0.7,0,1L50.8,41.5z"/>
-        </svg>
+        </svg></a>
 		</div>
 	</div>
   	<div id="page2">
@@ -159,6 +160,7 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
     <script type="text/javascript" src="../assets/on_load_landing.js"></script>
     <script type="text/javascript" src="../assets/retina.js"></script>
     <script type="text/javascript" src="../assets/facebook.js"></script>
+    <script src="../assets/smooth-scroll.min.js"></script>
    
     
     <script>
@@ -199,6 +201,12 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
     displaySignUpOverlay();
   },false);
 
+  var headerSignUp = document.getElementById('headerSignUp');
+  headerSignUp.addEventListener('click', function() 
+  { 
+    displaySignUpOverlay();
+  },false);
+
   var closeSignUpOverlay = document.getElementById('closeSignUpOverlay');
   closeSignUpOverlay.addEventListener('click', function() 
   { 
@@ -233,7 +241,16 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
   },false);
 
 
-	//skrollr
+	//skrollr and smoothScroll
+
+  smoothScroll.init({
+    speed: 1000, // Integer. How fast to complete the scroll in milliseconds
+    easing: 'easeInOutCubic', // Easing pattern to use
+    updateURL: true, // Boolean. Whether or not to update the URL with the anchor hash on scroll
+    offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
+    callbackBefore: function ( toggle, anchor ) {}, // Function to run before scrolling
+    callbackAfter: function ( toggle, anchor ) {} // Function to run after scrolling
+});
 
 	skrollr.init({
 	     render: function(data){

@@ -83,6 +83,7 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
 				<div id="saisie"
 					><form accept-charset="UTF-8" action="../control/register.php" class="new_user" id="new_user" method="post">
 							<input autofocus="autofocus" id="user_email" name="user_email" placeholder="Email" type="text" autocorrect="off" autocapitalize="off"/>
+							<input id="registerSource" name="registerSource" value="oldLanding" type="hidden" />
 							<input name="commit" type="submit" value="Go" />
 							<div class="clearfix"></div
 					></form
