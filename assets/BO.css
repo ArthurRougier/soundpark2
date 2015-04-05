@@ -125,7 +125,7 @@ aside li a:hover
 #container
 {
 	display: inline-block;
-	margin: 84px 0 0 200px;
+	margin: 84px 0 0 150px;
 	font-family: 'Open Sans';
 	font-weight: 300;
 }
@@ -172,6 +172,11 @@ input[class="song_curator"],
 input[class="song_genre"]
 {
 	width: 80px;
+}
+
+input[class="song_playlist"]
+{
+	width: 30px;
 }
 
 input[class="song_artist"]
@@ -302,6 +307,7 @@ ol li:hover
 	border-radius: 5px;
 	opacity: 0.75;
 	display: none;
+	z-index:10;
 }
 
 .optionsMenuBo a
