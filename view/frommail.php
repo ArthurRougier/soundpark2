@@ -30,6 +30,7 @@
     <script type="text/javascript" src="../assets/date.js"></script>
     <script type="text/javascript" src="../assets/AJAX/update_player_position.js"></script>
     <script type="text/javascript" src="../assets/AJAX/add_like_dislike.js"></script>
+    <script type="text/javascript" src="../assets/AJAX/record_automatic_next.js"></script>
     <script type="text/javascript" src="../assets/AJAX/display_user_past_likes.js"></script>
     <!--<script type="text/javascript" src="../zeroclipboard-2.1.6/dist/ZeroClipboard.min.js"></script>-->
     

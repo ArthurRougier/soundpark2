@@ -160,6 +160,7 @@ function updateCurrentTrack(trackId)
 			onfinish: function()
 			{ 
 				nextTrack();
+				record_automatic_next();
 				mixpanel.track("Automatic Next", 
 				{
 					"fullUrl": window.location.href,
