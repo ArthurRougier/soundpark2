@@ -9,42 +9,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
   <head>
-    <title>Soundpark</title>
-    <link href="../assets/landingNew.css" media="all" rel="stylesheet" />
+  <title>Soundpark</title>
+  <link href="../assets/landingNew.css" media="all" rel="stylesheet" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <!--<link rel="stylesheet" media="screen and (max-width: 1285px)" href="../assets/landing2smallRes.css" />
-    <link rel="stylesheet" media="screen and (max-width: 768px)" href="../assets/landing2smallRes.css" />
-    <link rel="stylesheet" media="screen and (max-height: 700px)" href="../assets/landing2smallRes.css" />
-    <link rel="stylesheet" media="screen and (min-width: 1700px)" href="../assets/landing2HighRes.css" />
-    <link rel="stylesheet" media="all and (max-width: 700px)" href="../assets/landing2Mobile.css" />-->
 
-    <meta property="og:site_name" content="Soundpark.fm"/>
-    <meta property="og:description" content="Toutes les semaines, le lundi matin, le meilleur de la musique sélectionné par la crème de la crème, au chaud dans ta boîte mail" />
-    <meta property="og:image" content="http://soundpark.fm/assets/pictures/thumbnail_fb.jpg" />
+  <meta property="og:site_name" content="Soundpark.fm"/>
+  <meta property="og:description" content="Toutes les semaines, le lundi matin, le meilleur de la musique sélectionné par la crème de la crème, au chaud dans ta boîte mail" />
+  <meta property="og:image" content="http://soundpark.fm/assets/pictures/thumbnail_fb.jpg" />
 
 
 
 	<link rel="shortcut icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
 
-    <script src="http://connect.soundcloud.com/sdk.js"></script>
-    <script type="text/javascript" src="../assets/jquery.js"></script>
-    <script type="text/javascript" src="../assets/cookies.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/update_player_position.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/add_like_dislike.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/display_user_past_likes.js"></script>
-    <script type="text/javascript" src="../skrollr/dist/skrollr.min.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
+  <script type="text/javascript" src="../assets/jquery.js"></script>
+  <script type="text/javascript" src="../assets/cookies.js"></script>
+  <script type="text/javascript" src="../assets/AJAX/update_player_position.js"></script>
+  <script type="text/javascript" src="../assets/AJAX/add_like_dislike.js"></script>
+  <script type="text/javascript" src="../assets/AJAX/display_user_past_likes.js"></script>
+  <script type="text/javascript" src="../skrollr/dist/skrollr.min.js"></script>
 
-    
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>-->
 
-    <!-- start Mixpanel --><script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
-for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
-mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
+  <!-- start Mixpanel --><script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+  mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
 
-
+  </head>
  <body>
 
     <!-- Fb sdk -->
@@ -71,7 +66,7 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
  	<header id="mainHeader">
  		<h1>SOUNDPARK.FM</h1>
  		<ul>
- 			<li><a href="">Become a curator</a></li>
+ 			<li><a id="headerCuratorSignUp" href="#">Become a curator</a></li>
  			<li><a id="headerLogIn" href="#">Log in</a></li>
  			<li><a id="headerSignUp" data-scroll href="#page1">Sign up</a></li>
 		</ul>
@@ -86,8 +81,10 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
         </div>
         <div id="signUpOverlayContainer">
           <div id="facebookLogin">
-            <h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2>
-            <img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>
+            <div id="message">
+              <h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2>
+              <img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>
+            </div>
             <div id="fbButton">
               <span class="helper"></span>
               <img id="fbIcon" src="../assets/pictures/facebook_f.svg" data-no-retina>
@@ -97,11 +94,12 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
             </br>
           </div>
           <div id="classicLogin">
-            <h2>Or sign up the old way: </h2>
-            <form accept-charset="UTF-8" action="../control/register.php" class="signUp" id="signUp" method="post">
+            <h2 id="oldWayMessage">Or sign up the old way: </h2>
+            <form accept-charset="UTF-8" action="../control/register.php" class="signUpForm" id="signUpForm" method="post">
               <input placeholder="Email" id="emailField" name="user_email" type="email" /></br>
               <input placeholder="Password" id="emailField" name="password" type="password" /></br>
               <input id="registerSource" name="registerSource" value="newLanding" type="hidden" />
+              <input id="userType" name="userType" value="1" type="hidden" />
               <input name="commit" type="submit" value="Go" />
              </form>
           </div>
@@ -121,14 +119,14 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
   	<div id="page2">
     	<div id="container2">
      		<span class="helper"></span>
-        <div class="img-container">
+        <div class="img-container first">
           <img src="../assets/pictures/macbook.png" data-bottom="opacity:0" data--40-bottom="opacity: 1"/>
         </div>
-     		<aside data--140-bottom="opacity: 0" data--180-bottom="opacity: 1">
+     		<aside class="second" data--140-bottom="opacity: 0" data--180-bottom="opacity: 1">
      			<h1>A <span class="strong">one-click</span> music </br>experience.</h1>
      			<p>No complicated platform with shitloads of tracks and filtering options. </br></br>Just a slick player with one stream.</p> 
      			<a class="CTA" href="#">Give it a try!</a>
-			</aside>
+        </aside>
 		</div
   ></div>
   <div id="page3">
@@ -136,7 +134,7 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
     <div id="container3" data-250-end="opacity: 0; background-attachment: scroll;" data-150-end="opacity: 1; background-attachment: fixed;">
       <h1><span class="strong">Hand-curated</span> with love.</h1>
       <p>Every monday morning, we release our new stream of music composed of tracks found by music lovers.</br> We believe in human taste, not in algorithms.</p>
-      <a class="CTA" href="#">Become a curator</a>
+      <a class="CTA" data-scroll id="CTAP3" href="#page1">Become a curator</a>
       </br>
     </div>
   </div>
@@ -155,12 +153,11 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
   </footer
   ></body>
 
-    <script type="text/javascript" src="../assets/player_landing.js"></script>
-    <script type="text/javascript" src="../assets/glide_up_share_link.js"></script>
-    <script type="text/javascript" src="../assets/on_load_landing.js"></script>
+    <!--<script type="text/javascript" src="../assets/player_landing.js"></script>-->
     <script type="text/javascript" src="../assets/retina.js"></script>
     <script type="text/javascript" src="../assets/facebook.js"></script>
-    <script src="../assets/smooth-scroll.min.js"></script>
+    <script type="text/javascript" src="../assets/smooth-scroll.min.js"></script>
+    <script type="text/javascript" src="../assets/on_load_landing2.js"></script>
    
     
     <script>
@@ -191,90 +188,6 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
 		mixpanel.track("Previous Clicked", {fullUrl: window.location.href});
 	}, false);*/
 
-
-
-  //signUpOverlay
-
-  var CTA = document.getElementById('CTAP1');
-  CTA.addEventListener('click', function() 
-  { 
-    displaySignUpOverlay();
-  },false);
-
-  var headerSignUp = document.getElementById('headerSignUp');
-  headerSignUp.addEventListener('click', function() 
-  { 
-    displaySignUpOverlay();
-  },false);
-
-  var closeSignUpOverlay = document.getElementById('closeSignUpOverlay');
-  closeSignUpOverlay.addEventListener('click', function() 
-  { 
-    undisplaySignUpOverlay();
-  },false);
-  
-
-  function displaySignUpOverlay()
-  {
-    var signUpOverlay = document.getElementById('signUpOverlay');
-    var mainHeader = document.getElementById('mainHeader');
-    signUpOverlay.style.visibility = "visible";
-    signUpOverlay.style.opacity = "0.95";
-    mainHeader.style.visibility = "hidden";
-  }
-
-    function undisplaySignUpOverlay()
-  {
-    var signUpOverlay = document.getElementById('signUpOverlay');
-    signUpOverlay.style.visibility = "hidden";
-    signUpOverlay.style.opacity = "0";
-    mainHeader.style.visibility = "visible";
-  }
-
-  //Fb signup
-
-
-  var fbButton = document.getElementById('fbButton');
-  fbButton.addEventListener('click', function() 
-  { 
-    facebookLogin();
-  },false);
-
-
-	//skrollr and smoothScroll
-
-  smoothScroll.init({
-    speed: 1000, // Integer. How fast to complete the scroll in milliseconds
-    easing: 'easeInOutCubic', // Easing pattern to use
-    updateURL: true, // Boolean. Whether or not to update the URL with the anchor hash on scroll
-    offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
-    callbackBefore: function ( toggle, anchor ) {}, // Function to run before scrolling
-    callbackAfter: function ( toggle, anchor ) {} // Function to run after scrolling
-});
-
-	skrollr.init({
-	     render: function(data){
-	        //console.log(data.curTop);
-	        //document.getElementById('offset').innerHTML = data.curTop;
-	     },
-	    smoothScrolling: true,
-	   	forceHeight: false
-  	});
-
-  $(window).scroll(function()
-  {
-    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-    if ($(window).scrollTop() >= (h-70)) {
-       $('header').addClass('fix-header');
-       var mainHeader = document.getElementById('mainHeader');
-        mainHeader.style.opacity = "0.5";
-    }
-    else {
-       $('header').removeClass('fix-header');
-       var mainHeader = document.getElementById('mainHeader');
-        mainHeader.style.opacity = "1";
-    }
-  });
 
 
 	</script>

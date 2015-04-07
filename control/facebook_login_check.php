@@ -21,7 +21,7 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 
-	if(sessionTestFacebook())
+	/*if(sessionTestFacebook())
 	{
 		
 		echo(sessionTestFacebook()); 
@@ -29,68 +29,89 @@
 
 	else
 	{
-		echo 'lost';
-	}
+		echo('kihjh'); 
+	}*/
 
 	function sessionTestFacebook()
 	{
 
 
 		//check for existing session and validate it
-		if (isset($_SESSION['facebookToken'])) 
-		{
-			$session = new FacebookSession($_SESSION['facebookToken']);
-			try
-			{
-			    $session->Validate('623682164399249', 'b1591419a11ad7e71d1ead609ceff8fe');
-			} catch(FacebookAuthorizationException $ex)
-			{
-			    // Session is not valid any more, get a new one.
-			   unset($session);
-			   return TRUE;
-			}
-
-		   	try 
-		 	{
-
-		    $user_profile = (new FacebookRequest(
-			      $session, 'GET', '/me'
-			    ))->execute()->getGraphObject(GraphUser::className());
-
-			    return "Name: " . $user_profile->getName();
-
-			 } catch(FacebookRequestException $e) {
-
-			    return "Exception occured, code: " . $e->getCode();
-			    return " with message: " . $e->getMessage();
-
-			}   
-	  	}
+		$helper = new FacebookJavaScriptLoginHelper();
 		
 
-		else if (!isset($session)) 
+		$appid = '623682164399249'; // your AppID
+		$secret = 'b1591419a11ad7e71d1ead609ceff8fe'; // your secret
+		 
+			 
+		if ( isset( $_SESSION ) && isset( $_SESSION['fb_token'] ) ) 
 		{
-		  try 
-		  {
-		    $helper = new FacebookJavaScriptLoginHelper();
-		    $session = $helper->getSession();
-		   } catch(FacebookRequestException $e) 
-		  {
-		    unset($session);
-		    RETURN $e->getMessage();
-		  }
+			// create new session from saved access_token
+			$session = new FacebookSession( $_SESSION['fb_token'] );
+
+			// validate the access_token to make sure it's still valid
+			try 
+			{
+				if ( !$session->validate() ) 
+				{
+			  		$session = null;
+			  		return FALSE;
+				}
+			} catch ( Exception $e ) 
+			{
+				// catch any exceptions
+				$session = null;
+				return FALSE;
+			}
+
+		} 
+		else 
+		{
+			// no session exists
+
+			try 
+			{
+				$session = $helper->getSession();
+			} catch( FacebookRequestException $ex ) {
+				return FALSE;
+				// When Facebook returns an error
+			} catch( Exception $ex ) {
+				//return FALSE;// When validation fails or other local issues
+				return $ex->message;
+			}
+
 		}
 
-		else if (isset($session)) 
+			// see if we have a session
+		if ( isset( $session ) ) 
 		{
-		 	return TRUE;
-		}
-		else
-		{
-			return TRUE;
-		}
 
+			// save the session
+			$_SESSION['fb_token'] = $session->getToken();
+			// create a session using saved token or the new one we generated at login
+			$session = new FacebookSession( $session->getToken() );
+
+			// graph api request for user data
+			$request = new FacebookRequest( $session, 'GET', '/me' );
+			$response = $request->execute();
+			// get response
+			$graphObject = $response->getGraphObject()->asArray();
+
+			// print profile data
+			return '<pre>' . print_r( $graphObject, 1 ) . '</pre>';
+
+			// print logout url using session and redirect_uri (logout.php page should destroy the session)
+			//echo '<a href="' . $helper->getLogoutUrl( $session, 'http://yourwebsite.com/app/logout.php' ) . '">Logout</a>';
+
+		} 
+		else 
+		{
+			// show login url
+			return FALSE;
+			//echo '<a href="' . $helper->getLoginUrl( array( 'email', 'user_friends' ) ) . '">Login</a>';
+		}
 	}
+
 
 	function sessionTestClassic()
 	{

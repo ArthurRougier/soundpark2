@@ -1,10 +1,13 @@
 <?php 
+	/*error_reporting(E_ALL);
+	ini_set('display_errors', 1);*/
+	setcookie('playlist_url', $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'], time() + 7*24*3600, null, null, false, true);
+	setcookie('current_user', $_GET['pwd'], time() + 7*24*3600, null, null, false, false);
 	session_start();
 	header('Access-Control-Allow-Origin: *');
 	include_once('../model/connect_sql.php');
-	include_once('../control/control_user.php');
-	setcookie('playlist_url', $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'], time() + 7*24*3600, null, null, false, true);
-	setcookie('current_user', $_GET['pwd'], time() + 7*24*3600, null, null, false, false);
+	include($_SERVER['DOCUMENT_ROOT'].'/control/session_check.php');
+	include_once($_SERVER['DOCUMENT_ROOT'].'/control/control_user.php');	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -12,12 +15,7 @@
   <head>
     <title>Soundpark</title>
     <link href="../assets/frommail8.css" media="all" rel="stylesheet" />
-
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <!--<link rel="stylesheet" media="screen and (max-width: 1285px)" href="../assets/frommail8SmallRes.css" />
-    <link rel="stylesheet" media="screen and (min-width: 1700px)" href="../assets/frommail8HighRes.css" />
-    <link rel="stylesheet" media="screen and (max-width: 768px)" href="../assets/frommail8SmallRes.css" />
-    <link rel="stylesheet" media="screen and (max-height: 700px)" href="../assets/frommail8SmallRes.css" />-->
     <link rel="stylesheet" media="all and (max-width: 550px)" href="../assets/frommail8Mobile.css" />
 
     <link rel="shortcut icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
@@ -104,8 +102,6 @@
 		<header>
 			<h1>SOUNDPARK.FM</h1>
 			<h2 id="player_position"><?php include("../control/display_player_position.php"); ?></h2>
-			<!--<h3> <?php //echo($_COOKIE['playlist_url']); ?> </h3>-->
-			<!--<h3> <?php //echo($_COOKIE['current_user']); ?> </h3>-->
 		</header>
 		
 		<div class="container" id="galerie"> 
@@ -159,10 +155,7 @@
 		</footer>		
 </body>
     <script type="text/javascript" src="../assets/player2.js"></script>
-    <!--<script type="text/javascript" src="../assets/glide_up_share_link.js"></script>-->
     <script type="text/javascript" src="../assets/on_load.js"></script>
     <script type="text/javascript" src="../assets/mixpanel_logs.js"></script>
-    <script type="text/javascript">
-    
-    </script>
+    <script type="text/javascript"></script>
 </html>

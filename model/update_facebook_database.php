@@ -1,4 +1,8 @@
 <?php
+
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+
 	if(isset($_GET['accessToken']) AND isset($_GET['tokenEpiration']) AND isset($_GET['facebookUserId']) AND isset($_GET['email']) AND isset($_GET['gender']) AND isset($_GET['lastName']) AND isset($_GET['firstName']))
 	{
 		include_once('../model/connect_sql.php');
@@ -24,9 +28,10 @@
 					$_GET['gender'],
 					$resBis[0]
 				));
-				setcookie('sessionType', 'facebook', time() + 31*24*3600, null, null, false, true);
-				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, null, null, false, true);
-				echo('successUpdateFb='. sha1($_GET['accessToken']));
+				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
+				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+				echo('successUpdateFb='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
+				
 			}
 			else
 			{
@@ -40,9 +45,9 @@
 					$_GET['lastName'],
 					$_GET['gender']
 				));
-				setcookie('sessionType', 'facebook', time() + 31*24*3600, null, null, false, true);
-				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, null, null, false, true);
-				echo('successAddFb='. sha1($_GET['accessToken']));
+				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
+				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+				echo('successAddFb='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 			}
 	     	
 		}
@@ -71,10 +76,9 @@
 				$_GET['lastName'],
 				$_GET['gender']
 			));
-			setcookie('sessionType', 'facebook', time() + 31*24*3600, null, null, false, true);
-			setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, null, null, false, true);
-			echo('successAddNewUser='. sha1($_GET['accessToken']));
-			
+			setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
+			setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+			echo('successAddNewUser='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 		}
 
 	}
