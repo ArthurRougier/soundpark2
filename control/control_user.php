@@ -1,38 +1,40 @@
 <?php
-	if(isset($_COOKIE['idType']))
-	{
-		/*if($_COOKIE['idType'] == 'facebook')
+	if(sessionTestFacebook())
 		{
-			include_once('../model/get_user_hashed_token.php'); // returne $hashedToken
-			if($hashedToken != $_COOKIE['hashedToken'])
-			{
-				header('Location: ../view/landing.php');
-			}
-		}
-		else if($_COOKIE['idType'] == 'classic')
-		{
-			include_once('../model/get_user_hashed_password.php'); // returne $hashedPassword
-			if($hashedPassword != $_COOKIE['hashedPassword'])
-			{
-				header('Location: ../view/landing.php');
-			}
-		}*/
-	}
-	else
-	{
-		include_once('../model/find_user_email.php');
-		if($res = $req->fetch()) 
-		{
-	     	
+			//echo(sessionTestFacebook());
 		}
 		else
 		{
-			header('Location: ../view/landing.php');
+			if(sessionTestClassic())
+			{
+				//echo(sessionTestClassic());
+			}
+			else
+			{
+				include_once('../model/find_user_email.php');
+				if($res = $req->fetch()) 
+				{
+					$req = $bdd->prepare('SELECT EXISTS(SELECT password FROM user WHERE email = ?)');
+					$req->execute(array($_GET['pwd']));
+					$exists = $req->fetch();
+			        if($exists[0]) // si le password existe, sinon tester facebook
+			        {
+			        	$req = $bdd->prepare('SELECT EXISTS(SELECT facebook_account.ID FROM facebook_account, user WHERE facebook_account.ID_user = user.ID AND user.email = ?)');
+			        	$req->execute(array($_GET['pwd']));
+						$exists = $req->fetch();
+			        	if($exists[0]) // si le password existe, sinon tester facebook
+			        	{
+			        		//ok
+			        	}
+			        	else
+			        	{
+			        		header('Location: ../transition_password.php?pwd='.$_GET['pwd']);
+			        	}
+			        }  	
+				}
+				else
+				{
+					header('Location: ../view/landing.php');
+				}
+			}
 		}
-
-	}
-
-
-
-
-	

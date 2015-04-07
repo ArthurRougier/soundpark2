@@ -58,10 +58,20 @@
 			        {
 			        	$length = 20;
 						$randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
-			        	$req = $bdd->prepare('INSERT INTO user(email, password, token, type, subscription_date) VALUES(?, ?, ?, 1, NOW())');
-						$req->execute(array($email, $hashPassword, $randomString));
-						setcookie('sessionType', 'classic', time() + 31*24*3600, null, null, false, true);
-						setcookie('currentSession', $email.'='.$randomString, time() + 31*24*3600, null, null, false, true);
+			        	$req = $bdd->prepare('INSERT INTO user(email, password, token, type, subscription_date) VALUES(?, ?, ?, ?, NOW())');
+						$req->execute(array($email, $hashPassword, $randomString, $_POST['userType']));
+						if($_POST['userType'] == 2)
+						{
+							// On vient récupérer son tout nouvel userId
+							$req = $bdd->prepare('SELECT ID  FROM user WHERE email = ?') or die(print_r($bdd->errorInfo()));
+							$req->execute(array($email));
+							$Id = $req->fetch();
+							$userId = $Id[0];
+							$req = $bdd->prepare('INSERT INTO curator(ID_user) VALUES(?)');
+							$req->execute(array($userId));
+						}
+						setcookie('sessionType', 'classic', time() + 31*24*3600,  "/", null, false, true);
+						setcookie('currentSession', $email.'='.$randomString, time() + 31*24*3600,  "/", null, false, true);
 						include_once('mailchimpUserNewSubscribe.php');
 						header('Location: ../view/registered.php?userEmail='.$email); 
 			        }			
@@ -72,10 +82,14 @@
 			        //include_once('../view/landing.php?invalidEmail=TRUE');
 			    }
 			}
-			else
+			else if(isset($_POST['user_email']))
 		    {
-		        header('Location: ../view/landing.php?invalidEmail=TRUE'); 
+		        header('Location: ../view/landing.php?missingPassword=TRUE'); 
 		        //include_once('../view/landing.php?invalidEmail=TRUE');
+		    }
+		    else
+		    {
+		    	 header('Location: ../view/landing.php?missingAll=TRUE'); 
 		    }
 		}
 		else
