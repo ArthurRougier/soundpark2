@@ -185,7 +185,6 @@
 
 	document.getElementById('left_arrow_icon').addEventListener('click', function () {
 		mixpanel.track("Previous Clicked", {fullUrl: window.location.href});
-<<<<<<< HEAD
 	}, false);
 
   */
