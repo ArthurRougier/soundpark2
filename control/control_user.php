@@ -1,15 +1,17 @@
 <?php
 	if(sessionTestFacebook())
+	{
+		//echo(sessionTestFacebook());
+	}
+	else
+	{
+		if(sessionTestClassic())
 		{
-			//echo(sessionTestFacebook());
+			//echo(sessionTestClassic());
 		}
 		else
 		{
-			if(sessionTestClassic())
-			{
-				//echo(sessionTestClassic());
-			}
-			else
+			if(isset($_GET['pwd']))
 			{
 				include_once('../model/find_user_email.php');
 				if($res = $req->fetch()) 
@@ -34,7 +36,15 @@
 				}
 				else
 				{
-					header('Location: ../view/landing.php');
+					$url = $_SERVER['REQUEST_URI'];
+					header('Location: ../login.php?source='.$url);
 				}
 			}
+			else
+			{
+				$url = $_SERVER['REQUEST_URI'];
+				header('Location: ../login.php?source='.$url);
+			}
+			
 		}
+	}

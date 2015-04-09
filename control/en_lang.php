@@ -7,7 +7,7 @@
 	define('TXT_LANDING_TAGLINE', 'Every <span class="tagline">Monday</span>, receive 1 hour of music <span class="tagline">curated by passionate people</span>. Tired of looking everywhere for new music gems? We got you covered.');
 	define('TXT_LANDING_CTA', 'Start discovering now:</br>');
 	define('TXT_LANDING_DOUBLESUB', 'Unfortunately, you cannot subscribe twice!</br>');
-	define('TXT_LANDING_EMAILPB', 'Email address issue, try again:</br>');
+	define('TXT_LANDING_EMAILPB', 'Wrong mail mate. Try again:</br>');
 
 	//---------------------------------------------------------
 	// curators.php
@@ -34,7 +34,7 @@
 
 	define('TXT_CURATORSDROPPAGE_HELPMESSAGE', 'Hey bro, have a great tune for the next playlist? Paste the URL here:');
 	define('TXT_CURATORSDROPPAGE_HEADLINE', 'Curator’s trackdropper');
-	define('TXT_CURATORSDROPPAGE_SUCCESSADD', 'Track well added! Other great catches to propose :)?');
+	define('TXT_CURATORSDROPPAGE_SUCCESSADD', 'Track well added, tx! Other ideas :)?');
 	define('TXT_CURATORSDROPPAGE_NOTWORKING', 'Sorry mate, but this link is not working :(. Mail us at @contact@soundpark.fm!');
 	define('TXT_CURATORSDROPPAGE_NOTSTREAMABLE', 'Sorry mate, but this link has some souncloud copyrights that fucks us. Try another!');
 	define('TXT_CURATORSDROPPAGE_BADLINK', 'Sorry mate, but this link is not valid. Sure it\'s Soundcloud or youtube?');

@@ -16,7 +16,6 @@
 
 
 		FacebookSession::setDefaultApplication('623682164399249', 'b1591419a11ad7e71d1ead609ceff8fe');
-		session_start();
 
 		//check for existing session and validate it
 		$helper = new FacebookJavaScriptLoginHelper();

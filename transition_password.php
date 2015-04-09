@@ -44,7 +44,7 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script>--><!-- end Mixpanel 
  <body>
 
     <!-- Fb sdk -->
-    <!--<script>
+    <script>
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '623682164399249',
@@ -61,7 +61,7 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script>--><!-- end Mixpanel 
          js.src = "//connect.facebook.net/en_US/sdk.js";
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
-    </script>-->
+    </script>
 
  	<!--<div id="offset" data-0="width: 0%" data-end="width: 100%"></div>-->
 

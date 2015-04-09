@@ -72,6 +72,7 @@
 						}
 						setcookie('sessionType', 'classic', time() + 31*24*3600,  "/", null, false, true);
 						setcookie('currentSession', $email.'='.$randomString, time() + 31*24*3600,  "/", null, false, true);
+						setcookie('current_user', email, time() + 7*24*3600, "/", null, false, false);
 						include_once('mailchimpUserNewSubscribe.php');
 						header('Location: ../view/registered.php?userEmail='.$email); 
 			        }			

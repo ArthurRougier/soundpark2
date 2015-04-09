@@ -10,8 +10,10 @@ window.onload=function(){
   	var message = document.getElementById('message');
   	var signUpForm = document.getElementsByTagName('signUpForm');
   	var userTypeField = document.getElementById('userType');
-	userTypeField.value = '1';
-	signUpForm.action = '../control/register.php';
+    var fbButtonText = document.getElementById('fbButtonText');
+    fbButtonText.innerHTML = 'Sign up with Facebook';
+  	userTypeField.value = '1';
+  	signUpForm.action = '../control/register.php';
   	message.innerHTML = '<h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
     displaySignUpOverlay();
   },false);
@@ -22,8 +24,10 @@ window.onload=function(){
   	var message = document.getElementById('message');
   	var signUpForm = document.getElementsByTagName('signUpForm');
   	var userTypeField = document.getElementById('userType');
-	userTypeField.value = '1';
-	signUpForm.action = '../control/register.php';
+    var fbButtonText = document.getElementById('fbButtonText');
+    fbButtonText.innerHTML = 'Sign up with Facebook';
+  	userTypeField.value = '1';
+  	signUpForm.action = '../control/register.php';
   	message.innerHTML = '<h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
     displaySignUpOverlay();
   },false);
@@ -31,12 +35,14 @@ window.onload=function(){
   var headerLogIn = document.getElementById('headerLogIn');
   headerLogIn.addEventListener('click', function() 
   { 
-	var message = document.getElementById('message');
-	var oldWayMessage = document.getElementById('oldWayMessage');
-	var signUpForm = document.getElementById('signUpForm');
-	var userTypeField = document.getElementById('userType');
-	userTypeField.value = '1';
-	signUpForm.action = '../control/login_check.php';
+  	var message = document.getElementById('message');
+  	var oldWayMessage = document.getElementById('oldWayMessage');
+  	var signUpForm = document.getElementById('signUpForm');
+  	var userTypeField = document.getElementById('userType');
+    var fbButtonText = document.getElementById('fbButtonText');
+    fbButtonText.innerHTML = 'Log in with Facebook';
+  	userTypeField.value = '1';
+  	signUpForm.action = '../control/login_check.php';
   	message.innerHTML = '<h2>Facebook prefered :)</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
     oldWayMessage.innerHTML = 'Ok, you can also log in the old way:';
     displaySignUpOverlay();
@@ -45,20 +51,42 @@ window.onload=function(){
   var headerCuratorSignUp = document.getElementById('headerCuratorSignUp');
   headerCuratorSignUp.addEventListener('click', function() 
   { 
-	var message = document.getElementById('message');
-	var userTypeField = document.getElementById('userType');
-	userTypeField.value = '2';
+  	var message = document.getElementById('message');
+  	var userTypeField = document.getElementById('userType');
+    var fbButtonText = document.getElementById('fbButtonText');
+    var signUpForm = document.getElementById('signUpForm');
+    fbButtonText.innerHTML = 'Sign up with Facebook';
+  	userTypeField.value = '2';
   	message.innerHTML = '<h2>Welcome, music lord! Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
+    signUpForm.action = '../control/register.php';
     displaySignUpOverlay();
   },false);
 
   var CTAP3 = document.getElementById('CTAP3');
   CTAP3.addEventListener('click', function() 
   { 
-	var message = document.getElementById('message');
-	var userTypeField = document.getElementById('userType');
-	userTypeField.value = '2';
-  	message.innerHTML = '<h2>Welcome, music lord! Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
+    var message = document.getElementById('message');
+    var userTypeField = document.getElementById('userType');
+    var signUpForm = document.getElementById('signUpForm');
+    var fbButtonText = document.getElementById('fbButtonText');
+    userTypeField.value = '1';
+    signUpForm.action = '../control/register.php';
+    fbButtonText.innerHTML = 'Sign up with Facebook';
+    message.innerHTML = '<h2>Welcome, music lord! Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
+    displaySignUpOverlay();
+  },false);
+
+  var CTAP2 = document.getElementById('CTAP2');
+  CTAP2.addEventListener('click', function() 
+  { 
+  	var message = document.getElementById('message');
+  	var userTypeField = document.getElementById('userType');
+    var fbButtonText = document.getElementById('fbButtonText');
+    var signUpForm = document.getElementById('signUpForm');
+  	fbButtonText.innerHTML = 'Sign up with Facebook';
+    userTypeField.value = '1';
+    signUpForm.action = '../control/register.php';
+    message.innerHTML = '<h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
     displaySignUpOverlay();
   },false);
 

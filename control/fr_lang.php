@@ -7,13 +7,13 @@
 	define('TXT_LANDING_TAGLINE', 'Toutes les semaines, le lundi matin, <span class="tagline">le meilleur de la musique</span> sélectionné par <span class="tagline">la crème de la crème</span>, au chaud <span class="tagline">dans ta boîte mail</span>.');
 	define('TXT_LANDING_CTA', 'Inscris toi et profite :</br>');
 	define('TXT_LANDING_DOUBLESUB', 'Malheureusement, tu ne peux pas t\'inscrire deux fois.</br>');
-	define('TXT_LANDING_EMAILPB', 'Problème d\'adresse mail. Essaye encore.</br>');
+	define('TXT_LANDING_EMAILPB', 'Souci d\'email vieux. Essaye encore.</br>');
 
 	//---------------------------------------------------------
 	// curators.php
 	//---------------------------------------------------------
 
-	define('TXT_CURATORS_HEADLINE', 'Merci à eux : ');
+	define('TXT_CURATORS_HEADLINE', 'Cimer les gars!');
 
 	//---------------------------------------------------------
 	// end.php
@@ -32,10 +32,10 @@
 	// curatorDropPage.php
 	//---------------------------------------------------------
 
-	define('TXT_CURATORSDROPPAGE_HELPMESSAGE', 'Hey bro, have a great tune for the next playlist? Paste the URL here:');
-	define('TXT_CURATORSDROPPAGE_HEADLINE', 'Curator’s trackdropper');
-	define('TXT_CURATORSDROPPAGE_SUCCESSADD', 'Track well added! Other great catches to propose :)?');
-	define('TXT_CURATORSDROPPAGE_NOTWORKING', 'Sorry mate, but this link is not working :(. Mail us at @contact@soundpark.fm!');
-	define('TXT_CURATORSDROPPAGE_NOTSTREAMABLE', 'Sorry mate, but this link has some souncloud copyrights that fucks us. Try another!');
-	define('TXT_CURATORSDROPPAGE_BADLINK', 'Sorry mate, but this link is not valid. Sure it\'s Soundcloud or youtube?');
-	define('TXT_CURATORSDROPPAGE_NOCURATORID', 'Page problem man! Are you sure you are using the link we gave you?');
+	define('TXT_CURATORSDROPPAGE_HELPMESSAGE', 'Salut l\'ami, un morceau pour la prochaine playlist? Colle le ici:');
+	define('TXT_CURATORSDROPPAGE_HEADLINE', 'Page curateur');
+	define('TXT_CURATORSDROPPAGE_SUCCESSADD', 'Morceau bien ajouté, cimer! D\'autres idées de pépites? ');
+	define('TXT_CURATORSDROPPAGE_NOTWORKING', 'Désolé, le lien ne fonctionne pas. Envoie-le nous sur contact@soundpark.fm, on va checker');
+	define('TXT_CURATORSDROPPAGE_NOTSTREAMABLE', 'Désolé vieux, la SACEM ne l\'entend pas de cette oreille, impossible de partager ce son.');
+	define('TXT_CURATORSDROPPAGE_BADLINK', 'Désolé vieux, ca ne fonctionne pas. T\'es sur que c\'est un lien Soundcloud ou Youtube?');
+	define('TXT_CURATORSDROPPAGE_NOCURATORID', 'Mauvaise adresse vieux! T\'es sur que t\'utilises le lien qu\'on t\'a donné?');

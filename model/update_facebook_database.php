@@ -30,6 +30,7 @@
 				));
 				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
 				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+				setcookie('current_user', $_GET['email'], time() + 31*24*3600, "/", null, false, false);
 				echo('successUpdateFb='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 				
 			}
@@ -47,6 +48,7 @@
 				));
 				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
 				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+				setcookie('current_user', $_GET['email'], time() + 31*24*3600, "/", null, false, false);
 				echo('successAddFb='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 			}
 	     	
@@ -78,6 +80,7 @@
 			));
 			setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
 			setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+			setcookie('current_user', $_GET['email'], time() + 31*24*3600, "/", null, false, false);
 			echo('successAddNewUser='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 		}
 

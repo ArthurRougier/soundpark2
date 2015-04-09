@@ -25,8 +25,14 @@
         <input placeholder="Email" id="emailField" name="user_email" type="email" /></br>
         <input placeholder="Password" id="emailField" name="password" type="password" /></br>
         <input id="registerSource" name="registerSource" value="newLanding" type="hidden" />
+        <?php
+            if(isset($_GET['source']))
+            {
+              echo('<input id="urlSource" name="urlSource" value="'.$_GET['source'].'" type="hidden" />');
+            }
+        ?>
         <input name="commit" type="submit" value="Go" />
-       </form>
+      </form>
     </div>
   </div>
   <span class="helper"></span>

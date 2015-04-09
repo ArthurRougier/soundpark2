@@ -1,13 +1,14 @@
 <?php 
-	/*error_reporting(E_ALL);
-	ini_set('display_errors', 1);*/
-	setcookie('playlist_url', $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'], time() + 7*24*3600, null, null, false, true);
-	setcookie('current_user', $_GET['pwd'], time() + 7*24*3600, null, null, false, false);
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	
 	session_start();
 	header('Access-Control-Allow-Origin: *');
 	include_once('../model/connect_sql.php');
 	include($_SERVER['DOCUMENT_ROOT'].'/control/session_check.php');
-	include_once($_SERVER['DOCUMENT_ROOT'].'/control/control_user.php');	
+	include_once($_SERVER['DOCUMENT_ROOT'].'/control/control_user.php');
+	setcookie('playlist_url', $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'], time() + 7*24*3600, null, null, false, true);
+	//echo($_COOKIE['sessionType']);	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -38,22 +39,15 @@
 		<?php
 			include_once('../model/get_user_subscription_date.php');
 		?>
-	    <script>
-	    	var unixtime = Date.parse("<?php echo($subsciptionDate); ?>").getTime()/1000
-		 	var parts = window.location.search.substr(1).split("&");
-			var $_GET = {};
-			for (var i = 0; i < parts.length; i++) 
-			{
-			    var temp = parts[i].split("=");
-			    $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
-			}
-			//console.log($_GET['pwd']);
+	    <script type="text/javascript">
+	    	var unixtime = Date.parse("<?php echo($subsciptionDate); ?>").getTime()/1000;
+		 	var email = "<?php echo($_COOKIE['current_user']); ?>";
+			console.log(email);
 
 		 	 window.intercomSettings = {
 			    // TODO: The current logged in user's full name
-			    name: $_GET['pwd'],
-			    // TODO: The current logged in user's email address.
-			    email: $_GET['pwd'],
+			    name: email,
+			    email: email,
 			    // TODO: The current logged in user's sign-up date as a Unix timestamp.
 			    created_at: unixtime,
 			    app_id: "qbgtpz2g"
@@ -81,7 +75,7 @@
 		<script type="text/javascript">
 			userId = "<?php echo($userId); ?>";
 			var subsciptionDate = "<?php echo($subsciptionDate); ?>";
-			var userEmail = "<?php echo($_GET['pwd']); ?>";
+			var userEmail = "<?php echo($_COOKIE['current_user']); ?>";
 			//console.log(subsciptionDate);
 			//console.log(userEmail);
 			mixpanel.identify(userId);

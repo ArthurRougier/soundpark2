@@ -25,7 +25,16 @@
 					$req->execute(array($randomString, $email));
 					setcookie('sessionType', 'classic', time() + 31*24*3600,  "/", null, false, true);
 					setcookie('currentSession', $email.'='.$randomString, time() + 31*24*3600,  "/", null, false, true);
-					header('Location: ../view/frommail.php?pwd='.$email); 
+					setcookie('current_user', $email, time() + 31*24*3600, "/", null, false, false);
+					if(isset($_POST['urlSource']))
+					{
+						header('Location: '.$_POST['urlSource']); 
+					}
+					else
+					{
+						header('Location: ../view/frommail.php?pwd='.$email); 
+					}
+					
 	        	}
 	        	else
 	        	{
