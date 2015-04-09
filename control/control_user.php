@@ -11,7 +11,7 @@
 		}
 		else
 		{
-			if(isset($_GET['pwd']))
+			if(isset($_GET['pwd']))		
 			{
 				include_once('../model/find_user_email.php');
 				if($res = $req->fetch()) 

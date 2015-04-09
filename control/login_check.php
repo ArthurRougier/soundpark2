@@ -34,7 +34,6 @@
 					{
 						header('Location: ../view/frommail.php?pwd='.$email); 
 					}
-					
 	        	}
 	        	else
 	        	{

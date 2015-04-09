@@ -12,16 +12,15 @@
     <title>Soundpark</title>
     <link href="../assets/landingNew.css" media="all" rel="stylesheet" />
 
-  	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-
+   	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <meta property="og:site_name" content="Soundpark.fm"/>
     <meta property="og:description" content="Toutes les semaines, le lundi matin, le meilleur de la musique sélectionné par la crème de la crème, au chaud dans ta boîte mail" />
     <meta property="og:image" content="http://soundpark.fm/assets/pictures/thumbnail_fb.jpg" />
 
 
 
-  	<link rel="shortcut icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
-  	<link rel="icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
+    	<link rel="shortcut icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
+    	<link rel="icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
 
     <script src="http://connect.soundcloud.com/sdk.js"></script>
     <script type="text/javascript" src="../assets/jquery.js"></script>
@@ -31,14 +30,13 @@
     <script type="text/javascript" src="../assets/AJAX/display_user_past_likes.js"></script>
     <script type="text/javascript" src="../skrollr/dist/skrollr.min.js"></script>
 
-    
+      
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>-->
 
     <!-- start Mixpanel --><script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
     for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
     mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
-
   </head>
 
  <body>
@@ -187,11 +185,9 @@
 
 	document.getElementById('left_arrow_icon').addEventListener('click', function () {
 		mixpanel.track("Previous Clicked", {fullUrl: window.location.href});
+<<<<<<< HEAD
 	}, false);
 
   */
-
-
-
 	</script>
 </html>

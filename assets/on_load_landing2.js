@@ -35,6 +35,7 @@ window.onload=function(){
   var headerLogIn = document.getElementById('headerLogIn');
   headerLogIn.addEventListener('click', function() 
   { 
+<<<<<<< HEAD
   	var message = document.getElementById('message');
   	var oldWayMessage = document.getElementById('oldWayMessage');
   	var signUpForm = document.getElementById('signUpForm');

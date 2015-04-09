@@ -44,7 +44,6 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script>--><!-- end Mixpanel 
  <body>
 
     <!-- Fb sdk -->
-    <script>
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '623682164399249',
