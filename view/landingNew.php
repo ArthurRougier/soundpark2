@@ -140,7 +140,7 @@
   <footer>
     <span class="helper"></span>
     <ul>
-      <li><a href="">Contact us</a></li>
+      <li><a href="mailto:contact@soundpark.fm">Contact us</a></li>
       <li><a href="">Jobs</a></li>
     </ul>
     <div id="mixpanel">
