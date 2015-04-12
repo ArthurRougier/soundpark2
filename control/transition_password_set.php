@@ -15,6 +15,7 @@
 
 	      	setcookie('sessionType', 'classic', time() + 31*24*3600,  "/", null, false, true);
 			setcookie('currentSession', $email.'='.$randomString, time() + 31*24*3600,  "/", null, false, true);
+			setcookie('current_user', $email, time() + 31*24*3600, "/", null, false, false);
 			//echo($_COOKIE['currentSession']);
 	       	header('Location: ../view/frommail.php'); 
 		}

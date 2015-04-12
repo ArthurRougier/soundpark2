@@ -93,8 +93,11 @@
  
 	<body>
 		<header>
+			<?php include_once('../control/display_curator_access_logo.php');?>
+
 			<h1>SOUNDPARK.FM</h1>
 			<h2 id="player_position"><?php include("../control/display_player_position.php"); ?></h2>
+				
 		</header>
 		
 		<div class="container" id="galerie"> 

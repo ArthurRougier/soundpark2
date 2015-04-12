@@ -115,6 +115,18 @@ h3 {
     color: white;
   }
 
+#curator_link
+{
+  float:left;
+  width:70px;
+  height:70px;
+  z-index:99;
+  top-padding:20px;
+  left-padding:20px;
+}
+
+
+
   footer
   {
     position: fixed;

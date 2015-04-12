@@ -34,11 +34,29 @@
 			        	}
 			        }  	
 				}
-				else
+				//else
+				//{
+				//	$url = $_SERVER['REQUEST_URI'];
+				//	header('Location: ../login.php?source='.$url);
+				//}
+			}
+			elseif (isset($_GET['curatorId'])) 
+			{
+				// //Code à adapter pour le process de check des curators
+
+				include_once('../model/find_curator_transition_done.php');
+				if($res = $req->fetch()) 
 				{
-					$url = $_SERVER['REQUEST_URI'];
-					header('Location: ../login.php?source='.$url);
+					if ($res[0]==0)
+					{
+						header('Location: ../view/transition_curator_account.php?curatorId='.$_GET['curatorId']);
+					}
+					else
+					{
+						 header('Location: ../view/curator_index.php');
+					}
 				}
+				// FIn de la partie introduite
 			}
 			else
 			{

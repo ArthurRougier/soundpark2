@@ -1,5 +1,9 @@
 <?php
-	require('../control/decide_lang.php');
+session_start();
+include_once ('../model/connect_sql.php');
+include($_SERVER['DOCUMENT_ROOT'].'/control/session_check.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/control/control_user.php');	
+require('../control/decide_lang.php');
 ?>
 
 
