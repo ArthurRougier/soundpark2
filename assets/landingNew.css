@@ -159,6 +159,7 @@ p
 .CTA
 {
   text-decoration: none;
+  cursor: pointer;
   color: white;
   display: inline-block;
   height: 8.888vh;
@@ -183,6 +184,8 @@ header,
    z-index: 11;
    margin: 0;
    display: inline-block;
+   transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 
 header h1,

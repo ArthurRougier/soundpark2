@@ -9,7 +9,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
   <head>
-    <title>Soundpark</title>
+    <title><?php echo TXT_LANDING_HEADTITLE; ?></title>
+    <meta name="description" content="<?php echo TXT_LANDING_HEADDESCRIPTION; ?>">
     <link href="../assets/landingNew.css" media="all" rel="stylesheet" />
 
    	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
@@ -133,7 +134,7 @@
     <div id="container3" data-250-end="opacity: 0; background-attachment: scroll;" data-150-end="opacity: 1; background-attachment: fixed;">
       <h1><span class="strong">Hand-curated</span> with love.</h1>
       <p>Every monday morning, we release our new stream of music composed of tracks found by music lovers.</br> We believe in human taste, not in algorithms.</p>
-      <a class="CTA" data-scroll id="CTAP3" href="#page1">Become a curator</a>
+      <a class="CTA" id="CTAP3" data-scroll href="#page1">Become a curator</a>
       </br>
     </div>
   </div>

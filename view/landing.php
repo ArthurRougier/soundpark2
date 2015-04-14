@@ -9,7 +9,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
   <head>
-    <title>Soundpark</title>
+    <title><?php echo TXT_LANDING_HEADTITLE; ?></title>
+    <meta name="description" content="<?php echo TXT_LANDING_HEADDESCRIPTION; ?>">
     <link href="../assets/landing2.css" media="all" rel="stylesheet" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">

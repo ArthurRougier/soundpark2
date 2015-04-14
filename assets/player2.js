@@ -161,10 +161,16 @@ function updateCurrentTrack(trackId)
 			{ 
 				nextTrack();
 				record_automatic_next();
+				var playerPositionLogs = document.getElementById('player_position').innerHTML;
+				var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
+				console.log(curatorLogs);
 				mixpanel.track("Automatic Next", 
 				{
 					"fullUrl": window.location.href,
-					"TrackId": trackId
+					"TrackId": trackId,
+					"userId": userId,
+					"playlistPosition": playerPositionLogs,
+					"curator": curatorLogs
 				});
 			}, 
 			onload: function()
@@ -346,14 +352,16 @@ function getLikeState()
             {
                 //console.log('coucou3');
             	likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like_pressed.png)";
-            	likeStamp.style.backgroundSize="cover";
+            	likeStamp.style.backgroundSize="contain";
+            	likeStamp.style.backgroundRepeat="no-repeat";
             	xhr2.open('GET', '../model/get_dislike_state.php?trackId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été disliké par currentUser
                 xhr2.send(null)
         	}
             else // Si le son n'est pas déjà liké par currentUser
             {
                 likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like.png)";
-                likeStamp.style.backgroundSize="cover";
+                likeStamp.style.backgroundSize="contain";
+                likeStamp.style.backgroundRepeat="no-repeat";
                 //console.log('youou');
                 xhr2.open('GET', '../model/get_dislike_state.php?trackId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été disliké par currentUser
                 xhr2.send(null)
@@ -371,12 +379,14 @@ function getLikeState()
         	if(xhr2.responseText == 'TRUE')
         	{
 	        	dislikeStamp.style.background="url(http://soundpark.fm/assets/pictures/cross_dislike.png)";
-	        	dislikeStamp.style.backgroundSize="cover";
+	        	dislikeStamp.style.backgroundSize="contain";
+	        	dislikeStamp.style.backgroundRepeat="no-repeat";
         	}
         	else
         	{		
 	        	dislikeStamp.style.background="url(http://soundpark.fm/assets/pictures/cross_dislike.png)";
-	        	dislikeStamp.style.backgroundSize="cover";
+	        	dislikeStamp.style.backgroundSize="contain";
+	        	dislikeStamp.style.backgroundRepeat="no-repeat";
         	}	
         }
     };

@@ -1,47 +1,74 @@
 /* Tracking playlist main controlers */
 
+
+
 document.getElementById('play').addEventListener('click', function () {
+	var playerPositionLogs = document.getElementById('player_position').innerHTML;
+	var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
+	//console.log(curatorLogs);
+	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
 	mixpanel.track("Play/Pause Clicked", {
 		fullUrl: window.location.href,
-		"userId": userId
+		"userId": userId,
+		"playlistPosition": playerPositionLogs,
+		"curator": curatorLogs,
+		"trackId": trackId
 		});
 }, false);
 
 document.getElementById('minus_one').addEventListener('click', function () {
+	var playerPositionLogs = document.getElementById('player_position').innerHTML;
+	var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
+	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
 	mixpanel.track("Dislike Clicked", {
 		fullUrl: window.location.href,
-		"userId": userId
+		"userId": userId,
+		"playlistPosition": playerPositionLogs,
+		"curator": curatorLogs,
+		"trackId": trackId
 		});
 }, false);
 
 document.getElementById('plus_one').addEventListener('click', function () {
+	var playerPositionLogs = document.getElementById('player_position').innerHTML;
+	var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
+	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
+	console.log(trackId);
 	mixpanel.track("Like Clicked", {
 		fullUrl: window.location.href,
-		"userId": userId
+		"userId": userId,
+		"playlistPosition": playerPositionLogs,
+		"curator": curatorLogs,
+		"trackId": trackId
 		});
 }, false);
 
 document.getElementById('right_arrow_icon').addEventListener('click', function () {
+	var playerPositionLogs = document.getElementById('player_position').innerHTML;
+	var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
+	//console.log(curatorLogs);
+	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
 	mixpanel.track("Next Clicked", {
 		"fullUrl": window.location.href,
 		"trackId": songTable[position-1],
-		"userId": userId
+		"userId": userId,
+		"playlistPosition": playerPositionLogs,
+		"curator": curatorLogs,
+		"trackId": trackId
 		});
 }, false);
 
 document.getElementById('left_arrow_icon').addEventListener('click', function () {
+	var playerPositionLogs = document.getElementById('player_position').innerHTML;
+	var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
+	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
 	mixpanel.track("Previous Clicked", {
 		"fullUrl": window.location.href,
 		"trackId": songTable[position+1],
-		"userId": userId
-		});
-}, false);
-
-document.getElementById('left_arrow_icon').addEventListener('click', function () {
-	mixpanel.track("Previous Clicked", {
-		"fullUrl": window.location.href,
-		"trackId": songTable[position+1],
-		"userId": userId
+		"userId": userId,
+		"playlistPosition": playerPositionLogs,
+		"curator": curatorLogs,
+		"trackId": trackId
 		});
 }, false);
 

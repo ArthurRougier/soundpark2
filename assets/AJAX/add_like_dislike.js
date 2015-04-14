@@ -25,9 +25,11 @@ function addLike()
             	xhr2.open('GET', '../control/add_like.php?trackId='+trackId+'&currentUser='+currentUser); // fichier à modifier: tester si le son est disliké est si oui, effacer en meme temps le dislike
                 xhr2.send(null);
             	likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like_pressed.png)";
-                likeStamp.style.backgroundSize="cover";
+                likeStamp.style.backgroundSize="contain";
+                likeStamp.style.backgroundRepeat="no-repeat";
                 dislikeStamp.style.background="url(http://soundpark.fm/assets/pictures/cross_dislike.png)";
-                dislikeStamp.style.backgroundSize="cover";
+                dislikeStamp.style.backgroundSize="contain";
+                dislikeStamp.style.backgroundRepeat="no-repeat";
         	}
             else
             {
@@ -37,9 +39,11 @@ function addLike()
                 xhr2.open('GET', '../control/remove_like.php?trackId='+trackId+'&currentUser='+currentUser); // fichier à modifier: tester si le son est disliké est si oui, effacer en meme temps le dislike
                 xhr2.send(null);
                 likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like.png)";
-                likeStamp.style.backgroundSize="cover";
+                likeStamp.style.backgroundSize="contain";
+                likeStamp.style.backgroundRepeat="no-repeat";
                 dislikeStamp.style.background="url(http://soundpark.fm/assets/pictures/cross_dislike.png)";
-                dislikeStamp.style.backgroundSize="cover";
+                dislikeStamp.style.backgroundSize="contain";
+                dislikeStamp.style.backgroundRepeat="no-repeat";
             }
         }
     };

@@ -4,6 +4,9 @@
 	// landing.php
 	//---------------------------------------------------------
 
+
+	define('TXT_LANDING_HEADTITLE', 'Soundpark.fm - La radio 2.0, découvrez la meilleure musique du web');
+	define('TXT_LANDING_HEADDESCRIPTION', 'Toutes les semaines, le lundi matin, le meilleur de la musique sélectionné par la crème de la crème</span>, au chaud dans ta boîte mail.');
 	define('TXT_LANDING_TAGLINE', 'Toutes les semaines, le lundi matin, <span class="tagline">le meilleur de la musique</span> sélectionné par <span class="tagline">la crème de la crème</span>, au chaud <span class="tagline">dans ta boîte mail</span>.');
 	define('TXT_LANDING_CTA', 'Inscris toi et profite :</br>');
 	define('TXT_LANDING_DOUBLESUB', 'Malheureusement, tu ne peux pas t\'inscrire deux fois.</br>');

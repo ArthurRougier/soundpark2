@@ -103,7 +103,7 @@ window.onload=function(){
     var signUpOverlay = document.getElementById('signUpOverlay');
     var mainHeader = document.getElementById('mainHeader');
     signUpOverlay.style.visibility = "visible";
-    signUpOverlay.style.opacity = "0.95";
+    signUpOverlay.style.opacity = "0.92";
     mainHeader.style.visibility = "hidden";
   }
 
@@ -207,7 +207,7 @@ if(w<500)
   $(window).scroll(function()
   {
     var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-    if ($(window).scrollTop() >= (h-70)) {
+    if ($(window).scrollTop() >= (h-30)) {
        $('header').addClass('fix-header');
        var mainHeader = document.getElementById('mainHeader');
         mainHeader.style.opacity = "0.5";

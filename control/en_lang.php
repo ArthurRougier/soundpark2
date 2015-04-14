@@ -4,7 +4,9 @@
 	// landing.php
 	//---------------------------------------------------------
 
-	define('TXT_LANDING_TAGLINE', 'Every <span class="tagline">Monday</span>, receive 1 hour of music <span class="tagline">curated by passionate people</span>. Tired of looking everywhere for new music gems? We got you covered.');
+  	define('TXT_LANDING_HEADTITLE', 'Soundpark.fm - The new music radio.');
+	define('TXT_LANDING_HEADDESCRIPTION', 'Every Monday, receive 1 hour of music hand-curated by passionate people. Tired of looking everywhere for new music gems? We got you covered.');
+	define('TXT_LANDING_TAGLINE', 'Every <span class="tagline">Monday</span>, receive 1 hour of music <span class="tagline">hand-curated by passionate people</span>. Tired of looking everywhere for new music gems? We got you covered.');
 	define('TXT_LANDING_CTA', 'Start discovering now:</br>');
 	define('TXT_LANDING_DOUBLESUB', 'Unfortunately, you cannot subscribe twice!</br>');
 	define('TXT_LANDING_EMAILPB', 'Wrong mail mate. Try again:</br>');

@@ -94,8 +94,9 @@ function updateFacebookDb()
 
                     if(xhr2.readyState == 4 && xhr2.status == 200) 
                     { // Si le fichier est chargé sans erreur 
-                       var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                        signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                      var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
+                      signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                      console.log('yes');
                     }
               };
               xhr.send(null); // La requête est prête, on envoie tout !
