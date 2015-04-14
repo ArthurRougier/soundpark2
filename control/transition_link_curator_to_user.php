@@ -19,7 +19,17 @@
 				$req = $bdd->prepare('UPDATE curator SET ID_user=? WHERE ID=?');
 				$req->execute(array($resultat[0],$_GET['curatorId']));
 				
-				header('Location: ../transition_password.php?pwd='.$_POST['user_email']);
+				$req = $bdd->prepare('SELECT EXISTS(SELECT password FROM user WHERE email = ?)');
+				$req->execute(array($_POST['user_email']));
+				$exists = $req->fetch();
+				if ($exists[0])
+				{
+					header('Location: ../view/frommail.php');
+				}
+				else
+				{
+					header('Location: ../transition_password.php?pwd='.$_POST['user_email']);
+				}
 			}
 			else
 			{

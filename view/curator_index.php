@@ -31,7 +31,7 @@ $_SESSION['id_curator']=$resultat[0];
 			<h1>Soundpark.<span style="color: white;">fm</span></h1>
 			<ul>
 				<li><a id="my_songs_tab" style="color: white; border-bottom: 1px solid white;" href="curator_index.php">My Songs</a></li>
-				<li><a id="account_tab" href="curator_my_account.php">My Account</a></li>
+				<!--<li><a id="account_tab" href="curator_my_account.php">My Account</a></li>-->
 				<li><a id="playlist_tab" href="../view/frommail.php">Playlist</a></li>
 			</ul>
 		</header>

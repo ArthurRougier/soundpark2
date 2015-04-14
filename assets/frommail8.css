@@ -102,7 +102,7 @@ h3 {
   header
   {
     height: 14vh;
-    overflow: hidden;
+   overflow: hidden;
    
   }
 
@@ -117,16 +117,14 @@ h3 {
 
 #curator_link
 {
-  float:left;
+  float:right;
   width:70px;
   height:70px;
-  z-index:99;
+  z-index:98;
   top-padding:20px;
   left-padding:20px;
 }
-
-
-
+  
   footer
   {
     position: fixed;

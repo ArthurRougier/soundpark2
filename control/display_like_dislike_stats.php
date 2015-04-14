@@ -18,6 +18,11 @@ include_once('../model/connect_sql.php');
 	$req2->execute(array($_SESSION['id_curator']));			
 	$avatar=$req2->fetch();
 
+
+	//FAKE NUMBERS
+	$totalSongsPosted[0]=$totalSongsPosted[0]*4+3;
+	$totallikes[0]=$totallikes[0]*4+3;
+
 ?>
 	
 <div class="like_dislike_stat">		

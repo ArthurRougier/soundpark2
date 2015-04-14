@@ -30,7 +30,7 @@ require('../control/decide_lang.php');
 			<img id="explainArrow" src="../assets/pictures/explain_arrow.png">
 			<div id="drop_space">
 				<?php
-					if(isset($_GET['curatorId']))
+					if(isset($_GET['curatorId']) AND ($_GET['curatorId']!=""))
 					{
 						?>
 						<form accept-charset="UTF-8" action="../control/register_curator_track.php" class="new_user" id="new_user" method="post">
@@ -68,7 +68,7 @@ require('../control/decide_lang.php');
 						echo('<h2 id="message"><img id="crossMark" src="../assets/pictures/cross_dropPage.svg" /></br>'. TXT_CURATORSDROPPAGE_BADLINK .'</h2></br>');
 					}
 				}
-				if(!isset($_GET['curatorId']))
+				if(!isset($_GET['curatorId']) OR $_GET['curatorId']=="")
 				{
 					echo('<h2 id="message"><img id="crossMark" src="../assets/pictures/cross_dropPage.svg" /></br>'. TXT_CURATORSDROPPAGE_NOCURATORID .'</h2></br>');
 				}

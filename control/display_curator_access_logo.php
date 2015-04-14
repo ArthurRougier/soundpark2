@@ -5,6 +5,9 @@ $req=$bdd->prepare('SELECT type FROM user WHERE email=?');
 $req->execute(array($_COOKIE['current_user']));
 $resultat=$req->fetch();
 
+//Prévoir et tester si onboarded
+
+
 if ($resultat[0]==2)
 {
 	echo '<div id="curator_link">';
