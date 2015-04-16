@@ -65,15 +65,30 @@ function updateFacebookDb()
                         {
                           //console.log(xhrCorrected[1]);
                           //createFacebookCookie(xhrCorrected[1], email);
-                          var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                          signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                          if(getParameterByName('source'))
+                          {
+                            window.location = getParameterByName('source');
+                          }
+                          else
+                          {
+                            var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                          }
+                          
                         }
                         else if(xhrCorrected[0] == 'successAddFb') 
                         {
                           //console.log(xhr.responseText);
                           //createFacebookCookie(xhrCorrected[1], email);
-                          var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                          signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                          if(getParameterByName('source'))
+                          {
+                            window.location = getParameterByName('source');
+                          }
+                          else
+                          {
+                            var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                          }
                         }
                         else if(xhrCorrected[0] == 'successAddNewUser') 
                         {
@@ -94,8 +109,15 @@ function updateFacebookDb()
 
                     if(xhr2.readyState == 4 && xhr2.status == 200) 
                     { // Si le fichier est chargé sans erreur 
-                      var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                      signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                      if(getParameterByName('source'))
+                      {
+                        window.location = getParameterByName('source');
+                      }
+                      else
+                      {
+                        var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
+                        signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                      }
                       console.log('yes');
                     }
               };

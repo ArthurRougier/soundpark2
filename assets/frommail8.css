@@ -44,7 +44,6 @@ body
 {
   text-align: center;
   background: url(pictures/backgroundGirl.jpg) no-repeat center center fixed;
-
   -webkit-background-size: cover; /* pour Chrome et Safari */
   -moz-background-size: cover; /* pour Firefox */
   -o-background-size: cover; /* pour Opera */
@@ -265,7 +264,7 @@ input[value="play"]
   display: inline-block;
   width:8.49vh;
   height:8.49vh;
-  background: url(pictures/play_white.png) center center;
+  background: url(pictures/play_white.png) center center no-repeat;
   -webkit-background-size: contain; /* pour Chrome et Safari */
   -moz-background-size: contain; /* pour Firefox */
   -o-background-size: contain; /* pour Opera */
@@ -283,7 +282,7 @@ input[value="pause"]
   display: inline-block;
   width:8.49vh;
   height:8.49vh;
-  background: url(pictures/pause_white.svg);
+  background: url(pictures/pause_white.svg) no-repeat;
   -webkit-background-size: contain; /* pour Chrome et Safari */
   -moz-background-size: contain; /* pour Firefox */
   -o-background-size: contain; /* pour Opera */
@@ -365,6 +364,10 @@ input[value="pause"]
     border-style: none;
     display: inline-block;
     background: url(pictures/left_arrow.png);
+    -webkit-background-size: contain; /* pour Chrome et Safari */
+    -moz-background-size: contain; /* pour Firefox */
+    -o-background-size: contain; /* pour Opera */
+    background-size: contain; /* version standardisée */
     background-repeat: no-repeat;
     background-position:center center;
     cursor: pointer;
@@ -389,6 +392,10 @@ input[value="pause"]
   float: right;
   border-style: none;
   background: url(pictures/right_arrow.png);
+  -webkit-background-size: contain; /* pour Chrome et Safari */
+  -moz-background-size: contain; /* pour Firefox */
+  -o-background-size: contain; /* pour Opera */
+  background-size: contain; /* version standardisée */
   background-repeat: no-repeat;
   background-position:center center;
   cursor: pointer;
@@ -497,10 +504,9 @@ input[value="pause"]
     font-weight: 300;
     font-size: 3em;
     text-align: center;
-    opacity: 1;
     color: white;
-    opacity: 0.6;
-    text-shadow: 0 0 2px black;
+    opacity: 1;
+    text-shadow: 0 0 15px black;
     /*display: none;*/
   }
 
@@ -567,6 +573,7 @@ input[value="pause"]
   color: red;
   z-index: 1000000;
   display: none;
+  
 }
 
 
@@ -855,10 +862,10 @@ and (max-device-width : 480px)
   border-style: none;
   display: inline-block;
   background: url(pictures/arrow_chevron_left.png);
-  -webkit-background-size: cover; /* pour Chrome et Safari */
-  -moz-background-size: cover; /* pour Firefox */
-  -o-background-size: cover; /* pour Opera */
-  background-size: cover; /* version standardisée */
+  -webkit-background-size: contain; /* pour Chrome et Safari */
+  -moz-background-size: contain; /* pour Firefox */
+  -o-background-size: contain; /* pour Opera */
+  background-size: contain; /* version standardisée */
   background-repeat: no-repeat;
   background-position:center center;
   -webkit-transition: background-image 0.5s;
@@ -872,10 +879,10 @@ and (max-device-width : 480px)
   display: inline-block;
   border-style: none;
   background: url(pictures/arrow_chevron_right.png);
-  -webkit-background-size: cover; /* pour Chrome et Safari */
-  -moz-background-size: cover; /* pour Firefox */
-  -o-background-size: cover; /* pour Opera */
-  background-size: cover; /* version standardisée */
+  -webkit-background-size: contain; /* pour Chrome et Safari */
+  -moz-background-size: contain; /* pour Firefox */
+  -o-background-size: contain; /* pour Opera */
+  background-size: contain; /* version standardisée */
   background-repeat: no-repeat;
   background-position:center center;
   -webkit-transition: background-image 0.5s;
@@ -1067,10 +1074,10 @@ and (max-width : 950px) {
   border-style: none;
   display: inline-block;
   background: url(pictures/arrow_chevron_left.png);
-  -webkit-background-size: cover; /* pour Chrome et Safari */
-  -moz-background-size: cover; /* pour Firefox */
-  -o-background-size: cover; /* pour Opera */
-  background-size: cover; /* version standardisée */
+  -webkit-background-size: contain; /* pour Chrome et Safari */
+  -moz-background-size: contain; /* pour Firefox */
+  -o-background-size: contain; /* pour Opera */
+  background-size: contain; /* version standardisée */
   background-repeat: no-repeat;
   background-position:center center;
   -webkit-transition: background-image 0.5s;
@@ -1084,10 +1091,10 @@ and (max-width : 950px) {
   display: inline-block;
   border-style: none;
   background: url(pictures/arrow_chevron_right.png);
-  -webkit-background-size: cover; /* pour Chrome et Safari */
-  -moz-background-size: cover; /* pour Firefox */
-  -o-background-size: cover; /* pour Opera */
-  background-size: cover; /* version standardisée */
+  -webkit-background-size: contain; /* pour Chrome et Safari */
+  -moz-background-size: contain; /* pour Firefox */
+  -o-background-size: contain; /* pour Opera */
+  background-size: contain; /* version standardisée */
   background-repeat: no-repeat;
   background-position:center center;
   -webkit-transition: background-image 0.5s;

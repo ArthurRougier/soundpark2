@@ -227,3 +227,30 @@ if(w<500)
         results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
+
+
+  // TEMP Changement de bg
+
+var bgTempPaths = ['../assets/pictures/bg_home_1.jpg','../assets/pictures/bg_home_1_2.jpg','../assets/pictures/bg_home_1_3.jpeg','../assets/pictures/bg_home_1_4.jpeg'];
+var bgPosition = 0;
+
+  document.addEventListener('keydown', function(e) 
+{
+  if(e.keyCode == 73)
+  {
+    if(bgPosition !== 3)
+    {
+      bgPosition++;
+      console.log(bgTempPaths[bgPosition]);
+      document.getElementById('page1').style.background = 'url('+bgTempPaths[bgPosition]+')';
+      document.getElementById('page1').style.backgroundSize = 'cover';
+    }
+    else
+    {
+      bgPosition = 0;
+      console.log('fefefefdzdzdze');
+      document.getElementById('page1').style.background = 'url('+bgTempPaths[bgPosition]+')';
+      document.getElementById('page1').style.backgroundSize = 'cover';
+    }
+  }
+}, false);
