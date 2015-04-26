@@ -66,7 +66,7 @@ function updateFacebookDb()
             {
               console.log('3');
               email = response.email;
-              if(email=='undefined')
+              if(typeof email === 'undefined')
               {
                 email = getParameterByName('pwd');
               }
