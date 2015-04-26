@@ -23,7 +23,7 @@
 
   <link rel="shortcut icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
   <link rel="icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
-
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <!--<script src="http://connect.soundcloud.com/sdk.js"></script>-->
     <script type="text/javascript" src="../assets/jquery.js"></script>
     <script type="text/javascript" src="../assets/cookies.js"></script>
@@ -62,6 +62,12 @@
         <input name="commit" type="submit" value="Next" />
        </form>
     </div>
+
+    </br>
+    <h2 id="Feedback_Message">
+      <?php echo $_GET['message'];?>
+    </h2>
+
   </div>
   <span class="helper"></span>
 </div>

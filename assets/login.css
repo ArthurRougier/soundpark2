@@ -366,6 +366,10 @@ input[type="submit"]
     color: white;
   }
 
+  #Feedback_Message
+  {
+    opacity:0.5;
+  }
 
 
 /*Page 1*/

@@ -67,8 +67,10 @@ function updateFacebookDb()
               console.log('3');
               email = response.email;
               gender = response.gender;
+              console.log(email);
               firstName = response.first_name;
               lastName = response.last_name;
+              console.log(lastName);
 
               xhr = new XMLHttpRequest();
               xhr2 = new XMLHttpRequest();
