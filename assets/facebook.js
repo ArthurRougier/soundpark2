@@ -66,6 +66,7 @@ function updateFacebookDb()
             {
               console.log('3');
               email = response.email;
+              console.log(email);
               gender = response.gender;
               firstName = response.first_name;
               lastName = response.last_name;
