@@ -66,6 +66,10 @@ function updateFacebookDb()
             {
               console.log('3');
               email = response.email;
+              if(email=='undefined')
+              {
+                email = getParameterByName('pwd');
+              }
               console.log(email);
               gender = response.gender;
               firstName = response.first_name;
