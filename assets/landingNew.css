@@ -184,8 +184,8 @@ header,
    z-index: 11;
    margin: 0;
    display: inline-block;
-   transition: 0.5s;
-  -webkit-transition: 0.5s;
+   transition: background-color 0.5s ease-in, opacity 1s ease-in;
+  -webkit-transition: background-color 0.5s ease-in, opacity 1s ease-in;
 }
 
 header h1,
@@ -236,7 +236,7 @@ header li:hover,
 .fix-header
 {
   position: fixed;
-  background-color: black;
+  background-color: rgba(0,0,0,0.6);
   opacity: 0.5;
   height: 50px;
   padding: 0;
@@ -271,7 +271,7 @@ header li:hover,
   width: 100vw;
   height: 100vh;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.4;
   position: absolute;
   top: 0;
   left: 0;
@@ -362,6 +362,11 @@ header li:hover,
   font-size: 25px;
 }
 
+#signUpForm
+{
+  margin-top: 1.2vh;
+}
+
 input[type="email"],
 input[type="password"]
   {
@@ -409,13 +414,15 @@ input[type="submit"]
 {
   width: 100vw;
   height: 100vh;
-  background: url(../assets/pictures/bg_home_1_4.jpeg) no-repeat center center fixed; 
+  background: url(../assets/pictures/bg_home_1_4.jpeg) no-repeat center center ; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   position: relative;
   z-index: 10;
+ /* -webkit-transition: background-image 1s ease-in-out;
+  transition: background-image 1s ease-in-out;*/
 }
 
 #container1
@@ -505,8 +512,8 @@ input[type="submit"]
 
 #container2
 {
-   height: 100vh;      /* equals max image height */
-    width: 75vw;
+  height: 100vh;      /* equals max image height */
+  width: 75vw;
    max-width: 1200px;
    margin: auto;
     white-space: nowrap;
@@ -547,7 +554,7 @@ input[type="submit"]
    width: 25vw;
    max-width: 400px;
    overflow: hidden;
-   //background-color: rgba(255,255,255,0.3);
+  /* background-color: rgba(255,255,255,0.3);*/
    white-space: normal;
    margin-bottom: 30px;
 }
@@ -561,9 +568,15 @@ input[type="submit"]
 #container2 p
 {
    margin: 2.22vh 0 0 0 ;
-   padding: 0 30px 0 30px;
+   padding: 0;
    font-size: 2vh;
    color: black;
+}
+
+.jumpline
+{
+  display: inline-block;
+  margin-top: 6px;
 }
 
 #container2 a
@@ -605,11 +618,13 @@ input[type="submit"]
 #container3
 {
   position: absolute;
+  position: fixed;
   display: inline-block;
   width: 75vw;
   top: 36.67vh;
   left: 12.5vw;
   min-width: 500px;
+  -webkit-transform: translateZ(0);
   /*background-color: rgba(255,255,255,0.3);*/
 }
 
@@ -632,6 +647,265 @@ input[type="submit"]
    transition: 0.25s ease-in;
    border: 1px solid white;
 }
+
+
+/*Page 4 */
+
+#page4
+{
+  width: 100vw;
+  height: 100vh;
+  background-color: #122c34;
+  position: relative;
+  z-index: 10;
+}
+
+
+
+#headerPage4
+{
+  width: 100%;
+  height: 28vh;
+}
+
+#headerPage4 h1
+{
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 7vh;
+}
+
+.sound_box
+  {
+    vertical-align: middle;
+    display: inline-block;
+    background-size: cover;
+    margin: 0;
+    position: relative;
+    height: 72vh;
+    width: 33.333vw;
+  }
+  
+
+  .sound_cover
+  {
+    height: 72vh;
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-background-size: cover; /* pour Chrome et Safari */
+    -moz-background-size: cover; /* pour Firefox */
+    -o-background-size: cover; /* pour Opera */
+    background-size: cover; /* version standardisée */
+    background-position: center;
+  }
+  
+.ribbon
+{
+  position: absolute;
+  top: 5px;
+  left: 3px;
+  background-color: black;
+  color: white;
+  font-size: 1em;
+  font-family: 'open Sans';
+  font-weight: 300;
+  z-index: 10;
+}
+
+  .cover_wrapper
+  {
+    height: 72vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.2;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+    text-align: center;
+  }
+
+ 
+.playPauseButton
+{
+  display: inline-block;
+  width: 15vh;
+  height: 15vh;
+  -webkit-background-size: contain; /* pour Chrome et Safari */
+  -moz-background-size: contain; /* pour Firefox */
+  -o-background-size: contain; /* pour Opera */
+  background-size: contain; /* version standardisée */
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-top: 24.5vh;
+}
+
+.play
+{
+  background-image: url(pictures/play_white.svg);
+}
+.pause
+{
+  background-image: url(pictures/pause_white.svg);
+}
+
+
+  .trackIds
+  {
+    display: none;
+  }
+
+  .sound_informations
+  {
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    z-index: 10000;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .sound_informations h3
+  {
+    text-align: center;
+    line-height: 2.5em;
+    font-size: 1.2vw;
+    font-family: 'open Sans';
+    font-weight: 300;
+    color: white;
+    overflow: hidden;
+  }
+
+
+
+/* Page 5  */
+
+#page5
+{
+  position: relative;
+  height: 93.3vh;
+  width: 100vw;
+  background-color: #8f959a;
+  z-index: 10;
+}
+
+#container5
+{
+  width: 90vw;
+  margin: auto;
+  overflow: hidden;
+  vertical-align: middle;
+  display: inline-block;
+  text-align: right;
+  margin-top: 5vh;
+}
+
+#container5 h1
+{
+  font-size: 4.5vw;
+  margin-bottom: 1vw;
+  text-align: left;
+  margin-top: 0.4vw;
+  margin-bottom: 2.7vw;
+  line-height: 5vw;
+}
+
+#curatorsNumber
+{
+  display: inline-block;
+  font-family: 'Code';
+  font-size: 37.5vw;
+  line-height: 30vw;
+  text-align: right;
+  width: 38.1vw;
+  color: white;
+  margin-right: 1.81vw;
+  float: left
+}
+
+.curatorPhotoPlaceHolder,
+#number22,
+#you
+{
+  display: inline-block;
+  position: relative;
+  width: 6.1vw;
+  height: 6.1vw;
+  margin-right: 2.2vw;
+  margin-bottom: 2.43vw;
+  vertical-align: top;
+}
+
+.curatorPhoto,
+.curatorPhotoOverlay
+{
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+#number22,
+#you
+{
+  text-align: center;
+  border-radius: 6.25vw;
+}
+
+#number22
+{
+  border: 1px solid white;
+  border-style: dashed;
+}
+
+#you
+{
+  background-color: #531931;
+}
+
+
+.curatorPhotoOverlay 
+{
+  opacity: 0;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-size: font-size: 1.2vw;
+  --webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+  overflow: hidden;
+}
+
+.curatorPhotoOverlay:hover
+{
+  opacity: 0.9;
+}
+
+.curatorPhotoOverlay p,
+#number22 p,
+#you a
+{
+  display: inline-block;
+  color: white;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-size: 1.2vw;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+
 
 
 
@@ -749,24 +1023,168 @@ footer p
 
 
 
-@media screen and (max-width: 1390px) {
 
-.img-container img
-{
-  width: 550px;
-  height: 325px;
-}
 
-h1
-{
-  font-size: 40px;
-}
+@media screen and (max-width: 1390px) and (min-width: 1000px){
 
-}
 
-@media screen and (max-width: 1100px) {
+
+  #fbButton h2,
+  #signUpOverlayContainer h2,
+  #classicLogin,
+  #facebookLogin h2
+  {
+    font-size: 20px;
+    max-width: 75vw;
+  }
+
+  #facebookLogin h2
+  {
+    line-height: auto;
+  }
+
+  #signUpForm
+  {
+    margin-top: 0;
+  }
+
+
+  #signUpOverlay .helper
+  {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  #signUpOverlayContainer
+  {
+    margin-top: 10vh;
+  }
+
+  #fbButton
+  {
+    line-height: 40px;
+    width: 300px;
+  }
+
+  #fbIcon
+  {
+    height: 30px;
+  }
+
+  #classicLogin
+  {
+    line-height: 50px;
+  }
+  #explainArrow
+  {
+    width: 30px;
+  }
+
+  input[type="email"],
+  input[type="password"]
+  {
+    width: 300px;
+    height: 25px;
+  }
+
+
+  #headerSignUpOverlay
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
 
   .img-container img
+  {
+    width: 550px;
+    height: 325px;
+  }
+
+  h1
+  {
+    font-size: 40px;
+  }
+
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1000px) and (min-width: 700px){
+
+
+
+
+  #fbButton h2,
+  #signUpOverlayContainer h2,
+  #classicLogin,
+  #facebookLogin h2
+  {
+    font-size: 18px;
+    max-width: 75vw;
+  }
+
+  #facebookLogin h2
+  {
+    line-height: auto;
+  }
+
+
+  #signUpOverlay .helper
+  {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  #signUpOverlayContainer
+  {
+    margin-top: 10vh;
+  }
+
+  #fbButton
+  {
+    line-height: 40px;
+    width: 300px;
+  }
+
+  #fbIcon
+  {
+    height: 30px;
+  }
+
+  #classicLogin
+  {
+    line-height: 50px;
+  }
+  #explainArrow
+  {
+    width: 30px;
+  }
+
+  input[type="email"],
+  input[type="password"]
+  {
+    width: 300px;
+    height: 25px;
+  }
+
+
+  #headerSignUpOverlay
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+    .img-container img
   {
     width: 400px;
     height: 236px;
@@ -777,9 +1195,13 @@ h1
     font-size: 14px;
   }
 
-
+  #signUpForm
+  {
+    margin-top: 0;
+  }
 
 }
+
 
 @media screen and (max-width: 700px){
 
@@ -974,12 +1396,107 @@ h1
     width: 75vw;
     top: 40vh;
     min-width: 0;
+    position: absolute;
   }
 
   #container3 a
   {
     width: 200px;
   }
+
+
+  #container3 p
+  {
+    line-height: 20px;
+  }
+
+
+  /* Page 4 */
+
+  #page4
+  {
+        height: auto;
+  }
+
+  #page4 h1
+  {
+    font-size: 24px;
+    margin-top: 14vh;
+  }
+
+  .sound_box
+  {
+    width: 100vw;
+  }
+
+  .sound_informations h3
+  {
+    font-size: 3vw;
+  }
+
+
+
+  /*Page 5*/
+
+
+  #page5
+  {
+    height: 85vh;
+  }
+
+  #page5,
+  #container5,
+  #container5 h1
+  {
+    text-align: center;
+  }
+
+  #curatorsNumber
+  {
+    display: block;
+    float: none;
+    text-align: center;
+    margin: auto;
+    line-height: 36vw;
+  }
+  
+  #page5 .helper
+  {
+    height: 100%;
+  }
+
+  #container5 h1
+  {
+    margin-bottom: 3vh;
+  }
+
+  #number22
+  {
+    display: none;
+  }
+
+  #you
+  {
+    cursor: pointer;
+    color: white;
+    display: inline-block;
+    height: 6vh;
+    width: 25vw;
+    line-height: 6vh;
+    border-radius: 3px;
+    font-size: 2.7777vh;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    margin-top: 2vh;
+  }
+
+  #you a
+  {
+    font-size: 4.5vw;
+  }
+
+
+  /* Footer */
 
   footer ul
   {
@@ -1006,6 +1523,19 @@ h1
     margin-top: 20px; 
   }
 
+  #signUpForm
+  {
+    margin-top: 0;
+  }
 
 
 }
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,26 @@ function facebookLogin()
     if (response.authResponse) 
     {
       console.log('Welcome!  Fetching your information.... ');
+      console.log(response.authResponse.grantedScopes);
+
+      FB.api(
+          "/me/friends",
+          function (response) {
+            if (response && !response.error) {
+              
+            }
+          }
+      );
+
+      FB.api(
+          "/me/picture",
+          function (response) {
+            if (response && !response.error) {
+              console.log(response.data.url);
+            }
+          }
+      );
+
       FB.api('/me', function(response) 
       {
        console.log('Good to see you, ' + response.name + '.');

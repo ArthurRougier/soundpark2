@@ -11,7 +11,7 @@ $resultat=$req->fetch();
 if ($resultat[0]==2)
 {
 	echo '<div id="curator_link">';
-	echo	'<a href="../view/curator_index.php"><img id="curator_link_img" src="../assets/pictures/audacity.png" style="cursor:pointer"></a>';
+	echo	'<a href="../view/curator_index.php"><img id="curator_link_img" src="../assets/pictures/headphones.svg" style="cursor:pointer"></a>';
 	echo '</div>';
 }
 

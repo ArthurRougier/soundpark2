@@ -114,15 +114,16 @@ h3 {
     color: white;
   }
 
-#curator_link
-{
-  float:right;
-  width:70px;
-  height:70px;
-  z-index:98;
-  top-padding:20px;
-  left-padding:20px;
-}
+  #curator_link
+  {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width:40px;
+    height:40px;
+    opacity: 0.5;
+    z-index:98;
+  }
   
   footer
   {
@@ -757,7 +758,6 @@ input[value="pause"]
 
 
 
-
 .share_url_title
 {
   font-size: 1em;
@@ -770,15 +770,18 @@ input[value="pause"]
 
 
 /* Smartphones (portrait and landscape) iphone = 320x568 ----------- */
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) 
-{
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
   body
   {
     text-align: center;
     background-image: none;
+  }
+
+  #curator_link
+  {
+    display: none;
   }
 
   header h1
@@ -1002,9 +1005,7 @@ and (max-device-width : 480px)
 }
 
 /* Small PCs ----------- */
-@media only screen 
-and (min-width : 480px)
-and (max-width : 950px) {
+@media only screen and (min-width : 480px) and (max-width : 950px) {
 
   .sound_cover,
   .blurred_sound_cover,

@@ -1,79 +1,4 @@
 
-$(document).ready(function(){
-	s = new slider("#galerie");
-});
-
-
-
-var slider = function(id){
-	var self=this;
-	this.div = $(id);
-	this.slider = this.div.find(".slider");
-	this.lengthCach = this.div.width();
-	this.largeur=0;
-	this.div.find("h3").each(function(){
-		self.largeur+= (self.div.width())/3;
-		self.largeur+=parseInt($(this).css("margin-left"));
-		self.largeur+=parseInt($(this).css("margin-right"));
-	});
-	//alert(this.largeur);
-	this.prec = this.div.find('.previous');
-	this.suiv = this.div.find('.next');
-	this.precParent = this.div.find('#left_arrow');
-	this.suivParent = this.div.find('#right_arrow');
-	//alert(this.suiv.html());
-	this.saut=(this.lengthCach)+4;
-	this.steps = Math.ceil(this.largeur/this.saut);
-	//alert(this.steps);
-	this.courant = 0;
-	this.prec.hide();
-	this.precParent.hide();
-
-	this.slideRight = function(){
-			if(self.courant<(self.steps-1)){
-			self.courant++;
-			self.slider.animate({
-				left:-self.courant*self.saut
-			},400);
-			if(self.courant==(self.steps-1))
-			{
-				self.suiv.fadeOut();
-				self.suivParent.fadeOut();
-			}
-			self.prec.fadeIn();
-			self.precParent.fadeIn();
-		}
-	}
-	this.slideLeft = function(){
-		if(self.courant>0)
-		{
-			self.courant--;
-			self.slider.animate({
-				left:-self.courant*self.saut
-			},400);
-			if(self.courant==(self.steps-2))
-			{
-				self.suiv.fadeIn();
-				self.suivParent.fadeIn();
-			}
-			if(self.courant==0)
-			{
-				self.prec.fadeOut();
-				self.precParent.fadeOut();
-			}
-		}
-		else
-		{
-			//alert("fini");
-		}
-	}
-
-}
-
-
-
-
-
 SC.initialize({
 
     client_id: "17f3a8c69cb36c955df82f908611e27e"
@@ -81,6 +6,7 @@ SC.initialize({
 
 var onPlay = false;
 var position = 0;
+var pause = false;
 
 
 var trackIds = document.getElementsByClassName('trackIds');
@@ -97,22 +23,58 @@ updateCurrentTrack(songTable[0]);
 
 
 
-$('.play').click(function() //Gestion du bouton de lecture/pause en toggle
+$('.playPauseButton').click(function() //Gestion du bouton de lecture/pause en toggle
 {
-	if ($('.play').val() == "play") 
+	if(!onPlay)
 	{
-		$('.play').val("pause");
-		
-		playCurrentTrack();
-		if(!onPlay)
+		if ($(this).hasClass("play")) 
 		{
-			onPlay = true;
-		} 	
+			position = this.id.slice(-1) -1;
+
+			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('play');
+			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('pause');
+			console.log(songTable[this.id.slice(-1)-1]);
+			updateCurrentTrack(songTable[this.id.slice(-1) -1]);
+			
+			playCurrentTrack();
+			if(!onPlay)
+			{
+				onPlay = true;
+			}
+			 //console.log('hfvez');	
+		}
+		else {
+			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('play');
+			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('pause');
+			pauseCurrentTrack();
+		}
 	}
-	else {
-		$('.play').val("play");
-		pauseCurrentTrack();
+	else
+	{
+		if((this.id.slice(-1) -1) == position)
+		{
+			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('play');
+			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('pause');
+			pauseCurrentTrack();
+			console.log('hgvskj');
+		}
+		else
+		{
+			currentTrack.stop();
+			if(pause)
+			{
+				$('.playPauseButton')[position].classList.toggle('play');
+				$('.playPauseButton')[position].classList.toggle('pause');
+				document.getElementById('cover_wrapper'+(position+1)).style.opacity = "0.2";
+			}
+			position = this.id.slice(-1) -1;
+			$('.playPauseButton')[position].classList.toggle('play');
+			$('.playPauseButton')[position].classList.toggle('pause');
+			document.getElementById('cover_wrapper'+(position+1)).style.opacity="0.2";
+			updateCurrentTrack(songTable[position]);
+		}
 	}
+	
 });
 
 
@@ -125,7 +87,7 @@ function updateCurrentTrack(trackId)
 		
 		}}, function(sound){
 		currentTrack = sound;
-		if ($('.play').val() == "pause") 
+		if (document.getElementsByClassName('playPauseButton')[position].classList.contains("pause")) 
 		{	
 			
 			onPlay=true;
@@ -140,10 +102,10 @@ function updateCurrentTrack(trackId)
 function playCurrentTrack()
 {
 	var wrapers = $('.cover_wrapper');
-		for(var i = 0 ; i < wrapers.length ; i++)
-		{
-			wrapers[i].style.opacity="0.2";
-		}
+	for(var i = 0 ; i < wrapers.length ; i++)
+	{
+		wrapers[position].style.opacity="0.2";
+	}
 	if(onPlay)
 	{
 		currentTrack.resume();
@@ -161,10 +123,7 @@ function playCurrentTrack()
 function pauseCurrentTrack()
 {
 	var wrapers = $('.cover_wrapper');
-		for(var i = 0 ; i < wrapers.length ; i++)
-		{
-			wrapers[i].style.opacity="0.7";
-		}
+	wrapers[position].style.opacity="0.2";
 	currentTrack.pause();
 	pause = false;
 }
@@ -176,14 +135,20 @@ function nextTrack()
 
 	if(position<(songTable.length-1))
 	{
+		$('.playPauseButton')[position].classList.toggle('play');
+		$('.playPauseButton')[position].classList.toggle('pause');
+		document.getElementById('cover_wrapper'+(position+1)).style.opacity = "0.2";
 		position++;
 		console.log(songTable[position]);
+		$('.playPauseButton')[position].classList.toggle('play');
+		$('.playPauseButton')[position].classList.toggle('pause');
+		document.getElementById('cover_wrapper'+(position+1)).style.opacity="0.05";
 		updateCurrentTrack(songTable[position]);
-		s.slideRight();
-
 	}
+
 	else
 	{
+		console.log('fini');
 		//location.href="../view/end.php";
 	}
 	
@@ -209,26 +174,39 @@ function getCurrentTrackId()
 var wrapers = $('.cover_wrapper');
 
 		
-			for(var i = 0 ; i < wrapers.length ; i++)
+for(var i = 0 ; i < wrapers.length ; i++)
+{
+
+	wrapers[i].addEventListener('mouseover', function(){
+
+			this.style.opacity="0.7";
+
+	}, false)
+
+
+	wrapers[i].addEventListener('mouseout', function(){
+		//console.log($(this).parent().index());
+		if($(this).parent().index()==(position+1))
+		{
+			if(pause)
 			{
-
-				wrapers[i].addEventListener('mouseover', function(){
-
-						this.style.opacity="0.7";
-
-				}, false)
-
-
-				wrapers[i].addEventListener('mouseout', function(){
-					if(pause)
-					{
-						this.style.opacity="0.05";
-					}
-
-				}, false)
-
-				
+				this.style.opacity="0.2";
 			}
+			else
+			{
+				this.style.opacity="0.2";
+			}
+				
+		}
+		else
+		{
+			this.style.opacity="0.2";
+		}
+
+	}, false)
+
+	
+}
 		
 		
 

@@ -1,6 +1,14 @@
-window.onload=function(){
-	//mixpanel.track("Page view", {fullUrl: window.location.href});
-};
+  var bgTempPaths = ['../assets/pictures/bg_home_1.jpg','../assets/pictures/bg_home_1_2.jpg','../assets/pictures/bg_home_1_3.jpeg','../assets/pictures/bg_home_1_4.jpeg'];
+
+  var random = Math.floor((Math.random() * 2) + 1);
+  if(random === 1)
+  {
+    document.getElementById('page1').style.backgroundImage = 'url('+bgTempPaths[1]+')';
+  }
+  else
+  {
+    document.getElementById('page1').style.backgroundImage = 'url('+bgTempPaths[3]+')';
+  }
 
 //signUpOverlay
 
@@ -76,19 +84,19 @@ window.onload=function(){
     displaySignUpOverlay();
   },false);
 
-  var CTAP2 = document.getElementById('CTAP2');
-  CTAP2.addEventListener('click', function() 
-  { 
-  	var message = document.getElementById('message');
-  	var userTypeField = document.getElementById('userType');
-    var fbButtonText = document.getElementById('fbButtonText');
-    var signUpForm = document.getElementById('signUpForm');
-  	fbButtonText.innerHTML = 'Sign up with Facebook';
-    userTypeField.value = '1';
-    signUpForm.action = '../control/register.php';
-    message.innerHTML = '<h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
-    displaySignUpOverlay();
-  },false);
+  // var CTAP2 = document.getElementById('CTAP2');
+  // CTAP2.addEventListener('click', function() 
+  // { 
+  // 	var message = document.getElementById('message');
+  // 	var userTypeField = document.getElementById('userType');
+  //   var fbButtonText = document.getElementById('fbButtonText');
+  //   var signUpForm = document.getElementById('signUpForm');
+  // 	fbButtonText.innerHTML = 'Sign up with Facebook';
+  //   userTypeField.value = '1';
+  //   signUpForm.action = '../control/register.php';
+  //   message.innerHTML = '<h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
+  //   displaySignUpOverlay();
+  // },false);
 
 
   var closeSignUpOverlay = document.getElementById('closeSignUpOverlay');
@@ -102,9 +110,9 @@ window.onload=function(){
   {
     var signUpOverlay = document.getElementById('signUpOverlay');
     var mainHeader = document.getElementById('mainHeader');
+    mainHeader.style.visibility = "hidden";
     signUpOverlay.style.visibility = "visible";
     signUpOverlay.style.opacity = "0.92";
-    mainHeader.style.visibility = "hidden";
   }
 
     function undisplaySignUpOverlay()
@@ -208,14 +216,14 @@ if(w<500)
   {
     var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
     if ($(window).scrollTop() >= (h-30)) {
-       $('header').addClass('fix-header');
-       var mainHeader = document.getElementById('mainHeader');
-        mainHeader.style.opacity = "0.5";
+      $('header').addClass('fix-header');
+      var mainHeader = document.getElementById('mainHeader');
+      mainHeader.style.opacity = "0.5";
     }
     else {
-       $('header').removeClass('fix-header');
-       var mainHeader = document.getElementById('mainHeader');
-        mainHeader.style.opacity = "1";
+      $('header').removeClass('fix-header');
+      var mainHeader = document.getElementById('mainHeader');
+      mainHeader.style.opacity = "1";
     }
   });
 
@@ -242,15 +250,17 @@ var bgPosition = 0;
     {
       bgPosition++;
       console.log(bgTempPaths[bgPosition]);
-      document.getElementById('page1').style.background = 'url('+bgTempPaths[bgPosition]+')';
-      document.getElementById('page1').style.backgroundSize = 'cover';
+      document.getElementById('page1').style.backgroundImage = 'url('+bgTempPaths[bgPosition]+')';
     }
     else
     {
       bgPosition = 0;
       console.log('fefefefdzdzdze');
-      document.getElementById('page1').style.background = 'url('+bgTempPaths[bgPosition]+')';
-      document.getElementById('page1').style.backgroundSize = 'cover';
+      document.getElementById('page1').style.backgroundImage = 'url('+bgTempPaths[bgPosition]+')';
+
     }
   }
 }, false);
+
+
+

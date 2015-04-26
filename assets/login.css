@@ -428,6 +428,165 @@ input[type="submit"]
    
 }
 
+@media screen and (max-width: 1300px) and (min-width: 1000px){
+
+
+  header h1
+  {
+    text-align: center;
+    float: none;
+    font-size: 25px;
+  }
+
+
+  #fbButton h2,
+  #signUpOverlayContainer h2,
+  #classicLogin,
+  #facebookLogin h2
+  {
+    font-size: 20px;
+    max-width: 75vw;
+  }
+
+  #facebookLogin h2
+  {
+    line-height: auto;
+  }
+
+
+  #signUpOverlay .helper
+  {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  #signUpOverlayContainer
+  {
+    margin-top: 10vh;
+  }
+
+  #fbButton
+  {
+    line-height: 40px;
+    width: 300px;
+  }
+
+  #fbIcon
+  {
+    height: 30px;
+  }
+
+  #classicLogin
+  {
+    line-height: 50px;
+  }
+  #explainArrow
+  {
+    width: 30px;
+  }
+
+  input[type="email"],
+  input[type="password"]
+  {
+    width: 300px;
+    height: 25px;
+  }
+
+  header h1
+  {
+     margin: 3.333vh 0 0 0; 
+  }
+
+  #headerSignUpOverlay
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+}
+
+@media screen and (max-width: 1000px) and (min-width: 700px){
+
+
+  header h1
+  {
+    text-align: center;
+    float: none;
+    font-size: 18px;
+  }
+
+
+  #fbButton h2,
+  #signUpOverlayContainer h2,
+  #classicLogin,
+  #facebookLogin h2
+  {
+    font-size: 18px;
+    max-width: 75vw;
+  }
+
+  #facebookLogin h2
+  {
+    line-height: auto;
+  }
+
+
+  #signUpOverlay .helper
+  {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  #signUpOverlayContainer
+  {
+    margin-top: 10vh;
+  }
+
+  #fbButton
+  {
+    line-height: 40px;
+    width: 300px;
+  }
+
+  #fbIcon
+  {
+    height: 30px;
+  }
+
+  #classicLogin
+  {
+    line-height: 50px;
+  }
+  #explainArrow
+  {
+    width: 30px;
+  }
+
+  input[type="email"],
+  input[type="password"]
+  {
+    width: 300px;
+    height: 25px;
+  }
+
+  header h1
+  {
+     margin: 3.333vh 0 0 0; 
+  }
+
+  #headerSignUpOverlay
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+}
+
+
 
 @media screen and (max-width: 700px){
 
@@ -512,3 +671,4 @@ input[type="submit"]
 
 
 }
+
