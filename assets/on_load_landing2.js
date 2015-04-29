@@ -1,13 +1,17 @@
+  mixpanel.track("Page view", {fullUrl: window.location.href});
+
   var bgTempPaths = ['../assets/pictures/bg_home_1.jpg','../assets/pictures/bg_home_1_2.jpg','../assets/pictures/bg_home_1_3.jpeg','../assets/pictures/bg_home_1_4.jpeg'];
 
   var random = Math.floor((Math.random() * 2) + 1);
   if(random === 1)
   {
     document.getElementById('page1').style.backgroundImage = 'url('+bgTempPaths[1]+')';
+    var pictureHome = 'ladyDesert';
   }
   else
   {
     document.getElementById('page1').style.backgroundImage = 'url('+bgTempPaths[3]+')';
+    var pictureHome = 'DeskWithSpeakers';
   }
 
 //signUpOverlay
@@ -24,6 +28,17 @@
   	signUpForm.action = '../control/register.php';
   	message.innerHTML = '<h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
     displaySignUpOverlay();
+
+
+
+    //tracking
+
+    mixpanel.track("Main CTA page 1 clicked", {
+      fullUrl: window.location.href,
+      "BackgroungPicture": pictureHome
+      });
+
+
   },false);
 
   var headerSignUp = document.getElementById('headerSignUp');
@@ -38,6 +53,17 @@
   	signUpForm.action = '../control/register.php';
   	message.innerHTML = '<h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
     displaySignUpOverlay();
+
+    //tracking
+
+    var scrollPosition = $(document).scrollTop();
+    mixpanel.track("Header sign up clicked", {
+      "fullUrl": window.location.href,
+      "BackgroungPicture": pictureHome,
+      "scrollPosition": scrollPosition
+      });
+
+
   },false);
 
   var headerLogIn = document.getElementById('headerLogIn');
@@ -54,6 +80,16 @@
   	message.innerHTML = '<h2>Facebook prefered :)</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
     oldWayMessage.innerHTML = 'Ok, you can also log in the old way:';
     displaySignUpOverlay();
+
+    //tracking
+
+    var scrollPosition = $(document).scrollTop();
+    mixpanel.track("Header log in clicked", {
+      "fullUrl": window.location.href,
+      "BackgroungPicture": pictureHome,
+      "scrollPosition": scrollPosition
+      });
+
   },false);
 
   var headerCuratorSignUp = document.getElementById('headerCuratorSignUp');
@@ -68,6 +104,16 @@
   	message.innerHTML = '<h2>Welcome, music lord! Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
     signUpForm.action = '../control/register.php';
     displaySignUpOverlay();
+
+    //tracking
+
+    var scrollPosition = $(document).scrollTop();
+    mixpanel.track("Header curator sign up clicked", {
+      "fullUrl": window.location.href,
+      "BackgroungPicture": pictureHome,
+      "scrollPosition": scrollPosition
+      });
+
   },false);
 
   var CTAP3 = document.getElementById('CTAP3');
@@ -82,7 +128,32 @@
     fbButtonText.innerHTML = 'Sign up with Facebook';
     message.innerHTML = '<h2>Welcome, music lord! Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
     displaySignUpOverlay();
+
+    //tracking
+
+    mixpanel.track("CTA P3 clicked", {
+      "fullUrl": window.location.href,
+      "BackgroungPicture": pictureHome
+      });
+
   },false);
+
+
+  var youCuratorLink = document.getElementById('youCuratorLink');
+  youCuratorLink.addEventListener('click', function() 
+  { 
+
+    //tracking
+
+    mixpanel.track("you curator link clicked", {
+      "fullUrl": window.location.href,
+      "BackgroungPicture": pictureHome
+      });
+
+  },false);
+
+
+  
 
   // var CTAP2 = document.getElementById('CTAP2');
   // CTAP2.addEventListener('click', function() 
@@ -174,7 +245,19 @@
   fbButton.addEventListener('click', function() 
   { 
     facebookLogin();
+
+    //tracking
+
+    mixpanel.track("Fb button clicked", {
+      fullUrl: window.location.href,
+      "BackgroungPicture": pictureHome
+      });
+
   },false);
+
+  //tracking classic sign ups
+
+  mixpanel.track_forms("#signUpForm", "Classic form used on landing");
 
 
 	//skrollr and smoothScroll
@@ -235,6 +318,7 @@ if(w<500)
         results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
+
 
 
   // TEMP Changement de bg

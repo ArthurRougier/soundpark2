@@ -167,7 +167,7 @@
         include_once('../control/display_curators_photo.php');
       ?>
       <div id="number22"><span class="helper"></span><p>...</p></div>
-      <div id="you"><span class="helper"></span><a href="#page3" data-scroll>You?</a></div>
+      <div id="you"><span class="helper"></span><a id="youCuratorLink" href="#page3" data-scroll>You?</a></div>
     </div>
   </div>
 

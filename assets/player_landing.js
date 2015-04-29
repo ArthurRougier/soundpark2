@@ -74,6 +74,12 @@ $('.playPauseButton').click(function() //Gestion du bouton de lecture/pause en t
 			updateCurrentTrack(songTable[position]);
 		}
 	}
+
+	mixpanel.track("track played on landing", {
+      "fullUrl": window.location.href,
+      "BackgroungPicture": pictureHome,
+      "trackId": songTable[position]
+      });
 	
 });
 
