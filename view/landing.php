@@ -73,7 +73,7 @@
  			<li><a id="headerSignUp" data-scroll href="#page1">Sign up</a></li>
 		</ul>
 	</header>
-	<div id="page1" data-center-bottom="opacity: 1;" data--530-top="opacity: 0">
+	<div id="page1" data-center-bottom="opacity: 1;" data--620-top="opacity: 0">
       <div id="signUpOverlay">
         <div id="headerSignUpOverlay">
           <h1>SOUNDPARK.FM</h1>
@@ -133,7 +133,7 @@
   ></div>
   <div id="page3">
     <div id="backroundOverlay"></div>
-    <div id="container3" data-1850-end="opacity: 0; background-attachment: scroll;" data-1750-end="opacity: 1; background-attachment: fixed;">
+    <div id="container3" data-1950-end="opacity: 0; background-attachment: scroll;" data-1850-end="opacity: 1; background-attachment: fixed;">
       <h1><span class="strong">Hand-curated</span> with love.</h1>
       <p>Every monday morning, we release our new stream of music composed of tracks found by music lovers.</br> We believe in human taste, not in algorithms.</p>
       <a class="CTA" id="CTAP3" data-scroll href="#page1">Become a curator</a>
@@ -167,7 +167,7 @@
         include_once('../control/display_curators_photo.php');
       ?>
       <div id="number22"><span class="helper"></span><p>...</p></div>
-      <div id="you"><span class="helper"></span><a href="#page3" data-scroll>You?</a></div>
+      <a id="youCuratorLink" href="#page3" data-scroll><div id="you"><span class="helper"></span>You?</div></a>
     </div>
   </div>
 

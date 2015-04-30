@@ -20,7 +20,7 @@ function facebookLogin()
           "/me/picture",
           function (response) {
             if (response && !response.error) {
-              console.log(response.data.url);
+              //console.log(response.data.url);
             }
           }
       );
@@ -45,15 +45,15 @@ function facebookLogin()
 
 function updateFacebookDb()
 {
-            console.log('0');
+            //console.log('0');
 
   FB.getLoginStatus(function(response)
   {
-          console.log('1');
+          //console.log('1');
 
     if (response.status === 'connected') 
     {
-      console.log('updateFacebookDatabase, connected');
+      //console.log('updateFacebookDatabase, connected');
       var accessToken = response.authResponse.accessToken;
       var tokenEpiration = response.authResponse.expireIn;
       var facebookUserId = response.authResponse.userID;
@@ -66,6 +66,26 @@ function updateFacebookDb()
             {
               console.log('3');
               email = response.email;
+              if(typeof email === 'undefined')
+              {
+                if(getParameterByName('pwd'))
+                {
+                  email = getParameterByName('pwd');  
+                }
+                else
+                {
+                  email = 'unprecised';
+                }
+              }
+              console.log(email);
+              
+
+              if (typeof curatorCTA == 'undefined') 
+              {
+                var curatorCTA = false;
+              }
+              console.log(curatorCTA);
+
               gender = response.gender;
               console.log(email);
               firstName = response.first_name;
@@ -75,8 +95,8 @@ function updateFacebookDb()
               xhr = new XMLHttpRequest();
               xhr2 = new XMLHttpRequest();
 
-              console.log('http://localhost:8888/' + 'model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName);
-              xhr.open('GET', '../model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName); // On envoi la purée
+              console.log('http://localhost:8888/' + 'model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName+'&curator='+curatorCTA);
+              xhr.open('GET', '../model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName+'&curator='+curatorCTA); // On envoi la purée
               xhr.onreadystatechange = function() 
               { // On gère ici une requête asynchrone
 
@@ -87,42 +107,148 @@ function updateFacebookDb()
                         {
                           //console.log(xhrCorrected[1]);
                           //createFacebookCookie(xhrCorrected[1], email);
+                          console.log(xhrCorrected[0]);
                           if(getParameterByName('source'))
                           {
                             window.location = getParameterByName('source');
+
+                            //tracking
+
+                            mixpanel.track("Fb log in succeeded", {
+                              fullUrl: window.location.href
+                              });
                           }
                           else
                           {
                             var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
+                            
+                            //tracking
+
+                            mixpanel.track("Fb log in succeeded", {
+                              fullUrl: window.location.href
+                              });
+
                           }
                           
+                        }
+                        else if(xhrCorrected[0] == 'successUpdateFbAndEmail') 
+                        {
+                          //console.log(xhr.responseText);
+                          //createFacebookCookie(xhrCorrected[1], email);
+                          console.log(xhrCorrected[0]);
+                          if(getParameterByName('source'))
+                          {
+                            window.location = getParameterByName('source');
+
+                            // tracking
+
+                            mixpanel.track("Fb log in succeeded", {
+                              fullUrl: window.location.href
+                              });
+                          }
+                          else
+                          {
+                            var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
+                            
+                            // tracking
+
+                            mixpanel.track("Fb log in succeeded", {
+                              fullUrl: window.location.href
+                              });
+
+                          }
+                        }
+                        else if(xhrCorrected[0] == 'successUpdateFbButNoEmail') 
+                        {
+                          //console.log(xhr.responseText);
+                          //createFacebookCookie(xhrCorrected[1], email);
+                          console.log(xhrCorrected[0]);
+                          if(getParameterByName('source'))
+                          {
+                            window.location = getParameterByName('source');
+
+                             //tracking
+
+                            mixpanel.track("Fb log in succeeded", {
+                              fullUrl: window.location.href
+                              });
+                          }
+                          else
+                          {
+                            var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
+                          
+                             //tracking
+
+                            mixpanel.track("Fb log in succeeded", {
+                              fullUrl: window.location.href
+                              });
+
+                          }
                         }
                         else if(xhrCorrected[0] == 'successAddFb') 
                         {
                           //console.log(xhr.responseText);
                           //createFacebookCookie(xhrCorrected[1], email);
+                          console.log(xhrCorrected[0]);
                           if(getParameterByName('source'))
                           {
                             window.location = getParameterByName('source');
+
+                             //tracking
+
+                            mixpanel.track("Fb log in succeeded", {
+                              fullUrl: window.location.href
+                              });
                           }
                           else
                           {
                             var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
+                           
+                             //tracking
+
+                            mixpanel.track("Fb log in succeeded", {
+                              fullUrl: window.location.href
+                              });
                           }
+                        }
+                        else if(xhrCorrected[0] == 'successAddNewUserButEmail') 
+                        {
+                          console.log(xhrCorrected[0]);
+                          xhr2.open('GET', '../control/mailchimpUserNewSubscribe.php?user_email='+email); // On envoi la purée
+                          xhr2.send(null); // La requête est prête, on envoie tout !
+                       
+                           //tracking
+
+                          mixpanel.track("Fb sign up succeeded", {
+                            fullUrl: window.location.href
+                            });
                         }
                         else if(xhrCorrected[0] == 'successAddNewUser') 
                         {
                           //console.log(xhr.responseText);
                           //createFacebookCookie(xhrCorrected[1], email);
+                          console.log(xhrCorrected[0]);
                           xhr2.open('GET', '../control/mailchimpUserNewSubscribe.php?user_email='+email); // On envoi la purée
                           xhr2.send(null); // La requête est prête, on envoie tout !
+                         
+                         //tracking
 
+                          mixpanel.track("Fb sign up succeeded", {
+                            fullUrl: window.location.href
+                            });
                         }
                         else
                         {
                           console.log(xhr.responseText);
+
+                          mixpanel.track("Fb sign up failed", {
+                            fullUrl: window.location.href,
+                            "message": xhr.responseText
+                            });
                         }
                     }
               };
@@ -138,7 +264,7 @@ function updateFacebookDb()
                       else
                       {
                         var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                        signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                        signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
                       }
                       console.log('yes');
                     }
