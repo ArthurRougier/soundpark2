@@ -13,7 +13,7 @@
 			if ($resultat[0])
 			{
 				$type='2';
-				$req = $bdd->prepare('UPDATE soundpark2.user SET type=? WHERE id=?');
+				$req = $bdd->prepare('UPDATE user SET type=? WHERE id=?');
 				$req->execute(array($type,$resultat[0]));
 
 				$req = $bdd->prepare('UPDATE curator SET ID_user=? WHERE ID=?');

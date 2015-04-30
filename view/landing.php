@@ -133,7 +133,7 @@
   ></div>
   <div id="page3">
     <div id="backroundOverlay"></div>
-    <div id="container3" data-1900-end="opacity: 0; background-attachment: scroll;" data-1800-end="opacity: 1; background-attachment: fixed;">
+    <div id="container3" data-1950-end="opacity: 0; background-attachment: scroll;" data-1850-end="opacity: 1; background-attachment: fixed;">
       <h1><span class="strong">Hand-curated</span> with love.</h1>
       <p>Every monday morning, we release our new stream of music composed of tracks found by music lovers.</br> We believe in human taste, not in algorithms.</p>
       <a class="CTA" id="CTAP3" data-scroll href="#page1">Become a curator</a>
