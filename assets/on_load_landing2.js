@@ -1,4 +1,5 @@
   mixpanel.track("Page view", {fullUrl: window.location.href});
+  var curatorCTA = false;
 
   var bgTempPaths = ['../assets/pictures/bg_home_1.jpg','../assets/pictures/bg_home_1_2.jpg','../assets/pictures/bg_home_1_3.jpeg','../assets/pictures/bg_home_1_4.jpeg'];
 
@@ -99,6 +100,7 @@
   	var userTypeField = document.getElementById('userType');
     var fbButtonText = document.getElementById('fbButtonText');
     var signUpForm = document.getElementById('signUpForm');
+    curatorCTA = true;
     fbButtonText.innerHTML = 'Sign up with Facebook';
   	userTypeField.value = '2';
   	message.innerHTML = '<h2>Welcome, music lord! Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2><img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>';
@@ -123,6 +125,7 @@
     var userTypeField = document.getElementById('userType');
     var signUpForm = document.getElementById('signUpForm');
     var fbButtonText = document.getElementById('fbButtonText');
+    curatorCTA = true;
     userTypeField.value = '1';
     signUpForm.action = '../control/register.php';
     fbButtonText.innerHTML = 'Sign up with Facebook';
@@ -192,6 +195,7 @@
     signUpOverlay.style.visibility = "hidden";
     signUpOverlay.style.opacity = "0";
     mainHeader.style.visibility = "visible";
+    curatorCTA = false;
   }
 
   // messages display on signup overlay
@@ -298,10 +302,10 @@ if(w<500)
   $(window).scroll(function()
   {
     var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-    if ($(window).scrollTop() >= (h-30)) {
+    if ($(window).scrollTop() >= (h-120)) {
       $('header').addClass('fix-header');
       var mainHeader = document.getElementById('mainHeader');
-      mainHeader.style.opacity = "0.5";
+      //mainHeader.style.opacity = "0.5";
     }
     else {
       $('header').removeClass('fix-header');

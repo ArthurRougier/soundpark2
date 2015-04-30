@@ -233,20 +233,41 @@ header li:hover,
    border-bottom: 1px solid white;
 }
 
+
 .fix-header
 {
   position: fixed;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.4);
   opacity: 0.5;
   height: 50px;
   padding: 0;
+}
+
+.fix-header  #headerSignUp
+{
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 3px;
+  padding: 2px 8px 5px 8px;
+  transition: 0.25s;
+}
+
+.fix-header  #headerSignUp:hover
+{
+  background-color: rgba(0,0,0,0.1);
+}
+
+.fix-header li:hover,
+.fix-header:hover,
+.fix-header li a:hover
+{
+   border-bottom: none;
 }
 
 .fix-header h1
 {
   font-size: 30px;
   line-height: 50px;
-  margin: 3px 0 0 3vw; 
+  margin: 2px 0 0 3vw; 
 }
 
 .fix-header ul
@@ -257,7 +278,7 @@ header li:hover,
 
 .fix-header ul li
 {
-     margin: 17px 2vw 0 0;
+     margin: 15px 2vw 0 0;
 }
 
 
@@ -870,6 +891,7 @@ input[type="submit"]
 #you
 {
   background-color: #531931;
+  transition: 0.2s;
 }
 
 
@@ -894,7 +916,7 @@ input[type="submit"]
 
 .curatorPhotoOverlay p,
 #number22 p,
-#you a
+a #you 
 {
   display: inline-block;
   color: white;
@@ -903,6 +925,12 @@ input[type="submit"]
   font-size: 1.2vw;
   vertical-align: middle;
   text-decoration: none;
+}
+
+a #you:hover
+{
+  background-color: #122c34;
+  font-size: 1.3vw;
 }
 
 
@@ -1490,9 +1518,9 @@ footer p
     margin-top: 2vh;
   }
 
-  #you a
+  a #you 
   {
-    font-size: 4.5vw;
+    font-size: 3vw;
   }
 
 

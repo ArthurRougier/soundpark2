@@ -71,12 +71,12 @@ mixpanel.init("96e08627ec77b0c4f5e065ece45960fb");</script><!-- end Mixpanel -->
     ?>
 	</div>
 	
-     
-    </body>
-
     <script type="text/javascript" src="../assets/retina.js"></script>
     <script type="text/javascript" src="../assets/facebook.js"></script>
     <script type="text/javascript" src="../assets/smooth-scroll.min.js"></script>
+</body>
+
+    
    
     
     <script>

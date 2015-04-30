@@ -3,6 +3,21 @@
 	/*error_reporting(E_ALL);
 	ini_set('display_errors', 1);*/
 
+	// on commence par voir quel type de user c'est dans le cas d'un inscription plus tard
+
+	if(isset($_GET['curator']))
+	{
+		if($_GET['curator'] == 'true')
+		{
+			$curator = 2;
+		}
+		else
+		{
+			$curator = 1;
+		}
+		
+	}
+
 	if(isset($_GET['accessToken']) AND isset($_GET['tokenEpiration']) AND isset($_GET['facebookUserId']) AND isset($_GET['email']) AND isset($_GET['gender']) AND isset($_GET['lastName']) AND isset($_GET['firstName']))
 	{
 		include_once('../model/connect_sql.php');
@@ -92,8 +107,8 @@
 			else // bon, on va lui créer un compte SP avec cet email inconnu pour le moment, edge case de la mort
 			{
 				//on lui crée un compte SP
-				$req = $bdd->prepare('INSERT INTO user(email, type, subscription_date) VALUES (?, "1", NOW())') or die(print_r($bdd->errorInfo()));
-				$req->execute(array($_GET['email']));
+				$req = $bdd->prepare('INSERT INTO user(email, type, subscription_date) VALUES (?, ?, NOW())') or die(print_r($bdd->errorInfo()));
+				$req->execute(array($_GET['email'], $curator));
 			
 				
 				// On vient récupérer son tout nouveau userId
@@ -123,7 +138,8 @@
 		else
 		{
 			//on lui crée un compte SP
-			$req = $bdd->query('INSERT INTO user(type, subscription_date) VALUES ("1", NOW())') or die(print_r($bdd->errorInfo()));
+			$req = $bdd->prepare('INSERT INTO user(type, subscription_date) VALUES (?, NOW())') or die(print_r($bdd->errorInfo()));
+			$req->query(array($curator));
 		
 			
 			// On vient récupérer son tout nouveau userId

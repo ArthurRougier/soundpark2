@@ -78,6 +78,14 @@ function updateFacebookDb()
                 }
               }
               console.log(email);
+              
+
+              if (typeof curatorCTA == 'undefined') 
+              {
+                var curatorCTA = false;
+              }
+              console.log(curatorCTA);
+
               gender = response.gender;
               firstName = response.first_name;
               lastName = response.last_name;
@@ -85,8 +93,8 @@ function updateFacebookDb()
               xhr = new XMLHttpRequest();
               xhr2 = new XMLHttpRequest();
 
-              console.log('http://localhost:8888/' + 'model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName);
-              xhr.open('GET', '../model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName); // On envoi la purée
+              console.log('http://localhost:8888/' + 'model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName+'&curator='+curatorCTA);
+              xhr.open('GET', '../model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName+'&curator='+curatorCTA); // On envoi la purée
               xhr.onreadystatechange = function() 
               { // On gère ici une requête asynchrone
 
@@ -111,7 +119,7 @@ function updateFacebookDb()
                           else
                           {
                             var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
                             
                             //tracking
 
@@ -140,7 +148,7 @@ function updateFacebookDb()
                           else
                           {
                             var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
                             
                             // tracking
 
@@ -168,7 +176,7 @@ function updateFacebookDb()
                           else
                           {
                             var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
                           
                              //tracking
 
@@ -196,7 +204,7 @@ function updateFacebookDb()
                           else
                           {
                             var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                            signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
                            
                              //tracking
 
@@ -254,7 +262,7 @@ function updateFacebookDb()
                       else
                       {
                         var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                        signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> Gagné poto, la playlist <a href="../view/frommail.php">here</a></h2></br>';
+                        signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
                       }
                       console.log('yes');
                     }
