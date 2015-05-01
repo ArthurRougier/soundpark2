@@ -65,14 +65,15 @@ function updateFacebookDb()
             if (response && !response.error) 
             {
               console.log('3');
-              email = response.email;
-              if(typeof email === 'undefined')
+              
+              if(getParameterByName('pwd'))
               {
-                if(getParameterByName('pwd'))
-                {
-                  email = getParameterByName('pwd');  
-                }
-                else
+                email = getParameterByName('pwd');  
+              }
+              else
+              {
+                email = response.email;
+                if(typeof email === 'undefined')
                 {
                   email = 'unprecised';
                 }
