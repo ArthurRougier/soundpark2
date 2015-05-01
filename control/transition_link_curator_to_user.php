@@ -34,19 +34,19 @@
 			else
 			{
 				//Nous ne vous trouvons pas dans la base de données
-				header("Location: ../view/transition_curator_account.php?message=We can't find your email. Are you sure you typed the good one?");
+				header("Location: ../view/transition_curator_account.php?curatorId=".$_GET['curatorId']."&message=We can't find your email. Are you sure you typed the good one?");
 			}
 		}
 		else
 		{
 			//rediriger avec une wrong adress
-			header("Location: ../view/transition_curator_account.php?message=Wrong email adress. Please try again!");
+			header("Location: ../view/transition_curator_account.php?curatorId=".$_GET['curatorId']."&message=Wrong email adress. Please try again!");
 		}
 	}
 	else
 	{
 		//Pas de mail transmis
-		header("Location: ../view/transition_curator_account.php?message=Wrong email adress. Please try again!");
+		header("Location: ../view/transition_curator_account.php?curatorId=".$_GET['curatorId']."&message=Wrong email adress. Please try again!");
 	}
 	
 ?>

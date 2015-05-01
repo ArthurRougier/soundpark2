@@ -20,7 +20,7 @@ include_once('../model/connect_sql.php');
 
 
 	//FAKE NUMBERS
-	$totalSongsPosted[0]=$totalSongsPosted[0]*4+3;
+	$totalSongsPosted[0]=$totalSongsPosted[0];
 	$totallikes[0]=$totallikes[0]*4+3;
 
 ?>
@@ -28,7 +28,7 @@ include_once('../model/connect_sql.php');
 <div class="like_dislike_stat">		
 	<p>
 		<h2><?php echo($totalSongsPosted[0]);?></h2>
-		<h3>Songs </br>I posted</h3>
+		<h3>Songs</br>posted</h3>
 	</p>
 </div>
 

@@ -213,7 +213,7 @@ aside li a:hover
 	overflow-y:auto;
 	/*height:300px;*/
 	border-radius:5px;
-	width:97%;
+	width:90%;
 	height: -moz-calc(100% - 190px);
     height: -webkit-calc(100% - 190px);
     height: calc(100% - 190px);
@@ -229,7 +229,7 @@ aside li a:hover
 	overflow-y:auto;
 	/*height:300px;*/
 	border-radius:5px;
-	width:97%;
+	width:90%;
 	height: -moz-calc(100% - 230px - 50px);
     height: -webkit-calc(100% - 230px - 50px);
     height: calc(100% - 230px - 50px);
