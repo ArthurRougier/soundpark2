@@ -5,7 +5,7 @@ include_once("../model/get_curators_week_songs.php");
 	if($trackList = $req->fetch())
 	{
 		
-	echo '<form <form accept-charset="UTF-8" action="../control/modify_curators_songs.php" id="update_untreated_songs_curator" method="post">';
+	echo '<form <form accept-charset="UTF-8" action="../control/modify_curators_songs2.php" id="update_untreated_songs_curator" method="post">';
 
 		echo '<ol id="sortable">';
 		$index = 0;
