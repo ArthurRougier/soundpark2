@@ -12,7 +12,7 @@
 				echo('<li id="li'.$index.'" data-id="'.($index+1).'"><div id="playPauseIcon'.$index.'" class="playPauseIcon play"></div><img src="../assets/pictures/handle_icon.svg" class="icon-move"><span id="trackOrder">'.$trackList[8].'. </span><span>Title : </span><input autofocus="autofocus" class="song_title" id="song_title'.$index.'" name="song_title'.$index.'" value="'.$trackList[5].'" type="text" /> <span>  Artist : </span><input autofocus="autofocus" class="song_artist" id="song_artist'.$index.'" name="song_artist'.$index.'" value="'.$trackList[6].'" type="text" /> <span>  Genre : </span><input autofocus="autofocus" class="song_genre" id="song_genre'.$index.'" name="song_genre'.$index.'" value="'.$trackList[4].'" type="text" />');
 				include_once('../model/get_curators.php');
 				$j = 0;
-				$htmlSelectForm ="<label for='idCurator".$index."'>  Curator : </label><select name='idCurator".$index."' id='idCurator".$index."'>";
+				$htmlSelectForm ="<label for='idCurator".$index."'>  Curator : </label><select class='song_curator' name='idCurator".$index."' id='idCurator".$index."'>";
 				while($j<$i) //i is defined in get_curator and corresponds to the number of curators we have
 				{
 
@@ -28,6 +28,21 @@
 				}
 				$htmlSelectForm = $htmlSelectForm . "</select>";
 				echo $htmlSelectForm;
+				
+
+				//Tag 1
+				echo "<label for='songOccasion1_".$index."'>  Tag 1 : </label><select name='songOccasion1_".$index."' class='songOccasion' id='songOccasion1_".$index."'>";
+				echo "<option value='Choix 1' selected>Choix 1</option>";
+				echo "<option value='Choix 2'>Choix 2</option>";
+				echo "</select>";
+
+				//Tag 2
+				echo "<label for='songOccasion2_".$index."'>  Tag 2 : </label><select name='songOccasion2_".$index."' class='songOccasion' id='songOccasion2_".$index."'>";
+				echo "<option value='Choix 1'>Choix 1</option>";
+				echo "<option value='Choix 2' selected>Choix 2</option>";
+				echo "</select>";
+
+
 				echo('    <a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a target="_blank" href="'.$trackList[9].'">Link</a></br><a href="../control/delete_track.php?idSong='.$trackList[0].'">Delete</a></br><a href="../control/move_track_to_next_playlist.php?idSong='.$trackList[0].'&idPlaylist='.$_GET['idPlaylist'].'">Move to next playlist</a></br><a href="../control/move_track_to_previous_playlist.php?idSong='.$trackList[0].'&idPlaylist='.$_GET['idPlaylist'].'">Move to previous playlist</a></div><input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="songOrder" id="songOrder'.($index+1).'" name="songOrder'.($index+1).'" value="'.$trackList[8].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[7].'" type="hidden"/></br></li>');
 				$index++;
 		} while($trackList = $req->fetch());	

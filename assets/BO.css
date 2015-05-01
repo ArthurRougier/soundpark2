@@ -168,7 +168,11 @@ input[type="text"]
 	width: 200px;
 }
 
-input[class="song_curator"],
+select[class="song_curator"]
+{
+	width: 20px;
+}
+
 input[class="song_genre"]
 {
 	width: 80px;

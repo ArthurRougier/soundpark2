@@ -10,7 +10,7 @@ include_once("../model/get_curators_historic_songs.php");
 		$index = 0;
 		do
 		{				
-				echo('<li id="li'.$index.'"><div id="playPauseIcon'.$index.'" class="playPauseIcon play"></div><span style="color:white">Title : </span><input readonly autofocus="autofocus" class="song_title" id="song_title'.$index.'" name="song_title'.$index.'" value="'.$trackList['title'].'" type="text" /> <span style="color:white">  Artist : </span><input readonly autofocus="autofocus" id="song_artist'.$index.'" name="song_artist'.$index.'" value="'.$trackList['artist'].'" type="text" /> <span style="color:white">  Genre : </span><input readonly autofocus="autofocus" class="song_genre" id="song_genre'.$index.'" name="song_genre'.$index.'" value="'.$trackList['genre'].'" type="text" />');
+				echo('<li id="li'.$index.'"><div id="playPauseIcon'.$index.'" class="playPauseIcon play"></div><span style="color:white">Title : </span><input readonly autofocus="autofocus" class="song_title" id="song_title'.$index.'" name="song_title'.$index.'" value="'.$trackList['title'].'" type="text" /> <span style="color:white">  Artist : </span><input readonly autofocus="autofocus" id="song_artist'.$index.'" name="song_artist'.$index.'" value="'.$trackList['artist'].'" type="text" /> <span style="color:white"> <!-- Genre : </span><input readonly autofocus="autofocus" class="song_genre" id="song_genre'.$index.'" name="song_genre'.$index.'" value="'.$trackList['genre'].'" type="text" />-->');
 				
 				
 				//Obtenir ici les stats d'une song
