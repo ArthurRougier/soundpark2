@@ -4,7 +4,7 @@ include_once ('../control/connect_sql.php');
 $req=$bdd->prepare('SELECT type FROM user WHERE email=?');
 $req->execute(array($_COOKIE['current_user']));
 $resultat=$req->fetch();
-
+//echo $_COOKIE['current_user'];
 //Prévoir et tester si onboarded
 
 
