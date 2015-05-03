@@ -1,7 +1,7 @@
 <?php
 
 include_once ('../control/connect_sql.php');
-$req=$bdd->prepare('SELECT type FROM user WHERE email=?');
+$req=$bdd->prepare('SELECT type FROM user WHERE id=?');
 $req->execute(array($_COOKIE['current_user']));
 $resultat=$req->fetch();
 //echo $_COOKIE['current_user'];
