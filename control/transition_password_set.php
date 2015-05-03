@@ -13,9 +13,11 @@
 	        $req = $bdd->prepare('UPDATE user SET password = ?, token = ? WHERE email = ?') or die(print_r($bdd->errorInfo()));
 	        $req->execute(array(sha1($_POST['password']), $randomString, $email));
 
+	        include('../model/get_user_id.php'); //take $email as entry, returns $userId
+	        
 	      	setcookie('sessionType', 'classic', time() + 31*24*3600,  "/", null, false, true);
-			setcookie('currentSession', $email.'='.$randomString, time() + 31*24*3600,  "/", null, false, true);
-			setcookie('current_user', $email, time() + 31*24*3600, "/", null, false, false);
+			setcookie('currentSession', $userId.'='.$randomString, time() + 31*24*3600,  "/", null, false, true);
+			setcookie('current_user', $userId, time() + 31*24*3600, "/", null, false, false);
 			//echo($_COOKIE['currentSession']);
 	       	header('Location: ../view/frommail.php'); 
 		}

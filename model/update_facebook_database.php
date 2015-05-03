@@ -18,6 +18,8 @@
 		
 	}
 
+	//et ensuite on attaque la grande gestion des différents cas
+
 	if(isset($_GET['accessToken']) AND isset($_GET['tokenEpiration']) AND isset($_GET['facebookUserId']) AND isset($_GET['email']) AND isset($_GET['gender']) AND isset($_GET['lastName']) AND isset($_GET['firstName']))
 	{
 		include_once('../model/connect_sql.php');
@@ -42,8 +44,8 @@
 				$_GET['facebookUserId']
 			));
 			setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
-			setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
-			setcookie('current_user', $_GET['email'], time() + 31*24*3600, "/", null, false, false);
+			setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+			setcookie('current_user', $ID_user, time() + 31*24*3600, "/", null, false, false);
 
 			//ok il à un compte fb. Y-a t-il un email renvoyé par l'API fb?
 			if($_GET['email'] != 'unprecised') // si oui
@@ -100,8 +102,8 @@
 					$_GET['gender']
 				));
 				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
-				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
-				setcookie('current_user', $_GET['email'], time() + 31*24*3600, "/", null, false, false);
+				setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+				setcookie('current_user', $ID_user, time() + 31*24*3600, "/", null, false, false);
 				echo('successAddFb='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 			}
 			else // bon, on va lui créer un compte SP avec cet email inconnu pour le moment, edge case de la mort
@@ -129,13 +131,13 @@
 					$_GET['gender']
 				));
 				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
-				setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
-				setcookie('current_user', $_GET['email'], time() + 31*24*3600, "/", null, false, false);
+				setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+				setcookie('current_user', $ID_user, time() + 31*24*3600, "/", null, false, false);
 				echo('successAddNewUserButEmail='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 			}
 			
 		}
-		else
+		else // le mec n'existe nul part, on lui crée un compte
 		{
 			//on lui crée un compte SP
 			$req = $bdd->prepare('INSERT INTO user(type, subscription_date) VALUES (?, NOW())') or die(print_r($bdd->errorInfo()));
@@ -160,8 +162,8 @@
 				$_GET['gender']
 			));
 			setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
-			setcookie('currentSession', $_GET['email'].'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
-			setcookie('current_user', $_GET['email'], time() + 31*24*3600, "/", null, false, false);
+			setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+			setcookie('current_user', $ID_user, time() + 31*24*3600, "/", null, false, false);
 			echo('successAddNewUser='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 		}
 	}

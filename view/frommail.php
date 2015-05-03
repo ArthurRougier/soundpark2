@@ -6,6 +6,7 @@
 	include_once('../model/connect_sql.php');
 	include($_SERVER['DOCUMENT_ROOT'].'/control/session_check.php');
 	include_once($_SERVER['DOCUMENT_ROOT'].'/control/control_user.php');
+	include_once($_SERVER['DOCUMENT_ROOT'].'/model/get_userEmail_from_userId.php');
 	setcookie('playlist_url', $_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'], time() + 7*24*3600, null, null, false, true);
 	//echo($_COOKIE['sessionType']);	
 ?>
@@ -40,8 +41,8 @@
 		?>
 	    <script type="text/javascript">
 	    	var unixtime = Date.parse("<?php echo($subsciptionDate); ?>").getTime()/1000;
-		 	var email = "<?php echo($_COOKIE['current_user']); ?>";
-			console.log(email);
+		 	var email = "<?php echo($userEmail); ?>";
+			console.log('mixpa : '+email);
 
 		 	 window.intercomSettings = {
 			    // TODO: The current logged in user's full name
@@ -74,7 +75,7 @@
 		<script type="text/javascript">
 			userId = "<?php echo($userId); ?>";
 			var subsciptionDate = "<?php echo($subsciptionDate); ?>";
-			var userEmail = "<?php echo($_COOKIE['current_user']); ?>";
+			var userEmail = "<?php echo($userEmail); ?>";
 			//console.log(subsciptionDate);
 			//console.log(userEmail);
 			mixpanel.identify(userId);

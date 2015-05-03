@@ -103,9 +103,10 @@
 				if(isset($_COOKIE['currentSession']))
 				{
 					$currentSession = explode("=", $_COOKIE['currentSession']);
-					$userEmail = $currentSession[0];
+					$ID_user = $currentSession[0];
 					$key = $currentSession[1];
 					//return $key;
+
 					include($_SERVER['DOCUMENT_ROOT'].'/model/get_hashed_token.php');
 					if(isset($hashedToken))
 					{
@@ -136,11 +137,11 @@
 				if(isset($_COOKIE['currentSession']))
 				{
 					$currentSession = explode("=", $_COOKIE['currentSession']);
-					$userEmail = $currentSession[0];
+					$ID_user = $currentSession[0];
 					$key = $currentSession[1];
-					//return $userEmail;
-					include($_SERVER['DOCUMENT_ROOT'].'/model/get_classic_token.php');
-					//return $classicToken;
+					
+					include($_SERVER['DOCUMENT_ROOT'].'/model/get_classic_token.php'); //takes $ID_user, return $classicToken;
+					
 					if(isset($classicToken))
 					{
 						if($key == $classicToken)
