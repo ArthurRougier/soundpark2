@@ -4,7 +4,7 @@ include_once ('../model/connect_sql.php');
 include($_SERVER['DOCUMENT_ROOT'].'/control/session_check.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/control/control_user.php');
 
-$req=$bdd->prepare('SELECT curator.ID FROM curator, user WHERE curator.ID_user=user.id AND email=?');
+$req=$bdd->prepare('SELECT curator.ID FROM curator, user WHERE curator.ID_user=user.id AND user.id=?');
 $req->execute(array($_COOKIE['current_user']));
 $resultat=$req->fetch();
 
