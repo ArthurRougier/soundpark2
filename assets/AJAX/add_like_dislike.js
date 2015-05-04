@@ -4,6 +4,7 @@ function addLike()
 
 	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
     var currentUser = getCookie('current_user') //user.email
+    console.log('like current user = '+currentUser);
 
 	xhr = new XMLHttpRequest();
 	xhr2 = new XMLHttpRequest();
@@ -66,6 +67,7 @@ function addDislike()
 {
 	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
     var currentUser = getCookie('current_user'); //user.email
+    console.log('Dislike current user = '+currentUser);
 
 	xhr = new XMLHttpRequest();
 	xhr2 = new XMLHttpRequest();

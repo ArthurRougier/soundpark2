@@ -3,12 +3,13 @@
 	include_once("../model/connect_sql.php");
 	if(isset($_GET['trackId']) && isset($_GET['currentUser']))
 	{
-		
+		$idUser = $_GET['currentUser'];
+
 		//on test si le son n'a pas déjà été liké par ce meme utilisateur
-		$req = $bdd->prepare('SELECT like.ID FROM soundpark2.like, user, song WHERE like.ID_song = song.ID AND song.trackId = ? AND like.ID_user = user.ID AND user.email=?');
+		$req = $bdd->prepare('SELECT like.ID FROM soundpark2.like, user, song WHERE like.ID_song = song.ID AND song.trackId = ? AND like.ID_user = user.ID AND user.ID=?');
 		$req->execute(array(
 		$_GET['trackId'],
-		$_GET['currentUser']
+		$idUser
 		));
 		if($req->fetch()) // cas ou le son avait été liké avant
 		{
@@ -17,14 +18,9 @@
 			$req->execute(array($_GET['trackId']));
 			$Id = $req->fetch();
 
-			//on va chercher l'ID de l'utilisateur qui à disliké
-			$req = $bdd->prepare('SELECT ID FROM user WHERE email = ?');
-			$req->execute(array($_GET['currentUser']));
-			$idUser = $req->fetch();
-
 			//on supprime le like
 			$req = $bdd->prepare('DELETE FROM soundpark2.like WHERE ID_song = ? AND ID_user = ?');
-			$req->execute(array($Id[0], $idUser[0]));
+			$req->execute(array($Id[0], $idUser));
 
 		
 			//on vient compter le nombre de dislikes du son en question pour vérifier que les sommes correspondent bien. 

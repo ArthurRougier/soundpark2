@@ -572,3 +572,11 @@ Version: '5.5.38'  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'  port: 8889
 150501 23:29:02 [Note] Event Scheduler: Loaded 0 events
 150501 23:29:02 [Note] /Applications/MAMP/Library/bin/mysqld: ready for connections.
 Version: '5.5.38'  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'  port: 8889  Source distribution
+150503 15:20:40 [Note] /Applications/MAMP/Library/bin/mysqld: Normal shutdown
+
+150503 15:20:40 [Note] Event Scheduler: Purging the queue. 0 events
+150503 15:20:40  InnoDB: Starting shutdown...
+150503 15:20:41  InnoDB: Shutdown completed; log sequence number 9093274
+150503 15:20:41 [Note] /Applications/MAMP/Library/bin/mysqld: Shutdown complete
+
+150503 15:20:41 mysqld_safe mysqld from pid file /Applications/MAMP/tmp/mysql/mysql.pid ended
