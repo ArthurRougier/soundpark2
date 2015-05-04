@@ -42,7 +42,7 @@
 	    <script type="text/javascript">
 	    	var unixtime = Date.parse("<?php echo($subsciptionDate); ?>").getTime()/1000;
 		 	var email = "<?php echo($userEmail); ?>";
-			console.log('mixpa : '+email);
+			console.log('Intercom : '+email);
 
 		 	 window.intercomSettings = {
 			    // TODO: The current logged in user's full name
@@ -68,16 +68,17 @@
 		</script>
 		
 		<?php
-			include_once('../model/get_user_id.php');
 			include_once('../model/get_user_subscription_date.php');
 		?>
 
 		<script type="text/javascript">
-			userId = "<?php echo($userId); ?>";
+			var userId = "<?php echo($_COOKIE['current_user']); ?>";
 			var subsciptionDate = "<?php echo($subsciptionDate); ?>";
 			var userEmail = "<?php echo($userEmail); ?>";
 			//console.log(subsciptionDate);
-			//console.log(userEmail);
+	
+			console.log('Mixpa ID : '+userId);
+			console.log('Mixpa : '+userEmail);
 			mixpanel.identify(userId);
 			mixpanel.people.set(
 			{
