@@ -400,16 +400,20 @@ function getLikeState()
 
 var indexDropdownMenu = 0;
 var toggledDropdownMenu = false;
+
 var fill = function(){
-  var dots = document.getElementsByClassName('circle');
-  if(!toggledDropdownMenu)
+
+	var playerPosition = document.getElementById('player_position').innerHTML;
+	var dots = document.querySelectorAll('#dropdown-menu' + playerPosition + ' .circle');
+	var socialIconFb = document.getElementById('socialIconFb'+ playerPosition);
+	var socialIconTwitter = document.getElementById('socialIconTwitter'+ playerPosition);
+	var socialIconEmail = document.getElementById('socialIconEmail'+ playerPosition);
+	var socialIconSoundcloud = document.getElementById('socialIconSoundcloud'+ playerPosition);
+	var shareButtonText = document.getElementById('shareButtonText'+ playerPosition);  
+
+  	if(!toggledDropdownMenu)
     {
-		var playerPosition = document.getElementById('player_position').innerHTML;
-		var socialIconFb = document.getElementById('socialIconFb'+ playerPosition);
-		var socialIconTwitter = document.getElementById('socialIconTwitter'+ playerPosition);
-		var socialIconEmail = document.getElementById('socialIconEmail'+ playerPosition);
-		var socialIconSoundcloud = document.getElementById('socialIconSoundcloud'+ playerPosition);
-	    var shareButtonText = document.getElementById('shareButtonText'+ playerPosition);  
+
 	    shareButtonText.style.display= "none";
     	setTimeout(function () {   
 	        dots[indexDropdownMenu].style.backgroundColor = "white";
