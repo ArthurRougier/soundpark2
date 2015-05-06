@@ -20,6 +20,7 @@ $_SESSION['id_curator']=$resultat[0];
     <script type="text/javascript" src="../assets/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="../Sortable/Sortable.min.js"></script>
     <script src="http://connect.soundcloud.com/sdk.js"></script>
+    <script type="text/javascript" src="../assets/player_bo.js"></script>
     <link href="../assets/BO_theo.css" media="all" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
@@ -73,5 +74,4 @@ $_SESSION['id_curator']=$resultat[0];
 			
 		</footer>		
 </body>
-<script type="text/javascript" src="../assets/player_bo.js"></script>
 </html>

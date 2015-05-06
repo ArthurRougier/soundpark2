@@ -523,15 +523,16 @@ input[class="song_artist"]
 
 .pause
 {
-	background: url(pictures/pause_bo_icon.svg) center no-repeat no-repeat;
+	background: url(pictures/pause_bo_icon_white.svg) center no-repeat no-repeat;
 	background-size: auto 15px;
 	height: 20px;
 }
 
 .play
 {
-	background: url(pictures/play_bo_icon.svg) center no-repeat no-repeat;
+	background: url(pictures/play_bo_icon_white.svg) center no-repeat no-repeat;
 	background-size: auto 15px;
+	background-
 	height: 20px;
 }
 

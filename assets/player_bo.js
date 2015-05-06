@@ -96,6 +96,16 @@ function playCurrentTrack(trackId)
 	  		{
 	  				// Barre de progression
 
+	  				//On enleve le "Loading..."
+							var compteurLoaded=0;
+							if (compteurLoaded==0)
+							{
+								//document.getElementById('progressionBar'+ index).innerHTML ="";
+								compteurLoaded=1;
+							}
+					//Non opérationnel car on vient efface la ProgressioBarPosition		
+
+
 					for(var indexFor = 1 ; indexFor < (currentTrack.durationEstimate/1000) ; indexFor++)
 					{
 						currentTrack.onPosition(indexFor*1000, function(eventPosition)
@@ -136,6 +146,7 @@ function playCurrentTrack(trackId)
 							var step = (eventPosition/1000*progBarWidth/(currentTrack.durationEstimate/1000));
 							progBarPosition.style.width=(step+"px");
 							/*END On fait avancer l'overlay*/
+							
 
 						});
 					}
@@ -183,6 +194,8 @@ function playCurrentTrack(trackId)
 	var progressionBar = document.createElement('div');
 	progressionBar.id = 'progressionBar'+index;
 	progressionBar.className = 'progressionBar';
+	//progressionBar.innerHTML = 'Loading...';
+	progressionBar.style.textAlign = "left";
 	progressionBar.style.width = ((currentLine.offsetWidth)-50);
 	progressionBar.style.marginLeft = '50px';
 	progressionBar.style.marginTop = '2px';
@@ -192,11 +205,12 @@ function playCurrentTrack(trackId)
 	var progressionBarPosition = document.createElement('span'); // On crée le compteur interne 
 	progressionBarPosition.id = 'progressionBarPosition'+index;
 	progressionBarPosition.className = 'progressionBarPosition';
-	progressionBarPosition.innerHTML = 'Loading...';
+	//progressionBarPosition.innerHTML = 'Loading...';
 	progressionBarPosition.style.width = "0px";
 	progressionBarPosition.style.height = "20px";
 	progressionBarPosition.style.background = "#fcc4db";
-	progressionBarPosition.style.textAlign = "right";
+	progressionBarPosition.style.float = "left";
+	progressionBarPosition.style.textAlign = "left";
 	progressionBarPosition.style.display = "inline-block";
 	progressionBarPosition.style.overflow = "hidden";
 	progressionBar.appendChild(progressionBarPosition); // On insere le compteur dans la div progression Bar
