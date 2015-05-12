@@ -598,3 +598,29 @@ Version: '5.5.38'  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'  port: 8889
 150504 11:23:46 [Note] Event Scheduler: Loaded 0 events
 150504 11:23:46 [Note] /Applications/MAMP/Library/bin/mysqld: ready for connections.
 Version: '5.5.38'  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'  port: 8889  Source distribution
+150505 17:27:47 [Note] /Applications/MAMP/Library/bin/mysqld: Normal shutdown
+
+150505 17:27:47 [Note] Event Scheduler: Purging the queue. 0 events
+150505 17:27:47  InnoDB: Starting shutdown...
+150505 17:27:48  InnoDB: Shutdown completed; log sequence number 9093487
+150505 17:27:48 [Note] /Applications/MAMP/Library/bin/mysqld: Shutdown complete
+
+150505 17:27:48 mysqld_safe mysqld from pid file /Applications/MAMP/tmp/mysql/mysql.pid ended
+150512 14:30:54 mysqld_safe Starting mysqld daemon with databases from /Library/Application Support/appsolute/MAMP PRO/db/mysql
+150512 14:30:54 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+150512 14:30:54 [Warning] Setting lower_case_table_names=2 because file system for /Library/Application Support/appsolute/MAMP PRO/db/mysql/ is case insensitive
+150512 14:30:54 [Note] Plugin 'FEDERATED' is disabled.
+150512 14:30:54 InnoDB: The InnoDB memory heap is disabled
+150512 14:30:54 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+150512 14:30:54 InnoDB: Compressed tables use zlib 1.2.3
+150512 14:30:54 InnoDB: Initializing buffer pool, size = 128.0M
+150512 14:30:54 InnoDB: Completed initialization of buffer pool
+150512 14:30:54 InnoDB: highest supported file format is Barracuda.
+150512 14:30:55  InnoDB: Waiting for the background threads to start
+150512 14:30:56 InnoDB: 5.5.38 started; log sequence number 9093487
+150512 14:30:56 [Note] Server hostname (bind-address): '127.0.0.1'; port: 8889
+150512 14:30:56 [Note]   - '127.0.0.1' resolves to '127.0.0.1';
+150512 14:30:56 [Note] Server socket created on IP: '127.0.0.1'.
+150512 14:30:56 [Note] Event Scheduler: Loaded 0 events
+150512 14:30:56 [Note] /Applications/MAMP/Library/bin/mysqld: ready for connections.
+Version: '5.5.38'  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'  port: 8889  Source distribution

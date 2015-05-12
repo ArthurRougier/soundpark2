@@ -2729,3 +2729,8 @@
 [Mon May 04 11:23:45 2015] [notice] Digest: generating secret for digest authentication ...
 [Mon May 04 11:23:45 2015] [notice] Digest: done
 [Mon May 04 11:23:45 2015] [notice] Apache/2.2.29 (Unix) mod_fastcgi/2.4.6 mod_wsgi/3.4 Python/2.7.8 PHP/5.6.1 mod_ssl/2.2.29 OpenSSL/0.9.8zd DAV/2 mod_perl/2.0.8 Perl/v5.20.0 configured -- resuming normal operations
+[Tue May 05 17:27:47 2015] [notice] caught SIGTERM, shutting down
+[Tue May 12 14:30:54 2015] [notice] FastCGI: process manager initialized (pid 7339)
+[Tue May 12 14:30:55 2015] [notice] Digest: generating secret for digest authentication ...
+[Tue May 12 14:30:55 2015] [notice] Digest: done
+[Tue May 12 14:30:55 2015] [notice] Apache/2.2.29 (Unix) mod_fastcgi/2.4.6 mod_wsgi/3.4 Python/2.7.8 PHP/5.6.1 mod_ssl/2.2.29 OpenSSL/0.9.8zd DAV/2 mod_perl/2.0.8 Perl/v5.20.0 configured -- resuming normal operations
