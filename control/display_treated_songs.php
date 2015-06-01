@@ -8,7 +8,7 @@ include_once("../model/get_treated_songs.php");
 		do
 		{
 				
-				echo('<li id="li'.$index.'"><div id="playPauseIcon'.$index.'" class="playPauseIcon play"></div><span>Title : </span><input autofocus="autofocus" class="song_title" id="song_title'.$index.'" name="song_title'.$index.'" value="'.$trackList[6].'" type="text" /> <span>  Artist : </span><input autofocus="autofocus" id="song_artist'.$index.'" name="song_artist'.$index.'" value="'.$trackList[7].'" type="text" /> <span>  Playlist : </span><input autofocus="autofocus" class="song_playlist" id="song_playlist'.$index.'" name="song_playlist'.$index.'" value="'.$trackList[2].'" type="text" /> <!--<span>  Genre : </span><input autofocus="autofocus" class="song_genre" id="song_genre'.$index.'" name="song_genre'.$index.'" value="'.$trackList[5].'" type="text" />-->');
+				echo('<li id="li'.$index.'"><div id="playPauseIcon'.$index.'" class="playPauseIcon play"></div><span>Title : </span><input autofocus="autofocus" class="song_title" id="song_title'.$index.'" name="song_title'.$index.'" value="'.$trackList[6].'" type="text" /> <span>  Artist : </span><input autofocus="autofocus" id="song_artist'.$index.'" name="song_artist'.$index.'" value="'.$trackList[7].'" type="text" /> <span>  Playlist : </span><input autofocus="autofocus" class="song_playlist" id="song_playlist'.$index.'" name="song_playlist'.$index.'" value="'.$trackList[2].'" type="text" />');
 				include_once('../model/get_curators.php');
 				$j = 0;
 				$htmlSelectForm ="<label for='idCurator".$index."'>  Curator : </label><select name='idCurator".$index."' id='idCurator".$index."'>";

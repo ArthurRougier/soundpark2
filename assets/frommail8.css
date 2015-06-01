@@ -320,79 +320,51 @@ input[value="pause"]
   
   
 
- #left_arrow
- {
-    margin: 0 0 0 0;
-    position: absolute;
-    left: 0;
-    top:0;
- }
+#left_arrow
+{
+  margin: 0 0 0 0;
+  position: absolute;
+  left: 0;
+  top:0;
+}
 
-  #right_arrow
- {
-    float : right;
-    margin: 0 0 0 0;
-    position: absolute;
-    right: 0;
-    top:0;
- }
+#right_arrow
+{
+  float : right;
+  margin: 0 0 0 0;
+  position: absolute;
+  right: 0;
+  top:0;
+}
 
-  #left_arrow_icon,
-  #right_arrow_icon
-  {
-    transition: background-color 0.5s;
-    -webkit-transition: background-color 0.5s;
-    -moz-border-radius: 8vh/8vh;
-    -webkit-border-radius: 8vh 8vh;
-    border-radius: 8vh/8vh;
-  }
+#left_arrow_icon,
+#right_arrow_icon
+{
+  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s;
+  -moz-border-radius: 8vh/8vh;
+  -webkit-border-radius: 8vh 8vh;
+  border-radius: 8vh/8vh;
+}
 
-  #left_arrow_icon:hover,
-  #right_arrow_icon:hover
-  {
-    background-color: rgba(255,255,255,0.1);
-    -moz-border-radius: 8vh/8vh;
-    -webkit-border-radius: 8vh 8vh;
-    border-radius: 8vh/8vh;
-  }
+#left_arrow_icon:hover,
+#right_arrow_icon:hover
+{
+  background-color: rgba(255,255,255,0.1);
+  -moz-border-radius: 8vh/8vh;
+  -webkit-border-radius: 8vh 8vh;
+  border-radius: 8vh/8vh;
+}
 
 
 #left_arrow_icon
- {
-    height: 65.1vh;
-    width: 21.41vh;
-    float: left;
-    border-style: none;
-    display: inline-block;
-    background: url(pictures/left_arrow.png);
-    -webkit-background-size: contain; /* pour Chrome et Safari */
-    -moz-background-size: contain; /* pour Firefox */
-    -o-background-size: contain; /* pour Opera */
-    background-size: contain; /* version standardisée */
-    background-repeat: no-repeat;
-    background-position:center center;
-    cursor: pointer;
- }
-
-
-#left_arrow_icon:focus,
-#right_arrow_icon:focus
- {
-  border-style: none;
-  outline: none;
-  box-shadow: none;
- }
-
-
-
- #right_arrow_icon
- {
+{
   height: 65.1vh;
   width: 21.41vh;
-  display: inline-block;
-  float: right;
+  float: left;
   border-style: none;
-  background: url(pictures/right_arrow.png);
+  display: inline-block;
+  background: url(pictures/left_arrow.png);
   -webkit-background-size: contain; /* pour Chrome et Safari */
   -moz-background-size: contain; /* pour Firefox */
   -o-background-size: contain; /* pour Opera */
@@ -400,166 +372,194 @@ input[value="pause"]
   background-repeat: no-repeat;
   background-position:center center;
   cursor: pointer;
- }
+}
 
 
-.trackIds
+#left_arrow_icon:focus,
+#right_arrow_icon:focus
 {
-  display: none;
+border-style: none;
+outline: none;
+box-shadow: none;
 }
 
 
 
- .sound_box
-  {
-    vertical-align: middle;
-    display: inline-block;
-    margin: 0 31.51vh 0 31.51vh;
-    position: relative;
-    height: 65.1vh;
-    width: auto;
-  }
-  
-  .cover_container
-  {
-    position: relative;
-    height: 65.1vh;
-    width: 65.1vh;
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .sound_cover
-  {
-    height: 65.1vh;
-    width: 65.1vh;
-    min-width: 150px;
-    min-height: 150px;
-  }
-
-  .sound_cover,
-  .blurred_sound_cover,
-  .transparent_overlay
-  {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 65.1vh;
-    width: 65.1vh;
-    margin-top: 0px;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .blurred_sound_cover
-  {
-    -webkit-filter: blur(10px);
-    z-index: 10;
-    /*display: none;*/
-  }
-
-  .transparent_overlay
-  {
-    z-index: 100000;
-    opacity: 0;
-  }
-
-  .blurred_sound_cover_container
-  {
-    position: relative;
-    height: 65.1vh;
-    width: 0px;
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .cover_overlay
-  {
-    background: rgba(255, 255, 255, 0.4);
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 65.1vh;
-    width: 0px;
-    margin-top: 0px;
-    display: inline-block;
-    vertical-align: middle;
-    border-right: 1px solid rgba(0,0,0,0.2);
-    text-align: right;
-    z-index: 15;
-    box-sizing: border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing: border-box;
-    /*display: none;*/
-    /*overflow: hidden*/
-  }
-
-  .track_position
-  {
-    position: absolute;
-    bottom: 0;
-    right: 10px;
-    font-family: 'Code';
-    font-weight: 300;
-    font-size: 3em;
-    text-align: center;
-    color: white;
-    opacity: 1;
-    text-shadow: 0 0 15px black;
-    /*display: none;*/
-  }
-
-  .sound_informations
-  {
-    position: absolute;
-    top: 1.95vh;
-    left: 1.31vh;
-    display: inline-block;
-    vertical-align: top;
-    padding: 0;
-    overflow: hidden;
-    z-index: 1000000;
-  }
-
-  .cover_overlay,
-  .track_position,
-  .blurred_sound_cover_container
-  {
-    webkit-transition: 0.2s ease-out;
-    transition: 0.2s ease-out;
-  }
+#right_arrow_icon
+{
+height: 65.1vh;
+width: 21.41vh;
+display: inline-block;
+float: right;
+border-style: none;
+background: url(pictures/right_arrow.png);
+-webkit-background-size: contain; /* pour Chrome et Safari */
+-moz-background-size: contain; /* pour Firefox */
+-o-background-size: contain; /* pour Opera */
+background-size: contain; /* version standardisée */
+background-repeat: no-repeat;
+background-position:center center;
+cursor: pointer;
+}
 
 
-  .artist,
-  .title,
-  .curator
-  {
-    vertical-align: middle;
-  }
+.trackIds
+{
+display: none;
+}
 
-  .artistText,
-  .titleText,
-  .curatorText
-  {
-    padding: 0 0.65vh 0 0.65vh; 
-    height:2.604vh; 
-    line-height:2.604vh; 
-    background-color: black; 
-    display: inline-block;
-  }
 
-  .sound_informations h3
-  {
-    padding: 0 0.65vh 0 0.65vh;
-    text-align: left;
-    font-size: 1.9vh;
-    font-family: 'open Sans';
-    font-weight: 300;
-    color: white;
-    overflow: hidden;
-  }
+
+.sound_box
+{
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 31.51vh 0 31.51vh;
+  position: relative;
+  height: 65.1vh;
+  width: auto;
+}
+
+.cover_container
+{
+  position: relative;
+  height: 65.1vh;
+  width: 65.1vh;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sound_cover
+{
+  height: 65.1vh;
+  width: 65.1vh;
+  min-width: 150px;
+  min-height: 150px;
+}
+
+.sound_cover,
+.blurred_sound_cover,
+.transparent_overlay
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 65.1vh;
+  width: 65.1vh;
+  margin-top: 0px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.blurred_sound_cover
+{
+  -webkit-filter: blur(10px);
+  z-index: 10;
+  /*display: none;*/
+}
+
+.transparent_overlay
+{
+  z-index: 100000;
+  opacity: 0;
+}
+
+.blurred_sound_cover_container
+{
+  position: relative;
+  height: 65.1vh;
+  width: 0px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.cover_overlay
+{
+  background: rgba(255, 255, 255, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 65.1vh;
+  width: 0px;
+  margin-top: 0px;
+  display: inline-block;
+  vertical-align: middle;
+  border-right: 1px solid rgba(0,0,0,0.2);
+  text-align: right;
+  z-index: 15;
+  box-sizing: border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing: border-box;
+  /*display: none;*/
+  /*overflow: hidden*/
+}
+
+.track_position
+{
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  font-family: 'Code';
+  font-weight: 300;
+  font-size: 3em;
+  text-align: center;
+  color: white;
+  opacity: 1;
+  text-shadow: 0 0 15px black;
+  /*display: none;*/
+}
+
+.sound_informations
+{
+  position: absolute;
+  top: 1.95vh;
+  left: 1.31vh;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0;
+  overflow: hidden;
+  z-index: 1000000;
+}
+
+.cover_overlay,
+.track_position,
+.blurred_sound_cover_container
+{
+  webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+
+.artist,
+.title,
+.curator
+{
+  vertical-align: middle;
+}
+
+.artistText,
+.titleText,
+.curatorText
+{
+  padding: 0 0.65vh 0 0.65vh; 
+  height:2.604vh; 
+  line-height:2.604vh; 
+  background-color: black; 
+  display: inline-block;
+}
+
+.sound_informations h3
+{
+  padding: 0 0.65vh 0 0.65vh;
+  text-align: left;
+  font-size: 1.9vh;
+  font-family: 'open Sans';
+  font-weight: 300;
+  color: white;
+  overflow: hidden;
+}
 
 /* Share dropdown Menu style */
 
@@ -643,93 +643,93 @@ input[value="pause"]
 
 
 
-  .socialIcons
-  {
-    position: absolute;
-    left: 56.92vh;
-    top: 4.5vh;
-    height: 25vh;
-    width: 6.51vh;
-    text-align: left;
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: middle;
-    z-index: 10000000;
-  }
+.socialIcons
+{
+  position: absolute;
+  left: 56.92vh;
+  top: 4.5vh;
+  height: 25vh;
+  width: 6.51vh;
+  text-align: left;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  z-index: 10000000;
+}
 
-  .socialIconFb,
-  .socialIconTwitter,
-  .socialIconEmail,
-  .socialIconSoundcloud 
-  {
-    height: 6.51vh;
-    width: 6.51vh;
-    margin-bottom: 0px;
-    display: inline-block;
-    -webkit-background-size: cover; /* pour Chrome et Safari */
-    -moz-background-size: cover; /* pour Firefox */
-    -o-background-size: cover; /* pour Opera */
-    background-size: cover; /* version standardisée */
-    -webkit-transition: 0.3s ease-in-out;
-    transition: 0.3s ease-in-out;
-  }
-
-
-
- 
-
-  .socialIconFb
-  {
-    background-image: url(pictures/facebook_frommail_share_icon.png);
-    display: none;
-  }
-   .socialIconTwitter
-  {
-    background-image: url(pictures/twitter_frommail_share_icon.png);
-    display: none;
-  }
-   .socialIconEmail
-  {
-    background-image: url(pictures/email_frommail_share_icon.png);
-    display: none;
-  }
-
-  .socialIconSoundcloud
-  {
-    background-image: url(pictures/soundcloudLogoWhite.png);
-    display: none;
-  }
-
-  .socialIconFb:hover
-  {
-    background-image: url(pictures/facebook_frommail_share_icon_hover.png);
-  }
-   .socialIconTwitter:hover
-  {
-    background-image: url(pictures/twitter_frommail_share_icon_hover.png);
-  }
-   .socialIconEmail:hover
-  {
-    background-image: url(pictures/email_frommail_share_icon_hover.png);
-  }
-
-  .socialIconSoundcloud:hover
-  {
-    background-image: url(pictures/soundcloudLogoWhite_hover.png);
-  }
+.socialIconFb,
+.socialIconTwitter,
+.socialIconEmail,
+.socialIconSoundcloud 
+{
+  height: 6.51vh;
+  width: 6.51vh;
+  margin-bottom: 0px;
+  display: inline-block;
+  -webkit-background-size: cover; /* pour Chrome et Safari */
+  -moz-background-size: cover; /* pour Firefox */
+  -o-background-size: cover; /* pour Opera */
+  background-size: cover; /* version standardisée */
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
 
 
 
 
 
+.socialIconFb
+{
+  background-image: url(pictures/facebook_frommail_share_icon.png);
+  display: none;
+}
+ .socialIconTwitter
+{
+  background-image: url(pictures/twitter_frommail_share_icon.png);
+  display: none;
+}
+ .socialIconEmail
+{
+  background-image: url(pictures/email_frommail_share_icon.png);
+  display: none;
+}
+
+.socialIconSoundcloud
+{
+  background-image: url(pictures/soundcloudLogoWhite.png);
+  display: none;
+}
+
+.socialIconFb:hover
+{
+  background-image: url(pictures/facebook_frommail_share_icon_hover.png);
+}
+ .socialIconTwitter:hover
+{
+  background-image: url(pictures/twitter_frommail_share_icon_hover.png);
+}
+ .socialIconEmail:hover
+{
+  background-image: url(pictures/email_frommail_share_icon_hover.png);
+}
+
+.socialIconSoundcloud:hover
+{
+  background-image: url(pictures/soundcloudLogoWhite_hover.png);
+}
 
 
-  .slider
-  {
-    width: 40000px;
-    text-align: left;
-    position : relative;
-  }
+
+
+
+
+
+.slider
+{
+  width: 40000px;
+  text-align: left;
+  position : relative;
+}
  
 
 
@@ -767,6 +767,178 @@ input[value="pause"]
   color: white;
   display: none;
 }
+
+
+/* curator Pop up */
+
+.darkOverlay
+{
+  background-color: black;
+  position: absolute;
+  top: 0;
+  opacity: 0.95;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  font-size: 30px;
+  z-index: 11000000000000000;
+  margin: 0;
+  display: inline-block;
+  transition: background-color 0.5s ease-in, opacity 1s ease-in;
+  -webkit-transition: background-color 0.5s ease-in, opacity 1s ease-in;
+}
+
+#closeCross
+{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 15px;
+}
+
+.helper 
+{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#curatorForm
+{
+  display: inline-block;
+  height: 100px;
+  width: 50vw;
+  max-width: 400px;
+  background-color: #C5CFD0;
+  vertical-align: middle;
+  border-radius: 3px;
+  padding: 20px 30px;
+}
+
+#curatorForm h2
+{
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  color: #531931;
+}
+
+.submitButton
+{
+  display: inline-block;
+  height: 30px !important;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-size: 16px;
+  border: 1px solid black;
+  background-color: transparent;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition: 0.25s;
+  margin-left: 3px;
+}
+
+.submitButton:active,
+.submitButton:focus
+{
+  outline: none;
+  box-shadow: none;
+  border: border: 1px solid rgba(83, 25, 49, 0.1);
+}
+
+.submitButton:hover
+{
+  background-color: rgba(83, 25, 49, 1);
+  color: white;
+  cursor: pointer;
+}
+
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input,
+.submitButton {
+  display: inline-block;
+  height: 20px;
+  padding: 4px 6px;
+  font-size: 14px;
+  line-height: 20px;
+  color: black; }
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input
+ {
+  border: 1px solid black;
+  background-color: transparent;
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s; }
+
+  textarea:focus,
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="datetime"]:focus,
+  input[type="datetime-local"]:focus,
+  input[type="date"]:focus,
+  input[type="month"]:focus,
+  input[type="time"]:focus,
+  input[type="week"]:focus,
+  input[type="number"]:focus,
+  input[type="email"]:focus,
+  input[type="url"]:focus,
+  input[type="search"]:focus,
+  input[type="tel"]:focus,
+  input[type="color"]:focus,
+  .uneditable-input:focus
+ {
+  border: 1px solid black;
+    outline: 0;
+    outline: thin dotted \9;
+    /* IE6-9 */
+   -webkit-box-shadow: inset 0 1px 1px rgba(83, 25, 49, 0.05), 0 0 8px rgba(83, 25, 49, 0.15);
+    -moz-box-shadow: inset 0 1px 1px rgba(83, 25, 49, 0.05), 0 0 8px rgba(83, 25, 49, 0.15);
+    box-shadow: inset 0 1px 1px rgba(83, 25, 49, 0.05), 0 0 8px rgba(83, 25, 49, 0.15); }
+  
+input[type="file"],
+input[type="image"],
+input[type="submit"],
+input[type="reset"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto; }
+
 
 
 /* Smartphones (portrait and landscape) iphone = 320x568 ----------- */

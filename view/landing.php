@@ -110,7 +110,7 @@
       </div>
       <div id="backroundOverlay"></div>
     	<div id="container1">
-    		<h1>We delight you with <span class="strong"> great new music</br></span> in the <span class="strong">simpliest way.</span></h1>
+    		<h1>We delight you with <span class="strong"> great new music</br></span> in the <span class="strong">simplest way.</span></h1>
     		<a class="CTA" id="CTAP1" href="#">Give it a try!</a>
         </br>
         <a id="chevronLink" data-scroll href="#page2"><svg id="svg_down_chevron" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="36.3 26.1 30.3 16.4" enable-background="new 36.3 26.1 30.3 16.4" xml:space="preserve">

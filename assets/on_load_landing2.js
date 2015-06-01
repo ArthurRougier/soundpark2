@@ -239,6 +239,13 @@
 		message.innerHTML = '<h2> wrongPassword... Please try again.</h2></br>';
 	}
 
+  // else if(getParameterByName('logout') == '1')
+  // {
+    
+  // }
+
+
+
 	
 
 

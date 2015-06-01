@@ -9,7 +9,7 @@
 		do
 		{
 				//echo('<li>'.$trackList[5].' - '.$trackList[6].' - '.$trackList[4].'<a href="../control/delete_track.php?idSong='.$trackList[0].'"> Supprimer </a></li>');
-				echo('<li id="li'.$index.'" data-id="'.($index+1).'"><div id="playPauseIcon'.$index.'" class="playPauseIcon play"></div><img src="../assets/pictures/handle_icon.svg" class="icon-move"><span id="trackOrder">'.$trackList[8].'. </span><span>Title : </span><input autofocus="autofocus" class="song_title" id="song_title'.$index.'" name="song_title'.$index.'" value="'.$trackList[5].'" type="text" /> <span>  Artist : </span><input autofocus="autofocus" class="song_artist" id="song_artist'.$index.'" name="song_artist'.$index.'" value="'.$trackList[6].'" type="text" /> <span>  Genre : </span><input autofocus="autofocus" class="song_genre" id="song_genre'.$index.'" name="song_genre'.$index.'" value="'.$trackList[4].'" type="text" />');
+				echo('<li id="li'.$index.'" data-id="'.($index+1).'"><div id="playPauseIcon'.$index.'" class="playPauseIcon play"></div><img src="../assets/pictures/handle_icon.svg" class="icon-move"><span id="trackOrder">'.$trackList[8].'. </span><span>Title : </span><input autofocus="autofocus" class="song_title" id="song_title'.$index.'" name="song_title'.$index.'" value="'.$trackList[5].'" type="text" /> <span>  Artist : </span><input autofocus="autofocus" class="song_artist" id="song_artist'.$index.'" name="song_artist'.$index.'" value="'.$trackList[6].'" type="text" />');
 				include_once('../model/get_curators.php');
 				$j = 0;
 				$htmlSelectForm ="<label for='idCurator".$index."'>  Curator : </label><select class='song_curator' name='idCurator".$index."' id='idCurator".$index."'>";

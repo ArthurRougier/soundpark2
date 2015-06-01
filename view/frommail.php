@@ -16,8 +16,9 @@
   <head>
     <title>Soundpark</title>
     <link href="../assets/frommail8.css" media="all" rel="stylesheet" />
+    <link href="../assets/css_dropdown_menu.css" media="all" rel="stylesheet" />
+    
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <link rel="stylesheet" media="all and (max-width: 550px)" href="../assets/frommail8Mobile.css" />
 
     <link rel="shortcut icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
@@ -95,7 +96,8 @@
  
 	<body>
 		<header>
-			<?php include_once('../control/display_curator_access_logo.php');?>
+			<!--<?php include_once('../control/display_curator_access_logo.php');?>-->
+			<?php include_once('../control/display_account_dropdown_menu.php');?>
 
 			<h1>SOUNDPARK.FM</h1>
 			<h2 id="player_position"><?php include("../control/display_player_position.php"); ?></h2>
@@ -153,7 +155,23 @@
 		</footer>		
 </body>
     <script type="text/javascript" src="../assets/player2.js"></script>
+    <script type="text/javascript" src="../assets/popUps.js"></script>
     <script type="text/javascript" src="../assets/on_load.js"></script>
     <script type="text/javascript" src="../assets/mixpanel_logs.js"></script>
     <script type="text/javascript"></script>
+
+    <script>
+
+    $(document).mouseup(function (e)
+	{
+	    var container = $(".dropdown");
+
+	    if (!container.is(e.target) // if the target of the click isn't the container...
+	        && container.has(e.target).length === 0) // ... nor a descendant of the container
+	    {
+	        document.getElementById("dropdownCheckbox").checked = false;
+	    }
+	});
+
+    </script>
 </html>

@@ -18,6 +18,17 @@
 		
 	}
 
+	// on voit si on a une profile pic ou pas
+
+	if(isset($_GET['profilePicUrlEncoded']))	
+	{
+		$profilePicUrl = urldecode($_GET['profilePicUrlEncoded']);
+	}
+	else
+	{
+		$profilePicUrl = 'undefined';
+	}
+
 	//et ensuite on attaque la grande gestion des différents cas
 
 	if(isset($_GET['accessToken']) AND isset($_GET['tokenEpiration']) AND isset($_GET['facebookUserId']) AND isset($_GET['email']) AND isset($_GET['gender']) AND isset($_GET['lastName']) AND isset($_GET['firstName']))
@@ -34,13 +45,14 @@
 
 			//on commence par mettre à jour ses infos fb
 
-			$req = $bdd->prepare('UPDATE facebook_account SET hashed_token=?, token_expires=?, token_date=NOW(), first_name=?, last_name=?, gender=? WHERE facebook_id = ?') or die(print_r($bdd->errorInfo()));
+			$req = $bdd->prepare('UPDATE facebook_account SET hashed_token=?, token_expires=?, token_date=NOW(), first_name=?, last_name=?, gender=?, picture_url=? WHERE facebook_id = ?') or die(print_r($bdd->errorInfo()));
 			$req->execute(array(
 				sha1($_GET['accessToken']),
 				$_GET['tokenEpiration'],
 				$_GET['firstName'],
 				$_GET['lastName'],
 				$_GET['gender'],
+				$profilePicUrl,
 				$_GET['facebookUserId']
 			));
 			setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
@@ -91,7 +103,7 @@
 			if($res = $req->fetch())  // si oui, on lui relie un nouveau compte fb à son compte SP
 			{
 				$ID_user = $res[1];
-				$req = $bdd->prepare('INSERT INTO facebook_account(ID_user, facebook_id, hashed_token, token_expires, token_date, first_name, last_name, gender) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?)') or die(print_r($bdd->errorInfo()));
+				$req = $bdd->prepare('INSERT INTO facebook_account(ID_user, facebook_id, hashed_token, token_expires, token_date, first_name, last_name, gender, picture_url) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?, ?)') or die(print_r($bdd->errorInfo()));
 				$req->execute(array(
 					$ID_user,
 					$_GET['facebookUserId'],
@@ -99,7 +111,8 @@
 					$_GET['tokenEpiration'],
 					$_GET['firstName'],
 					$_GET['lastName'],
-					$_GET['gender']
+					$_GET['gender'],
+					$profilePicUrl
 				));
 				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
 				setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
@@ -120,7 +133,7 @@
 
 				// et on lui relie son fb au petit malin
 				
-				$req = $bdd->prepare('INSERT INTO facebook_account(ID_user, facebook_id, hashed_token, token_expires, token_date, first_name, last_name, gender) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?)') or die(print_r($bdd->errorInfo()));
+				$req = $bdd->prepare('INSERT INTO facebook_account(ID_user, facebook_id, hashed_token, token_expires, token_date, first_name, last_name, gender, picture_url) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?, ?)') or die(print_r($bdd->errorInfo()));
 				$req->execute(array(
 					$ID_user,
 					$_GET['facebookUserId'],
@@ -128,7 +141,8 @@
 					$_GET['tokenEpiration'],
 					$_GET['firstName'],
 					$_GET['lastName'],
-					$_GET['gender']
+					$_GET['gender'],
+					$profilePicUrl
 				));
 				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
 				setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
@@ -151,7 +165,7 @@
 
 			// et on lui relie son fb au petit malin
 			
-			$req = $bdd->prepare('INSERT INTO facebook_account(ID_user, facebook_id, hashed_token, token_expires, token_date, first_name, last_name, gender) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?)') or die(print_r($bdd->errorInfo()));
+			$req = $bdd->prepare('INSERT INTO facebook_account(ID_user, facebook_id, hashed_token, token_expires, token_date, first_name, last_name, gender, picture_url) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?, ?)') or die(print_r($bdd->errorInfo()));
 			$req->execute(array(
 				$ID_user,
 				$_GET['facebookUserId'],
@@ -159,7 +173,8 @@
 				$_GET['tokenEpiration'],
 				$_GET['firstName'],
 				$_GET['lastName'],
-				$_GET['gender']
+				$_GET['gender'],
+				$profilePicUrl
 			));
 			setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
 			setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
