@@ -42,7 +42,7 @@
 							}
 							else
 							{
-								trackArtWork = "http://soundpark.fm/assets/pictures/default_cover.png";
+								trackArtWork = "../assets/pictures/default_cover.png";
 							}
 
 							str = track.title;

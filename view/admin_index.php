@@ -18,10 +18,10 @@
 				<?php 
 					include_once('../model/get_current_playlist_id.php'); // renvoi $currentPlaylistId
 				?>
-				<li><a id="playlist_tab" style="color: white; border-bottom: 1px solid white;" href="admin_index.php?idPlaylist=<?php echo($currentPlaylistId); ?>">Playlists</a></li>
-				<li><a id="songs_tab" href="curators_songs_new.php">Songs</a></li>
-				<li><a id="curator_tab" href="create_curator.php">Curators</a></li>
-				<li><a id="curator_tab" href="create_curator.php">Genres</a></li>
+				<li><a id="playlist_tab" style="color: white; border-bottom: 1px solid white;" href="../view/admin_index.php?idPlaylist=<?php echo($currentPlaylistId); ?>">Playlists</a></li>
+				<li><a id="songs_tab" href="../view/admin_songs_new.php">Songs</a></li>
+				<li><a id="curator_tab" href="../view/admin_curator.php">Curators</a></li>
+				<li><a id="curator_tab" href="../view/admin_genres.php">Genres</a></li>
 			</ul>
 		</header>
 

@@ -35,7 +35,7 @@ if (isset($_POST['curator_track']))
 				}
 				else
 				{
-					trackArtWork = "http://soundpark.fm/assets/pictures/default_cover.png";
+					trackArtWork = "../assets/pictures/default_cover.png";
 				}
 				str = track.title;
 				var res = str.split("-");
@@ -56,9 +56,13 @@ if (isset($_POST['curator_track']))
 					//songInfo.innerHTML = "<p id=\"artist\">1 Artist = " + trackArtist +"</p><p id=\"title\"> Title = " + trackTitle +"</p><p id=\"genre\"> Genre = " + trackGenre +"</p><img src=\""+trackArtWork+"\"id=\"artWork\">" ;
 					//var addLink = document.getElementById('addLink');
 					var link = "add_proposed_track.php?title="+trackTitle+"&artist="+trackArtist+"&genre="+trackGenre+"&trackId="+trackId+"&trackArtWork="+trackArtWork+"&duration="+duration+"&permalinkUrl="+permalinkUrl+"&curatorId="+curatorId+"&type="+type;
-					if(source = 'dropPage')
+					if(source == 'dropPage')
 					{
 						link = link + "&source=dropPage";
+					}
+					else if (source == 'admin')
+					{
+						link = link + "&source=admin";
 					}
 					window.location.href = link;
 					//addLink.innerHTML = "<a href=\"add_proposed_track.php?title="+trackTitle+"&artist="+trackArtist+"&genre="+trackGenre+"&trackId="+trackId+"&trackArtWork="+trackArtWork+"&duration="+duration+"&permalinkUrl="+permalinkUrl+"&curatorId="+curatorId+"&type="+type+"\"> Add Track Bitch </a>";
@@ -69,18 +73,26 @@ if (isset($_POST['curator_track']))
 					//songInfo.innerHTML = "<p id=\"artist\">2 Artist = " + trackArtist +"</p><p id=\"title\"> Title = " + trackTitle +"</p><p id=\"trackId\"> Trackid = " + trackId +"</p><p id=\"genre\"> Genre = Undefined</p><img src=\""+trackArtWork+"\"id=\"artWork\">" ;
 					//var addLink = document.getElementById('addLink');
 					var link = "add_proposed_track.php?title="+trackTitle+"&trackId="+trackId+"&trackArtWork="+trackArtWork+"&duration="+duration+"&artist="+trackArtist+"&permalinkUrl="+permalinkUrl+"&curatorId="+curatorId+"&type="+type;
-					if(source = 'dropPage')
+					if(source == 'dropPage')
 					{
 						link = link + "&source=dropPage";
+					}
+					else if (source =='admin')
+					{
+						link = link + "&source=admin";
 					}
 					window.location.href = link;
 					//addLink.innerHTML = "<a href=\"add_track.php?title="+trackTitle+"&trackId="+trackId+"&trackArtWork="+trackArtWork+"&duration="+duration+"&artist="+trackArtist+"&permalinkUrl="+permalinkUrl+"&curatorId="+curatorId+"&type="+type+"\"> Add Track Bitch </a>";
 				}
 				else if (!streamable) 
 				{
-					if(source = 'dropPage')
+					if(source == 'dropPage')
 					{
 						window.location.href = "../view/curatorDropPage.php?message=notStreamable";
+					}
+					else if (source =='admin')
+					{
+						window.location.href = "../view/admin_songs_new.php?message=notStreamable";
 					}
 					else
 					{
@@ -90,9 +102,13 @@ if (isset($_POST['curator_track']))
 				}
 				else
 				{
-					if(source = 'dropPage')
+					if(source == 'dropPage')
 					{
 						window.location.href = "../view/curatorDropPage.php?message=notWorking";
+					}
+					else if (source =='admin')
+					{
+						window.location.href = "../view/admin_songs_new.php?message=notWorking";
 					}
 					else
 					{
