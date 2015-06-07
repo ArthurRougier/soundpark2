@@ -4,12 +4,15 @@
 	include_once("../model/get_current_playlist_id.php"); // renvoi $playlistId
 	$nextPlaylistId = $currentPlaylistId + 1;
 
+
+/* PART DE CODE SUPPRIMEE PAR THEO : UNE FOIS QU'UNE TUNE PASSE EN PLAYLIST, ELLE EST SUPPRIMEE DE proposed_song
 	// on met à jour proposed song
 	$req = $bdd->prepare('UPDATE proposed_song SET treated=1, ID_playlist=? WHERE proposed_song.ID = ?');
 	$req->execute(array(
 		$nextPlaylistId,
 		$_GET['idSong']
 		));
+*/
 
 	//on prend le dernier song Order pour calculer le suivant
 	$req2 = $bdd->query('SELECT playlistOrder FROM song ORDER BY ID DESC LIMIT 1');
@@ -47,7 +50,12 @@
 		'playlistOrder' => $playlistOrderToSet
 		));
 
-	
+
+	//On supprime l'entrée de la table proposed_song
+	$req = $bdd->prepare('DELETE from proposed_song WHERE proposed_song.ID=?');
+	$req->execute(array($_GET['idSong']));
+
+
 		
 	if(isset($_GET['page']))
 	{
