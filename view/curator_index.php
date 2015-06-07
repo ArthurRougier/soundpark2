@@ -20,7 +20,6 @@ $_SESSION['id_curator']=$resultat[0];
     <script type="text/javascript" src="../assets/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="../Sortable/Sortable.min.js"></script>
     <script src="http://connect.soundcloud.com/sdk.js"></script>
-    <script type="text/javascript" src="../assets/player_bo.js"></script>
     <link href="../assets/BO.css" media="all" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
@@ -31,7 +30,7 @@ $_SESSION['id_curator']=$resultat[0];
 			<h1>Soundpark.<span style="color: white;">fm</span></h1>
 			<ul>
 				<li><a id="my_account_tab" href="../view/settings.php">My account</a></li>
-				<li><a id="my_songs_tab" style="color: white; border-bottom: 1px solid white;" href="curator_index.php">My Songs</a></li>
+				<li><a id="my_songs_tab" style="color: white; border-bottom: 1px solid white;" href="likes.php">My Songs</a></li>
 				<!--<li><a id="account_tab" href="curator_my_account.php">My Account</a></li>-->
 				<li><a id="playlist_tab" href="../view/frommail.php">Playlist</a></li>
 			</ul>
@@ -73,6 +72,7 @@ $_SESSION['id_curator']=$resultat[0];
 
 		<footer>
 			
-		</footer>		
+		</footer>
+		<script type="text/javascript" src="../assets/player_bo.js"></script>		
 </body>
 </html>
