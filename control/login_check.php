@@ -41,24 +41,54 @@
 	        	}
 	        	else
 	        	{
-	        		header('Location: ../view/landing.php?wrongPassword=TRUE'); 
+	        		if(isset($_POST['urlSource']))
+					{
+						header('Location: ../view/landing.php?wrongPassword=TRUE&source='.$_POST['urlSource']); 
+					}
+					else
+					{
+						header('Location: ../view/landing.php?wrongPassword=TRUE'); 
+					}
 	        	}
 	        	//include_once('../view/landing.php?alreadyExists=TRUE');
 	        }
 	        else
 	        {
-	        	header('Location: ../view/landing.php?unknownEmail=TRUE'); 
+        		if(isset($_POST['urlSource']))
+				{
+					header('Location: ../view/landing.php?unknownEmail=TRUE&source='.$_POST['urlSource']); 
+				}
+				else
+				{
+	        		header('Location: ../view/landing.php?unknownEmail=TRUE'); 
+	        	}
 	        }			
 	    }
 	    else
 	    {
-	        header('Location: ../view/landing.php?invalidEmail=TRUE'); 
+    		if(isset($_POST['urlSource']))
+			{
+				header('Location: ../view/landing.php?invalidEmail=TRUE&source='.$_POST['urlSource']); 
+			}
+			else
+			{
+        		header('Location: ../view/landing.php?invalidEmail=TRUE'); 
+        	}
+	        
 	        //include_once('../view/landing.php?invalidEmail=TRUE');
 	    }
 	}
 	else if(isset($_POST['user_email']))
     {
-        header('Location: ../view/landing.php?missingPassword=TRUE'); 
+		if(isset($_POST['urlSource']))
+		{
+			header('Location: ../view/landing.php?missingPassword=TRUE&source='.$_POST['urlSource']); 
+		}
+		else
+		{
+    		header('Location: ../view/landing.php?missingPassword=TRUE'); 
+    	}
+       
         //include_once('../view/landing.php?invalidEmail=TRUE');
     }
     else

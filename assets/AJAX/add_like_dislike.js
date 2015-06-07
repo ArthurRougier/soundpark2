@@ -1,10 +1,10 @@
 function addLike()
 {
-    console.log('coucou');
+    //console.log('coucou');
 
 	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
     var currentUser = getCookie('current_user') //user.email
-    console.log('like current user = '+currentUser);
+    //console.log('like current user = '+currentUser);
 
 	xhr = new XMLHttpRequest();
 	xhr2 = new XMLHttpRequest();
@@ -15,14 +15,14 @@ function addLike()
 
         if(xhr.readyState == 4 && xhr.status == 200) 
         { // Si le fichier est chargé sans erreur
-            console.log(xhr.responseText);
+            //console.log(xhr.responseText);
             var likeStamp = document.getElementById("plus_one");
             var dislikeStamp = document.getElementById("minus_one");
             
             if(xhr.responseText != 'TRUE') // Si le son n'est pas déjà liké par currentUser
             {
                 //g.appear();
-                console.log(xhr.responseText);
+                //console.log(xhr.responseText);
             	xhr2.open('GET', '../control/add_like.php?trackId='+trackId+'&currentUser='+currentUser); // fichier à modifier: tester si le son est disliké est si oui, effacer en meme temps le dislike
                 xhr2.send(null);
             	likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like_pressed.png)";
@@ -36,7 +36,7 @@ function addLike()
             {
                 //g.appear();
                 //faire une animation de hover des reseau sociaux
-                console.log(xhr.responseText);
+                //console.log(xhr.responseText);
                 xhr2.open('GET', '../control/remove_like.php?trackId='+trackId+'&currentUser='+currentUser); // fichier à modifier: tester si le son est disliké est si oui, effacer en meme temps le dislike
                 xhr2.send(null);
                 likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like.png)";
@@ -54,7 +54,7 @@ function addLike()
 
         if(xhr2.readyState == 4 && xhr.status == 200) 
         { // Si le fichier est chargé sans erreur
-            console.log(xhr2.responseText);
+            //console.log(xhr2.responseText);
         }
     };
 
@@ -67,7 +67,7 @@ function addDislike()
 {
 	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
     var currentUser = getCookie('current_user'); //user.email
-    console.log('Dislike current user = '+currentUser);
+    //console.log('Dislike current user = '+currentUser);
 
 	xhr = new XMLHttpRequest();
 	xhr2 = new XMLHttpRequest();
@@ -78,7 +78,7 @@ function addDislike()
 
         if(xhr.readyState == 4 && xhr.status == 200) 
         { // Si le fichier est chargé sans erreur
-            console.log(xhr.responseText);
+            //console.log(xhr.responseText);
             var likeStamp = document.getElementById("plus_one");
             var dislikeStamp = document.getElementById("minus_one");
             if(xhr.responseText != 'TRUE')
@@ -94,7 +94,7 @@ function addDislike()
         	//else if(dislikeStamp.style.display!="block" && likeStamp.style.display=="block")
             else 
     		{
-				console.log('disnull');
+				//console.log('disnull');
                 xhr2.open('GET', '../control/remove_dislike.php?trackId='+trackId+'&currentUser='+currentUser); // fichier à modifier: tester si le son est disliké est si oui, effacer en meme temps le dislike
                 xhr2.send(null);
                 dislikeStamp.style.background="url(http://soundpark.fm/assets/pictures/cross_dislike.png)";
@@ -110,7 +110,7 @@ function addDislike()
 
         if(xhr2.readyState == 4 && xhr2.status == 200) 
         { // Si le fichier est chargé sans erreur
-        	console.log(xhr2.responseText);
+        	//console.log(xhr2.responseText);
         }
     };
 

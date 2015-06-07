@@ -15,7 +15,6 @@
 * { margin:0; }
 
 html, body{
-    height:100%;
     width: 100%;
 }
 
@@ -141,6 +140,14 @@ aside li a:hover
 	margin: 84px 0 0 250px;
 	font-family: 'Open Sans';
 	font-weight: 300;
+}
+
+#containerWithoutMenu 
+{
+	margin-top: 84px;
+	display: inline-block;
+	width: 100vw;
+	text-align: center;
 }
 
 #container h1
@@ -481,7 +488,124 @@ margin-top: 12px;
 	height: 42px !important;
 }
 
+#changeEmail input[type="email"]
+{
+	height: 30px;
+	width: 250px;
+}
 
+
+/* Tiles tab of settings section */
+
+
+#tilesContainer 
+{
+      overflow: hidden;
+      margin: 0 10px 0 10px;
+}
+
+
+
+
+.box {
+	display: inline-block;
+   position: relative;
+   width: 18vw;
+   padding-bottom: 18vw;
+}
+.boxInner {
+   position: absolute;
+   left: 10px;
+   right: 10px;
+   top: 10px;
+   bottom: 10px;
+   overflow: hidden;
+}
+.boxInner img {
+   width: 100%;
+}
+.boxInner .titleBox {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin-bottom: -50px;
+   background: #000;
+   background: rgba(0, 0, 0, 0.5);
+   color: #FFF;
+   padding: 10px;
+   text-align: center;
+   -webkit-transition: all 0.3s ease-out;
+   -moz-transition: all 0.3s ease-out;
+   -o-transition: all 0.3s ease-out;
+   transition: all 0.3s ease-out;
+}
+
+
+.cover_overlay
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0;
+	color: white;
+	text-align: center;
+	-webkit-transition: opacity 0.25s ease-out;
+	-moz-transition: opacity 0.25s ease-out;
+	-o-transition: opacity 0.25s ease-out;
+	transition: opacity 0.25s ease-out;
+}
+
+.cover_overlay:hover
+{
+	opacity: 0.85;
+}
+
+
+.boxInner .cover_overlay a .soundcloudSettingsLink
+{
+	display: inline-block;
+	vertical-align: middle;
+	width: 60%;
+}
+
+body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
+   margin-bottom: 0;
+}
+@media only screen and (max-width : 480px) {
+   /* Smartphone view: 1 tile */
+   .box {
+      width: 100vw;
+      padding-bottom: 100vw;
+   }
+}
+@media only screen and (max-width : 650px) and (min-width : 481px) {
+   /* Tablet view: 2 tiles */
+   .box {
+      width: 47vw;
+      padding-bottom: 47vw;
+   }
+}
+@media only screen and (max-width : 1050px) and (min-width : 651px) {
+   /* Small desktop / ipad view: 3 tiles */
+   .box {
+      width: 31vw;
+      padding-bottom: 31vw;
+   }
+}
+@media only screen and (max-width : 1290px) and (min-width : 1051px) {
+   /* Medium desktop: 4 tiles */
+   .box {
+      width: 24vw;
+      padding-bottom: 24vw;
+   }
+}
+
+
+/* Form elements general stylings */
 
 select,
 textarea,
@@ -564,3 +688,33 @@ input[type="button"],
 input[type="radio"],
 input[type="checkbox"] {
   width: auto; }
+
+
+/* Curator Index styling   */
+
+#curator_track 
+{
+	height: 30px;
+	width: 500px;
+}
+
+
+ /* Construction added markup */
+
+ .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+
+/* Page Stats Curator*/
+.like_dislike_stat
+{
+	display:inline-block;
+	vertical-align:top;
+	padding:10px;
+	margin-top:20px;
+	margin-bottom: 15px;
+}
+

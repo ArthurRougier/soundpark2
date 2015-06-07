@@ -992,11 +992,32 @@ footer #mixpanel
   margin-top: 13px;
 }
 
+footer #soundcloudLogo 
+{
+  vertical-align: middle;
+  display: inline-block;
+  float: right;
+  margin-top: 10px;
+}
+
+
+
 footer #mixpanel a
 {
   vertical-align: middle;
   display: inline-block;
+}
 
+
+footer #soundcloudLogo a
+{
+  vertical-align: middle;
+  display: inline-block;
+}
+
+footer #soundcloudLogo a img
+{
+  height: 40px;
 }
 
 footer p

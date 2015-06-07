@@ -33,7 +33,7 @@ document.getElementById('plus_one').addEventListener('click', function () {
 	var playerPositionLogs = document.getElementById('player_position').innerHTML;
 	var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
 	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
-	console.log(trackId);
+	//console.log(trackId);
 	mixpanel.track("Like Clicked", {
 		fullUrl: window.location.href,
 		"userId": userId,

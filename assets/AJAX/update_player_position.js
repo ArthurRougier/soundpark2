@@ -16,7 +16,7 @@ function updatePlayerPosition(trackId){
     {
         if (xhrUPP.readyState == 4 && xhrUPP.status == 200) 
         {
-            //console.log(xhrUPP.responseText);
+            ////console.log(xhrUPP.responseText);
             document.getElementById('player_position').innerHTML = xhrUPP.responseText; // Et on affiche !
         }
         else if (xhrUPP.readyState == 4 && xhrUPP.status != 200) 

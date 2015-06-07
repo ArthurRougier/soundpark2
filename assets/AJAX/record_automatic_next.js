@@ -1,6 +1,6 @@
 function record_automatic_next()
 {
-    console.log('coucou');
+    //console.log('coucou');
 
 	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
     var currentUser = getCookie('current_user') //user.email
@@ -14,7 +14,7 @@ function record_automatic_next()
 
         if(xhr.readyState == 4 && xhr.status == 200) 
         { // Si le fichier est chargé sans erreur
-            console.log(xhr.responseText);
+            //console.log(xhr.responseText);
             var likeStamp = document.getElementById("plus_one");
             var dislikeStamp = document.getElementById("minus_one");
         }

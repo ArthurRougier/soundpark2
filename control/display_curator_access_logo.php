@@ -15,4 +15,4 @@ if ($resultat[0]==2)
 	echo '</div>';
 }
 
-?>
+?>	

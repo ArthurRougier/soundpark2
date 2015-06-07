@@ -3,6 +3,7 @@ for(var indexDivs = 0 ; indexDivs < asideLinks.length ; indexDivs++)
 {
 	asideLinks[indexDivs].addEventListener('click', function() {
 		var correspondingContainer = document.getElementById('tab'+this.id.slice(-1));
+		console.log(correspondingContainer);
 		correspondingContainer.className="show";
 		containerSibblings = getSiblings(correspondingContainer);
 		for(indexContainers = 0 ; indexContainers <  containerSibblings.length ; indexContainers ++)

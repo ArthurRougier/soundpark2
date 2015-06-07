@@ -344,13 +344,13 @@ var bgPosition = 0;
     if(bgPosition !== 3)
     {
       bgPosition++;
-      console.log(bgTempPaths[bgPosition]);
+      //console.log(bgTempPaths[bgPosition]);
       document.getElementById('page1').style.backgroundImage = 'url('+bgTempPaths[bgPosition]+')';
     }
     else
     {
       bgPosition = 0;
-      console.log('fefefefdzdzdze');
+      //console.log('fefefefdzdzdze');
       document.getElementById('page1').style.backgroundImage = 'url('+bgTempPaths[bgPosition]+')';
 
     }

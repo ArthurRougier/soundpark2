@@ -33,7 +33,7 @@ $('.playPauseButton').click(function() //Gestion du bouton de lecture/pause en t
 
 			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('play');
 			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('pause');
-			console.log(songTable[this.id.slice(-1)-1]);
+			//console.log(songTable[this.id.slice(-1)-1]);
 			updateCurrentTrack(songTable[this.id.slice(-1) -1]);
 			
 			playCurrentTrack();
@@ -56,7 +56,7 @@ $('.playPauseButton').click(function() //Gestion du bouton de lecture/pause en t
 			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('play');
 			$('.playPauseButton')[(this.id.slice(-1))-1].classList.toggle('pause');
 			pauseCurrentTrack();
-			console.log('hgvskj');
+			//console.log('hgvskj');
 		}
 		else
 		{
@@ -145,7 +145,7 @@ function nextTrack()
 		$('.playPauseButton')[position].classList.toggle('pause');
 		document.getElementById('cover_wrapper'+(position+1)).style.opacity = "0.2";
 		position++;
-		console.log(songTable[position]);
+		//console.log(songTable[position]);
 		$('.playPauseButton')[position].classList.toggle('play');
 		$('.playPauseButton')[position].classList.toggle('pause');
 		document.getElementById('cover_wrapper'+(position+1)).style.opacity="0.05";
@@ -154,7 +154,7 @@ function nextTrack()
 
 	else
 	{
-		console.log('fini');
+		//console.log('fini');
 		//location.href="../view/end.php";
 	}
 	

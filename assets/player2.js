@@ -163,7 +163,7 @@ function updateCurrentTrack(trackId)
 				record_automatic_next();
 				var playerPositionLogs = document.getElementById('player_position').innerHTML;
 				var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
-				console.log(curatorLogs);
+				//console.log(curatorLogs);
 				mixpanel.track("Automatic Next", 
 				{
 					"fullUrl": window.location.href,

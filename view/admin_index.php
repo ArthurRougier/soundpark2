@@ -194,7 +194,7 @@
 				{
 					menus[indexMenusAll].style.display="none";
 				}
-	    	console.log(indexMenusNew);
+	    	//console.log(indexMenusNew);
 	    	menus[indexMenusNew].style.display="inline-block";
 		}, false);
 	}

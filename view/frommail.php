@@ -43,7 +43,7 @@
 	    <script type="text/javascript">
 	    	var unixtime = Date.parse("<?php echo($subsciptionDate); ?>").getTime()/1000;
 		 	var email = "<?php echo($userEmail); ?>";
-			console.log('Intercom : '+email);
+			//console.log('Intercom : '+email);
 
 		 	 window.intercomSettings = {
 			    // TODO: The current logged in user's full name
@@ -78,8 +78,8 @@
 			var userEmail = "<?php echo($userEmail); ?>";
 			//console.log(subsciptionDate);
 	
-			console.log('Mixpa ID : '+userId);
-			console.log('Mixpa : '+userEmail);
+			//console.log('Mixpa ID : '+userId);
+			//console.log('Mixpa : '+userEmail);
 			mixpanel.identify(userId);
 			mixpanel.people.set(
 			{

@@ -9,13 +9,13 @@ var position = 0;
 
 
     var trackId = document.getElementById('trackId').innerHTML;
-    console.log(document.getElementById('trackId').innerHTML);
+    //console.log(document.getElementById('trackId').innerHTML);
     var currentTrack;
 	updateCurrentTrack(trackId);
 
 	$('#play').click(function() //Gestion du bouton de lecture/pause en toggle
 	{
-		console.log('lala');
+		//console.log('lala');
 		if ($(this).val() == "play") 
 		{
 			

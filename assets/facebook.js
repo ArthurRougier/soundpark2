@@ -4,13 +4,13 @@ function facebookLogin()
   FB.login(function(response){
     if (response.authResponse) 
     {
-      console.log('Welcome!  Fetching your information.... ');
-      console.log(response.authResponse.grantedScopes);
+      //console.log('Welcome!  Fetching your information.... ');
+      //console.log(response.authResponse.grantedScopes);
 
 
       FB.api('/me', function(response) 
       {
-       console.log('Good to see you, ' + response.name + '.');
+       //console.log('Good to see you, ' + response.name + '.');
       });
 
       //we get the fb pitcure
@@ -42,10 +42,10 @@ function facebookLogin()
           function (response) {
             if (response && !response.error) {
               var friendsList = response.data;
-              console.log(response.data);
+              //console.log(response.data);
               for(var indexFriendsTable = 0 ; indexFriendsTable < friendsList.length ; indexFriendsTable++)
               {
-                console.log(response.data[indexFriendsTable]);
+                //console.log(response.data[indexFriendsTable]);
               }
               
 
@@ -58,7 +58,7 @@ function facebookLogin()
     } 
     else 
     {
-     console.log('User cancelled login or did not fully authorize.');
+     //console.log('User cancelled login or did not fully authorize.');
     }
   }, 
   {
@@ -121,12 +121,12 @@ function updateFacebookDb(profilePicUrl)
 
 
           profilePicUrlEncoded = encodeURIComponent(profilePicUrl);
-          console.log(profilePicUrl);
+          //console.log(profilePicUrl);
 
           xhr = new XMLHttpRequest();
           xhr2 = new XMLHttpRequest();
 
-          console.log('http://localhost:8888/' + 'model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName+'&curator='+curatorCTA+'&profilePicUrlEncoded='+profilePicUrlEncoded);
+          //console.log('http://localhost:8888/' + 'model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName+'&curator='+curatorCTA+'&profilePicUrlEncoded='+profilePicUrlEncoded);
           xhr.open('GET', '../model/update_facebook_database.php?accessToken='+accessToken+'&tokenEpiration='+tokenEpiration+'&facebookUserId='+facebookUserId+'&email='+email+'&gender='+gender+'&firstName='+firstName+'&lastName='+lastName+'&curator='+curatorCTA+'&profilePicUrlEncoded='+profilePicUrlEncoded); // On envoi la purée
           xhr.onreadystatechange = function() // On gère ici une requête asynchrone
           { 
@@ -138,7 +138,7 @@ function updateFacebookDb(profilePicUrl)
               {
                 //console.log(xhrCorrected[1]);
                 //createFacebookCookie(xhrCorrected[1], email);
-                console.log(xhrCorrected[0]);
+                //console.log(xhrCorrected[0]);
                 if(getParameterByName('source'))
                 {
                   window.location = getParameterByName('source');
@@ -167,7 +167,7 @@ function updateFacebookDb(profilePicUrl)
               {
                 //console.log(xhr.responseText);
                 //createFacebookCookie(xhrCorrected[1], email);
-                console.log(xhrCorrected[0]);
+                //console.log(xhrCorrected[0]);
                 if(getParameterByName('source'))
                 {
                   window.location = getParameterByName('source');
@@ -195,7 +195,7 @@ function updateFacebookDb(profilePicUrl)
               {
                 //console.log(xhr.responseText);
                 //createFacebookCookie(xhrCorrected[1], email);
-                console.log(xhrCorrected[0]);
+                //console.log(xhrCorrected[0]);
                 if(getParameterByName('source'))
                 {
                   window.location = getParameterByName('source');
@@ -223,7 +223,7 @@ function updateFacebookDb(profilePicUrl)
               {
                 //console.log(xhr.responseText);
                 //createFacebookCookie(xhrCorrected[1], email);
-                console.log(xhrCorrected[0]);
+                //console.log(xhrCorrected[0]);
                 if(getParameterByName('source'))
                 {
                   window.location = getParameterByName('source');
@@ -248,7 +248,7 @@ function updateFacebookDb(profilePicUrl)
               }
               else if(xhrCorrected[0] == 'successAddNewUserButEmail') 
               {
-                console.log(xhrCorrected[0]);
+                //console.log(xhrCorrected[0]);
                 xhr2.open('GET', '../control/mailchimpUserNewSubscribe.php?user_email='+email); // On envoi la purée
                 xhr2.send(null); // La requête est prête, on envoie tout !
              
@@ -262,7 +262,7 @@ function updateFacebookDb(profilePicUrl)
               {
                 //console.log(xhr.responseText);
                 //createFacebookCookie(xhrCorrected[1], email);
-                console.log(xhrCorrected[0]);
+                //console.log(xhrCorrected[0]);
                 xhr2.open('GET', '../control/mailchimpUserNewSubscribe.php?user_email='+email); // On envoi la purée
                 xhr2.send(null); // La requête est prête, on envoie tout !
                
@@ -274,7 +274,7 @@ function updateFacebookDb(profilePicUrl)
               }
               else
               {
-                console.log(xhr.responseText);
+                //console.log(xhr.responseText);
 
                 mixpanel.track("Fb sign up failed", {
                   fullUrl: window.location.href,
@@ -297,7 +297,7 @@ function updateFacebookDb(profilePicUrl)
                 var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
                 signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
               }
-              console.log('yes');
+              //console.log('yes');
             }
           };
           xhr.send(null); // La requête est prête, on envoie tout !
@@ -307,7 +307,7 @@ function updateFacebookDb(profilePicUrl)
     }
     else
     {
-      console.log('updateFacebookDatabase, not connected');
+      //console.log('updateFacebookDatabase, not connected');
     }
   });
 }
@@ -319,13 +319,13 @@ function createFacebookCookie(fbTokenHash, email)
   time += 3600 * 1000 * 24 * 30;
   now.setTime(time);
   document.cookie = 'idType=facebook; expires=' + now.toUTCString() +'; path=/';
-  console.log(getCookie('idType'));
-  console.log(now);
-  console.log(now.toUTCString());
+  //console.log(getCookie('idType'));
+  //console.log(now);
+  //console.log(now.toUTCString());
   document.cookie = 'currentSession='+email+"="+fbTokenHash+'; expires=' + now.toUTCString() +'; path=/';
-  console.log(getCookie('fbTokenHash'));
+  //console.log(getCookie('fbTokenHash'));
   document.cookie = 'email='+email+'; expires=' + now.toUTCString() +'; path=/';
-  console.log(getCookie('email'));*/
+  //console.log(getCookie('email'));*/
 }
 
   

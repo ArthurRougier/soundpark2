@@ -13,7 +13,7 @@ for(var i = 0 ; i<trackIds.length ; i++)
 {
 	songTable[i] = trackIds[i].value;
 }
-console.log(songTable);
+//console.log(songTable);
 //alert(songTable.length);
 
 var currentTrack;
@@ -31,12 +31,12 @@ $('.playPauseIcon').click(function() //Gestion du bouton de lecture/pause en tog
 	if(Number(this.id.slice(-2))==this.id.slice(-2))
 	{
 		index = this.id.slice(-2); 
-		console.log('double - index = '+index);
+		//console.log('double - index = '+index);
 	}
 	else
 	{
 		index = this.id.slice(-1); 
-		console.log('simple - index = '+index);
+		//console.log('simple - index = '+index);
 	}
 	//index = this.id.slice(-1); // On récupère la position du son dans la liste
 	trackId = document.getElementById('trackId'+index).value;
@@ -66,7 +66,7 @@ $('.playPauseIcon').click(function() //Gestion du bouton de lecture/pause en tog
 					icons[indexbis].className = "playPauseIcon play";
 				}
 				currentTrack.stop();
-				console.log('yes');
+				//console.log('yes');
 				playCurrentTrack(trackId);
 				this.className = "playPauseIcon pause";
 			}
@@ -219,7 +219,7 @@ function playCurrentTrack(trackId)
 
 function nextTrack()
 {
-	console.log('nextTrack');
+	//console.log('nextTrack');
 	removeProgressionBar(index);
 	if(!(index >= (songTable.length - 1)))
 	{

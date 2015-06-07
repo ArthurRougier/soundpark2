@@ -181,6 +181,10 @@
       <span class="helper"></span>
       <a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_blue.png" alt="Mobile Analytics" data-no-retina/></a>
     </div>
+    <div id="soundcloudLogo">
+      <span class="helper"></span>
+      <a href="http://www.soundcloud.com"><img src="../assets/pictures/powered_by_soundcloud.png" data-no-retina/></a>
+    </div>
 
      
   </footer>
