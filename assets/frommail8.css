@@ -965,6 +965,11 @@ input[type="checkbox"] {
     color: black;
   } 
 
+  .container-dropdown
+  {
+    display: none;
+  }
+
   .container
   {
     margin-top: 4vw;
