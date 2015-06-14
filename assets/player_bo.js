@@ -12,6 +12,7 @@ var songTable = [];
 for(var i = 0 ; i<trackIds.length ; i++)
 {
 	songTable[i] = trackIds[i].value;
+	console.log(songTable[i]);
 }
 //console.log(songTable);
 //alert(songTable.length);

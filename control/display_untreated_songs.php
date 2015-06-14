@@ -33,7 +33,7 @@ include_once("../model/get_untreated_songs.php");
 				//echo('    <a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a target="_blank" href="'.$trackList[8].'">Link</a></br><a href="../control/delete_proposed_track.php?idSong='.$trackList[0].'">Delete</a></li>');
 				//
 
-				echo('   <a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'">Add</a>  -   <a target="_blank" href="'.$trackList[9].'">Link</a></br><input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[8].'" type="hidden"/></li>');
+				echo('   <a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'">Add</a>  -   <a target="_blank" href="'.$trackList[9].'">Link</a></br><input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[7].'" type="hidden"/></li>');
 				$index++;
 		} while($trackList = $req->fetch());	
 		echo '</ol>';
