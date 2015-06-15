@@ -18,6 +18,10 @@ include_once('../model/connect_sql.php');
 	$req2->execute(array($_SESSION['id_curator']));			
 	$avatar=$req2->fetch();
 
+	$req2=$bdd->prepare('SELECT COUNT(*) FROM automatic_next, curator WHERE curator.ID_user=automatic_next.mail AND curator.ID=?');
+	$req2->execute(array($_SESSION['id_curator']));			
+	$listened=$req2->fetch();
+
 
 	//FAKE NUMBERS
 	if ($totallikes[0]!=0)
@@ -41,5 +45,12 @@ include_once('../model/connect_sql.php');
 	<p>
 		<h2><?php echo($totallikes[0]);?></h2>
 		<h3>likes</h3>
+	</p>
+</div>
+
+<div class="like_dislike_stat">
+	<p>
+		<h2><?php echo($listened[0]);?></h2>
+		<h3>listened</h3>
 	</p>
 </div>
