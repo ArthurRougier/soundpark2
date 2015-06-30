@@ -16,6 +16,7 @@
 			<ul>
 				<?php 
 					include_once('../model/get_current_playlist_id.php'); 
+					
 				?>
 				<li><a id="playlist_tab" href="../view/admin_index.php?idPlaylist=<?php echo($currentPlaylistId); ?>">Playlists</a></li>
 				<li><a id="songs_tab" href="../view/admin_songs_new.php">Songs</a></li>

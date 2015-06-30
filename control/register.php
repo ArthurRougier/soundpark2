@@ -75,7 +75,7 @@
 						}
 
 						setcookie('sessionType', 'classic', time() + 31*24*3600,  "/", null, false, true);
-						setcookie('currentSession', $userId.'='.$randomString, time() + 31*24*3600,  "/", null, false, true);
+						setcookie('currentSession', $userId.'-'.$randomString, time() + 31*24*3600,  "/", null, false, true);
 						setcookie('current_user', $userId, time() + 7*24*3600, "/", null, false, false);
 						include_once('mailchimpUserNewSubscribe.php');
 						header('Location: ../view/frommail.php?firstTimeUser=Yes'); 

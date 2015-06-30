@@ -625,15 +625,29 @@ document.addEventListener('keydown', function(e)
 			"fullUrl": window.location.href
 		});
     	var playButton = document.getElementById('play')
-    	if(playButton.value == 'pause')
+    	if(playButton.value == 'pause' && document.activeElement.nodeName != "INPUT")
 	   	{
 	   		pauseCurrentTrack();
 	   		playButton.value = 'play';
 	   	}
-	   	else
+	   	else if (document.activeElement.nodeName != "INPUT")
 	   	{
 	   		playCurrentTrack();
 	   		playButton.value = 'pause';
+	   	}
+	   	else
+	   	{
+	   		$('input').blur();
+	    	if(playButton.value == 'pause')
+		   	{
+		   		pauseCurrentTrack();
+		   		playButton.value = 'play';
+		   	}
+		   	else 
+		   	{
+		   		playCurrentTrack();
+		   		playButton.value = 'pause';
+		   	}
 	   	}
     }
     else if (e.keyCode == 39) 

@@ -56,7 +56,7 @@
 				$_GET['facebookUserId']
 			));
 			setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
-			setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+			setcookie('currentSession', $ID_user.'-'.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
 			setcookie('current_user', $ID_user, time() + 31*24*3600, "/", null, false, false);
 
 			//ok il à un compte fb. Y-a t-il un email renvoyé par l'API fb?
@@ -115,7 +115,7 @@
 					$profilePicUrl
 				));
 				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
-				setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+				setcookie('currentSession', $ID_user.'-'.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
 				setcookie('current_user', $ID_user, time() + 31*24*3600, "/", null, false, false);
 				echo('successAddFb='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 			}
@@ -145,7 +145,7 @@
 					$profilePicUrl
 				));
 				setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
-				setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+				setcookie('currentSession', $ID_user.'-'.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
 				setcookie('current_user', $ID_user, time() + 31*24*3600, "/", null, false, false);
 				echo('successAddNewUserButEmail='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 			}
@@ -177,7 +177,7 @@
 				$profilePicUrl
 			));
 			setcookie('sessionType', 'facebook', time() + 31*24*3600, "/", null, false, true);
-			setcookie('currentSession', $ID_user.'='.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
+			setcookie('currentSession', $ID_user.'-'.sha1($_GET['accessToken']), time() + 31*24*3600, "/", null, false, true);
 			setcookie('current_user', $ID_user, time() + 31*24*3600, "/", null, false, false);
 			echo('successAddNewUser='. sha1($_GET['accessToken']) . 'And session type = '. $_COOKIE['sessionType'] . 'And current session = '. $_COOKIE['currentSession']);
 		}

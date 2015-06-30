@@ -27,7 +27,7 @@
 					$req->execute(array($randomString, $userId));
 
 					setcookie('sessionType', 'classic', time() + 31*24*3600,  "/", null, false, true);
-					setcookie('currentSession', $userId.'='.$randomString, time() + 31*24*3600,  "/", null, false, true);
+					setcookie('currentSession', $userId.'-'.$randomString, time() + 31*24*3600,  "/", null, false, true);
 					setcookie('current_user', $userId, time() + 31*24*3600, "/", null, false, false);
 
 					if(isset($_POST['urlSource']))

@@ -102,7 +102,7 @@
 			{
 				if(isset($_COOKIE['currentSession']))
 				{
-					$currentSession = explode("=", $_COOKIE['currentSession']);
+					$currentSession = explode("-", $_COOKIE['currentSession']);
 					$ID_user = $currentSession[0];
 					$key = $currentSession[1];
 					//return $key;
@@ -136,7 +136,7 @@
 			{
 				if(isset($_COOKIE['currentSession']))
 				{
-					$currentSession = explode("=", $_COOKIE['currentSession']);
+					$currentSession = explode("-", $_COOKIE['currentSession']);
 					$ID_user = $currentSession[0];
 					$key = $currentSession[1];
 					

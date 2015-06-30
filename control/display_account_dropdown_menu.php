@@ -47,14 +47,14 @@ include_once ('../model/get_user_facebook_picture.php');
       	<?php 
       	if ($resultat[0]==2)
 		{
-			echo '<li><a href="../view/curator_index.php">Curator space</a></li>';
+			echo '<li><a href="../view/curator_index.php" target="_blank">Curator space</a></li>';
 		}
 		else
 		{
 			echo '<li><a href="#" onclick="curatorPopup()">Become a curator</a></li>';
 		}
 		?> 
-        <li><a href="../view/settings.php">My account</a></li>
+        <li><a href="../view/settings.php" target="_blank">My account</a></li>
         <li><a href="../control/logout.php">Log out</a></li>
       </ul>
     </li>
