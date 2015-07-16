@@ -6207,3 +6207,7 @@
 [Tue Jun 30 14:31:51 2015] [error] [client ::1] File does not exist: /Users/ArthurRougier/Dropbox/Soundpark.fm 2.0/1. Produit/01. MVP/IT/codesource/soundpark2/assets/pictures/uploaded_avatars/Caroline@2x.jpg, referer: http://localhost:8888/view/landing.php
 [Tue Jun 30 14:31:51 2015] [error] [client ::1] File does not exist: /Users/ArthurRougier/Dropbox/Soundpark.fm 2.0/1. Produit/01. MVP/IT/codesource/soundpark2/assets/pictures/uploaded_avatars/Micka\xc3\xabl@2x.jpg, referer: http://localhost:8888/view/landing.php
 [Tue Jun 30 14:31:51 2015] [error] [client ::1] File does not exist: /Users/ArthurRougier/Dropbox/Soundpark.fm 2.0/1. Produit/01. MVP/IT/codesource/soundpark2/assets/pictures/uploaded_avatars/Matthieu@2x.jpg, referer: http://localhost:8888/view/landing.php
+[Thu Jul 16 18:00:57 2015] [notice] FastCGI: process manager initialized (pid 49318)
+[Thu Jul 16 18:00:57 2015] [notice] Digest: generating secret for digest authentication ...
+[Thu Jul 16 18:00:57 2015] [notice] Digest: done
+[Thu Jul 16 18:00:57 2015] [notice] Apache/2.2.29 (Unix) mod_fastcgi/2.4.6 mod_wsgi/3.4 Python/2.7.8 PHP/5.6.1 mod_ssl/2.2.29 OpenSSL/0.9.8zd DAV/2 mod_perl/2.0.8 Perl/v5.20.0 configured -- resuming normal operations

@@ -688,3 +688,22 @@ Version: '5.5.38'  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'  port: 8889
 150630 14:31:43 [Note] Event Scheduler: Loaded 0 events
 150630 14:31:43 [Note] /Applications/MAMP/Library/bin/mysqld: ready for connections.
 Version: '5.5.38'  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'  port: 8889  Source distribution
+150708 19:40:35 mysqld_safe mysqld from pid file /Applications/MAMP/tmp/mysql/mysql.pid ended
+150716 18:00:57 mysqld_safe Starting mysqld daemon with databases from /Library/Application Support/appsolute/MAMP PRO/db/mysql
+150716 18:00:57 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+150716 18:00:57 [Warning] Setting lower_case_table_names=2 because file system for /Library/Application Support/appsolute/MAMP PRO/db/mysql/ is case insensitive
+150716 18:00:57 [Note] Plugin 'FEDERATED' is disabled.
+150716 18:00:57 InnoDB: The InnoDB memory heap is disabled
+150716 18:00:57 InnoDB: Mutexes and rw_locks use GCC atomic builtins
+150716 18:00:57 InnoDB: Compressed tables use zlib 1.2.3
+150716 18:00:57 InnoDB: Initializing buffer pool, size = 128.0M
+150716 18:00:57 InnoDB: Completed initialization of buffer pool
+150716 18:00:57 InnoDB: highest supported file format is Barracuda.
+150716 18:00:57  InnoDB: Waiting for the background threads to start
+150716 18:00:58 InnoDB: 5.5.38 started; log sequence number 14677110
+150716 18:00:58 [Note] Server hostname (bind-address): '127.0.0.1'; port: 8889
+150716 18:00:58 [Note]   - '127.0.0.1' resolves to '127.0.0.1';
+150716 18:00:58 [Note] Server socket created on IP: '127.0.0.1'.
+150716 18:00:58 [Note] Event Scheduler: Loaded 0 events
+150716 18:00:58 [Note] /Applications/MAMP/Library/bin/mysqld: ready for connections.
+Version: '5.5.38'  socket: '/Applications/MAMP/tmp/mysql/mysql.sock'  port: 8889  Source distribution
