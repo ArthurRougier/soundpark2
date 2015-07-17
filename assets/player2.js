@@ -159,8 +159,8 @@ function updateCurrentTrack(trackId)
 		{
 			onfinish: function()
 			{ 
-				nextTrack();
-				record_automatic_next();
+				var automaticNext = true;
+				nextTrack(automaticNext);
 				var playerPositionLogs = document.getElementById('player_position').innerHTML;
 				var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
 				//console.log(curatorLogs);
@@ -276,7 +276,7 @@ function pauseCurrentTrack()
 	currentTrack.pause();
 }
 
-function nextTrack()
+function nextTrack(automaticNext)
 {
 	clearDropdownMenu();
 	currentTrack.stop();
@@ -289,7 +289,17 @@ function nextTrack()
 		updateCurrentTrack(songTable[position]);
 		updatePlayerPosition(songTable[position]);
 		s.slideRight();
-		getLikeState();
+		if(automaticNext)
+		{
+			getLikeState(automaticNextOnCallback);
+			//console.log('lkjhfe');
+		}
+		else
+		{
+			getLikeState();
+			//console.log('nope');
+		}
+		
 		//g.disappear();
 	}
 	else
@@ -334,13 +344,14 @@ function getCurrentTrackId()
 /* Track like state for a given user */
 
 
-function getLikeState()
+function getLikeState(callback)
 {
 	xhr = new XMLHttpRequest();
 	xhr2 = new XMLHttpRequest();
-	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
+	var trackId = getCurrentTrackId();
+	//console.log(trackId); // Renvoit le TrackID en lecture, fonction dans player2.js
     var currentUser = getCookie('current_user') //user.email
-    xhr.open('GET', '../model/get_like_state.php?trackId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été liké par currentUser
+    
     xhr.onreadystatechange = function() 
 	{ // On gère ici une requête asynchrone
 
@@ -362,10 +373,13 @@ function getLikeState()
                 likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like.png)";
                 likeStamp.style.backgroundSize="contain";
                 likeStamp.style.backgroundRepeat="no-repeat";
-                //console.log('youou');
                 xhr2.open('GET', '../model/get_dislike_state.php?trackId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été disliké par currentUser
                 xhr2.send(null)
             }
+        }
+        else
+        {
+        	//console.log(xhr.readyState + ' - status = ' + xhr.status );
         }
     };
 
@@ -381,17 +395,40 @@ function getLikeState()
 	        	dislikeStamp.style.background="url(http://soundpark.fm/assets/pictures/cross_dislike.png)";
 	        	dislikeStamp.style.backgroundSize="contain";
 	        	dislikeStamp.style.backgroundRepeat="no-repeat";
+	        	if(callback)
+	        	{
+	        		callback(true);
+	        	}
+	        	
         	}
         	else
         	{		
 	        	dislikeStamp.style.background="url(http://soundpark.fm/assets/pictures/cross_dislike.png)";
 	        	dislikeStamp.style.backgroundSize="contain";
 	        	dislikeStamp.style.backgroundRepeat="no-repeat";
+	        	if(callback)
+	        	{
+	        		callback(true);
+	        	}
         	}	
         }
     };
 
+    xhr.open('GET', '../model/get_like_state.php?trackId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été liké par currentUser
     xhr.send(null); // La requête est prête, on envoie tout !
+}
+
+function automaticNextOnCallback(result)
+{
+  if (result) 
+  {
+    record_automatic_next();
+    console.log('yes');
+  } 
+  else 
+  {
+    // Cancel
+  }
 }
 
 
