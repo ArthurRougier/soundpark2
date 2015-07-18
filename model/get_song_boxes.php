@@ -1,6 +1,7 @@
 <?php
 include_once('connect_sql.php');
 
+
 if (isset($_COOKIE['current_user']) AND (isset($_GET['radioMode']) OR $_COOKIE['current_user'] == 68 OR $_COOKIE['current_user'] == 30 OR $_COOKIE['current_user'] == 180 OR $_COOKIE['current_user'] == 372 ))
 {
 	$req = $bdd->query('
@@ -8,7 +9,7 @@ if (isset($_COOKIE['current_user']) AND (isset($_GET['radioMode']) OR $_COOKIE['
 			(SELECT * FROM 
 				((SELECT * FROM 
 
-					(SELECT artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url, count(distinct soundpark2.like.ID) as like_number, playlistOrder FROM song, curator, soundpark2.like WHERE  soundpark2.like.ID_song = song.ID AND song.ID_curator = curator.ID AND song.ID in (SELECT b.Id_Song FROM (SELECT * FROM (SELECT COUNT(distinct automatic_next.ID) as numberAN, Id_Song FROM automatic_next, user WHERE user.ID = automatic_next.mail AND user.ID = '.$_COOKIE['current_user'].' GROUP BY Id_Song) a WHERE a.numberAN < 5 ) b) GROUP BY artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url ORDER BY count(distinct like.ID) DESC LIMIT 4)a ORDER BY rand())
+					(SELECT artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url, count(distinct soundpark2.like.ID) as like_number, playlistOrder FROM song, curator, soundpark2.like WHERE  soundpark2.like.ID_song = song.ID AND song.ID_curator = curator.ID AND song.ID in (SELECT b.Id_Song FROM (SELECT * FROM (SELECT COUNT(distinct automatic_next.ID) as numberAN, Id_Song FROM automatic_next, user WHERE user.ID = automatic_next.mail AND user.ID = '.$_COOKIE['current_user'].' GROUP BY Id_Song) a WHERE a.numberAN < 2 ) b) GROUP BY artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url ORDER BY count(distinct like.ID) DESC LIMIT 4)a ORDER BY rand())
 
 			)DummyAlias1
 

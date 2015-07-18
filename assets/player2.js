@@ -1,9 +1,9 @@
 
 /* UI part of player : SLIDER */
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 	s = new slider("#galerie");
-});
+});*/
 
 
 
@@ -26,7 +26,7 @@ var slider = function(id){
 	this.precParent = this.div.find('#left_arrow');
 	this.suivParent = this.div.find('#right_arrow');
 	//alert(this.suiv.html());
-	this.saut=(this.lengthCach)+6;
+	this.saut=(this.lengthCach)+5;
 	this.steps = Math.ceil(this.largeur/this.saut);
 	//alert(this.steps);
 	this.courant = 0;
@@ -114,13 +114,18 @@ var onPlay = false;
 var position = 0;
 
 var trackIds = document.getElementsByClassName('trackIds');
-var songTable = [];
+
+if(position == 0)
+{
+	document.getElementById('left_arrow').style.visibility = "hidden";
+}
+/*var songTable = [];
 
 
 for(var i = 0 ; i<trackIds.length ; i++)
 {
 	songTable[i] = trackIds[i].innerHTML;
-}
+}*/
 //alert(songTable.length);
 
 var currentTrack;
@@ -176,6 +181,7 @@ function updateCurrentTrack(trackId)
 			onload: function()
 			{
 				var playerPosition = document.getElementById('player_position').innerHTML;
+				//console.log('loaded');
 				for(var index = 1 ; index < (currentTrack.durationEstimate/1000) ; index++)
 				{
 					currentTrack.onPosition(index*1000, function(eventPosition)
@@ -203,6 +209,7 @@ function updateCurrentTrack(trackId)
 
 						/*On fait avancer l'overlay*/
 						var coverWidth = document.getElementById('sound_cover'+ playerPosition).offsetWidth;
+						//console.log(document.getElementById('blurred_sound_cover_container'+ playerPosition));
 						var step = (eventPosition/1000*coverWidth/(currentTrack.durationEstimate/1000));
 						document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(step+"px");
 						document.getElementById('cover_overlay'+ playerPosition).style.width=((step)+"px");
@@ -284,13 +291,17 @@ function nextTrack(automaticNext)
 	if(position<(songTable.length-1))
 	{
 		position++;
+		document.getElementById('left_arrow').style.visibility = "visible";
+		document.getElementById('left_arrow').style.opacity = "1";
 		document.getElementById('blurred_sound_cover_container'+ position).style.width="0";
 		document.getElementById('cover_overlay'+ position).style.width="0";
 		updateCurrentTrack(songTable[position]);
 		updatePlayerPosition(songTable[position]);
-		s.slideRight();
+		//s.slideRight();
 		if(automaticNext)
 		{
+			$('#nextHandler').trigger('click');
+			//console.log('gk');
 			getLikeState(automaticNextOnCallback);
 			//console.log('lkjhfe');
 		}
@@ -319,9 +330,14 @@ function previousTrack()
 	position--;
 	updateCurrentTrack(songTable[position]);
 	updatePlayerPosition(songTable[position]);
-	s.slideLeft();
+	//s.slideLeft();
 	//g.disappear();
 	getLikeState();
+	if(position == 0)
+	{
+		document.getElementById('left_arrow').style.visibility = "hidden";
+		document.getElementById('left_arrow').style.opacity = "0";
+	}
 }
 
 function resetPositionOverlay()
@@ -349,7 +365,7 @@ function getLikeState(callback)
 	xhr = new XMLHttpRequest();
 	xhr2 = new XMLHttpRequest();
 	var trackId = getCurrentTrackId();
-	//console.log(trackId); // Renvoit le TrackID en lecture, fonction dans player2.js
+	console.log(trackId); // Renvoit le TrackID en lecture, fonction dans player2.js
     var currentUser = getCookie('current_user') //user.email
     
     xhr.onreadystatechange = function() 
@@ -423,7 +439,7 @@ function automaticNextOnCallback(result)
   if (result) 
   {
     record_automatic_next();
-    console.log('yes');
+    //console.log('yes');
   } 
   else 
   {
@@ -655,7 +671,7 @@ function clearDropdownMenu()
 document.addEventListener('keydown', function(e) 
 {
    	
-    if(e.keyCode == 32)
+    if(e.keyCode == 32) //spacebar
     {
     	mixpanel.track("Shortcut Play/Pause", 
 		{
@@ -687,22 +703,26 @@ document.addEventListener('keydown', function(e)
 		   	}
 	   	}
     }
-    else if (e.keyCode == 39) 
+    /*else if (e.keyCode == 39) //next
 	{
 		nextTrack();
+		$('#nextHandler').trigger('click');
 		mixpanel.track("Shortcut Next", 
 		{
 			"fullUrl": window.location.href
 		});
 	}
-	else if (e.keyCode == 37) 
+	else if (e.keyCode == 37)  //previous
 	{
 		mixpanel.track("Shortcut Previous", 
 		{
 			"fullUrl": window.location.href
 		});
+		
 		previousTrack();
-	}
+		$('#previousHandler').trigger('click');
+		
+	}*/
 
 }, false);
 

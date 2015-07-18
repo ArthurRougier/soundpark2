@@ -1,5 +1,7 @@
 function updatePlayerPosition(trackId){
-    document.getElementById('share_url').innerHTML = ("http://soundpark.fm/view/fromshare.php?trackId=" + trackId); // On met à jour le lien share aussi au passage
+    document.getElementById('player_position').innerHTML = (songTable.indexOf(trackId) + 1);
+   
+    /*document.getElementById('share_url').innerHTML = ("http://soundpark.fm/view/fromshare.php?trackId=" + trackId); // On met à jour le lien share aussi au passage
 	xhrUPP = new XMLHttpRequest();
     //console.log(trackId);
     
@@ -36,7 +38,6 @@ function updatePlayerPosition(trackId){
 
 
     xhrUPP.send(null); // La requête est prête, on envoie tout !
-    //console.log('sent');
-
+    //console.log('sent');*/
 
 }

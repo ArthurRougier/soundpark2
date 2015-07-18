@@ -106,12 +106,11 @@
 		
 		<div class="container" id="galerie"> 
 			
-			<div id="left_arrow">
-				<input type="button" id="left_arrow_icon" class="previous" onclick="previousTrack()"/>
+			<div id="left_arrow" >
+				<input type="button" id="left_arrow_icon" class="rslides_nav rslides1_nav prev" onclick="previousTrack()"/>
+				<div id="previousHandler" class="rslides_nav rslides1_nav next"></div>
 			</div>
-			<div id="right_arrow">
-				<input type="button" id="right_arrow_icon" class="next" onclick="nextTrack()"/>
-			</div>
+			
 			<div class="slider">
 			<?php 
 				include_once('../model/get_current_playlist_id.php'); // renvoi $currentPlaylistId
@@ -124,9 +123,13 @@
 					$playlistId = $currentPlaylistId;
 				}
 				include_once('../control/display_song_boxes.php'); 
-				include_once('../control/display_playlist_trackIds.php');
 			?>
 			</div>
+			<div id="right_arrow">
+				<input type="button" id="right_arrow_icon" class="rslides_nav rslides1_nav next" onclick="nextTrack()"/>
+				<div id="nextHandler" class="rslides_nav rslides1_nav next"></div>
+			</div>
+			
 			
 		</div>
 		
@@ -158,7 +161,25 @@
     <script type="text/javascript" src="../assets/popUps.js"></script>
     <script type="text/javascript" src="../assets/on_load.js"></script>
     <script type="text/javascript" src="../assets/mixpanel_logs.js"></script>
+    <script src="../assets/responsiveslides.min.js"></script>
     <script type="text/javascript"></script>
+
+    <script>
+      $(function() {
+        $(".rslides").responsiveSlides({
+          auto: false,             // Boolean: Animate automatically, true or false
+          speed: 1000,            // Integer: Speed of the transition, in milliseconds
+          nav: true,             // Boolean: Show navigation, true or false
+          random: false,          // Boolean: Randomize the order of the slides, true or false
+          pause: false,           // Boolean: Pause on hover, true or false
+          namespace: "rslides",   // String: Change the default namespace used
+          before: function(){},   // Function: Before callback
+          after: function(){}     // Function: After callback
+        });
+      });
+
+
+    </script>
 
     <script>
 
