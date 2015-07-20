@@ -6,11 +6,11 @@ include_once('../model/connect_sql.php');
 	$req2->execute(array($_SESSION['id_curator']));			
 	$totalSongsPosted=$req2->fetch();
 
-	$req2=$bdd->prepare('SELECT COUNT(*) FROM soundpark2.like, song WHERE like.ID_song=song.ID AND song.ID_curator=?');
+	$req2=$bdd->prepare('SELECT COUNT(*) FROM `like`, song WHERE like.ID_song=song.ID AND song.ID_curator=?');
 	$req2->execute(array($_SESSION['id_curator']));			
 	$totallikes=$req2->fetch();
 
-	$req2=$bdd->prepare('SELECT COUNT(*) FROM soundpark2.dislike, song WHERE dislike.ID_song=song.ID AND song.ID_curator=?');
+	$req2=$bdd->prepare('SELECT COUNT(*) FROM `dislike`, song WHERE dislike.ID_song=song.ID AND song.ID_curator=?');
 	$req2->execute(array($_SESSION['id_curator']));			
 	$totaldislikes=$req2->fetch();
 

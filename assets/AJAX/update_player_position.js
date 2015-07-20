@@ -1,4 +1,5 @@
 function updatePlayerPosition(trackId){
+    
     document.getElementById('player_position').innerHTML = (songTable.indexOf(trackId) + 1);
    
     /*document.getElementById('share_url').innerHTML = ("http://soundpark.fm/view/fromshare.php?trackId=" + trackId); // On met à jour le lien share aussi au passage

@@ -15,7 +15,7 @@ include_once("../model/get_curators_historic_songs.php");
 				
 				//Obtenir ici les stats d'une song
 
-				$req2=$bdd->prepare('SELECT COUNT(*) FROM soundpark2.like WHERE ID_song=?');
+				$req2=$bdd->prepare('SELECT COUNT(*) FROM `like` WHERE ID_song=?');
 				$req2->execute(array($trackList['ID']));
 				$nblikes=$req2->fetch();
 				$nblikes[0]=$nblikes[0]*4+3;
@@ -24,7 +24,7 @@ include_once("../model/get_curators_historic_songs.php");
 				$req2->execute(array($trackList['ID']));
 				$Playlist=$req2->fetch();
 
-				//$req2=$bdd->prepare('SELECT COUNT(*) FROM soundpark2.dislike WHERE ID_song=?');
+				//$req2=$bdd->prepare('SELECT COUNT(*) FROM `dislike` WHERE ID_song=?');
 				//$req2->execute(array($trackList['ID']));
 				//$nbDislikes=$req2->fetch();
 
