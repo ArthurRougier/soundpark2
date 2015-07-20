@@ -168,7 +168,7 @@
       $(function() {
         $(".rslides").responsiveSlides({
           auto: false,             // Boolean: Animate automatically, true or false
-          speed: 1000,            // Integer: Speed of the transition, in milliseconds
+          speed: 750,            // Integer: Speed of the transition, in milliseconds
           nav: true,             // Boolean: Show navigation, true or false
           random: false,          // Boolean: Randomize the order of the slides, true or false
           pause: false,           // Boolean: Pause on hover, true or false
