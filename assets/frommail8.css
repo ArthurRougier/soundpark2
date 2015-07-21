@@ -1033,6 +1033,14 @@ input[type="checkbox"] {
   .container
   {
     margin-top: 4vw;
+    position: relative;
+  }
+
+  .slider
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .sound_cover,
@@ -1079,7 +1087,7 @@ input[type="checkbox"] {
  #left_arrow
  {
 
-  position: relative;
+  position: absolute;
   left: 0;
   top: 130px;
  }
@@ -1087,7 +1095,7 @@ input[type="checkbox"] {
   #right_arrow
  {
   float : right;
-  position: relative;
+  position: absolute;
   right: 0;
   top: 130px;
  }
