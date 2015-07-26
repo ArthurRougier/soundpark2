@@ -1,14 +1,16 @@
 <?php 
-session_start();
-include_once ('../model/connect_sql.php');
-include($_SERVER['DOCUMENT_ROOT'].'/control/session_check.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/control/control_user.php');
+	// error_reporting(E_ALL);
+	// ini_set('display_errors', 1);
+	session_start();
+	include_once ('../model/connect_sql.php');
+	include($_SERVER['DOCUMENT_ROOT'].'/control/session_check.php');
+	include_once($_SERVER['DOCUMENT_ROOT'].'/control/control_user.php');
 
-$req=$bdd->prepare('SELECT curator.ID FROM curator, user WHERE curator.ID_user=user.id AND user.id=?');
-$req->execute(array($_COOKIE['current_user']));
-$resultat=$req->fetch();
+	$req=$bdd->prepare('SELECT curator.ID FROM curator, user WHERE curator.ID_user=user.id AND user.id=?');
+	$req->execute(array($_COOKIE['current_user']));
+	$resultat=$req->fetch();
 
-$_SESSION['id_curator']=$resultat[0];
+	$_SESSION['id_curator']=$resultat[0];
 
 ?>
 
@@ -38,9 +40,8 @@ $_SESSION['id_curator']=$resultat[0];
 		
 		<aside>
 			<ul>
-				<li><a style="color: #531931;" href="playlists.php">Playlists</a></li>
-				<li style="box-shadow: 0 0 0 1px rgb(232, 232, 232) inset; background-color: rgba(83, 25, 49, 0.05);"><a style="color: #531931; border-left: 8px solid #531931; " href="likes.php">My likes</a></li>
-				
+				<li style="box-shadow: 0 0 0 1px rgb(232, 232, 232) inset; background-color: rgba(83, 25, 49, 0.05);"><a style="color: #531931; border-left: 8px solid #531931; " href="playlists.php">Playlists</a></li>
+				<li><a style="color: #531931;" href="likes.php">My likes</a></li>
 				<?php
 
 					include_once ('../control/connect_sql.php');
@@ -50,7 +51,7 @@ $_SESSION['id_curator']=$resultat[0];
 
 					if ($resultat[0]==2)
 					{
-						echo '<li><a style="color: #531931;" href="curator_index.php">Submit songs</a></li>';
+						echo '<li><a style="color: #531931;" href="curator_index.php">This Week</a></li>';
 						echo '<li><a style="color: #531931" href="curator_historic_songs.php">History</a></li>';
 					}
 				?>					
@@ -60,7 +61,7 @@ $_SESSION['id_curator']=$resultat[0];
 		<div id="container">
 			<div id="tilesContainer">
 				<!-- Define all of the tiles: -->
-				 <?php include_once('../control/display_settings_song_tiles.php'); ?>
+				 <?php include_once('../control/display_settings_playlist_tiles.php'); ?>
 			</div>
 		</div>
 

@@ -38,8 +38,9 @@ $_SESSION['id_curator']=$resultat[0];
 
 		<aside>
 			<ul>
+				<li><a style="color: #531931;" href="playlists.php">Playlists</a></li>
 				<li><a style="color: #531931;" href="likes.php">My likes</a></li>
-				<li style="box-shadow: 0 0 0 1px rgb(232, 232, 232) inset; background-color: rgba(83, 25, 49, 0.05);"><a style="color: #531931; border-left: 8px solid #531931; " href="curator_index.php">This Week</a></li>
+				<li style="box-shadow: 0 0 0 1px rgb(232, 232, 232) inset; background-color: rgba(83, 25, 49, 0.05);"><a style="color: #531931; border-left: 8px solid #531931; " href="curator_index.php">Submit songs</a></li>
 				<li><a style="color: #531931;" href="curator_historic_songs.php">History</a></li>
 			<ul>
 		</aside>

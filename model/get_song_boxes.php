@@ -1,8 +1,9 @@
 <?php
 include_once('connect_sql.php');
+include_once('get_beta_users.php'); 	// creates $betaUserArray
 
 
-if (isset($_COOKIE['current_user']) AND (isset($_GET['radioMode']) OR $_COOKIE['current_user'] == 68 OR $_COOKIE['current_user'] == 30 OR $_COOKIE['current_user'] == 180 OR $_COOKIE['current_user'] == 372 ))
+if (isset($_COOKIE['current_user']) AND isset($playlistId) AND (isset($_GET['radioMode']) OR in_array($_COOKIE['current_user'] ,$betaUserArray) ))
 {
 	$req = $bdd->query('
 		SELECT * FROM
@@ -18,7 +19,7 @@ if (isset($_COOKIE['current_user']) AND (isset($_GET['radioMode']) OR $_COOKIE['
 			SELECT * FROM 
 			(
 
-				(SELECT artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url, "0" as like_number, playlistOrder, song.ID FROM song, playlist, curator WHERE song.ID_playlist=playlist.ID AND song.ID_curator = curator.ID AND playlist.date_end >= NOW() AND playlist.date_start <= NOW() AND NOT EXISTS (select * from dislike where dislike.ID_song = song.ID and dislike.ID_user = '.$_COOKIE['current_user'].')   ORDER BY song.playlistOrder, song.id LIMIT 15)
+				(SELECT artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url, "0" as like_number, playlistOrder, song.ID FROM song, playlist, curator WHERE song.ID_playlist=playlist.ID AND song.ID_curator = curator.ID AND song.ID_playlist='.$playlistId.' AND NOT EXISTS (select * from dislike where dislike.ID_song = song.ID and dislike.ID_user = '.$_COOKIE['current_user'].')   ORDER BY song.playlistOrder, song.id LIMIT 15)
 
 			)DummyAlias2)twotablesmerged ORDER BY RAND()');
 
@@ -28,11 +29,17 @@ if (isset($_COOKIE['current_user']) AND (isset($_GET['radioMode']) OR $_COOKIE['
 
 }
 
+else if($playlistId == 59)
+{
+	$req = $bdd->query('SELECT * FROM (SELECT artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url, count(distinct `like`.ID) as like_number, playlistOrder, song.ID FROM song, curator, `like` WHERE  `like`.ID_song = song.ID AND song.ID_curator = curator.ID GROUP BY artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url ORDER BY rand() DESC LIMIT 50)a where a.like_number > 7 ');
+}
+
 else if($playlistId)
 {
 	$req = $bdd->prepare('SELECT artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url FROM song, playlist, curator WHERE song.ID_playlist=playlist.ID AND song.ID_curator = curator.ID AND song.ID_playlist=? ORDER BY song.playlistOrder, song.id');
 	$req->execute(array($playlistId));
 }
+
 
 else
 {
