@@ -186,12 +186,12 @@ form
 
 input[type="text"]
 {
-	width: 200px;
+	width: 150px;
 }
 
 select[class="song_curator"]
 {
-	width: 20px;
+	width: 80px;
 }
 
 input[class="song_genre"]

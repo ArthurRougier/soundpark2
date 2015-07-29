@@ -25,9 +25,51 @@
 			</ul>
 		</header>
 
+		<!--
+		<aside>
+			<ul>
+				<li><a style="color: #531931; border-bottom: 1px solid #531931;" href="#">New</a></li>
+				<li><a href="../view/admin_songs_history.php">Used</a></li>
+				<li><a href="../view/admin_songs_storage.php">Storage</a></li>
+			<ul>
+		</aside>
+		-->
 
 		<div id="container">
-		</div>	
+			<?php 
+				if(isset($_GET['message']))
+				{
+					echo('<h1>'.$_GET['message'].' !</h1></br>');
+				}
+			?>
+			
+			<h2> Add a new genre: </h2>
+				<form accept-charset="UTF-8" action="../control/create_genre.php" class="new_genre" method="post">
+					<input name="genre_name" type="text" />
+					<!--<input type="hidden" name="tag_type" value="genre" />-->
+					<input type="hidden" name="source" value="admin_genres" />
+					<input name="commit" type="submit" value="Go" />
+				</form>
+
+			<h1> Current genres: </h2>
+				<?php include_once('../control/display_list_of_genre.php');?>
+
+			</br>
+			</br>
+			</br>
+			<h2> Add a new occasion: </h2>
+				<form accept-charset="UTF-8" action="../control/create_occasion.php" class="new_occasion" method="post">
+					<input name="occasion_name" type="text" />
+					<!--<input type="hidden" name="tag_type" value="occasion" />-->
+					<input type="hidden" name="source" value="admin_genres" />
+					<input name="commit" type="submit" value="Go" />
+				</form>
+
+			<h1> Current occasion: </h2>
+				<?php include_once('../control/display_list_of_occasion.php');?>
+			</br></br>
+			</div>
+		</div>
 
 		<footer>
 		</footer>		

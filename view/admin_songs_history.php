@@ -42,10 +42,10 @@
 				}
 			?>
 
-			<h2> Songs treated: </h2>
+			<h2> Songs we used in the playlists: </h2>
 			
 				
-				<?php include_once('../control/display_treated_songs.php'); ?>
+				<?php include_once('../control/display_used_songs.php'); ?>
 		
 
 
