@@ -194,5 +194,20 @@
 	    }
 	});
 
+	var curatorPics = document.querySelectorAll('.curatorPicture');
+	for(var indexCuratorPicture = 0 ; indexCuratorPicture <= curatorPics.length ; indexCuratorPicture++)
+	{
+		curatorPics[indexCuratorPicture].addEventListener('mouseover', function(e){
+			e.target.nextSibling.style.visibility = "visible";
+			e.target.nextSibling.style.opacity = "1";
+			//console.log(e.target.nextSibling);
+		}, false);
+		curatorPics[indexCuratorPicture].addEventListener('mouseout', function(e){
+			e.target.nextSibling.style.visibility = "hidden";
+			e.target.nextSibling.style.opacity = "0";
+			//console.log(e.target.nextSibling);
+		}, false);
+	}
+
     </script>
 </html>

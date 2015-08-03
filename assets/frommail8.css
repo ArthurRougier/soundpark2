@@ -616,15 +616,74 @@ display: none;
   display: inline-block;
 }
 
+.sound_informations a
+{
+  text-decoration: none;
+  color: #32B7A2;
+}
+
 .sound_informations h3
 {
   padding: 0 0.65vh 0 0.65vh;
   text-align: left;
-  font-size: 1.9vh;
-  font-family: 'open Sans';
+  font-size: 2vh;
+  line-height: 2vh;
+  font-family: 'Open Sans';
   font-weight: 300;
   color: white;
   overflow: hidden;
+}
+
+.sound_informations .curator
+{
+  margin-bottom: 0.5vh;
+}
+
+.sound_informations .curator .curatorText
+{
+  height: 3vh;
+  color: #32B7A2;
+  font-size: 2.5vh;
+}
+
+.curatorStuff
+{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  margin-top: 0.5vh;
+  margin-left: 1vh;
+}
+
+.curatorPicture
+{
+  height: 2.3vh;
+  width: 2.3vh;
+  border-radius: 1.15vh;
+}
+
+.curatorBadge
+{
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  border-radius: 9px;
+  border: 1px solid white;
+  background-color: black;
+  font-size: 14px;
+  line-height: 16px;
+  width: 18px;
+  height: 18px;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.25s ease-out;
 }
 
 /* Share dropdown Menu style */
@@ -639,7 +698,7 @@ display: none;
   text-align: center;
   color: red;
   z-index: 1000000;
-  display: none;
+  /*display: none;*/
   
 }
 
