@@ -76,12 +76,12 @@
 
 
 		
-	if(isset($_GET['page']))
+	if(isset($_GET['source']) & $_GET['source']=="admin_songs_new.php")
 	{
-			header('Location: ../view/curators_songs_history.php?message=Added');
+			header('Location: ../view/admin_songs_new.php?message=Added');
 	}
-	else
+	elseif (isset($_GET['source']) & $_GET['source']=="admin_songs_storage.php")
 	{
-			header('Location: ../view/curators_songs_new.php?message=Addeed');
+			header('Location: ../view/admin_songs_storage.php?message=Addeed');
 	}
 
