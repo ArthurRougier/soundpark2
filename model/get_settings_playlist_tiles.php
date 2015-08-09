@@ -7,7 +7,7 @@
 				(SELECT artwork_url FROM song WHERE song.ID_playlist = a.ID LIMIT 1, 1) as pic2,
 				(SELECT artwork_url FROM song WHERE song.ID_playlist = a.ID LIMIT 2, 1) as pic3,
 				(SELECT artwork_url FROM song WHERE song.ID_playlist = a.ID LIMIT 3, 1) as pic4
-			FROM playlist a WHERE date_end <= NOW() ORDER BY ID DESC'
+			FROM playlist a WHERE date_end <= NOW() AND a.ID > 16 ORDER BY ID DESC'
 		);
 	}
 

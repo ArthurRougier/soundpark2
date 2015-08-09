@@ -643,7 +643,7 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 
 
 .playlist_overlay img {
-	width: 90%;
+	width: 85%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -652,25 +652,35 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 	outline: 1px solid transparent;
 }
 
-.playlist_overlay img:last-child {
+/*.playlist_overlay img:last-child {
 	position: relative;
+}*/
+
+
+.stack-randomrot img:first-child {
+	-webkit-transform: rotate(-2deg);
+	transform: rotate(-2deg);
 }
 
+.stack-randomrot img:nth-child(2) {
+	-webkit-transform: rotate(2deg);
+	transform: rotate(2deg);
+}
 
 /* Random rotation */
 .stack-randomrot.active img:nth-child(3) {
-	-webkit-transform: translate(15px,15px);
-	transform: translate(15px,15px);
+	-webkit-transform: translate(5px,5px);
+	transform: translate(5px,5px);
 }
 
 .stack-randomrot.active img:first-child {
-	-webkit-transform: rotate(-10deg);
-	transform: rotate(-10deg);
+	-webkit-transform: rotate(-6deg);
+	transform: rotate(-6deg);
 }
 
 .stack-randomrot.active img:nth-child(2) {
-	-webkit-transform: rotate(10deg);
-	transform: rotate(10deg);
+	-webkit-transform: rotate(6deg);
+	transform: rotate(6deg);
 }
 
 
@@ -697,7 +707,16 @@ body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleB
 	font-weight: 300;
 	text-shadow: 0 0 1px white;
 	line-height: 100%;
-	font-size: 120% !important;
+	font-size: 90% !important;
+	margin-bottom: 5px !important;
+	padding-right: 15%;
+	vertical-align: bottom;
+}
+
+.boxInner a h2 .strong
+{
+	font-weight: 600;
+	color: #32B7A2;
 }
 
 

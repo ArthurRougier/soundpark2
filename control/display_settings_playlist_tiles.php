@@ -49,10 +49,19 @@
 						$monthFirstDay = new DateTime($ddate);
 						$monthFirstWeek = $monthFirstDay->format("W");
 						$adjustedWeek = $week - ($monthFirstWeek - 1);
+						$playlistNumber = $playlistBoxes[0];
+						if($playlistNumber <= 51)
+						{
+							$playlistNumber = $playlistNumber - 16;
+						}
+						else
+						{
+							$playlistNumber = $playlistNumber - 21;
+						}
 
 
 
-						echo $monthLetter.", playlist #".$playlistBoxes[0];
+						echo $monthLetter.", playlist<span class='strong'> #".$playlistNumber."</span>";
 
 
 				 	?></h2><div class="helper"></div></a
