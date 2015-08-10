@@ -31,7 +31,18 @@ if (isset($_COOKIE['current_user']) AND isset($playlistId) AND (isset($_GET['rad
 
 else if($playlistId == 59)
 {
-	$req = $bdd->query('SELECT * FROM (SELECT artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url, count(distinct `like`.ID) as like_number, playlistOrder, song.ID, avatar_url, link FROM song, curator, `like` WHERE  `like`.ID_song = song.ID AND song.ID_curator = curator.ID GROUP BY artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url ORDER BY rand() DESC LIMIT 50)a where a.like_number > 7 ');
+	$req = $bdd->query('SELECT * 
+		FROM 
+		(
+			SELECT artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url, COUNT( DISTINCT  `like`.ID ) AS like_number, playlistOrder, song.ID, avatar_url, link
+			FROM song, curator,  `like` 
+			WHERE  `like`.ID_song = song.ID
+			AND song.ID_curator = curator.ID
+			GROUP BY artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url
+			ORDER BY COUNT( DISTINCT  `like`.ID ) DESC 
+			LIMIT 25
+		)a'
+	);
 }
 
 else if($playlistId)
