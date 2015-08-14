@@ -3,7 +3,7 @@ function record_automatic_next()
     //console.log('coucou');
 
 	var trackId = songTable[position - 1]; 
-    console.log(trackId);
+    //console.log(trackId);
     var currentUser = getCookie('current_user') //user.email
 
 	xhr = new XMLHttpRequest();

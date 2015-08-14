@@ -106,9 +106,9 @@
 		
 		<div class="container" id="galerie"> 
 			
-			<div id="left_arrow" >
+			<div id="left_arrow">
 				<input type="button" id="left_arrow_icon" class="rslides_nav rslides1_nav prev" onclick="previousTrack()"/>
-				<div id="previousHandler" class="rslides_nav rslides1_nav next"></div>
+				<div id="previousHandler" class="rslides_nav rslides1_nav prev"></div>
 			</div>
 			
 			<div class="slider">
@@ -161,7 +161,7 @@
     <script type="text/javascript" src="../assets/popUps.js"></script>
     <script type="text/javascript" src="../assets/on_load.js"></script>
     <script type="text/javascript" src="../assets/mixpanel_logs.js"></script>
-    <script src="../assets/responsiveslides.min.js"></script>
+    <script src="../assets/responsiveslides.js"></script>
     <script type="text/javascript"></script>
 
     <script>

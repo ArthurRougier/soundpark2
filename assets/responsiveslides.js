@@ -323,38 +323,40 @@
 
           // Click event handler
           $trigger.bind("click", function (e) {
-            e.preventDefault();
+              e.preventDefault();
 
-            var $visibleClass = $("." + visibleClass);
+              var $visibleClass = $("." + visibleClass);
 
-            // Prevent clicking if currently animated
-            if ($visibleClass.queue('fx').length) {
-              return;
-            }
+              // Prevent clicking if currently animated
+              if ($visibleClass.queue('fx').length) {
+                return;
+              }
 
-            //  Adds active class during slide animation
-            //  $(this)
-            //    .addClass(namespace + "_active")
-            //    .delay(fadeTime)
-            //    .queue(function (next) {
-            //      $(this).removeClass(namespace + "_active");
-            //      next();
-            //  });
+              //  Adds active class during slide animation
+              //  $(this)
+              //    .addClass(namespace + "_active")
+              //    .delay(fadeTime)
+              //    .queue(function (next) {
+              //      $(this).removeClass(namespace + "_active");
+              //      next();
+              //  });
 
-            // Determine where to slide
-            var idx = $slide.index($visibleClass),
-              prevIdx = idx - 1,
-              nextIdx = idx + 1 < length ? index + 1 : 0;
+              // Determine where to slide
+              var idx = $slide.index($visibleClass),
+                prevIdx = idx - 1,
+                nextIdx = idx + 1 < length ? index + 1 : 0;
 
-            // Go to slide
-            slideTo($(this)[0] === $prev[0] ? prevIdx : nextIdx);
-            if (settings.pager || settings.manualControls) {
-              selectTab($(this)[0] === $prev[0] ? prevIdx : nextIdx);
-            }
+              // Go to slide
+              slideTo($(this)[0] === $prev[0] ? prevIdx : ($(this)[0] === $prev[1] ? prevIdx : nextIdx));
 
-            if (!settings.pauseControls) {
-              restartCycle();
-            }
+
+              if (settings.pager || settings.manualControls) {
+                selectTab($(this)[0] === $prev[0] ? prevIdx : nextIdx);
+              }
+
+              if (!settings.pauseControls) {
+                restartCycle();
+              }
           });
 
           // Pause when hovering navigation
