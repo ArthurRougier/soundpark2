@@ -2,7 +2,8 @@ function record_automatic_next()
 {
     //console.log('coucou');
 
-	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
+	var trackId = songTable[position - 1]; 
+    //console.log(trackId);
     var currentUser = getCookie('current_user') //user.email
 
 	xhr = new XMLHttpRequest();

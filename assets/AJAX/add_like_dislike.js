@@ -90,6 +90,7 @@ function addDislike()
                 likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like.png)";
                 likeStamp.style.backgroundSize="cover";
                 nextTrack();
+                $('#nextHandler').trigger('click');
         	}
         	//else if(dislikeStamp.style.display!="block" && likeStamp.style.display=="block")
             else 

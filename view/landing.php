@@ -144,7 +144,7 @@
     ><div id="headerPage4"><span class="helper"></span><h1>This week <span class="strong">most liked tracks:</span></h1> </div
     <?php include_once('../control/display_landing_song_boxes.php'); ?>
       <?php 
-        $req = $bdd->query('SELECT trackId, count(distinct like.ID) FROM song, playlist, soundpark2.like WHERE song.ID_playlist=playlist.ID AND like.ID_song = song.ID AND playlist.date_end >= NOW() AND playlist.date_start <= NOW() GROUP BY trackId order by count(distinct soundpark2.like.ID) DESC LIMIT 3');
+        $req = $bdd->query('SELECT trackId, count(distinct like.ID) FROM song, playlist, `like` WHERE song.ID_playlist=playlist.ID AND like.ID_song = song.ID AND playlist.date_end >= NOW() AND playlist.date_start <= NOW() GROUP BY trackId order by count(distinct `like`.ID) DESC LIMIT 3');
         $i = 0;
         while($trackIds = $req->fetch())
         {

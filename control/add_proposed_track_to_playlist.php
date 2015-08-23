@@ -35,20 +35,39 @@
 
 
 
-	// on transfère cette ligne dans song
-	$insert = $bdd->prepare('INSERT INTO song(ID_playlist, ID_curator, artwork_url, genre, title, artist, trackId, duration, permalink_URL, playlistOrder) VALUES(:ID_playlist, :ID_curator, :artwork_url, :genre, :title, :artist, :trackId, :duration, :permalink_URL, :playlistOrder)');
-	$insert->execute(array(
-		'ID_playlist' => $nextPlaylistId,
-		'ID_curator' => $result[0],
-		'artwork_url' => $result[4],
-		'genre' => $result[5],
-		'title' => $result[6],
-		'artist' => $result[7],
-		'trackId' => $result[8],
-		'duration' => $result[3],
-		'permalink_URL' => $result[9],
-		'playlistOrder' => $playlistOrderToSet
-		));
+	if (isset($result[5]))
+	{
+		$insert = $bdd->prepare('INSERT INTO song(ID_playlist, ID_curator, artwork_url, genre, title, artist, trackId, duration, permalink_URL, playlistOrder) VALUES(:ID_playlist, :ID_curator, :artwork_url, :genre, :title, :artist, :trackId, :duration, :permalink_URL, :playlistOrder)');
+		$insert->execute(array(
+			'ID_playlist' => $nextPlaylistId,
+			'ID_curator' => $result[0],
+			'artwork_url' => $result[4],
+			'genre' => $result[5],
+			'title' => $result[6],
+			'artist' => $result[7],
+			'trackId' => $result[8],
+			'duration' => $result[3],
+			'permalink_URL' => $result[9],
+			'playlistOrder' => $playlistOrderToSet
+			));
+	}
+	else
+	{
+		$insert = $bdd->prepare('INSERT INTO song(ID_playlist, ID_curator, artwork_url, title, artist, trackId, duration, permalink_URL, playlistOrder) VALUES(:ID_playlist, :ID_curator, :artwork_url, :title, :artist, :trackId, :duration, :permalink_URL, :playlistOrder)');
+		$insert->execute(array(
+			'ID_playlist' => $nextPlaylistId,
+			'ID_curator' => $result[0],
+			'artwork_url' => $result[4],
+			'title' => $result[6],
+			'artist' => $result[7],
+			'trackId' => $result[8],
+			'duration' => $result[3],
+			'permalink_URL' => $result[9],
+			'playlistOrder' => $playlistOrderToSet
+			));
+	}
+		
+	
 
 
 	//On supprime l'entrée de la table proposed_song

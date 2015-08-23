@@ -53,7 +53,7 @@ body
 
 .container {
 display: inline-block;
-*zoom: 1; }
+zoom: 1; }
 .container:before, .container:after {
 display: table;
 content: "";
@@ -64,7 +64,7 @@ clear: both; }
 .container-fluid {
 padding-right: 20px;
 padding-left: 20px;
-*zoom: 1; }
+zoom: 1; }
 .container-fluid:before, .container-fluid:after {
 display: table;
 content: "";
@@ -307,12 +307,16 @@ input[value="pause"]
  
  #left_arrow, #right_arrow
  {
+  position: relative;
   display: inline-block;
-  width: 31.51vh;
+  width: 30vh;
   text-align: center;
-  z-index: 1000;
   background-image: inherit;
   z-index: 10000000;
+  vertical-align: top;
+  opacity: 1;
+  webkit-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
  }
  
  
@@ -323,18 +327,22 @@ input[value="pause"]
 #left_arrow
 {
   margin: 0 0 0 0;
-  position: absolute;
   left: 0;
-  top:0;
+  position: relative;
+  height: 100%;
+  opacity: 0;
+  /*left: 0;
+  top:0;*/
 }
 
 #right_arrow
 {
-  float : right;
+  /*float : right;*/
+  height: 100%;
   margin: 0 0 0 0;
-  position: absolute;
-  right: 0;
-  top:0;
+  position: relative;
+ /* right: 0;
+  top:0;*/
 }
 
 #left_arrow_icon,
@@ -403,6 +411,64 @@ cursor: pointer;
 }
 
 
+/* Slider */
+
+
+.slider
+{
+  width: 65.1vh;
+  display: inline-block;
+  text-align: left;
+  position : relative;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.slider ul
+{
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  display: inline-block;
+}
+.slider ul li
+{
+  display: inline-block;
+}
+
+.rslides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+.rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+
+.rslides img {
+  display: block;
+  float: left;
+  border: 0;
+  }
+
+  /* End of slider */
+
+
 .trackIds
 {
 display: none;
@@ -414,7 +480,7 @@ display: none;
 {
   vertical-align: middle;
   display: inline-block;
-  margin: 0 31.51vh 0 31.51vh;
+  margin: 0 0 0 0;
   position: relative;
   height: 65.1vh;
   width: auto;
@@ -454,7 +520,8 @@ display: none;
 
 .blurred_sound_cover
 {
-  -webkit-filter: blur(10px);
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
   z-index: 10;
   /*display: none;*/
 }
@@ -550,15 +617,74 @@ display: none;
   display: inline-block;
 }
 
+.sound_informations a
+{
+  text-decoration: none;
+  color: #32B7A2;
+}
+
 .sound_informations h3
 {
   padding: 0 0.65vh 0 0.65vh;
   text-align: left;
-  font-size: 1.9vh;
-  font-family: 'open Sans';
+  font-size: 2vh;
+  line-height: 2vh;
+  font-family: 'Open Sans';
   font-weight: 300;
   color: white;
   overflow: hidden;
+}
+
+.sound_informations .curator
+{
+  margin-bottom: 0.5vh;
+}
+
+.sound_informations .curator .curatorText
+{
+  height: 3vh;
+  color: #32B7A2;
+  font-size: 2.5vh;
+}
+
+.curatorStuff
+{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  margin-top: 0.5vh;
+  margin-left: 1vh;
+}
+
+.curatorPicture
+{
+  height: 2.3vh;
+  width: 2.3vh;
+  border-radius: 1.15vh;
+}
+
+.curatorBadge
+{
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  border-radius: 9px;
+  border: 1px solid white;
+  background-color: black;
+  font-size: 14px;
+  line-height: 16px;
+  width: 18px;
+  height: 18px;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.25s ease-out;
 }
 
 /* Share dropdown Menu style */
@@ -603,7 +729,7 @@ display: none;
   -moz-border-radius: 1.3vh/1.3vh;
   -webkit-border-radius: 1.3vh 1.3vh;
   border-radius: 1.3vh/1.3vh;
-  z-index = 1;
+  z-index: 1;
   opacity: 0.2;
   transition: 0.2s;
  }
@@ -724,12 +850,6 @@ display: none;
 
 
 
-.slider
-{
-  width: 40000px;
-  text-align: left;
-  position : relative;
-}
  
 
 
@@ -846,7 +966,7 @@ display: none;
 {
   outline: none;
   box-shadow: none;
-  border: border: 1px solid rgba(83, 25, 49, 0.1);
+  border: 1px solid rgba(83, 25, 49, 0.1);
 }
 
 .submitButton:hover
@@ -973,6 +1093,14 @@ input[type="checkbox"] {
   .container
   {
     margin-top: 4vw;
+    position: relative;
+  }
+
+  .slider
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .sound_cover,
@@ -1027,7 +1155,6 @@ input[type="checkbox"] {
   #right_arrow
  {
   float : right;
-
   position: absolute;
   right: 0;
   top: 130px;

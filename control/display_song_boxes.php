@@ -1,7 +1,5 @@
 <?php
 include_once('../model/get_song_boxes.php');
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
 $i = 1;
 $playlist = array();
 ?>
@@ -46,6 +44,7 @@ while($songBoxes = $req->fetch())
 	$playlist[($i-1)] = array("artworkURL"=>$songBoxes[0],"artist"=> $songBoxes[1],"title"=> $songBoxes[2],"genre"=> $songBoxes[3],"pseudo"=> $songBoxes[4],"trackId"=> $songBoxes[5],"permalinkURL"=> $songBoxes[6],"likeNumber"=> $songBoxes[7], "playlistOrder"=> $songBoxes[8]);
 	$i++;
 };
+
 if($radioMode)
 {
 	$j = 1;
@@ -103,3 +102,4 @@ if($radioMode)
 			}
 			//console.log(songTable);
 </script>
+

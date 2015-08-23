@@ -67,7 +67,7 @@
 
 
 
-			<h2> Songs not treated: </h2>
+			<h2> New published songs: </h2>
 				<?php include_once('../control/display_untreated_songs.php'); ?>
 
 			</div>
