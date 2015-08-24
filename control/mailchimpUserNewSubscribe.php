@@ -23,7 +23,7 @@ if(isset($_POST['user_email']))
 else if(isset($_GET['user_email']))
 {
 	include('../vendor/drewm/mailchimp-api/MailChimp.php');
-	$MailChimp = new \Drewm\MailChimp('getenv('MAILCHIMP_API_KEY')');
+	$MailChimp = new \Drewm\MailChimp(getenv('MAILCHIMP_API_KEY'));
 	$result = $MailChimp->call('lists/subscribe', array(
 	                'id'                => '6b7043da5e',
 	                'email'             => array('email'=>$_GET['user_email']),
