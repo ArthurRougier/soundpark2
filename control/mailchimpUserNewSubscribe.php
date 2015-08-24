@@ -36,7 +36,7 @@ else if(isset($_GET['user_email']))
 	$resultDecoded = json_decode($result, true);
 	if($resultDecoded['status']='error')
 	{
-		header('Location: ../view/landing.php?error=1');
+		header('Location: ../view/landing.php?error=2');
 	}
 }
 
