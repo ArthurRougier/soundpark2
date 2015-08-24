@@ -68,9 +68,9 @@
  	<header id="mainHeader">
  		<h1>SOUNDPARK.FM</h1>
  		<ul>
- 			<li><a id="headerCuratorSignUp" href="#">Become a curator</a></li>
- 			<li><a id="headerLogIn" href="#">Log in</a></li>
- 			<li><a id="headerSignUp" data-scroll href="#page1">Sign up</a></li>
+ 			<li><a id="headerCuratorSignUp" href="#"><?php echo TXT_LANDING_HEADERCURATOR;?></a></li>
+ 			<li><a id="headerLogIn" href="#"><?php echo TXT_LANDING_HEADERLOGIN;?></a></li>
+ 			<li><a id="headerSignUp" data-scroll href="#page1"><?php echo TXT_LANDING_HEADERSIGNUP;?></a></li>
 		</ul>
 	</header>
 	<div id="page1" data-center-bottom="opacity: 1;" data--620-top="opacity: 0">
@@ -110,8 +110,8 @@
       </div>
       <div id="backroundOverlay"></div>
     	<div id="container1">
-    		<h1>We delight you with <span class="strong"> great new music</br></span> in the <span class="strong">simplest way.</span></h1>
-    		<a class="CTA" id="CTAP1" href="#">Give it a try!</a>
+    		<h1><?php echo TXT_LANDING_PAGEONEHEADLINE;?></h1>
+    		<a class="CTA" id="CTAP1" href="#"><?php echo TXT_LANDING_PAGEONECTA;?></a>
         </br>
         <a id="chevronLink" data-scroll href="#page2"><svg id="svg_down_chevron" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="36.3 26.1 30.3 16.4" enable-background="new 36.3 26.1 30.3 16.4" xml:space="preserve">
           <path id="down_chevron" fill="#FFFFFF" d="M50.8,41.5c0.1,0.1,0.3,0.2,0.5,0.2c0.2,0,0.4-0.1,0.5-0.2l13.1-13.1c0.3-0.3,0.3-0.7,0-1c-0.3-0.3-0.7-0.3-1,0L51.3,39.9L38.7,27.4c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.3,0.7,0,1L50.8,41.5z"/>
@@ -125,8 +125,8 @@
           <img src="../assets/pictures/macbook.png" data-at2x="../assets/pictures/macbook@2x.png" data-bottom="opacity:0" data--40-bottom="opacity: 1"/>
         </div>
      		<aside class="second" data--140-bottom="opacity: 0" data--180-bottom="opacity: 1">
-     			<h1>A <span class="strong">one-click</span> music </br>experience.</h1>
-     			<p>No complicated platform with shitloads of tracks and filtering options. </br><span class="jumpline">Just a slick player with one stream.</span></p> 
+     			<h1><?php echo TXT_LANDING_PAGETWOHEADLINE;?></h1>
+     			<p><?php echo TXT_LANDING_PAGETWOPARONE;?></br><span class="jumpline"><?php echo TXT_LANDING_PAGETWOPARTWO;?></span></p> 
      			<!--<a class="CTA" id="CTAP2" data-scroll href="#page1">Give it a try!</a>-->
         </aside>
 		</div
@@ -134,14 +134,14 @@
   <div id="page3">
     <div id="backroundOverlay"></div>
     <div id="container3" data-1950-end="opacity: 0; background-attachment: scroll;" data-1850-end="opacity: 1; background-attachment: fixed;">
-      <h1><span class="strong">Hand-curated</span> with love.</h1>
-      <p>Every monday morning, we release our new stream of music composed of tracks found by music lovers.</br> We believe in human taste, not in algorithms.</p>
-      <a class="CTA" id="CTAP3" data-scroll href="#page1">Become a curator</a>
+      <h1><?php echo TXT_LANDING_PAGETHREEHEADLINE;?></h1>
+      <p><?php echo TXT_LANDING_PAGETHREEPAR;?></p>
+      <a class="CTA" id="CTAP3" data-scroll href="#page1"><?php echo TXT_LANDING_PAGETHREECTA;?></a>
       </br>
     </div>
   </div>
   <div id="page4"
-    ><div id="headerPage4"><span class="helper"></span><h1>This week <span class="strong">most liked tracks:</span></h1> </div
+    ><div id="headerPage4"><span class="helper"></span><h1><?php echo TXT_LANDING_PAGESONGSHEADLINE;?></h1> </div
     <?php include_once('../control/display_landing_song_boxes.php'); ?>
       <?php 
         $req = $bdd->query('SELECT trackId, count(distinct like.ID) FROM song, playlist, `like` WHERE song.ID_playlist=playlist.ID AND like.ID_song = song.ID AND playlist.date_end >= NOW() AND playlist.date_start <= NOW() GROUP BY trackId order by count(distinct `like`.ID) DESC LIMIT 3');
@@ -162,7 +162,7 @@
          echo $curatorsNumber;
         ?>
       </div>
-      <h1> Curators today with us to delight you</h1>
+      <h1><?php echo TXT_LANDING_PAGECURATORSHEADLINE;?></h1>
       <?php
         include_once('../control/display_curators_photo.php');
       ?>
@@ -174,8 +174,8 @@
   <footer>
     <span class="helper"></span>
     <ul>
-      <li><a href="mailto:contact@soundpark.fm">Contact us</a></li>
-      <li><a href="mailto:jobs@soundpark.fm">Jobs</a></li>
+      <li><a href="mailto:contact@soundpark.fm"><?php echo TXT_LANDING_FOOTERCONTACT;?></a></li>
+      <li><a href="mailto:jobs@soundpark.fm"><?php echo TXT_LANDING_FOOTERJOBS;?></a></li>
     </ul>
     <div id="mixpanel">
       <span class="helper"></span>
