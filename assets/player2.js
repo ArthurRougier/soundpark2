@@ -107,7 +107,7 @@ var slider = function(id){
 
 SC.initialize({
 
-    client_id: "17f3a8c69cb36c955df82f908611e27e"
+    client_id: soundcloudApiKey
 });
 
 var onPlay = false;

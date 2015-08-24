@@ -8,7 +8,7 @@
 		{
 			try
 			{
-				$bdd = new PDO('mysql:host=localhost;dbname=soundpark2-staging', 'root', 'mWLbiJWD73');
+				$bdd = new PDO('mysql:host=localhost;dbname=soundpark2-staging', 'root', getenv('DATABASE_PASSWORD'));
 			}
 			catch (Exception $e)
 			{
@@ -19,7 +19,7 @@
 		{
 			try
 			{
-				$bdd = new PDO('mysql:host=localhost;dbname=soundpark2', 'root', 'mWLbiJWD73');
+				$bdd = new PDO('mysql:host=localhost;dbname=soundpark2', 'root', getenv('DATABASE_PASSWORD'));
 			}
 			catch (Exception $e)
 			{
