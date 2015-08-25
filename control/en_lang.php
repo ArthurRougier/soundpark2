@@ -33,7 +33,7 @@
 	//PAGEFOOOTER
 
 	define('TXT_LANDING_FOOTERCONTACT', 'Contact us');
-	define('TXT_LANDING_FOOTERCONTACT', 'Jobs');
+	define('TXT_LANDING_FOOTERJOBS', 'Jobs');
 
 	//PAGEHEADER
 	define('TXT_LANDING_HEADERCURATOR', 'Become a curator');
