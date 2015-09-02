@@ -2,7 +2,8 @@
 	include_once("../model/get_complete_track_list.php");				
 	if($trackList = $req->fetch())
 	{
-		echo('<form accept-charset="UTF-8" action="../control/modify_songs.php" class="modifyPlaylist" id="modifyPlaylist" method="post">');
+		echo('<form accept-charset="UTF-8" action="../control/modify_songs.php?source=admin_index.php" class="modifyPlaylist" id="modifyPlaylist" method="post">');
+		echo('<input name="commit" type="submit" value=" Update! " /></br></br>');
 		echo '<ol id="sortable">';
 		$index = 0;
 		
@@ -42,7 +43,6 @@
 		echo '</ol>';
 		echo('<input autofocus="autofocus" class="numberOfTracks" id="numberOfTracks" name="numberOfTracks" value="'.$index.'" type="hidden"/>');
 		echo('<input autofocus="autofocus" class="idPlaylist" id="idPlaylist" name="idPlaylist" value="'.$_GET['idPlaylist'].'" type="hidden"/>');
-		echo('<input name="commit" type="submit" value=" Update! " /></br></br>');
 		echo('<a href="../view/frommail.php?pwd=thomas.bouttefort@gmail.com&playlistId='.$playlistId.'"> Ecoute cette playlist </a>');
 
 	}

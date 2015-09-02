@@ -3,6 +3,7 @@ include_once("../model/get_treated_songs.php");
 	if($trackList = $req->fetch())
 	{
 		echo('<form accept-charset="UTF-8" action="../control/modify_curators_songs.php?page=On" class="modifyPlaylist" id="modifyPlaylist" method="post">');
+		echo('<input name="commit" type="submit" value=" Update! " /></br></br>');
 		echo '<ol id="sortable">';
 		$index = 0;
 		include_once('../model/get_curators.php');
@@ -35,7 +36,7 @@ include_once("../model/get_treated_songs.php");
 		} while($trackList = $req->fetch());	
 		echo '</ol>';
 		echo('<input autofocus="autofocus" class="numberOfTracks" id="numberOfTracks" name="numberOfTracks" value="'.$index.'" type="hidden"/>');
-		echo('<input name="commit" type="submit" value=" Update! " /></br></br>');
+		
 
 
 	}
