@@ -55,7 +55,8 @@ $_SESSION['id_curator']=$resultat[0];
 				<h2>Email Settings</h2>
 				<h3> Your email address can be used to sign in to Soundpark as well as facebook login. It is also where we will send you updates you choose below. </h3>
 					<form accept-charset="UTF-8" action="../control/change_user_email.php" name="changeEmail" id="changeEmail" method="post">
-						<input value="<?php include_once('../control/display_user_email.php');?>" id="email" name="email"  type="email"/>
+						<input value="<?php include_once('../control/display_user_email.php');?>" id="email" name="new_user_email"  type="email"/>
+						<input type="hidden" value="<?php echo $userEmail; ?>" name="user_email">
 						<button class="submitButton" alt="submit"> SAVE </button>
 					</form>
 			</div>

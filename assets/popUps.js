@@ -40,6 +40,10 @@ function curatorPopup()
 	darkOverlay.appendChild(helperDiv);
 	darkOverlay.appendChild(curatorForm);
 
+	closeIcon.addEventListener('click', function(){
+		darkOverlay.parentNode.removeChild(darkOverlay);
+	}, false);
+
 
 	document.body.appendChild (darkOverlay);
 }
