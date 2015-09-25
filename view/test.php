@@ -83,8 +83,8 @@
     'https://www.youtube.com/watch?v=JrlfFTS9kGU'];
 
     var playerTest = new Player(trackListTest, '#container');
-    playerTest.getMasterJson();
-    playerTest.createTenFirstTrackBoxes();
+    //playerTest.getMasterJson();
+    //playerTest.createTenFirstTrackBoxes();
      
     </script>
 </html>

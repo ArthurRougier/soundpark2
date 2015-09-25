@@ -12,3 +12,9 @@ mysql_error.log
 mysql_error.log
 
 apache_error.log
+
+*.log
+
+apache_error.log
+
+mysql_error.log

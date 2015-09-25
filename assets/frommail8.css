@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
 body
 {
   text-align: center;
-  background: url(pictures/backgroundGirl.jpg) no-repeat center center fixed;
+  background: url(pictures/curatorSoundDropPage.jpg) no-repeat center center fixed;
   -webkit-background-size: cover; /* pour Chrome et Safari */
   -moz-background-size: cover; /* pour Firefox */
   -o-background-size: cover; /* pour Opera */
@@ -195,7 +195,7 @@ h3 {
 #minus_one
 {
   display: inline-block;
-  background: url(pictures/cross_dislike.png);
+  background: url(pictures/cross_dislike.png) no-repeat;
   -webkit-background-size: contain; /* pour Chrome et Safari */
   -moz-background-size: contain; /* pour Firefox */
   -o-background-size: contain; /* pour Opera */
@@ -205,7 +205,7 @@ h3 {
 #plus_one
 {
   display: inline-block;
-  background: url(pictures/heart_like.png);
+  background: url(pictures/heart_like.png) no-repeat;
   -webkit-background-size: contain; /* pour Chrome et Safari */
   -moz-background-size: contain; /* pour Firefox */
   -o-background-size: contain; /* pour Opera */
@@ -218,7 +218,7 @@ h3 {
 #minus_one:hover
 {
   cursor: pointer;
-  background: url(pictures/cross_dislike.png);
+  background: url(pictures/cross_dislike.png) no-repeat;
   width:6.52vh;
   height:6.52vh;
   -webkit-background-size: contain; /* pour Chrome et Safari */
@@ -229,7 +229,7 @@ h3 {
 #plus_one:hover
 {
   cursor: pointer;
-  background: url(pictures/heart_like_hover.png);
+  background: url(pictures/heart_like_hover.png) no-repeat;
   width:6.52vh;
   height:6.52vh;
   -webkit-background-size: contain; /* pour Chrome et Safari */

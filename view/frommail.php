@@ -26,6 +26,7 @@
 
     <script src="http://connect.soundcloud.com/sdk.js"></script>
     <script type="text/javascript" src="../assets/jquery.js"></script>
+     <script type="text/javascript" src="../assets/jquery.blockUI.js"></script>
     <script type="text/javascript" src="../assets/cookies.js"></script>
     <script type="text/javascript" src="../assets/date.js"></script>
     <script type="text/javascript" src="../assets/AJAX/update_player_position.js"></script>
@@ -107,12 +108,13 @@
 		<div class="container" id="galerie"> 
 			
 			<div id="left_arrow">
-				<input type="button" id="left_arrow_icon" class="rslides_nav rslides1_nav prev" onclick="previousTrack()"/>
+				<input type="button" id="left_arrow_icon" class="rslides_nav rslides1_nav prev"/>
 				<div id="previousHandler" class="rslides_nav rslides1_nav prev"></div>
 			</div>
 			
 			<div class="slider">
 			<?php 
+				
 				include_once('../model/get_current_playlist_id.php'); // renvoi $currentPlaylistId
 				if(isset($_GET['playlistId']))
 				{
@@ -122,11 +124,11 @@
 				{
 					$playlistId = $currentPlaylistId;
 				}
-				include_once('../control/display_song_boxes.php'); 
+				//include_once('../control/display_song_boxes.php'); 
 			?>
 			</div>
 			<div id="right_arrow">
-				<input type="button" id="right_arrow_icon" class="rslides_nav rslides1_nav next" onclick="nextTrack()"/>
+				<input type="button" id="right_arrow_icon" class="rslides_nav rslides1_nav next"/>
 				<div id="nextHandler" class="rslides_nav rslides1_nav next"></div>
 			</div>
 			
@@ -139,7 +141,7 @@
 					<input type="button" id="minus_one" value="-1" onclick="addDislike()" align="center"/>
 					<span class="likeText">Forget it</span>
 				</div>
-				<input type="button" class="play" id="play" value="pause"/>
+				<input type="button" class="play" id="play" value="play"/>
 				<div id="like">
 					<input type="button" id="plus_one" value="+1" onclick="addLike()" align="center"/>
 					<span class="likeText">Like it</span>
@@ -157,26 +159,25 @@
 			</div>
 		</footer>		
 </body>
-    <script type="text/javascript" src="../assets/player2.js"></script>
+    <script type="text/javascript" src="../assets/player3.js"></script>
     <script type="text/javascript" src="../assets/popUps.js"></script>
     <script type="text/javascript" src="../assets/on_load.js"></script>
-    <script type="text/javascript" src="../assets/mixpanel_logs.js"></script>
-    <script src="../assets/responsiveslides.js"></script>
+    <!--<script type="text/javascript" src="../assets/mixpanel_logs.js"></script>-->
     <script type="text/javascript"></script>
 
     <script>
-      $(function() {
-        $(".rslides").responsiveSlides({
-          auto: false,             // Boolean: Animate automatically, true or false
-          speed: 750,            // Integer: Speed of the transition, in milliseconds
-          nav: true,             // Boolean: Show navigation, true or false
-          random: false,          // Boolean: Randomize the order of the slides, true or false
-          pause: false,           // Boolean: Pause on hover, true or false
-          namespace: "rslides",   // String: Change the default namespace used
-          before: function(){},   // Function: Before callback
-          after: function(){}     // Function: After callback
-        });
-      });
+      // $(function() {
+      //   $(".rslides").responsiveSlides({
+      //     auto: false,             // Boolean: Animate automatically, true or false
+      //     speed: 750,            // Integer: Speed of the transition, in milliseconds
+      //     nav: true,             // Boolean: Show navigation, true or false
+      //     random: false,          // Boolean: Randomize the order of the slides, true or false
+      //     pause: false,           // Boolean: Pause on hover, true or false
+      //     namespace: "rslides",   // String: Change the default namespace used
+      //     before: function(){},   // Function: Before callback
+      //     after: function(){}     // Function: After callback
+      //   });
+      // });
 
 
     </script>
@@ -193,6 +194,37 @@
 	        document.getElementById("dropdownCheckbox").checked = false;
 	    }
 	});
+
+	SC.initialize({
+	    client_id: "17f3a8c69cb36c955df82f908611e27e"
+	});
+
+    var trackListTest = ['https://soundcloud.com/nicolashaelg/nicolas-haelg-alfie-rhodes-callin-your-name-feat-syren-1',
+    'https://www.youtube.com/watch?v=izkqPdVAdL4',
+  	'https://soundcloud.com/thefallingapple/tracy-chapman-fast-car-bauke-top-remix',
+   	'https://www.youtube.com/watch?v=JrlfFTS9kGU',
+   	'https://www.youtube.com/watch?v=h_aLbagloMk',
+   	'https://soundcloud.com/chris-meid/chris-meid-bergershaqiri-eye-of-the-tiger-ft-drew-tabor',
+   	'https://www.youtube.com/watch?v=BBtLMLQfiRo',
+   	'https://soundcloud.com/vaguewave/morcheeba-enjoy-the-ride-vague-wave-remix',
+   	'https://soundcloud.com/probcause/probcause-gramatik-back-to-the-future',
+   	'https://www.youtube.com/watch?v=jdYJf_ybyVo',
+   	'https://soundcloud.com/artifakts/hot-like-sauce-remix',
+   	'https://www.youtube.com/watch?v=hc9VXLtgw5g',
+   	'https://www.youtube.com/watch?v=ESXgJ9-H-2U',
+   	'https://www.youtube.com/watch?v=OPf0YbXqDm0',
+   	'https://www.youtube.com/watch?v=4HLY1NTe04M',
+   	'https://soundcloud.com/alexcruz/alex-cruz-ft-anna-renee-melle-kuil-haunting-original-vocal-mix',
+   	'https://soundcloud.com/robotaki/autograf-dream-robotaki-remix',
+   	'https://soundcloud.com/fdvm/fdvm-feat-josh-wantie-brightest-light'
+   	];
+
+
+	var arrowSelectors 			= ["#left_arrow", "#right_arrow"];
+	var likeDislikeSelectors 	= ["#plus_one", "#minus_one"];
+	var playerTest 				= new Player(trackListTest, '.slider', '.play', arrowSelectors);
+	var likerTest 				= new Liker(likeDislikeSelectors, playerTest);
+
 
 	// var curatorPics = document.querySelectorAll('.curatorPicture');
 	// for(var indexCuratorPicture = 0 ; indexCuratorPicture <= curatorPics.length ; indexCuratorPicture++)

@@ -1,5 +1,6 @@
 <?php
-	setcookie('sessionType', '', time() + 31*24*3600,  "/", null, false, true);
-	setcookie('currentSession', '', time() + 31*24*3600,  "/", null, false, true);
-	echo($_COOKIE['sessionType']);
+	echo(getenv('ENVIRONMENT'));
+	/*echo(getenv('MAILCHIMP_API_KEY'));
+	echo(getenv('SOUNDCLOUD_API_KEY'));
+	echo(getenv('DATABASE_PASSWORD'));*/
 
