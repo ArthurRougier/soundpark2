@@ -3,6 +3,7 @@ include_once("../model/get_treated_songs.php");
 	if($trackList = $req->fetch())
 	{
 		echo('<form accept-charset="UTF-8" action="../control/modify_curators_songs.php?page=On" class="modifyPlaylist" id="modifyPlaylist" method="post">');
+		echo('<input name="commit" type="submit" value=" Update! " /></br></br>');
 		echo '<ol id="sortable">';
 		$index = 0;
 		include_once('../model/get_curators.php');
@@ -30,12 +31,12 @@ include_once("../model/get_treated_songs.php");
 				$htmlSelectForm = $htmlSelectForm . "</select>";
 				echo $htmlSelectForm;
 				include('../control/display_tag_options.php');
-				echo('<a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'">Add</a></br><a target="_blank" href="'.$trackList[8].'">Link</a></br><a href="../control/delete_track.php?idSong='.$trackList[0].'&source=admin_songs_storage.php">Delete</a></li>');
+				echo('<a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'&source=admin_songs_storage.php">Add</a></br><a target="_blank" href="'.$trackList[8].'">Link</a></br><a href="../control/delete_track.php?idSong='.$trackList[0].'&source=admin_songs_storage.php">Delete</a></li>');
 				$index++;
 		} while($trackList = $req->fetch());	
 		echo '</ol>';
 		echo('<input autofocus="autofocus" class="numberOfTracks" id="numberOfTracks" name="numberOfTracks" value="'.$index.'" type="hidden"/>');
-		echo('<input name="commit" type="submit" value=" Update! " /></br></br>');
+		
 
 
 	}

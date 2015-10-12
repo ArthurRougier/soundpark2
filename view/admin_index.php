@@ -69,7 +69,7 @@
 			}
 			else if(!isset($_GET['idPlaylist']))
 			{
-				header("Location: ../view/create_playlist.php?idPlaylist=".$currentPlaylistId);
+				header("Location: ../view/admin_index.php?idPlaylist=".$currentPlaylistId);
 			}
 			?>
 

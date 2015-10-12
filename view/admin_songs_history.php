@@ -57,4 +57,41 @@
 		</footer>		
 </body>
 <script type="text/javascript" src="../assets/player_bo.js"></script>
+<script type="text/javascript">
+
+	var menus = document.getElementsByClassName('optionsMenuBo');
+	var optionLinks = document.getElementsByClassName('optionLink');
+	
+	for (var indexMenus = 0 ; indexMenus < optionLinks.length ; indexMenus++)
+	{
+		optionLinks[indexMenus].addEventListener('click', function() 
+	    { 
+	    	if(Number(this.id.slice(-2))==this.id.slice(-2))
+	    	{
+				var indexMenusNew = this.id.slice(-2); 
+	    	}
+	    	else
+	    	{
+	    		var indexMenusNew = this.id.slice(-1); 
+	    	}
+	    	for (var indexMenusAll = 0 ; indexMenusAll < optionLinks.length ; indexMenusAll++)
+				{
+					menus[indexMenusAll].style.display="none";
+				}
+	    	console.log(indexMenusNew);
+	    	menus[indexMenusNew].style.display="inline-block";
+		}, false);
+	}
+	$('body').click(function(e) 
+	{
+		if ($(e.target).closest('.optionLink').length === 0) 
+		{
+		   for (var indexMenusAll = 0 ; indexMenusAll < optionLinks.length ; indexMenusAll++)
+				{
+					menus[indexMenusAll].style.display="none";
+				}
+		}
+	});
+	
+</script>
 </html>
