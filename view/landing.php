@@ -17,7 +17,7 @@
 
    	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <meta property="og:site_name" content="Soundpark.fm"/>
-    <meta property="og:url" content="http://soundpark.fm" />
+    <meta property="og:url" content="http://soundpark.fm/view/landing.php" />
     <meta property="fb:app_id" content="623682164399249" />
     <meta property="og:title" content="<?php echo TXT_LANDING_HEADTITLE; ?>" />
     <meta property="og:description" content="<?php echo TXT_LANDING_HEADDESCRIPTION; ?>" />
