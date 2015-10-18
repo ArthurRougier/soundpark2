@@ -13,7 +13,7 @@ include_once("../model/get_used_songs.php");
 		{	
 				echo('<li id="li'.$index.'"><div id="playPauseIcon'.$index.'" class="playPauseIcon play"></div><span>Title : </span><input autofocus="autofocus" class="song_title" id="song_title'.$index.'" name="song_title'.$index.'" value="'.$trackList[3].'" type="text" /> <span>  Artist : </span><input autofocus="autofocus" id="song_artist'.$index.'" name="song_artist'.$index.'" value="'.$trackList[4].'" type="text" /> <span>  Playlist : </span><input autofocus="autofocus" class="song_playlist" id="song_playlist'.$index.'" name="song_playlist'.$index.'" value="'.$trackList[2].'" type="text" />');
 				$j = 0;
-				$htmlSelectForm ="<!--<label for='idCurator".$index."'>  Curator : </label>--><select name='idCurator".$index."' id='idCurator".$index."'>";
+				/*$htmlSelectForm ="<!--<label for='idCurator".$index."'>  Curator : </label>--><select name='idCurator".$index."' id='idCurator".$index."'>";
 				while($j<$i) //i is defined in get_curator and corresponds to the number of curators we have
 				{
 
@@ -27,7 +27,7 @@ include_once("../model/get_used_songs.php");
 					}	
 					$j++;
 				}
-				$htmlSelectForm = $htmlSelectForm . "</select>";
+				$htmlSelectForm = $htmlSelectForm . "</select>";*/
 				echo $htmlSelectForm;
 				include('../control/display_tag_options.php');
 				
