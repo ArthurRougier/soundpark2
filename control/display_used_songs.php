@@ -31,7 +31,7 @@ include_once("../model/get_used_songs.php");
 				echo $htmlSelectForm;
 				include('../control/display_tag_options.php');
 				
-				echo '<input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/>';
+				echo '<input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[5].'" type="hidden"/>';
 				echo('<input autofocus="autofocus" class="numberOfTracks" id="numberOfTracks" name="numberOfTracks" value="'.$index.'" type="hidden"/>');
 
 				echo('<a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a href="../control/add_an_old_track_to_playlist.php?idSong='.$trackList[0].'&source=admin_songs_history.php">Add</a></br><a target="_blank" href="'.$trackList[8].'">Link</a></li>');

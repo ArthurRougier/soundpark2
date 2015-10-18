@@ -31,6 +31,7 @@ include_once("../model/get_treated_songs.php");
 				$htmlSelectForm = $htmlSelectForm . "</select>";
 				echo $htmlSelectForm;
 				include('../control/display_tag_options.php');
+				echo '<input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[7].'" type="hidden"/>';
 				echo('<a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'&source=admin_songs_storage.php">Add</a></br><a target="_blank" href="'.$trackList[8].'">Link</a></br><a href="../control/delete_track.php?idSong='.$trackList[0].'&source=admin_songs_storage.php">Delete</a></li>');
 				$index++;
 		} while($trackList = $req->fetch());	

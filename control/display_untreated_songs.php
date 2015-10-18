@@ -37,9 +37,9 @@ include_once("../model/get_untreated_songs.php");
 
 				//echo('<a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'">Add</a></br><a target="_blank" href="'.$trackList[8].'">Link</a></br><a href="../control/store_track.php?idSong='.$trackList[0].'&source=admin_songs_new.php">Store</a></li>');
 				//echo '<input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[7].'" type="hidden"/>';
-
+				echo '<input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[7].'" type="hidden"/>';
 				echo('<a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'&source=admin_songs_new.php">Add</a></br><a target="_blank" href="'.$trackList[8].'">Link</a></br><a href="../control/store_track.php?idSong='.$trackList[0].'&source=admin_songs_new.php">Store</a></li>');
-				echo '<input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/>';
+				
 
 				//echo('   <a href="../control/add_proposed_track_to_playlist.php?idSong='.$trackList[0].'">Add</a>  -   <a target="_blank" href="'.$trackList[8].'">Link</a></br><input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[7].'" type="hidden"/></li>');
 				$index++;
