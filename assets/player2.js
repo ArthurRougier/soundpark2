@@ -1,9 +1,9 @@
 
 /* UI part of player : SLIDER */
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 	s = new slider("#galerie");
-});
+});*/
 
 
 
@@ -26,7 +26,7 @@ var slider = function(id){
 	this.precParent = this.div.find('#left_arrow');
 	this.suivParent = this.div.find('#right_arrow');
 	//alert(this.suiv.html());
-	this.saut=(this.lengthCach)+6;
+	this.saut=(this.lengthCach)+5;
 	this.steps = Math.ceil(this.largeur/this.saut);
 	//alert(this.steps);
 	this.courant = 0;
@@ -114,13 +114,18 @@ var onPlay = false;
 var position = 0;
 
 var trackIds = document.getElementsByClassName('trackIds');
-var songTable = [];
+
+if(position == 0)
+{
+	document.getElementById('left_arrow').style.visibility = "hidden";
+}
+/*var songTable = [];
 
 
 for(var i = 0 ; i<trackIds.length ; i++)
 {
 	songTable[i] = trackIds[i].innerHTML;
-}
+}*/
 //alert(songTable.length);
 
 var currentTrack;
@@ -152,15 +157,14 @@ $('#play').click(function() //Gestion du bouton de lecture/pause en toggle
 });
 
 
-function updateCurrentTrack(trackId) 
+function updateCurrentTrack(trackId, comeFromPrevious) 
 {
 	
 	SC.stream("/tracks/"+trackId,
 		{
 			onfinish: function()
 			{ 
-				nextTrack();
-				record_automatic_next();
+				nextTrack(true, false);
 				var playerPositionLogs = document.getElementById('player_position').innerHTML;
 				var curatorLogs = document.getElementsByClassName('curator')[(playerPositionLogs - 1)].firstChild.lastChild.innerHTML.split(":")[1];
 				//console.log(curatorLogs);
@@ -175,66 +179,75 @@ function updateCurrentTrack(trackId)
 			}, 
 			onload: function()
 			{
-				var playerPosition = document.getElementById('player_position').innerHTML;
-				for(var index = 1 ; index < (currentTrack.durationEstimate/1000) ; index++)
+				if (this.readyState == 2) {
+				       //console.log('coucoupb');
+				       //console.log(comeFromPrevious);
+				       comeFromPrevious ? previousTrack(true) :  nextTrack(false, true);
+				     }
+				else
 				{
-					currentTrack.onPosition(index*1000, function(eventPosition)
+					var playerPosition = document.getElementById('player_position').innerHTML;
+					//console.log('loaded');
+					for(var index = 1 ; index < (currentTrack.durationEstimate/1000) ; index++)
 					{
-						//console.log(this.id+' reached '+eventPosition);
-
-						/* On change le formatage du compteur temps ici pour afficher mn:sec */
-
-						var minutes = (eventPosition / 60000) | (0);
-						var seconds = eventPosition/1000 - minutes * 60;
-						if(seconds < 10)
+						currentTrack.onPosition(index*1000, function(eventPosition)
 						{
-							seconds = '0'+seconds;
-						}
-						if(!minutes)
-						{
-							document.getElementById('track_position'+ playerPosition).innerHTML = seconds;
-						}
-						else
-						{
-							document.getElementById('track_position'+ playerPosition).innerHTML = minutes + ':' + seconds;
-						}
+							//console.log(this.id+' reached '+eventPosition);
 
-						/* END On change le formatage du compteur temps ici pour afficher mn:sec */
+							/* On change le formatage du compteur temps ici pour afficher mn:sec */
 
-						/*On fait avancer l'overlay*/
-						var coverWidth = document.getElementById('sound_cover'+ playerPosition).offsetWidth;
-						var step = (eventPosition/1000*coverWidth/(currentTrack.durationEstimate/1000));
-						document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(step+"px");
-						document.getElementById('cover_overlay'+ playerPosition).style.width=((step)+"px");
-						/*END On fait avancer l'overlay*/
-					});
-				}
+							var minutes = (eventPosition / 60000) | (0);
+							var seconds = eventPosition/1000 - minutes * 60;
+							if(seconds < 10)
+							{
+								seconds = '0'+seconds;
+							}
+							if(!minutes)
+							{
+								document.getElementById('track_position'+ playerPosition).innerHTML = seconds;
+							}
+							else
+							{
+								document.getElementById('track_position'+ playerPosition).innerHTML = minutes + ':' + seconds;
+							}
 
-				/* Position navigation with click */
+							/* END On change le formatage du compteur temps ici pour afficher mn:sec */
 
-				var playerPosition = document.getElementById('player_position').innerHTML;
-				var TranparentOverlayDiv = document.getElementById('transparent_overlay'+ playerPosition);
-				TranparentOverlayDiv.addEventListener('click', function (e) 
-				{
-						clearDropdownMenu();
-						durationBeforeJump = currentTrack.position;
-						var mousePos = {'x': e.layerX, 'y': e.layerY};
-						//console.log(mousePos['x']);
-						var aimedPositionMs = (mousePos['x']*(currentTrack.durationEstimate/coverWidth));
-						currentTrack.setPosition(aimedPositionMs);
-						document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(mousePos['x']+"px");
-						document.getElementById('cover_overlay'+ playerPosition).style.width=(mousePos['x']+"px");
-						mixpanel.track("Progression bar hit", {
-							"fullUrl": window.location.href,
-							"trackId": getCurrentTrackId(),
-							"durationBeforeJump": durationBeforeJump,
-							"jumpedTo": currentTrack.position
+							/*On fait avancer l'overlay*/
+							var coverWidth = document.getElementById('sound_cover'+ playerPosition).offsetWidth;
+							//console.log(document.getElementById('blurred_sound_cover_container'+ playerPosition));
+							var step = (eventPosition/1000*coverWidth/(currentTrack.durationEstimate/1000));
+							document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(step+"px");
+							document.getElementById('cover_overlay'+ playerPosition).style.width=((step)+"px");
+							/*END On fait avancer l'overlay*/
 						});
-		
-				}, false);
-					
+					}
 
+					/* Position navigation with click */
+
+					var playerPosition = document.getElementById('player_position').innerHTML;
+					var TranparentOverlayDiv = document.getElementById('transparent_overlay'+ playerPosition);
+					TranparentOverlayDiv.addEventListener('click', function (e) 
+					{
+							//clearDropdownMenu();
+							durationBeforeJump = currentTrack.position;
+							var mousePos = {'x': e.layerX, 'y': e.layerY};
+							//console.log(mousePos['x']);
+							var aimedPositionMs = (mousePos['x']*(currentTrack.durationEstimate/coverWidth));
+							currentTrack.setPosition(aimedPositionMs);
+							document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(mousePos['x']+"px");
+							document.getElementById('cover_overlay'+ playerPosition).style.width=(mousePos['x']+"px");
+							mixpanel.track("Progression bar hit", {
+								"fullUrl": window.location.href,
+								"trackId": getCurrentTrackId(),
+								"durationBeforeJump": durationBeforeJump,
+								"jumpedTo": currentTrack.position
+							});
+					
+					}, false);
 					/* END position navigation with click */
+				}
+						
 			}
 		}, 
 			function(sound)
@@ -276,20 +289,32 @@ function pauseCurrentTrack()
 	currentTrack.pause();
 }
 
-function nextTrack()
+function nextTrack(automaticNext, deadSong)
 {
-	clearDropdownMenu();
+	//clearDropdownMenu();
 	currentTrack.stop();
 	onPlay=false;
 	if(position<(songTable.length-1))
 	{
 		position++;
+		document.getElementById('left_arrow').style.visibility = "visible";
+		document.getElementById('left_arrow').style.opacity = "1";
 		document.getElementById('blurred_sound_cover_container'+ position).style.width="0";
 		document.getElementById('cover_overlay'+ position).style.width="0";
-		updateCurrentTrack(songTable[position]);
+		updateCurrentTrack(songTable[position], false);
 		updatePlayerPosition(songTable[position]);
-		s.slideRight();
-		getLikeState();
+		//s.slideRight();
+		if(automaticNext || deadSong)
+		{
+			$('#nextHandler').trigger('click');
+			automaticNext ? getLikeState(automaticNextOnCallback) : console.log('deadOnly');
+		}
+		else
+		{
+			getLikeState();
+			//console.log('nope');
+		}
+		
 		//g.disappear();
 	}
 	else
@@ -299,19 +324,27 @@ function nextTrack()
 	
 }
 
-function previousTrack()
+function previousTrack(deadSong)
 {
-	clearDropdownMenu();
+	//clearDropdownMenu();
 	currentTrack.stop();
 	onPlay=false;
 	document.getElementById('blurred_sound_cover_container'+ (position+1)).style.width="0";
 	document.getElementById('cover_overlay'+ (position+1)).style.width="0";
 	position--;
-	updateCurrentTrack(songTable[position]);
+	updateCurrentTrack(songTable[position], true);
 	updatePlayerPosition(songTable[position]);
-	s.slideLeft();
-	//g.disappear();
 	getLikeState();
+	if(position == 0)
+	{
+		document.getElementById('left_arrow').style.visibility = "hidden";
+		document.getElementById('left_arrow').style.opacity = "0";
+	}
+	if(deadSong)
+	{
+		$('#previousHandler').trigger('click');
+		//console.log('prevClick');
+	}
 }
 
 function resetPositionOverlay()
@@ -334,13 +367,14 @@ function getCurrentTrackId()
 /* Track like state for a given user */
 
 
-function getLikeState()
+function getLikeState(callback)
 {
 	xhr = new XMLHttpRequest();
 	xhr2 = new XMLHttpRequest();
-	var trackId = getCurrentTrackId(); // Renvoit le TrackID en lecture, fonction dans player2.js
+	var trackId = getCurrentTrackId();
+	//console.log(trackId); // Renvoit le TrackID en lecture, fonction dans player2.js
     var currentUser = getCookie('current_user') //user.email
-    xhr.open('GET', '../model/get_like_state.php?trackId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été liké par currentUser
+    
     xhr.onreadystatechange = function() 
 	{ // On gère ici une requête asynchrone
 
@@ -362,10 +396,13 @@ function getLikeState()
                 likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like.png)";
                 likeStamp.style.backgroundSize="contain";
                 likeStamp.style.backgroundRepeat="no-repeat";
-                //console.log('youou');
                 xhr2.open('GET', '../model/get_dislike_state.php?trackId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été disliké par currentUser
                 xhr2.send(null)
             }
+        }
+        else
+        {
+        	//console.log(xhr.readyState + ' - status = ' + xhr.status );
         }
     };
 
@@ -381,17 +418,40 @@ function getLikeState()
 	        	dislikeStamp.style.background="url(http://soundpark.fm/assets/pictures/cross_dislike.png)";
 	        	dislikeStamp.style.backgroundSize="contain";
 	        	dislikeStamp.style.backgroundRepeat="no-repeat";
+	        	if(callback)
+	        	{
+	        		callback(true);
+	        	}
+	        	
         	}
         	else
         	{		
 	        	dislikeStamp.style.background="url(http://soundpark.fm/assets/pictures/cross_dislike.png)";
 	        	dislikeStamp.style.backgroundSize="contain";
 	        	dislikeStamp.style.backgroundRepeat="no-repeat";
+	        	if(callback)
+	        	{
+	        		callback(true);
+	        	}
         	}	
         }
     };
 
+    xhr.open('GET', '../model/get_like_state.php?trackId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été liké par currentUser
     xhr.send(null); // La requête est prête, on envoie tout !
+}
+
+function automaticNextOnCallback(result)
+{
+  if (result) 
+  {
+    record_automatic_next();
+    //console.log('yes');
+  } 
+  else 
+  {
+    // Cancel
+  }
 }
 
 
@@ -401,7 +461,7 @@ function getLikeState()
 var indexDropdownMenu = 0;
 var toggledDropdownMenu = false;
 
-var fill = function(){
+/*var fill = function(){
 
 	var playerPosition = document.getElementById('player_position').innerHTML;
 	var dots = document.querySelectorAll('#dropdown-menu' + playerPosition + ' .circle');
@@ -537,10 +597,10 @@ var fill = function(){
 	        }
      	}, 30)
     }
-}
+}*/
 
 
-function clearDropdownMenu()
+/*function clearDropdownMenu()
 {
 	var dots = document.getElementsByClassName('circle');
 	for(index = 0 ; index < dots.length ; index++)
@@ -611,14 +671,14 @@ function clearDropdownMenu()
 				        }, 30) 	
 	 			}
 	 			unfillSocialIcons();   
-}
+}*/
 
 /*Keyboard shortcuts management */
 
 document.addEventListener('keydown', function(e) 
 {
    	
-    if(e.keyCode == 32)
+    if(e.keyCode == 32) //spacebar
     {
     	mixpanel.track("Shortcut Play/Pause", 
 		{
@@ -650,24 +710,29 @@ document.addEventListener('keydown', function(e)
 		   	}
 	   	}
     }
-    else if (e.keyCode == 39) 
+    /*else if (e.keyCode == 39) //next
 	{
 		nextTrack();
+		$('#nextHandler').trigger('click');
 		mixpanel.track("Shortcut Next", 
 		{
 			"fullUrl": window.location.href
 		});
 	}
-	else if (e.keyCode == 37) 
+	else if (e.keyCode == 37)  //previous
 	{
 		mixpanel.track("Shortcut Previous", 
 		{
 			"fullUrl": window.location.href
 		});
+		
 		previousTrack();
-	}
+		$('#previousHandler').trigger('click');
+		
+	}*/
 
 }, false);
+
 
 
 
