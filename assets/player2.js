@@ -129,8 +129,12 @@ for(var i = 0 ; i<trackIds.length ; i++)
 //alert(songTable.length);
 
 var currentTrack;
+
+console.log('is playlist well loaded: '+playlistReady);
+
 updateCurrentTrack(songTable[0]);
 getLikeState();
+
 var coverWidth = document.getElementById('sound_cover1').offsetWidth;
 
 
