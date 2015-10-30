@@ -103,6 +103,7 @@ if($radioMode)
 			for(var i = 0 ; i<songTableComplete.length ; i++)
 			{
 				songTable[i] = songTableComplete[i].trackId;
+				console.log('trackList well loaded');
 			}
 			//console.log(songTable);
 </script>
