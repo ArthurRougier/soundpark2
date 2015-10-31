@@ -163,7 +163,7 @@ $('#play').click(function() //Gestion du bouton de lecture/pause en toggle
 
 function updateCurrentTrack(trackId, comeFromPrevious) 
 {
-	
+	console.log('updateCurrentTrack with trackId'+ trackId);
 	SC.stream("/tracks/"+trackId,
 		{
 			onfinish: function()
@@ -256,6 +256,8 @@ function updateCurrentTrack(trackId, comeFromPrevious)
 		}, 
 			function(sound)
 			{
+
+				console.log('Soundcloud loaded song:'+ sound);
 				currentTrack = sound;
 				if ($('#play').val() == "pause") 
 				{	

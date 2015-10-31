@@ -100,13 +100,13 @@ if($radioMode)
 <script>
 			var songTableComplete = <?php echo(json_encode($playlist)); ?>;
 			var songTable = [];
-			playlistReady = false;
+			var playlistReady = false;
 			for(var i = 0 ; i<songTableComplete.length ; i++)
 			{
 				songTable[i] = songTableComplete[i].trackId;
-				if (i == (songTableComplete.length))
+				if (i == (songTableComplete.length - 1))
 				{
-					playlistReady = true;
+					playlistReady = true; 
 				}
 			}
 			//console.log(songTable);
