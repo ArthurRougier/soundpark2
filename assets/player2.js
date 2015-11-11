@@ -221,6 +221,7 @@ function updateCurrentTrack(trackId, comeFromPrevious)
 							var coverWidth = document.getElementById('sound_cover'+ playerPosition).offsetWidth;
 							//console.log(document.getElementById('blurred_sound_cover_container'+ playerPosition));
 							var step = (eventPosition/1000*coverWidth/(currentTrack.durationEstimate/1000));
+
 							document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(step+"px");
 							document.getElementById('cover_overlay'+ playerPosition).style.width=((step)+"px");
 							/*END On fait avancer l'overlay*/
