@@ -1,0 +1,6 @@
+[
+	{"songId": 1, "curatorId": 5, "curatorPseudo": "alberto", "curatorLink": "", "curatorPic": "", "treated": 0, "url": "https://soundcloud.com/nicolashaelg/nicolas-haelg-alfie-rhodes-callin-your-name-feat-syren-1", 		"occation1": "soiree", "occation2": "foot", "genre": "punk", "playlistOrder": 1},
+    {"songId": 3, "curatorId": 5, "curatorPseudo": "alberto", "curatorLink": "", "curatorPic": "", "treated": 0, "url": "https://soundcloud.com/thefallingapple/tracy-chapman-fast-car-bauke-top-remix",                        "occation1": "soiree", "occation2": "foot", "genre": "punk", "playlistOrder": 3},
+    {"songId": 6, "curatorId": 5, "curatorPseudo": "alberto", "curatorLink": "", "curatorPic": "", "treated": 0, "url": "https://soundcloud.com/chris-meid/chris-meid-bergershaqiri-eye-of-the-tiger-ft-drew-tabor", 		"occation1": "soiree", "occation2": "foot", "genre": "punk", "playlistOrder": 6},
+    {"songId": 9, "curatorId": 5, "curatorPseudo": "alberto", "curatorLink": "", "curatorPic": "", "treated": 0, "url": "https://soundcloud.com/probcause/probcause-gramatik-back-to-the-future", 							"occation1": "soiree", "occation2": "foot", "genre": "punk", "playlistOrder": 9}
+]
