@@ -159,7 +159,7 @@
 			</div>
 		</footer>		
 </body>
-    <script type="text/javascript" src="../build/bundle.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://localhost:8080/build/b.bundle.js" charset="utf-8"></script>
     <script type="text/javascript" src="../assets/popUps.js"></script>
     <script type="text/javascript" src="../assets/on_load.js"></script>
     <!--<script type="text/javascript" src="../assets/mixpanel_logs.js"></script>-->

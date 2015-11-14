@@ -1,13 +1,19 @@
 var webpack = require('webpack');  
 
 module.exports = {  
-    entry: [
-      'webpack/hot/only-dev-server',
-      "./js/app.js"
-    ],
+    entry: {
+        a: [
+             "./js/app.js",
+            'webpack/hot/only-dev-server'
+            ],
+        b: [ 
+            './assets/es6/mainPlayerApp.js',
+            'webpack/hot/only-dev-server'
+            ]
+    },
     output: {
         path: __dirname + '/build',
-        filename: "bundle.js"
+        filename: "[name].bundle.js"
     },
     module: {
         loaders: [

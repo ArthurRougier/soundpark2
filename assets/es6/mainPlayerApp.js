@@ -26,7 +26,7 @@ SC.initialize({
     ];
 
 
-  var arrowSelectors      = ["#left_arrow", "#right_arrow"];
+  var arrowSelectors        = ["#left_arrow", "#right_arrow"];
   var likeDislikeSelectors  = ["#plus_one", "#minus_one"];
-  var playerTest        = new Player(trackListTest, '.slider', '.play', arrowSelectors);
-  var likerTest         = new Liker(likeDislikeSelectors, playerTest);
+  var playerTest            = new Player(trackListTest, '.slider', '.play', arrowSelectors);
+  var likerTest             = new Liker(likeDislikeSelectors, playerTest); 

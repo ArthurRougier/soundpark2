@@ -7,6 +7,9 @@ var Track = function(TrackInformation, CuratorInformation, TrackBox, PlayerObjec
 		this.cover 					= TrackInformation.cover || "";
 		this.title 					= TrackInformation.title || ""
 		this.id 					= TrackInformation.id || 0;
+		this.occasion1				= TrackInformation.occasion1 || 0;
+		this.occasion2				= TrackInformation.occasion2 || 0;
+		this.genre					= TrackInformation.genre || 0;
 	}
 	if(CuratorInformation)
 	{

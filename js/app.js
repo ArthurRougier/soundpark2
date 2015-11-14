@@ -56,8 +56,8 @@ class PlayerBo extends React.Component {
 	}
 
 	componentDidMount() {
+
 	    this.loadRawSongsFromServer();
-	   
 	    setInterval(this.loadRawSongsFromServer, this.props.pollInterval);
 	}
 
@@ -118,6 +118,9 @@ class PlayerBo extends React.Component {
 				            		trackListProper[indexTrackList].curatorPseudo 	= trackList[indexTrackList].curatorPseudo;
 				            		trackListProper[indexTrackList].curatorLink 	= trackList[indexTrackList].curatorLink;
 				            		trackListProper[indexTrackList].curatorPic		= trackList[indexTrackList].curatorPic;
+				            		trackListProper[indexTrackList].occasion1		= trackList[indexTrackList].occasion1;
+				            		trackListProper[indexTrackList].occasion2		= trackList[indexTrackList].occasion2;
+				            		trackListProper[indexTrackList].genre 			= trackList[indexTrackList].genre;
 
 						           	if(isFinished(indexTrackList))
 						           	{
@@ -147,6 +150,9 @@ class PlayerBo extends React.Component {
 						trackListProper[indexTrackList].curatorPseudo 	= trackList[indexTrackList].curatorPseudo;
 						trackListProper[indexTrackList].curatorLink 	= trackList[indexTrackList].curatorLink;
 						trackListProper[indexTrackList].curatorPic		= trackList[indexTrackList].curatorPic;
+						trackListProper[indexTrackList].occasion1		= trackList[indexTrackList].occasion1;
+						trackListProper[indexTrackList].occasion2		= trackList[indexTrackList].occasion2;
+						trackListProper[indexTrackList].genre 			= trackList[indexTrackList].genre;
 
 						if(isFinished(indexTrackList))
 						{
@@ -322,8 +328,7 @@ class PlayerBo extends React.Component {
 					playMethod={this.play}
 					urlCurators="../model/get_curators_json.php" 
 					urlGenre="../model/get_genres_json.php" 
-					urlOccasion1="../model/get_occasions_json.php" 
-					urlOccasion2="../model/get_occasions_json.php" 
+					urlOccasion="../model/get_occasions_json.php" 
 					pollInterval={10000} />
 			</div>
 		);
@@ -341,15 +346,13 @@ class SongBox extends React.Component {
 	    this.state = {
 	    	curatorsData: [],
 	    	genreData: [],
-	    	occasion1Data: [],
-	    	occasion2Data: []
+	    	occasionData: []
 	    };
 
 	    this.loadCuratorsFromServer = this.loadCuratorsFromServer.bind(this);
 	    this.handleSongSubmit = this.handleSongSubmit.bind(this);
 	    this.loadGenreFromServer = this.loadGenreFromServer.bind(this);
-	    this.loadOccasion1FromServer = this.loadOccasion1FromServer.bind(this);
-	    this.loadOccasion2FromServer = this.loadOccasion2FromServer.bind(this);
+	    this.loadOccasionFromServer = this.loadOccasionFromServer.bind(this);
 	  }
 
 	loadCuratorsFromServer() {
@@ -380,30 +383,16 @@ class SongBox extends React.Component {
 	    });
 	}
 
-	loadOccasion1FromServer() {
+	loadOccasionFromServer() {
 	    $.ajax({
-	      url: this.props.urlOccasion1,
+	      url: this.props.urlOccasion,
 	      dataType: 'json',
 	      cache: false,
-	      success: function(occasion1Data) {
-	        this.setState({occasion1Data: occasion1Data});
+	      success: function(occasionData) {
+	        this.setState({occasionData: occasionData});
 	      }.bind(this),
 	      error: function(xhr, status, err) {
-	        console.error(this.props.urlOccasion1, status, err.toString());
-	      }.bind(this)
-	    });
-	}
-
-	loadOccasion2FromServer() {
-	    $.ajax({
-	      url: this.props.urlOccasion2,
-	      dataType: 'json',
-	      cache: false,
-	      success: function(occasion2Data) {
-	        this.setState({occasion2Data: occasion2Data});
-	      }.bind(this),
-	      error: function(xhr, status, err) {
-	        console.error(this.props.urlOccasion2, status, err.toString());
+	        console.error(this.props.urlOccasion, status, err.toString());
 	      }.bind(this)
 	    });
 	}
@@ -412,8 +401,7 @@ class SongBox extends React.Component {
 	    this.loadCuratorsFromServer();
 	    //this.loadSongsFromServer();
 	    this.loadGenreFromServer();
-	    this.loadOccasion1FromServer();
-	    this.loadOccasion2FromServer();
+	    this.loadOccasionFromServer();
 	   // setInterval(this.loadSongsFromServer, this.props.pollInterval);
 	    setInterval(this.loadCuratorsFromServer, this.props.pollInterval);
 	    //setInterval(this.loadGenreFromServer, this.props.pollInterval);
@@ -432,8 +420,11 @@ class SongBox extends React.Component {
 				playMethod={this.props.playMethod}
 				songsData={this.props.songsData}
 				genreData={this.state.genreData}
-				occasion1Data={this.state.occasion1Data}
-				occasion2Data={this.state.occasion2Data} />
+				occasionData={this.state.occasionData}
+				updateGenreUrl="../model/update_song_genre.php"
+				updateCuratorUrl="../model/update_song_curator.php"
+				updateOccasion1Url="../model/update_song_occasion1.php"
+				updateOccasion2Url="../model/update_song_occasion2.php" />
 			<SongForm curatorsData={this.state.curatorsData} />
 		</div>
   	);
@@ -444,14 +435,26 @@ class SongBox extends React.Component {
 class SongList extends React.Component {
   render() {
 
-  	var genreData 		= this.props.genreData;
-  	var occasion1Data 	= this.props.occasion1Data;
-  	var occasion2Data 	= this.props.occasion2Data;
-  	var playMethod		= this.props.playMethod;
+  	var genreData 			= this.props.genreData;
+  	var occasionData 		= this.props.occasionData;
+  	var playMethod			= this.props.playMethod;
+  	var updateGenreUrl		= this.props.updateGenreUrl;
+  	var updateCuratorUrl	= this.props.updateCuratorUrl;
+  	var updateOccasion1Url	= this.props.updateOccasion1Url;
+  	var updateOccasion2Url	= this.props.updateOccasion2Url;
 
 	var songNodes = this.props.songsData.map(function(song, index){
 		return(
-    		<Song playMethod={playMethod} track={song} genreData={genreData} occasion1Data={occasion1Data} occasion2Data={occasion2Data} key={song.id}  />
+    		<Song 
+    			updateGenreUrl={updateGenreUrl} 
+    			updateCuratorUrl={updateCuratorUrl}
+    			updateOccasion1Url={updateOccasion1Url}
+    			updateOccasion2Url={updateOccasion2Url}
+    			playMethod={playMethod} 
+    			track={song} 
+    			genreData={genreData} 
+    			occasionData={occasionData} 
+    			key={song.id}  />
 		);
 	});
 	return(
@@ -469,9 +472,9 @@ class Song extends React.Component {
 	    this.state = {
 	    	titleValue: this.props.trackTitle,
 	    	curatorValue: 0,
-	    	genreValue: "1",
-	    	occasion1Value: "2",
-	    	occasion2Value: "2"
+	    	genreValue: this.props.track.genre,
+	    	occasion1Value: this.props.track.occasion1,
+	    	occasion2Value: this.props.track.occasion2
 	    };
 
 	    this.handleGenreSelectValue = this.handleGenreSelectValue.bind(this);
@@ -484,18 +487,51 @@ class Song extends React.Component {
 
 
 	handleGenreSelectValue(event) {
-		this.setState({ genreValue: event.target.value });
-		console.log('waiting for function to update db, new value = '+ event.target.value);
+		console.log(this.props.updateGenreUrl + "?songId=" + this.props.track.id + "&songGenreId=" + event.target.value);
+		
+		$.ajax({
+		  url: this.props.updateGenreUrl + "?songId=" + this.props.track.id + "&songGenreId=" + event.target.value,
+		  cache: false,
+		  success: function(result) {
+		  	console.log('genre successfully changed');
+		  	this.setState({ genreValue: event.target.value });
+		  }.bind(this),
+		  error: function(xhr, status, err) {
+		    console.error(this.props.updateGenreUrl, status, err.toString());
+		  }.bind(this)
+		});
 	}
 
 	handleOccasion1SelectValue(event) {
-		this.setState({ occasion1Value: event.target.value });
-		console.log('waiting for function to update db, new value = '+ event.target.value);
+		console.log(this.props.updateOccasion1Url + "?songId=" + this.props.track.id + "&songOccasion1Id=" + event.target.value);
+		
+		$.ajax({
+		  url: this.props.updateOccasion1Url + "?songId=" + this.props.track.id + "&songOccasion1Id=" + event.target.value,
+		  cache: false,
+		  success: function(result) {
+		  	console.log('Occasion1 successfully changed');
+		  	this.setState({ occasion1Value: event.target.value });
+		  }.bind(this),
+		  error: function(xhr, status, err) {
+		    console.error(this.props.updateOccasion1Url, status, err.toString());
+		  }.bind(this)
+		});
 	}
 
 	handleOccasion2SelectValue(event) {
-		this.setState({ occasion2Value: event.target.value });
-		console.log('waiting for function to update db, new value = '+ event.target.value);
+		console.log(this.props.updateOccasion2Url + "?songId=" + this.props.track.id + "&songOccasion2Id=" + event.target.value);
+				
+		$.ajax({
+		  url: this.props.updateOccasion2Url + "?songId=" + this.props.track.id + "&songOccasion2Id=" + event.target.value,
+		  cache: false,
+		  success: function(result) {
+		  	console.log('Occasion2 successfully changed');
+		  	this.setState({ occasion2Value: event.target.value });
+		  }.bind(this),
+		  error: function(xhr, status, err) {
+		    console.error(this.props.updateOccasion2Url, status, err.toString());
+		  }.bind(this)
+		});
 	}
 
 	handleTitleSelectValue(event) {
@@ -528,6 +564,7 @@ class Song extends React.Component {
 		        		className="song_title boField"
 		        		floatingLabelText="Song Title"
 		        	  	hintText="Disabled Hint Text"
+		        	  	disabled={true}
 		        	  	onBlur={this.handleTitleSelectValue}
 		        	  	defaultValue={this.props.track.title}
 		        	  	style={{ width: '170px', marginLeft: '20px', fontSize: '12px' }} />
@@ -549,14 +586,14 @@ class Song extends React.Component {
 		        	  floatingLabelText="Occasion1"
 		        	  value={this.state.occasion1Value}
 		        	  onChange={this.handleOccasion1SelectValue}
-		        	  menuItems={this.props.occasion1Data}
+		        	  menuItems={this.props.occasionData}
 		        	  style={{ width: "140px", fontSize: "12px", marginRight: '30px' }} />
 		        	<SelectField
 		        	  className="boField"
 		        	  floatingLabelText="Occasion2"
 		        	  value={this.state.occasion2Value}
 		        	  onChange={this.handleOccasion2SelectValue}
-		        	  menuItems={this.props.occasion2Data}
+		        	  menuItems={this.props.occasionData}
 		        	  style={{ width: "140px", fontSize: "12px", marginRight: '30px' }} />
 		        </div>		
 	        	<SongMenu key={this.props.key} />
@@ -621,7 +658,7 @@ class SongForm extends React.Component {
 
 	render() {
 
-		var songNodes = this.props.curatorsData.map(function(curator, index){
+		var curatorNodes = this.props.curatorsData.map(function(curator, index){
 			return(
 	    		<option value={curator.curatorId}>{curator.pseudo}</option>
 			);
@@ -636,7 +673,7 @@ class SongForm extends React.Component {
 	        	  	defaultValue={this.props.curator}
 	        	  	ref="url" />
 		        <select type="text" placeholder="" ref="curator">
-		        	{songNodes}
+		        	{curatorNodes}
 		        </select>
 		        <input type="submit" value="Post" />
 			</form>
@@ -646,7 +683,7 @@ class SongForm extends React.Component {
 
 
 ReactDOM.render(
-	<PlayerBo urlTrackListUrl={"../api/songsRawData" } pollInterval={2000} />,
+	<PlayerBo urlTrackListUrl={"../model/get_all_songs_json.php" } pollInterval={2000} />,
   	document.getElementById('react')
 );
 

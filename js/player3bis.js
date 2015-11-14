@@ -145,10 +145,10 @@ Player.prototype = {
 			var urlCopy 					= trackList[indexTrackList];
 			
 
-			if(trackList[indexTrackList].toLowerCase().indexOf("youtube") > -1 )
+			if(urlCopy.toLowerCase().indexOf("youtube") > -1 )
 			{
 				trackListProper[indexTrackList] = new YoutubeTrack();
-				var videoId 					= trackList[indexTrackList].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+				var videoId 					= urlCopy.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
 				trackIdCopy 					=  videoId[1] ||  null;
 
 				(function(trackIdCopy, indexTrackList){

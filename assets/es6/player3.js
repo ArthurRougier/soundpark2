@@ -26,7 +26,8 @@ var Player = function(trackListUrl, divSelector, playButtonSelector, arrowSelect
 
 	// Helpers
 	this.currentTrack 			= null; 
-	that 						= this;   
+	that 						= this;
+	console.log(that);  
 
 	that.prepareNavigationButtons();
 }
@@ -34,6 +35,8 @@ var Player = function(trackListUrl, divSelector, playButtonSelector, arrowSelect
 Player.prototype = {
 
 	// CSS classes for slider
+
+	that				: this,
     activeClass			: "rslides_here",
     visibleClass		: "rslides1_on",
     visible 			: {"float": "left", "position": "relative", "opacity": 1, "zIndex": 2},
@@ -59,11 +62,15 @@ Player.prototype = {
         })(),
 
 	// dom construction methods
-	createTrackBoxes: function (numberOfBoxes){
+	createTrackBoxes: function (numberOfBoxes, playerObject){
+
+		var that					= playerObject || this || that;
+		console.log(that);
 		numberOfBoxes 				= numberOfBoxes || 10;
 		var numberOfBoxesWithOffset = numberOfBoxes + that.boxesCreated;
 		var trackListCopy 			= that.trackList;
 		var masterJsonCopy 			= that.masterJson || {};
+		console.log('createTrackBoxes' + that);
 		if(that.masterJson)
 		{
 			if(that.boxesCreated > 0)
@@ -135,21 +142,25 @@ Player.prototype = {
 
 	getMasterJson: function (trackList, callBack){
 
+		var that 					= this;
+
 		this.masterJson 			= [];
 		var ajaxRequestNumber 		= 0;
 		var ajaxRequestCompleted 	= 0;
 		var trackListProper 		= [];
+		console.log('masterJson' + that);
 
-		for(indexTrackList 	= 0, trackListLength = trackList.length ; indexTrackList < trackListLength ; indexTrackList++)
+		for(var indexTrackList 	= 0, trackListLength = trackList.length ; indexTrackList < trackListLength ; indexTrackList++)
 		{
 			var urlCopy 					= trackList[indexTrackList];
+			console.log(urlCopy);
 			
 
 			if(trackList[indexTrackList].toLowerCase().indexOf("youtube") > -1 )
 			{
 				trackListProper[indexTrackList] = new YoutubeTrack();
-				var videoId 					= trackList[indexTrackList].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
-				trackIdCopy 					=  videoId[1] ||  null;
+				var videoId 					= urlCopy.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+				var trackIdCopy 				=  videoId[1] ||  null;
 
 				(function(trackIdCopy, indexTrackList){
 							var xhr 			= [];
@@ -171,7 +182,7 @@ Player.prototype = {
 						           	if(isFinished(indexTrackList))
 						           	{
 						           		that.trackList = trackListProper;
-						           		callBack();
+						           		callBack(10, that);
 						           		console.log(trackListProper);
 						           	} 
 						        }
@@ -197,7 +208,7 @@ Player.prototype = {
 						if(isFinished(indexTrackList))
 						{
 							that.trackList = trackListProper;
-							callBack();
+							callBack(10, that);
 						} 
 					});
 				})(urlCopy, indexTrackList);
@@ -224,7 +235,7 @@ Player.prototype = {
 			            if(isFinished(indexTrackList))
 			            {
 			            	that.trackList = trackListProper;
-			            	callBack();
+			            	callBack(10, that);
 			            	console.log(trackListProper);
 			            } 
 			        }
