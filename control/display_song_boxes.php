@@ -74,6 +74,7 @@ for($i = 0; $i <= count($playlist); $i++)
 
  <script type="text/javascript">
 			var songTableComplete = <?php echo(json_encode($playlist)); ?>;
+			songTableComplete = Object.keys(songTableComplete).map(function(k) { return songTableComplete[k] });
 			console.log(songTableComplete);
 			var songTable = [];
 			var playlistReady = false;
