@@ -13,7 +13,7 @@ if (isset($_GET['playlistId']) AND isset($_GET['standalonePlaylist']))
 	$req->execute(array($playlistId));
 }
 
-else if (isset($_COOKIE['current_user']) AND isset($playlistId) AND (isset($_GET['radioMode']) OR in_array($_COOKIE['current_user'] ,$betaUserArray) ))
+else if (isset($_COOKIE['current_user']) AND isset($playlistId))
 {
 	$req = $bdd->query('
 		SELECT * FROM
