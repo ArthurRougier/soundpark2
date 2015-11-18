@@ -4,6 +4,7 @@
 // main.js
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, Route, Link } from 'react-router'
 
 let injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
@@ -24,6 +25,71 @@ SC.initialize({
       });
 
 
+
+
+class App extends React.Component {
+
+	render() {
+	    return (
+	      <div>
+	        <h1>Soundpark.fm</h1>
+	        <ul>
+	          <li><Link to="/PlaylistManager">Playlists</Link></li>
+	          <li><Link to="/SongsBacklogManager">Songs</Link></li>
+	        </ul>
+	        {this.props.children}
+	      </div>
+	    )
+	  }
+}
+
+class PlaylistManager extends React.Component {
+	render() {
+	    return (
+	      <div>
+	        <ul>
+	          <li><Link to="/current">Current</Link></li>
+	          <li><Link to="/n+1">Next one</Link></li>
+	        </ul>
+	        {this.props.children}
+	      </div>
+	    )
+	  }
+}
+
+class SongsBacklogManager extends React.Component {
+	render() {
+	    return (
+	      <div>
+	        <ul>
+	          <li><Link to="/newSongsPosted">New</Link></li>
+	          <li><Link to="/usedSongs">Used</Link></li>
+	          <li><Link to="/storage">Storage</Link></li>
+	        </ul>
+	        {this.props.children}
+	      </div>
+	    )
+	  }
+}
+
+class CurrentPlaylist extends React.Component {
+	render() {
+	    return (
+	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json.php" } playlistGetterUrl="../model/get_current_playlist_id.php?display=TRUE" pollInterval={20000} />
+	    )
+	  }
+}
+
+class NextPlaylist extends React.Component {
+	render() {
+	    return (
+	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json.php" } playlistGetterUrl="../model/get_next_playlist_id.php?display=TRUE" pollInterval={20000} />
+	    )
+	  }
+}
+
+
+
 class PlayerBo extends React.Component {
 	constructor (props) {
 		super(props);
@@ -39,11 +105,13 @@ class PlayerBo extends React.Component {
 			playersToLoad 			: 0,
 			progress 				: null,
 			playTimeout 			: null,
-			position 				: 1
+			position 				: 1,
+			playlistToDisplay 		: 0
 		};
 
 		var that = this;
 		this.loadRawSongsFromServer 		= this.loadRawSongsFromServer.bind(this);
+		this.loadPlaylistToDisplay 			= this.loadPlaylistToDisplay.bind(this);
 		this.getMasterJson 					= this.getMasterJson.bind(this);
 		this.getNextTrack 					= this.getNextTrack.bind(this);
 		this.getPrevTrack 					= this.getPrevTrack.bind(this);
@@ -58,6 +126,7 @@ class PlayerBo extends React.Component {
 	componentDidMount() {
 
 	    this.loadRawSongsFromServer();
+	    this.loadPlaylistToDisplay();
 	    setInterval(this.loadRawSongsFromServer, this.props.pollInterval);
 	}
 
@@ -72,12 +141,28 @@ class PlayerBo extends React.Component {
 	      		this.setState({trackListEntry: trackListEntry});
 	      		this.getMasterJson();
 	      	}
-	        
 	      }.bind(this),
 	      error: function(xhr, status, err) {
 	        console.error(this.props.urlTrackListUrl, status, err.toString());
 	      }.bind(this)
 	    });
+	}
+
+	loadPlaylistToDisplay() {
+		if(this.props.playlistGetterUrl)
+		{
+			$.ajax({
+			  url: this.props.playlistGetterUrl,
+			  cache: false,
+			  success: function(playlistToDisplay) {
+		  		console.log(playlistToDisplay);
+		  		this.setState({playlistToDisplay: playlistToDisplay});
+			  }.bind(this),
+			  error: function(xhr, status, err) {
+			    console.error(this.props.playlistGetterUrl, status, err.toString());
+			  }.bind(this)
+			});
+		}
 	}
 
 	getMasterJson(callBack){
@@ -110,7 +195,7 @@ class PlayerBo extends React.Component {
 						        if(xhr[indexTrackList].readyState == 4 && xhr[indexTrackList].status == 200) 
 						        { // Si le fichier est chargé sans erreur
 						            var json 										= JSON.parse(xhr[indexTrackList].responseText);
-					            	trackListProper[indexTrackList].url 			= trackList[indexTrackList];
+					            	trackListProper[indexTrackList].url 			= trackList[indexTrackList].url;
 				            		trackListProper[indexTrackList].trackId 		= json.items[0].id;
 				            		trackListProper[indexTrackList].player 			= "youtube";
 				            		trackListProper[indexTrackList].title 			= json.items[0].snippet.title;
@@ -121,6 +206,8 @@ class PlayerBo extends React.Component {
 				            		trackListProper[indexTrackList].occasion1		= trackList[indexTrackList].occasion1;
 				            		trackListProper[indexTrackList].occasion2		= trackList[indexTrackList].occasion2;
 				            		trackListProper[indexTrackList].genre 			= trackList[indexTrackList].genre;
+				            		trackListProper[indexTrackList].treated			= trackList[indexTrackList].treated;
+				            		trackListProper[indexTrackList].playlistId		= trackList[indexTrackList].playlistId;
 
 						           	if(isFinished(indexTrackList))
 						           	{
@@ -153,6 +240,8 @@ class PlayerBo extends React.Component {
 						trackListProper[indexTrackList].occasion1		= trackList[indexTrackList].occasion1;
 						trackListProper[indexTrackList].occasion2		= trackList[indexTrackList].occasion2;
 						trackListProper[indexTrackList].genre 			= trackList[indexTrackList].genre;
+						trackListProper[indexTrackList].treated			= trackList[indexTrackList].treated;
+						trackListProper[indexTrackList].playlistId		= trackList[indexTrackList].playlistId;
 
 						if(isFinished(indexTrackList))
 						{
@@ -165,36 +254,6 @@ class PlayerBo extends React.Component {
 				})(urlCopy, indexTrackList);
 				ajaxRequestNumber++;
 			}
-
-			/*(function(urlCopy, indexTrackList){
-				var xhrDb 				= [];
-				xhrDb[indexTrackList] 	= new XMLHttpRequest();
-				var urlToSend 			= "../model/get_curator_information_from_song_url.php?trackUrl="  + encodeURIComponent(urlCopy) + "&jsonDisplay=TRUE";
-				xhrDb[indexTrackList].open('GET', urlToSend); // On test si le son a déjà été liké par currentUser
-				
-			    xhrDb[indexTrackList].onreadystatechange = function() 
-				{ // On gère ici une requête asynchrone
-
-			        if(xhrDb[indexTrackList].readyState == 4 && xhrDb[indexTrackList].status == 200) 
-			        { // Si le fichier est chargé sans erreur
-			            var json 										= JSON.parse(xhrDb[indexTrackList].responseText);
-			            trackListProper[indexTrackList].id 				= json.id;
-			            trackListProper[indexTrackList].curatorPseudo 	= json.pseudo;
-			            trackListProper[indexTrackList].curatorLink 	= json.link;
-			            trackListProper[indexTrackList].curatorPic 		= json.avatar_url;
-
-			            if(isFinished(indexTrackList))
-			            {
-			            	that.trackList = trackListProper;
-			            	callBack();
-			            	console.log(trackListProper);
-			            } 
-			        }
-			    };
-			    xhrDb[indexTrackList].send(null); // La requête est prête, on envoie tout !
-			    ajaxRequestNumber++;
-			})(urlCopy, indexTrackList);
-			*/
 		}
 
 		var isFinished = function(index){
@@ -211,7 +270,6 @@ class PlayerBo extends React.Component {
     getNextTrack(targetPosition) {
     	var that = this;
     	var targetTrack = targetPosition ? that.state.trackList[(targetPosition - 1)] :  that.state.trackList[that.position];
-    	//console.log('targetPos: '+ targetPosition + 'position player: '+ that.position);
     	return targetTrack;
     }
 
@@ -231,7 +289,6 @@ class PlayerBo extends React.Component {
     		}
     	}
     }
-
 
     //player methods
     play(track, position, comingFromPrevious) {
@@ -318,12 +375,11 @@ class PlayerBo extends React.Component {
 	    }
     }
 
-
-
   	render() {
 		return(
 			<div className="Player">
 				<SongBox 
+					playlist={this.state.playlistToDisplay}
 					songsData={this.state.trackList}
 					playMethod={this.play}
 					urlCurators="../model/get_curators_json.php" 
@@ -333,10 +389,7 @@ class PlayerBo extends React.Component {
 			</div>
 		);
   	}
-
-
 }
-
 
 class SongBox extends React.Component {
 
@@ -417,6 +470,7 @@ class SongBox extends React.Component {
   	return(
 		<div className="SongBox">
 			<SongList
+				playlist={this.props.playlist}
 				playMethod={this.props.playMethod}
 				songsData={this.props.songsData}
 				genreData={this.state.genreData}
@@ -442,24 +496,43 @@ class SongList extends React.Component {
   	var updateCuratorUrl	= this.props.updateCuratorUrl;
   	var updateOccasion1Url	= this.props.updateOccasion1Url;
   	var updateOccasion2Url	= this.props.updateOccasion2Url;
+  	var playlist 			= this.props.playlist;
 
-	var songNodes = this.props.songsData.map(function(song, index){
-		return(
-    		<Song 
-    			updateGenreUrl={updateGenreUrl} 
-    			updateCuratorUrl={updateCuratorUrl}
-    			updateOccasion1Url={updateOccasion1Url}
-    			updateOccasion2Url={updateOccasion2Url}
-    			playMethod={playMethod} 
-    			track={song} 
-    			genreData={genreData} 
-    			occasionData={occasionData} 
-    			key={song.id}  />
-		);
-	});
+  	var songRows = [];
+    this.props.songsData.forEach(function(song) {
+        if (playlist) {
+            if(song.playlistId !== playlist){
+                    	return;
+            } 
+            else
+            {
+    	        songRows.push(
+    	        	<Song 
+	    				updateGenreUrl={updateGenreUrl} 
+	    				updateCuratorUrl={updateCuratorUrl}
+	    				updateOccasion1Url={updateOccasion1Url}
+	    				updateOccasion2Url={updateOccasion2Url}
+	    				playMethod={playMethod} 
+	    				track={song} 
+	    				genreData={genreData} 
+	    				occasionData={occasionData} 
+	    				key={song.id}  />
+    	        	);
+            }
+        }
+        else if(song.treated > 0){
+
+        	return;
+        } 
+        else{
+
+	        return;
+        }
+    }.bind(this));
+
 	return(
 		<ol className="songList">
-			{songNodes}
+			{songRows}
 		</ol>
 	);
   }
@@ -481,10 +554,7 @@ class Song extends React.Component {
 	    this.handleOccasion1SelectValue = this.handleOccasion1SelectValue.bind(this);
 	    this.handleOccasion2SelectValue = this.handleOccasion2SelectValue.bind(this);
 	    this.handleTitleSelectValue = this.handleTitleSelectValue.bind(this);
-
 	  }
-
-
 
 	handleGenreSelectValue(event) {
 		console.log(this.props.updateGenreUrl + "?songId=" + this.props.track.id + "&songGenreId=" + event.target.value);
@@ -550,8 +620,6 @@ class Song extends React.Component {
 
 	render() {
 
-		// write function to find pre-selected one
-
 		return(
 			<li className= "song" id="li0">
 				<IconButton 
@@ -596,7 +664,12 @@ class Song extends React.Component {
 		        	  menuItems={this.props.occasionData}
 		        	  style={{ width: "140px", fontSize: "12px", marginRight: '30px' }} />
 		        </div>		
-	        	<SongMenu key={this.props.key} />
+	        	<SongMenu 
+	        		key={this.props.key} 
+	        		track={this.props.track}
+	        		storeUrl="../model/store_track_from_playlist.php"
+	        		moveNextPlaylistUrl="../model/move_track_to_next_playlist.php"
+	        		movePreviousPlaylist="../model/move_track_to_previous_playlist.php" />
 	        </li>
 		);
 	}
@@ -604,16 +677,59 @@ class Song extends React.Component {
 
 class SongMenu extends React.Component {
 
-
 	constructor(props) {
 	    super(props);
 	    this.handleMenuChange = this.handleMenuChange.bind(this);
-
 	  }
   	
   	handleMenuChange(event, item) {
-
-		console.log(item.props);
+  		switch(item.props.index) {
+  		    case 1:
+				var win = window.open(this.props.track.url, '_blank');
+				win.focus();
+  		        break;
+  		    case 2:
+  		    	//console.log('url ajax call:' + this.props.storeUrl + "?songId=" + this.props.track.id);
+  		    	$.ajax({
+					url: this.props.storeUrl + "?songId=" + this.props.track.id,
+					cache: false,
+					success: function(result) {
+						console.log('Track successfully stored');
+					}.bind(this),
+					error: function(xhr, status, err) {
+					console.error(this.props.storeUrl, status, err.toString());
+					}.bind(this)
+    			});
+  		        break;
+  		    case 3:
+  		    	console.log('url ajax call:' + this.props.moveNextPlaylistUrl + "?songId=" + this.props.track.id);
+  		    	$.ajax({
+					url: this.props.moveNextPlaylistUrl + "?songId=" + this.props.track.id,
+					cache: false,
+					success: function(result) {
+						console.log('Track successfully moved');
+					}.bind(this),
+					error: function(xhr, status, err) {
+					console.error(this.props.moveNextPlaylistUrl, status, err.toString());
+					}.bind(this)
+    			});
+  		        break;
+  		    case 4:
+  		    	console.log('url ajax call:' + this.props.movePreviousPlaylist + "?songId=" + this.props.track.id);
+  		    	$.ajax({
+					url: this.props.movePreviousPlaylist + "?songId=" + this.props.track.id,
+					cache: false,
+					success: function(result) {
+						console.log('Track successfully moved');
+					}.bind(this),
+					error: function(xhr, status, err) {
+					console.error(this.props.movePreviousPlaylist, status, err.toString());
+					}.bind(this)
+    			});
+  		        break;       
+  		    default:
+  		    	console.log('what??');
+  		}
 	}
 
   render() {
@@ -683,7 +799,15 @@ class SongForm extends React.Component {
 
 
 ReactDOM.render(
-	<PlayerBo urlTrackListUrl={"../model/get_all_songs_json.php" } pollInterval={2000} />,
+	<Router>
+	    <Route path="/" component={App}>
+	     	<Route path="PlaylistManager" component={PlaylistManager}>
+	     		<Route path="/current" component={CurrentPlaylist}/>
+	     		<Route path="/n+1" component={NextPlaylist}/>
+      		</Route>
+      		<Route path="SongsBacklogManager" component={SongsBacklogManager}/>
+	    </Route>
+	  </Router>,
   	document.getElementById('react')
 );
 

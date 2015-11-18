@@ -10,6 +10,8 @@ var Track = function(TrackInformation, CuratorInformation, TrackBox, PlayerObjec
 		this.occasion1				= TrackInformation.occasion1 || 0;
 		this.occasion2				= TrackInformation.occasion2 || 0;
 		this.genre					= TrackInformation.genre || 0;
+		this.treated				= TrackInformation.treated || 0;
+		this.playlistId				= TrackInformation.playlistId || 0;
 	}
 	if(CuratorInformation)
 	{

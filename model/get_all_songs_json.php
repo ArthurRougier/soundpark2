@@ -6,7 +6,7 @@
 	$songsArray = array();
 	while($song = $req2->fetch())
 	{
-		$songsArray[$i] = array("id" => $song['ID'], "curatorId" => $song['ID_curator'], "ID_playlist" => $song['ID_playlist'], "url" => $song['url'], "occasion1" => $song['ID_occasion1'], "occasion2" => $song['ID_occasion2'], "playlistOrder" => $song['playlistOrder'], "songDateAdd" => $song['date_add'], "treated" => $song['treated'], "genre" => $song['ID_Genre'], "curatorPseudo" => $song['pseudo'], "curatorPic" => $song['avatar_url'], "curatorLink" => $song['link']);
+		$songsArray[$i] = array("id" => $song['ID'], "curatorId" => $song['ID_curator'], "playlistId" => $song['ID_playlist'], "url" => $song['url'], "occasion1" => $song['ID_occasion1'], "occasion2" => $song['ID_occasion2'], "playlistOrder" => $song['playlistOrder'], "songDateAdd" => $song['date_add'], "treated" => $song['treated'], "genre" => $song['ID_Genre'], "curatorPseudo" => $song['pseudo'], "curatorPic" => $song['avatar_url'], "curatorLink" => $song['link']);
 		$i++;
 	}
 	echo(json_encode($songsArray));
