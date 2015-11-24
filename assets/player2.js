@@ -5,8 +5,6 @@
 	s = new slider("#galerie");
 });*/
 
-
-
 var slider = function(id){
 	var self=this;
 	this.div = $(id);
@@ -110,6 +108,7 @@ SC.initialize({
     client_id: soundcloudApiKey
 });
 
+
 var onPlay = false;
 var position = 0;
 
@@ -132,8 +131,13 @@ var currentTrack;
 
 console.log('is playlist well loaded: '+playlistReady);
 
-updateCurrentTrack(songTable[0]);
-getLikeState();
+setTimeout(function(){ 
+
+	updateCurrentTrack(songTable[0]);
+	getLikeState();
+
+ }, 3000);
+
 
 var coverWidth = document.getElementById('sound_cover1').offsetWidth;
 
