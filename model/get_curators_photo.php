@@ -7,5 +7,5 @@
 	$intervalPossible = $curatorsNumber - 20;
 	$interval = rand(1, $intervalPossible);
 
-	$req = $bdd->query('SELECT avatar_url, pseudo FROM curator WHERE pseudo not like "Les%" AND pseudo not like "Ed%" LIMIT '.$interval.', 20');
+	$req = $bdd->query('SELECT avatar_url, pseudo FROM curator WHERE pseudo not like "Les%" AND pseudo not like "Ed%" AND avatar_url not like "%fbcdn%" AND avatar_url not like "%none%" AND avatar_url not like "" LIMIT '.$interval.', 20');
 

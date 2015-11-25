@@ -212,7 +212,8 @@ if(!$mail->send()) {
     echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else 
 {
-	echo("<script> window.location.href = '../view/curatorDropPage.php?message=successAdd&curatorId=".$curatorId."'; </script>");
+	$str = urlencode("Your youtube tune has been submitted, thanks!");
+	echo("<script> window.location.href = '../view/curator_index.php?message=".$str."'; </script>");
 	//include('http://localhost:8888/view/curatorDropPage.php?message=success');
 }
 
