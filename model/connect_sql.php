@@ -1,14 +1,13 @@
 <?php
 	/*error_reporting(E_ALL);
 	ini_set('display_errors', 1);*/
-
 	if (null !== getenv('ENVIRONMENT'))
 	{
 		if (getenv('ENVIRONMENT') == 'staging')
 		{
 			try
 			{
-				$bdd = new PDO('mysql:host=localhost;dbname=soundpark2-staging', 'root', 'mWLbiJWD73');
+				$bdd = new PDO('mysql:host=localhost;dbname=soundpark2-staging', 'root', getenv('DATABASE_PASSWORD'));
 			}
 			catch (Exception $e)
 			{
@@ -19,7 +18,7 @@
 		{
 			try
 			{
-				$bdd = new PDO('mysql:host=localhost;dbname=soundpark2', 'root', 'mWLbiJWD73');
+				$bdd = new PDO('mysql:host=localhost;dbname=soundpark2', 'root', getenv('DATABASE_PASSWORD'));
 			}
 			catch (Exception $e)
 			{
@@ -50,4 +49,3 @@
 			die('Erreur : ' . $e->getMessage());
 		}
 	}
-	
