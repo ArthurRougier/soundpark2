@@ -5,7 +5,7 @@
 
 	include_once('../model/connect_sql.php');
 
-	$req1 = $bdd->query('SELECT ID_curator, ID_playlist, occ1, occ2, permalink_url FROM song');
+	$req1 = $bdd->query('SELECT ID, ID_curator, ID_playlist, occ1, occ2, permalink_url FROM song');
 
 	$song = array();
 	$i = 0;
@@ -14,11 +14,12 @@
 		//$song[$i] = array("ID_curator"=>$result['ID_curator'], "ID_playlist"=>$result['ID_playlist'], "ID_occasion1"=>$result['occ1'], "ID_occasion2"=>$result['occ2'], "url"=>$result['permalink_url']);
 
 		$req = $bdd->prepare(
-			'INSERT INTO `songNew` (`ID_curator`, `ID_playlist`, `ID_occasion1`, `ID_occasion2`, `url`, `date_add`, `treated`) 
-			VALUES (?, ?, ?, ?, ?, NOW(), 1)'
+			'INSERT INTO `songNew` (`ID`, `ID_curator`, `ID_playlist`, `ID_occasion1`, `ID_occasion2`, `url`, `date_add`, `treated`) 
+			VALUES (?, ?, ?, ?, ?, ?, NOW(), 1)'
 			) or die(print_r($bdd->errorInfo()));
 
 		$req->execute(array(
+			$result['ID'],
 			$result['ID_curator'],
 			$result['ID_playlist'],
 			$result['occ1'],

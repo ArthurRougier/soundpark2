@@ -21074,13 +21074,14 @@
 					(function (urlCopy, indexTrackList) {
 						//console.log(urlCopy);
 						SC.get('/resolve', { url: urlCopy.toLowerCase() }, function (track) {
-							trackListProper[indexTrackList].url = track.permalink_url;
-							trackListProper[indexTrackList].trackId = track.id;
-							trackListProper[indexTrackList].player = "soundcloud";
-							trackListProper[indexTrackList].title = track.title;
-							trackListProper[indexTrackList].cover;
-							track.artwork_url ? trackListProper[indexTrackList].cover = track.artwork_url.replace("large.jpg", "t500x500.jpg") : trackListProper[indexTrackList].cover = "../assets/pictures/default_cover.png";
-
+							if (track) {
+								trackListProper[indexTrackList].url = track.permalink_url;
+								trackListProper[indexTrackList].trackId = track.id;
+								trackListProper[indexTrackList].player = "soundcloud";
+								trackListProper[indexTrackList].title = track.title;
+								trackListProper[indexTrackList].cover;
+								track.artwork_url ? trackListProper[indexTrackList].cover = track.artwork_url.replace("large.jpg", "t500x500.jpg") : trackListProper[indexTrackList].cover = "../assets/pictures/default_cover.png";
+							}
 							if (isFinished(indexTrackList)) {
 								that.trackList = trackListProper;
 								callBack(10, that);
