@@ -7,7 +7,6 @@ import ReactDOM from 'react-dom';
 import Track from '../player_modules/Track';
 import YoutubeTrack from '../player_modules/YoutubeTrack';
 import SoundcloudTrack from '../player_modules/SoundcloudTrack';
-import urlValidityTester from '../player_modules/urlValidityTester';
 
 import SongBox from './SongBox';
 import TrackSlider from './TrackSlider';

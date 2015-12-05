@@ -73,7 +73,7 @@ class SongsBacklogManager extends React.Component {
 class CurrentPlaylist extends React.Component {
 	render() {
 	    return (
-	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_playlists.php" } playlistGetterUrl="../model/get_current_playlist_id.php?display=TRUE" pollInterval={30000} />
+	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_playlists.php" } playlistGetterUrl="../model/get_current_playlist_id.php?display=TRUE" pollInterval={1000} />
 	    )
 	  }
 }
@@ -81,7 +81,7 @@ class CurrentPlaylist extends React.Component {
 class NextPlaylist extends React.Component {
 	render() {
 	    return (
-	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_playlists.php" } playlistGetterUrl="../model/get_next_playlist_id.php?display=TRUE" pollInterval={30000} />
+	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_playlists.php" } playlistGetterUrl="../model/get_next_playlist_id.php?display=TRUE" pollInterval={1000} />
 	    )
 	  }
 }
@@ -97,7 +97,7 @@ class UntreatedTracks extends React.Component {
 class UsedTracks extends React.Component {
 	render() {
 	    return (
-	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_used.php" } used={true} pollInterval={1000} />
+	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_used.php" } used={true} pollInterval={50000} />
 	    )
 	  }
 }
@@ -105,7 +105,7 @@ class UsedTracks extends React.Component {
 class StoredTracks extends React.Component {
 	render() {
 	    return (
-	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_stored.php" } stored={true} pollInterval={1000} />
+	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_stored.php" } stored={true} pollInterval={50000} />
 	    )
 	  }
 }

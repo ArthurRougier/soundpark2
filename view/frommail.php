@@ -140,6 +140,19 @@
 			</div>
 		</footer>		
 </body>
+<?php
+	if (null !== getenv('ENVIRONMENT'))
+	{
+		if (getenv('ENVIRONMENT') == 'staging' OR getenv('ENVIRONMENT') == 'production')
+		{
+			echo('<script src="../build/b.bundle.js"></script>');
+		}
+		else
+		{
+			echo('<script src="http://localhost:8080/b.bundle.js"></script>');
+		}
+	}
+?>
     <script src="../build/b.bundle.js"></script>
     <script type="text/javascript" src="../assets/popUps.js"></script>
     <script type="text/javascript" src="../assets/on_load.js"></script>

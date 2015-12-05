@@ -1,6 +1,7 @@
 // React
 import React from 'react';
 import ReactDOM from 'react-dom';
+import urlValidityTester from '../player_modules/urlValidityTester';
 
 import TextField from '../../node_modules/material-ui/lib/text-field';
 
