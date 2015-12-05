@@ -8,6 +8,10 @@
 		if($names = $req->fetch())
 		{
 			$completeName = $names[0] . ' ' . $names[1];
+			if(isset($_GET['displayResult']))
+			{
+				echo $completeName;
+			}
 		}
 		else
 		{
@@ -16,12 +20,18 @@
 			if($names = $req->fetch())
 			{
 				$completeName = $names[0];
+				if(isset($_GET['displayResult']))
+				{
+					echo $completeName;
+				}
 			}
 		}
 	}
 	else
 	{
 	}
+
+
 	
 
 	

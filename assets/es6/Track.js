@@ -7,6 +7,7 @@ var Track = function(TrackInformation, CuratorInformation, TrackBox, PlayerObjec
 		this.cover 					= TrackInformation.cover || "";
 		this.title 					= TrackInformation.title || ""
 		this.id 					= TrackInformation.id || 0;
+		this.isLiked				= TrackInformation.isLiked || false;
 	}
 	if(CuratorInformation)
 	{

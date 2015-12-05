@@ -1,20 +1,20 @@
 <?php
 
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+
 	include_once("../model/connect_sql.php");
-	if(isset($_GET['trackId']) && isset($_GET['currentUser']))
+	if(isset($_GET['songId']) && isset($_COOKIE['current_user']))
 	{
-		
-		$req = $bdd->prepare('SELECT ID FROM song WHERE trackId=?');
-		$req->execute(array($_GET['trackId']));
-		$IDsong=$req->fetch();
+		$songId = $_GET['songId'];
+		$currentUser = $_COOKIE['current_user'];
 
-		$dateEcoute=time();
-
-		$req = $bdd->prepare('INSERT INTO automatic_next (Id_Song, mail, date_listened) VALUES(:track, :listener, :dateOfListening)');
+		$req = $bdd->prepare('INSERT INTO automatic_next (Id_Song, mail, date_listened) VALUES(:track, :listener, NOW())');
 		$req->execute(array(
-			'track' => $IDsong[0],
-			'listener' => $_GET['currentUser'],
-			'dateOfListening' => date('Y-m-d G-i-s',$dateEcoute)
+			'track' => $songId,
+			'listener' => $currentUser
 			));
+
+		echo "success";
 	}
 ?>

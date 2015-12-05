@@ -11,16 +11,29 @@ YoutubeTrack.prototype.constructor = Track;
 YoutubeTrack.prototype = {
 	    prepareYoutubePlayer: function(playWhenReady, PlayerLinked, position){
 	    	var targettedTrack = this;
+	    	console.log("youtube track call, parameters are: PlayerLinked:");
+	    	console.log(PlayerLinked);
 	    	if(!position)
 	    	{
-	    		position = PlayerLinked.trackList.indexOf(that.getMatchingTrackInTrackList(targettedTrack)) + 1;
+	    		position = PlayerLinked.state.trackList.indexOf(PlayerLinked.getMatchingTrackInTrackList(targettedTrack)) + 1;
 	    		console.log('position to play: '+position);
 	    	}
 	    	console.log('PrepareYoutube Entered. position: '+ position + 'track: ' + targettedTrack.trackId);
-			if(!PlayerLinked.isYoutubeInitialized)
+			if(!PlayerLinked.state.isYoutubeInitialized)
 			{
+				console.log('jhefvzb');
+				// 1. Clean previous state
+				var previousTag = document.getElementById('youtubeScript');
+				console.log(previousTag);
+				if(previousTag)
+				{
+					previousTag.parentNode.removeChild(previousTag);
+					console.log('ala');
+				}
+
 				// 2. This code loads the IFrame Player API code asynchronously.
 				var tag = document.createElement('script');
+				tag.setAttribute("id","youtubeScript");
 				tag.src = "https://www.youtube.com/iframe_api";
 				var firstScriptTag = document.getElementsByTagName('script')[0];
 				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -28,8 +41,9 @@ YoutubeTrack.prototype = {
 				// 3. This function creates an <iframe> (and YouTube youtubeTrackPlayer)
 				//    after the API code downloads.
 				window.onYouTubeIframeAPIReady = function() {
+					console.log("youtube to be prepared");
 					var divHeight = $('sound_cover'+ position).height();
-					that.nextTrack = new YT.Player('sound_cover'+ position, {
+					PlayerLinked.setState({nextTrack: new YT.Player('youtubeContainer', {
 					  height: divHeight,
 					  width: divHeight,
 					  videoId: targettedTrack.trackId,
@@ -45,15 +59,16 @@ YoutubeTrack.prototype = {
 					    'onReady': onPlayerReady,
 					    'onStateChange': onPlayerStateChange
 					  }
-					});
-					PlayerLinked.isYoutubeInitialized = true;
+					})});
+					PlayerLinked.setState({isYoutubeInitialized: true});
 				}
 			}
 
 			else
 			{
+				console.log("youtube already prepared");
 				var divHeight = $('sound_cover'+ position).height();
-				that.nextTrack = new YT.Player('sound_cover'+ position, {
+				PlayerLinked.setState({nextTrack: new YT.Player('youtubeContainer', {
 				  height: divHeight,
 				  width: divHeight,
 				  videoId: targettedTrack.trackId,
@@ -69,27 +84,29 @@ YoutubeTrack.prototype = {
 				    'onReady': onPlayerReady,
 				    'onStateChange': onPlayerStateChange
 				  }
-				});
+				})});
 			}
 
 			// 4. The API will call this function when the video youtubeTrackPlayer is ready.
 			function onPlayerReady(event) {
-				var copyTrackList = PlayerLinked.trackList;
 
-				PlayerLinked.nextTrack = that.getMatchingTrackInTrackList(targettedTrack);
-				PlayerLinked.nextTrack.PlayerObject = event.target;
+				console.log('parti');
+				var copyTrackList = PlayerLinked.state.trackList;
+
+				PlayerLinked.getMatchingTrackInTrackList(targettedTrack).PlayerObject = event.target;
+				PlayerLinked.setState({nextTrack: PlayerLinked.getMatchingTrackInTrackList(targettedTrack)});
 
 				event.target.playVideo();
 				event.target.pauseVideo();
 
 				if(playWhenReady){
-					PlayerLinked.currentTrack = that.nextTrack;
+					PlayerLinked.setState({currentTrack: PlayerLinked.state.nextTrack});
 					event.target.playVideo();
-					PlayerLinked.isPlaying = true;		
+					PlayerLinked.setState({isPlaying: true});		
 				}
 
-				PlayerLinked.nextTrack.isPrepared = true;
-				console.log(PlayerLinked.nextTrack.trackId + ' is now prepared for playing. Autoplay: '+ playWhenReady);
+				PlayerLinked.setState({nextTrack: {isPrepared: true}});
+				console.log(PlayerLinked.state.nextTrack.trackId + ' is now prepared for playing. Autoplay: '+ playWhenReady);
 			}
 
 			// 5. The API calls this function when the youtubeTrackPlayer's state changes.
@@ -97,7 +114,7 @@ YoutubeTrack.prototype = {
 			function onPlayerStateChange(event) {
 			    if (event.data == YT.PlayerState.PLAYING) {
 
-					var playerPosition 				= PlayerLinked.position;
+					var playerPosition 				= PlayerLinked.state.position;
 					var playerTotalTime 			= targettedTrack.PlayerObject.getDuration();
 					var TranparentOverlayDiv 		= document.getElementById('transparent_overlay'+ playerPosition);
 					var trackPositionTextContainer 	= document.getElementById('track_position'+ playerPosition);
@@ -110,68 +127,9 @@ YoutubeTrack.prototype = {
 						clearInterval(interval); 	
 					}
 
-					//making move progression bar
-					targettedTrack.currentIntervalId = setInterval(function() {
-
-						var playerCurrentTime	 = targettedTrack.PlayerObject.getCurrentTime();
-						var playerTimeDifference = (playerCurrentTime / playerTotalTime) * 100;
-
-						//On change le formatage du compteur temps ici pour afficher mn:sec 
-						var minutes = (playerCurrentTime / 60) | (0);
-						var seconds = Math.round(playerCurrentTime - minutes * 60);
-						seconds < 10 ? seconds = '0'+ seconds : seconds = seconds;
-						!minutes ? trackPositionTextContainer.innerHTML = seconds : trackPositionTextContainer.innerHTML = minutes + ':' + seconds;
-
-						// On fait avancer l'overlay
-						var coverWidth = document.getElementById('sound_cover'+ playerPosition).offsetWidth;
-						var step = (playerCurrentTime*coverWidth/(playerTotalTime));
-						document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(step+"px");
-						document.getElementById('cover_overlay'+ playerPosition).style.width=((step)+"px");
-
-					}, 1000);  
-					
-					if(intervalBis)
-					{
-						clearInterval(intervalBis); 	
-					}
-
-					targettedTrack.currentIntervalBisId = setInterval(function() {
-						
-						// prepare next song if we arrive at the end 
-						var playerCurrentTime	 = targettedTrack.PlayerObject.getCurrentTime();
-						var playerTimeDifference = (playerCurrentTime / playerTotalTime) * 100;
-						var triggered = false;
-						if(playerCurrentTime > (playerTotalTime-10) && that.trackList[(that.position)].player === "youtube" && !that.trackList[(that.position)].isPrepared && !triggered)
-						{
-							PlayerLinked.prepareYoutubePlayer(PlayerLinked.trackList[(PlayerLinked.position)], false);
-							triggered = true;
-							console.log(PlayerLinked.trackList[(PlayerLinked.position)] + ' has been prepared from youtube');
-						}
-					}, 3000); 
-
-					// Position navigation with click 	
-					TranparentOverlayDiv.addEventListener('click', function (e) 
-					{
-							//clearDropdownMenu();
-							var coverWidth 		= document.getElementById('sound_cover'+ playerPosition).offsetWidth;
-							durationBeforeJump 	= targettedTrack.PlayerObject.getCurrentTime();
-							var mousePos 		= {'x': e.layerX, 'y': e.layerY};
-							var aimedPositionS 	= (mousePos['x']*(playerTotalTime/coverWidth));
-							targettedTrack.PlayerObject.seekTo(aimedPositionS);
-							document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(mousePos['x']+"px");
-							document.getElementById('cover_overlay'+ playerPosition).style.width=(mousePos['x']+"px");
-							/*mixpanel.track("Progression bar hit", {
-								"fullUrl": window.location.href,
-								"trackId": that.trackList[(position-1)].trackID,
-								"durationBeforeJump": durationBeforeJump,
-								"jumpedTo": that.currentTrack.position
-							});*/
-					}, false);
 				} 
 				else if(event.data == YT.PlayerState.ENDED){
 					PlayerLinked.next();
-
-					//record automatic next to add here
 				}
 			}
 	    },
@@ -192,12 +150,23 @@ YoutubeTrack.prototype = {
 	    },
 
 	    stopTrack: function(){
-    	clearInterval(this.currentIntervalId);
-    	clearInterval(this.currentIntervalBisId);
-    	console.log('interval: ' + this.currentIntervalId + 'intervalBis: ' + this.currentIntervalBisId);
-    	this.PlayerObject.stopVideo();
-    	this.PlayerObject.destroy();
-    	this.isPrepared = false;
+		    console.log('stop youtube track');
+	    	console.log('interval: ' + this.currentIntervalId + 'intervalBis: ' + this.currentIntervalBisId);
+	    	this.PlayerObject.stopVideo();
+	    	this.PlayerObject.destroy();
+	    	this.isPrepared = false;
+    	},
+
+    	getPosition: function(){
+		   return this.PlayerObject.getCurrentTime();
+    	},
+
+    	getDuration: function(){
+			return this.PlayerObject.getDuration();
+    	},
+
+    	setDuration: function(aimedPosition){
+			return this.PlayerObject.seekTo(aimedPosition);
     	}
 
 }

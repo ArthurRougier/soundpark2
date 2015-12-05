@@ -1,14 +1,22 @@
-function record_automatic_next()
+function record_automatic_next(songId)
 {
-    //console.log('coucou');
+    $.ajax({
+      url: "../control/record_automatic_next.php?songId="+trackId,
+      cache: false,
+      
+      success: function(trackListEntry) {
+        console.log('autoNext registered');
+      }.bind(this),
 
-	var trackId = songTable[position - 1]; 
-    //console.log(trackId);
-    var currentUser = getCookie('current_user') //user.email
+      error: function(xhr, status, err) {
+        console.error("../control/record_automatic_next.php?songId=", status, err.toString());
+      }.bind(this)
+    });
 
-	xhr = new XMLHttpRequest();
+
+	var xhr = new XMLHttpRequest();
     
-	xhr.open('GET', '../control/record_automatic_next.php?trackId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été liké par currentUser
+	xhr.open('GET', '../control/record_automatic_next.php?songId='+trackId+'&currentUser='+currentUser); // On test si le son a déjà été liké par currentUser
 	
     /*xhr.onreadystatechange = function() 
 	{ // On gère ici une requête asynchrone

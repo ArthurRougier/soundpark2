@@ -13,7 +13,7 @@ YoutubeTrack.prototype = {
 	    	var targettedTrack = this;
 	    	if(!position)
 	    	{
-	    		position = PlayerLinked.trackList.indexOf(that.getMatchingTrackInTrackList(targettedTrack)) + 1;
+	    		position = PlayerLinked.trackList.indexOf(PlayerLinked.getMatchingTrackInTrackList(targettedTrack)) + 1;
 	    		console.log('position to play: '+position);
 	    	}
 	    	console.log('PrepareYoutube Entered. position: '+ position + 'track: ' + targettedTrack.trackId);
@@ -29,7 +29,7 @@ YoutubeTrack.prototype = {
 				//    after the API code downloads.
 				window.onYouTubeIframeAPIReady = function() {
 					var divHeight = $('sound_cover'+ position).height();
-					that.nextTrack = new YT.Player('sound_cover'+ position, {
+					PlayerLinked.nextTrack = new YT.Player('sound_cover'+ position, {
 					  height: divHeight,
 					  width: divHeight,
 					  videoId: targettedTrack.trackId,
@@ -53,7 +53,7 @@ YoutubeTrack.prototype = {
 			else
 			{
 				var divHeight = $('sound_cover'+ position).height();
-				that.nextTrack = new YT.Player('sound_cover'+ position, {
+				PlayerLinked.nextTrack = new YT.Player('sound_cover'+ position, {
 				  height: divHeight,
 				  width: divHeight,
 				  videoId: targettedTrack.trackId,
@@ -76,14 +76,14 @@ YoutubeTrack.prototype = {
 			function onPlayerReady(event) {
 				var copyTrackList = PlayerLinked.trackList;
 
-				PlayerLinked.nextTrack = that.getMatchingTrackInTrackList(targettedTrack);
+				PlayerLinked.nextTrack = PlayerLinked.getMatchingTrackInTrackList(targettedTrack);
 				PlayerLinked.nextTrack.PlayerObject = event.target;
 
 				event.target.playVideo();
 				event.target.pauseVideo();
 
 				if(playWhenReady){
-					PlayerLinked.currentTrack = that.nextTrack;
+					PlayerLinked.currentTrack = PlayerLinked.nextTrack;
 					event.target.playVideo();
 					PlayerLinked.isPlaying = true;		
 				}
@@ -141,7 +141,7 @@ YoutubeTrack.prototype = {
 						var playerCurrentTime	 = targettedTrack.PlayerObject.getCurrentTime();
 						var playerTimeDifference = (playerCurrentTime / playerTotalTime) * 100;
 						var triggered = false;
-						if(playerCurrentTime > (playerTotalTime-10) && that.trackList[(that.position)].player === "youtube" && !that.trackList[(that.position)].isPrepared && !triggered)
+						if(playerCurrentTime > (playerTotalTime-10) && PlayerLinked.trackList[(PlayerLinked.position)].player === "youtube" && !PlayerLinked.trackList[(PlayerLinked.position)].isPrepared && !triggered)
 						{
 							PlayerLinked.prepareYoutubePlayer(PlayerLinked.trackList[(PlayerLinked.position)], false);
 							triggered = true;
@@ -153,10 +153,10 @@ YoutubeTrack.prototype = {
 					TranparentOverlayDiv.addEventListener('click', function (e) 
 					{
 							//clearDropdownMenu();
-							var coverWidth 		= document.getElementById('sound_cover'+ playerPosition).offsetWidth;
-							durationBeforeJump 	= targettedTrack.PlayerObject.getCurrentTime();
-							var mousePos 		= {'x': e.layerX, 'y': e.layerY};
-							var aimedPositionS 	= (mousePos['x']*(playerTotalTime/coverWidth));
+							var coverWidth 			= document.getElementById('sound_cover'+ playerPosition).offsetWidth;
+							var durationBeforeJump 	= targettedTrack.PlayerObject.getCurrentTime();
+							var mousePos 			= {'x': e.layerX, 'y': e.layerY};
+							var aimedPositionS 		= (mousePos['x']*(playerTotalTime/coverWidth));
 							targettedTrack.PlayerObject.seekTo(aimedPositionS);
 							document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(mousePos['x']+"px");
 							document.getElementById('cover_overlay'+ playerPosition).style.width=(mousePos['x']+"px");
@@ -164,13 +164,13 @@ YoutubeTrack.prototype = {
 								"fullUrl": window.location.href,
 								"trackId": that.trackList[(position-1)].trackID,
 								"durationBeforeJump": durationBeforeJump,
-								"jumpedTo": that.currentTrack.position
+								"jumpedTo": thatTrack.currentTrack.position
 							});*/
 					}, false);
 				} 
 				else if(event.data == YT.PlayerState.ENDED){
 					PlayerLinked.next();
-
+					PlayerLinked.recordAutomaticNext(targettedTrack.id);
 					//record automatic next to add here
 				}
 			}
@@ -179,7 +179,7 @@ YoutubeTrack.prototype = {
 	    play: function(comingFromPrevious, PlayerLinked){
 	    	if(this.isPrepared)
 	    	{
-	    		PlayerLinked.currentTrack = that.nextTrack;
+	    		PlayerLinked.currentTrack = PlayerLinked.nextTrack;
 	    		this.PlayerObject.playVideo();
 	    		this.isInitialized = true;
 	    		this.isPlaying = true;

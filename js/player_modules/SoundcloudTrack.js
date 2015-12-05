@@ -106,13 +106,25 @@ SoundcloudTrack.prototype = {
 
 					PlayerLinked.setState({isPlaying: true});
 					thatTrack.PlayerObject.play();
-					setInterval(function(){thatTrack.PlayerObject.play()},1000);
 					//console.log(PlayerLinked.state);
 				});
 	    },
+
 	    stopTrack: function(){
 	    	this.PlayerObject.stop();
-	    }
+	    },
+
+	    getPosition: function(){
+		   return this.PlayerObject.position;
+    	},
+
+    	getDuration: function(){
+			return this.PlayerObject.durationEstimate;
+    	},
+
+    	setDuration: function(aimedPosition){
+			return this.PlayerObject.setPosition(aimedPosition);
+    	}
 }
 
 module.exports = SoundcloudTrack;

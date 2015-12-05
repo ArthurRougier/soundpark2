@@ -1442,3 +1442,36 @@ and (max-device-width : 1024px)
 and (orientation : portrait) {
 /* Styles */
 }
+
+
+
+
+/* React Left Pannel Try */
+
+#left-pannel
+{
+  position: absolute;
+  bottom: 0;
+  z-index: 10000000;
+  width: 100vw;
+  height: 70vh;
+  background-color: pink;
+}
+
+.example-enter {
+  height: 0 !important; 
+}
+
+.example-enter.example-enter-active {
+  height: 70vh !important; 
+  transition: height 100ms ease-in;
+}
+
+.example-leave {
+  height: 70vh !important; 
+}
+
+.example-leave.example-leave-active {
+  height: 0 !important; 
+  transition: height 100ms ease-in;
+}

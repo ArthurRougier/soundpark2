@@ -26,7 +26,7 @@ var Player = function(trackListUrl, divSelector, playButtonSelector, arrowSelect
 
 	// Helpers
 	this.currentTrack 			= null; 
-	that 						= this;
+	var that 					= this;
 	console.log(that);  
 
 	that.prepareNavigationButtons();
@@ -130,6 +130,7 @@ Player.prototype = {
 	},
 
 	createOrNotTrackBoxes: function(){
+		var that = this;
 		if(that.boxesCreated < (that.position + 3)){
 			that.createTrackBoxes(10);
 			return "10 new trackBoxes in creation";
@@ -153,7 +154,7 @@ Player.prototype = {
 		for(var indexTrackList 	= 0, trackListLength = trackList.length ; indexTrackList < trackListLength ; indexTrackList++)
 		{
 			var urlCopy 					= trackList[indexTrackList];
-			console.log(urlCopy);
+			//console.log(urlCopy);
 			
 
 			if(trackList[indexTrackList].toLowerCase().indexOf("youtube") > -1 )
@@ -227,10 +228,38 @@ Player.prototype = {
 			        if(xhrDb[indexTrackList].readyState == 4 && xhrDb[indexTrackList].status == 200) 
 			        { // Si le fichier est chargé sans erreur
 			            var json 										= JSON.parse(xhrDb[indexTrackList].responseText);
-			            trackListProper[indexTrackList].id 				= json.id;
-			            trackListProper[indexTrackList].curatorPseudo 	= json.pseudo;
-			            trackListProper[indexTrackList].curatorLink 	= json.link;
-			            trackListProper[indexTrackList].curatorPic 		= json.avatar_url;
+			            if(json)
+			            {
+			            	console.log(json.id);
+			            	trackListProper[indexTrackList].id 				= json.id || 0;
+			            	trackListProper[indexTrackList].curatorPseudo 	= json.pseudo || "";
+			            	trackListProper[indexTrackList].curatorLink 	= json.link || "";
+			            	trackListProper[indexTrackList].curatorPic 		= json.avatar_url || "";
+			            }
+			           
+			            //new ajax request to get like state
+			            (function(urlCopy, indexTrackList){
+			            	var xhrLikeTest 				= [];
+			            	xhrLikeTest[indexTrackList] 	= new XMLHttpRequest();
+			            	var urlToSend 					= "../model/get_like_state.php?songId="  + json.id;
+			            	xhrLikeTest[indexTrackList].open('GET', urlToSend); // On test si le son a déjà été liké par currentUser
+			                xhrLikeTest[indexTrackList].onreadystatechange = function() 
+			            	{ // On gère ici une requête asynchrone
+
+			                    if(xhrLikeTest[indexTrackList].readyState == 4 && xhrLikeTest[indexTrackList].status == 200) 
+			                    { // Si le fichier est chargé sans erreur
+			                        trackListProper[indexTrackList].isLiked	 = xhrLikeTest[indexTrackList].responseText === "FALSE" ? false : true;
+			                        if(isFinished(indexTrackList))
+			                        {
+			                        	that.trackList = trackListProper;
+			                        	callBack(10, that);
+			                        	console.log(trackListProper);
+			                        } 
+			                    }
+			                };
+			                xhrLikeTest[indexTrackList].send(null); // La requête est prête, on envoie tout !
+			                ajaxRequestNumber++;
+			            })(urlCopy, indexTrackList);
 
 			            if(isFinished(indexTrackList))
 			            {
@@ -243,6 +272,7 @@ Player.prototype = {
 			    xhrDb[indexTrackList].send(null); // La requête est prête, on envoie tout !
 			    ajaxRequestNumber++;
 			})(urlCopy, indexTrackList);
+
 		}
 
 		var isFinished = function(index){
@@ -256,6 +286,7 @@ Player.prototype = {
 		}
 	},
 	prepareNavigationButtons: function(){
+		var that = this;
 		if(that.playButton)
 		{
 			that.playButton.addEventListener('click', function(){
@@ -277,9 +308,30 @@ Player.prototype = {
 			var prevArrow = true;
 		}
 
+		document.addEventListener('keydown', function(e) 
+		{
+		    if(e.keyCode == 32) //spacebar
+		    {
+		    	/*mixpanel.track("Shortcut Play/Pause", 
+				{
+					"fullUrl": window.location.href
+				});*/
+		    	if(document.activeElement.nodeName != "INPUT")
+			   	{
+			   		that.playPauseToggle(that.currentTrack);
+			   	}
+			   	else
+			   	{
+			   		$('input').blur();
+			   		that.playPauseToggle(that.currentTrack);
+			   	}
+		    }
+		}, false);
+
 		return "Play Button: " + playButton + "Next Button: " + nextArrow + "Prev Button: " + prevArrow;
 	},
 	displayOrNotLeftArrow: function(){
+		var that = this;
 		that.position > 1 ? that.displayLeftArrow() : that.undisplayLeftArrow();
 	},
 	displayLeftArrow: function(){
@@ -289,7 +341,7 @@ Player.prototype = {
 		this.prevArrow.style.opacity = 0;		
 	},
 	cleanProgressionLayer: function(position){
-
+		var that = this;
 		document.getElementById('blurred_sound_cover_container'+ position).style.width= "0";
 		document.getElementById('cover_overlay'+ position).style.width= "0";
 
@@ -298,6 +350,7 @@ Player.prototype = {
 	// helpers
     slideTo: function (position) {
 
+    	var that = this;
 		// If CSS3 transitions are supported
 		if (this.supportTransitions) {
 			var $slides = $('.slide');
@@ -334,6 +387,7 @@ Player.prototype = {
 
     getNextTrack: function(targetPosition){
 
+    	var that = this;
     	var targetTrack = targetPosition ? that.trackList((targetPosition - 1)) :  that.trackList[that.position];
     	//console.log('targetPos: '+ targetPosition + 'position player: '+ that.position);
     	return targetTrack;
@@ -341,11 +395,14 @@ Player.prototype = {
 
     getPrevTrack: function(targetPosition){
 
+    	var that = this;
     	var targetTrack = targetPosition ? that.trackList((targetPosition - 1)) : that.trackList[that.position - 2];
     	return targetTrack;
     },
 
     getMatchingTrackInTrackList: function(track){
+
+    	var that = this;
     	var copyTrackList = that.trackList;
     	for(var index = 0, trackListLength = copyTrackList.length ; index < trackListLength ; index++){
     		if (track.trackId === copyTrackList[index].trackId)
@@ -359,14 +416,23 @@ Player.prototype = {
     //player methods
     play: function(track, position, comingFromPrevious){
 
+    	var that = this;
     	track.play(comingFromPrevious, that);
+
+    	//check if liked, to change like button color in case it is
+    	var isLiked = that.getMatchingTrackInTrackList(track).isLiked ? true : false;
+    	isLiked ? that.pressLikeButton() : that.unpressLikeButton();
     },
 
     stopTrack: function(){
+
+    	var that = this;
     	that.currentTrack.stopTrack();
     },
 
     playPauseToggle: function(track){
+
+    	var that = this;
     	if(that.isPlaying){
     		if(!that.isPaused)
     		{
@@ -397,6 +463,8 @@ Player.prototype = {
     },
 
     next: function(targetPosition){
+
+    	var that = this;
     	
     	if(that.currentTrack)
     	{
@@ -423,6 +491,8 @@ Player.prototype = {
     },
 
     prev: function(targetPosition){
+
+    	var that = this;
     	if(that.currentTrack)
     	{
 	    	if(that.currentTrack.isInitialized)
@@ -444,7 +514,48 @@ Player.prototype = {
 	    {
 	    	return('No current Track');
 	    }
-    }
+    },
+
+    pressLikeButton: function(){
+		var likeStamp = document.getElementById("plus_one");
+        likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like_pressed.png)";
+        likeStamp.style.backgroundSize="contain";
+        likeStamp.style.backgroundRepeat="no-repeat";
+    },
+
+    unpressLikeButton: function(){
+    	var likeStamp = document.getElementById("plus_one");
+        likeStamp.style.background="url(http://soundpark.fm/assets/pictures/heart_like.png)";
+        likeStamp.style.backgroundSize="contain";
+        likeStamp.style.backgroundRepeat="no-repeat";
+    },
+
+    recordAutomaticNext: function(songId)
+	{
+		console.log('auto next launched, songId: '+ songId);
+		
+	    $.ajax({
+	      url: "../control/record_automatic_next.php?songId="+songId,
+	      cache: false,
+	      
+	      success: function(trackListEntry) {
+	        console.log('autoNext registered');
+	      }.bind(this),
+
+	      error: function(xhr, status, err) {
+	        console.error("../control/record_automatic_next.php?songId=", status, err.toString());
+	      }.bind(this)
+	    });
+
+	    mixpanel.track("Automatic Next", 
+	    {
+	    	"fullUrl": window.location.href,
+	    	"TrackId": track.trackId,
+	    	"userId": userId,
+	    	"playlistPosition": playerPositionLogs,
+	    	"curator": that.masterJson.curatorPseudo
+	    });
+	}
 }
 
 module.exports = Player;

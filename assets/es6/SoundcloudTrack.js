@@ -19,15 +19,7 @@ SoundcloudTrack.prototype = {
     			{ 
     				console.log('trackFinished');
     				PlayerLinked.next();
-    				/*record_automatic_next();
-    				mixpanel.track("Automatic Next", 
-    				{
-    					"fullUrl": window.location.href,
-    					"TrackId": track.trackId,
-    					"userId": userId,
-    					"playlistPosition": playerPositionLogs,
-    					"curator": that.masterJson.curatorPseudo
-    				});*/
+    				PlayerLinked.recordAutomaticNext(thatTrack.id);
     			}, 
     			onload: function()
     			{
@@ -76,20 +68,20 @@ SoundcloudTrack.prototype = {
 					 	TranparentOverlayDiv.addEventListener('click', function (e) 
 					 	{
 					 			//clearDropdownMenu();
-					 			var coverWidth 		= document.getElementById('sound_cover'+ playerPosition).offsetWidth;
-					 			durationBeforeJump 	= thatTrack.PlayerObject.position;
-					 			var mousePos 		= {'x': e.layerX, 'y': e.layerY};
+					 			var coverWidth 			= document.getElementById('sound_cover'+ playerPosition).offsetWidth;
+					 			var durationBeforeJump 	= thatTrack.PlayerObject.position;
+					 			var mousePos 			= {'x': e.layerX, 'y': e.layerY};
 					 			//console.log(mousePos['x']);
 					 			var aimedPositionMs = (mousePos['x']*(thatTrack.PlayerObject.durationEstimate/coverWidth));
 					 			thatTrack.PlayerObject.setPosition(aimedPositionMs);
 					 			document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(mousePos['x']+"px");
 					 			document.getElementById('cover_overlay'+ playerPosition).style.width=(mousePos['x']+"px");
-					 			mixpanel.track("Progression bar hit", {
+					 			/*mixpanel.track("Progression bar hit", {
 					 				"fullUrl": window.location.href,
 					 				"trackId": thatTrack.trackID,
 					 				"durationBeforeJump": durationBeforeJump,
-					 				"jumpedTo": that.position
-					 			}); 	
+					 				"jumpedTo": thatTrack.position
+					 			});*/ 	
 					 	}, false);
 					 }			
     			}}, 
@@ -97,7 +89,7 @@ SoundcloudTrack.prototype = {
 				function(track){
 					
 					//that.currentTrack = track;
-					PlayerLinked.currentTrack = that.getMatchingTrackInTrackList(thatTrack);
+					PlayerLinked.currentTrack = PlayerLinked.getMatchingTrackInTrackList(thatTrack);
 					thatTrack.PlayerObject = track;
 					thatTrack.isInitialized = true;
 

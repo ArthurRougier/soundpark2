@@ -26,13 +26,8 @@
 
     <script src="http://connect.soundcloud.com/sdk.js"></script>
     <script type="text/javascript" src="../assets/jquery.js"></script>
-     <script type="text/javascript" src="../assets/jquery.blockUI.js"></script>
     <script type="text/javascript" src="../assets/cookies.js"></script>
     <script type="text/javascript" src="../assets/date.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/update_player_position.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/add_like_dislike.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/record_automatic_next.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/display_user_past_likes.js"></script>
     <!--<script type="text/javascript" src="../zeroclipboard-2.1.6/dist/ZeroClipboard.min.js"></script>-->
     
 
@@ -97,13 +92,10 @@
  
 	<body>
 		<header>
-			<!--<?php include_once('../control/display_curator_access_logo.php');?>-->
-			<?php include_once('../control/display_account_dropdown_menu.php');?>
-
 			<h1>SOUNDPARK.FM</h1>
-			<h2 id="player_position"><?php include("../control/display_player_position.php"); ?></h2>
-				
 		</header>
+
+		<div id="extraOptions"></div>
 		
 		<div class="container" id="galerie"> 
 			
@@ -124,7 +116,6 @@
 				{
 					$playlistId = $currentPlaylistId;
 				}
-				//include_once('../control/display_song_boxes.php'); 
 			?>
 			</div>
 			<div id="right_arrow">
@@ -138,49 +129,21 @@
 		<footer>
 			<div id="buttons_area">
 				<div id="dislike">
-					<input type="button" id="minus_one" value="-1" onclick="addDislike()" align="center"/>
+					<input type="button" id="minus_one" value="-1" align="center"/>
 					<span class="likeText">Forget it</span>
 				</div>
 				<input type="button" class="play" id="play" value="play"/>
 				<div id="like">
-					<input type="button" id="plus_one" value="+1" onclick="addLike()" align="center"/>
+					<input type="button" id="plus_one" value="+1" align="center"/>
 					<span class="likeText">Like it</span>
 				</div>
-				<form id="share_link">
-					<span class="share_url_title"> Share that tune --> </span>
-					<?php 
-						//on va ici chercher le premier trackId pour initialiser le lien share
-						$req = $bdd->query('SELECT trackId FROM song, playlist WHERE song.ID_playlist=playlist.ID AND playlist.date_end >= NOW() AND playlist.date_start <= NOW()');
-						$trackIds = $req->fetch();
-					?>
-					<div id="share_url"> http://soundpark.fm/view/fromshare.php?trackId=<?php echo $trackIds[0]; ?></div>
-					<span class="share_url_title"> <-- Share that tune </span>
-				</form>
 			</div>
 		</footer>		
 </body>
-    <script type="text/javascript" src="http://localhost:8080/build/b.bundle.js" charset="utf-8"></script>
+    <script src="../build/b.bundle.js"></script>
     <script type="text/javascript" src="../assets/popUps.js"></script>
     <script type="text/javascript" src="../assets/on_load.js"></script>
     <!--<script type="text/javascript" src="../assets/mixpanel_logs.js"></script>-->
-    <script type="text/javascript"></script>
-
-    <script>
-      // $(function() {
-      //   $(".rslides").responsiveSlides({
-      //     auto: false,             // Boolean: Animate automatically, true or false
-      //     speed: 750,            // Integer: Speed of the transition, in milliseconds
-      //     nav: true,             // Boolean: Show navigation, true or false
-      //     random: false,          // Boolean: Randomize the order of the slides, true or false
-      //     pause: false,           // Boolean: Pause on hover, true or false
-      //     namespace: "rslides",   // String: Change the default namespace used
-      //     before: function(){},   // Function: Before callback
-      //     after: function(){}     // Function: After callback
-      //   });
-      // });
-
-
-    </script>
 
     <script>
 
@@ -195,36 +158,6 @@
 	    }
 	});
 
-
-	/*SC.initialize({
-		    client_id: "17f3a8c69cb36c955df82f908611e27e"
-		});
-
-	    var trackListTest = ['https://soundcloud.com/nicolashaelg/nicolas-haelg-alfie-rhodes-callin-your-name-feat-syren-1',
-	    'https://www.youtube.com/watch?v=izkqPdVAdL4',
-	  	'https://soundcloud.com/thefallingapple/tracy-chapman-fast-car-bauke-top-remix',
-	   	'https://www.youtube.com/watch?v=JrlfFTS9kGU',
-	   	'https://www.youtube.com/watch?v=h_aLbagloMk',
-	   	'https://soundcloud.com/chris-meid/chris-meid-bergershaqiri-eye-of-the-tiger-ft-drew-tabor',
-	   	'https://www.youtube.com/watch?v=BBtLMLQfiRo',
-	   	'https://soundcloud.com/vaguewave/morcheeba-enjoy-the-ride-vague-wave-remix',
-	   	'https://soundcloud.com/probcause/probcause-gramatik-back-to-the-future',
-	   	'https://www.youtube.com/watch?v=jdYJf_ybyVo',
-	   	'https://soundcloud.com/artifakts/hot-like-sauce-remix',
-	   	'https://www.youtube.com/watch?v=hc9VXLtgw5g',
-	   	'https://www.youtube.com/watch?v=ESXgJ9-H-2U',
-	   	'https://www.youtube.com/watch?v=OPf0YbXqDm0',
-	   	'https://www.youtube.com/watch?v=4HLY1NTe04M',
-	   	'https://soundcloud.com/alexcruz/alex-cruz-ft-anna-renee-melle-kuil-haunting-original-vocal-mix',
-	   	'https://soundcloud.com/robotaki/autograf-dream-robotaki-remix',
-	   	'https://soundcloud.com/fdvm/fdvm-feat-josh-wantie-brightest-light'
-	   	];
-
-
-		var arrowSelectors 			= ["#left_arrow", "#right_arrow"];
-		var likeDislikeSelectors 	= ["#plus_one", "#minus_one"];
-		var playerTest 				= new Player(trackListTest, '.slider', '.play', arrowSelectors);
-		var likerTest 				= new Liker(likeDislikeSelectors, playerTest);*/
 
 	// var curatorPics = document.querySelectorAll('.curatorPicture');
 	// for(var indexCuratorPicture = 0 ; indexCuratorPicture <= curatorPics.length ; indexCuratorPicture++)
