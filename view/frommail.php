@@ -153,7 +153,6 @@
 		}
 	}
 ?>
-    <script src="../build/b.bundle.js"></script>
     <script type="text/javascript" src="../assets/popUps.js"></script>
     <script type="text/javascript" src="../assets/on_load.js"></script>
     <!--<script type="text/javascript" src="../assets/mixpanel_logs.js"></script>-->
