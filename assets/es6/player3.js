@@ -3,7 +3,7 @@ var YoutubeTrack  	= require('./YoutubeTrack.js');
 var SoundcloudTrack = require('./SoundcloudTrack.js');
 var TrackBox    	= require('./TrackBox.js');
 
-var Player = function(trackListUrl, divSelector, playButtonSelector, arrowSelectors, fadeTime){
+var Player = function(trackListUrl, divSelector, playButtonSelector, arrowSelectors, autoplay, fadeTime){
 	this.nextTrack 				= null;
 	this.divSelector 			= divSelector || null;
 	this.arrowSelectors 		= arrowSelectors || [];
@@ -23,6 +23,7 @@ var Player = function(trackListUrl, divSelector, playButtonSelector, arrowSelect
 	this.fadeTime 				= fadeTime || 500;
 	this.boxesCreated			= 0;
 	this.domElements			= "";
+	this.autoplay				= autoplay || false;
 
 	// Helpers
 	this.currentTrack 			= null; 
@@ -123,6 +124,8 @@ Player.prototype = {
 				    "transition": "opacity " + that.fadeTime + "ms ease-in-out"
 				  });
 			}
+
+			if(that.boxesCreated < 15 && that.autoplay){that.play(that.trackList[0]);}
 		}
 		else
 		{
@@ -303,12 +306,14 @@ Player.prototype = {
 			that.nextArrow.addEventListener('click', function(){
 				that.next();
 			}, false);
+			that.nextArrow.style.visibility = "visible";
 			var nextArrow = true;
 		}
 		if(that.prevArrow){
 			that.prevArrow.addEventListener('click', function(){
 				that.prev();
 			}, false);
+			that.prevArrow.style.visibility = "visible";
 			var prevArrow = true;
 		}
 
@@ -426,6 +431,7 @@ Player.prototype = {
     	//check if liked, to change like button color in case it is
     	var isLiked = that.getMatchingTrackInTrackList(track).isLiked ? true : false;
     	isLiked ? that.pressLikeButton() : that.unpressLikeButton();
+    	that.playButton.value = "pause";
     },
 
     stopTrack: function(){

@@ -315,6 +315,7 @@ input[value="pause"]
   z-index: 10000000;
   vertical-align: top;
   opacity: 1;
+  visibility: hidden;
   webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
  }
