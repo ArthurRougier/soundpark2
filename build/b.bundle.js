@@ -20748,7 +20748,7 @@
 	    trackList = trackList.filter(function (item, pos) {
 	      return trackList.indexOf(item) == pos;
 	    });
-	    var playerTest = new Player(trackList, '.slider', '.play', arrowSelectors);
+	    var playerTest = new Player(trackList, '.slider', '.play', arrowSelectors, true);
 	    setTimeout(function () {
 	      var likerTest = new Liker(likeDislikeSelectors, playerTest);
 	      console.log(playerTest);
@@ -20901,7 +20901,7 @@
 	var SoundcloudTrack = __webpack_require__(318);
 	var TrackBox = __webpack_require__(319);
 
-	var Player = function Player(trackListUrl, divSelector, playButtonSelector, arrowSelectors, fadeTime) {
+	var Player = function Player(trackListUrl, divSelector, playButtonSelector, arrowSelectors, autoplay, fadeTime) {
 		this.nextTrack = null;
 		this.divSelector = divSelector || null;
 		this.arrowSelectors = arrowSelectors || [];
@@ -20921,6 +20921,7 @@
 		this.fadeTime = fadeTime || 500;
 		this.boxesCreated = 0;
 		this.domElements = "";
+		this.autoplay = autoplay || false;
 
 		// Helpers
 		this.currentTrack = null;
@@ -20970,6 +20971,7 @@
 			var masterJsonCopy = that.masterJson || {};
 			console.log('createTrackBoxes' + that);
 			if (that.masterJson) {
+				document.getElementById("mainPlayerLoader").style.display = "none";
 				if (that.boxesCreated > 0) {
 					mainUl = document.getElementById('sliderTest');
 				} else // Case were it's the first time we create boxes. We need to create parents then.
@@ -20993,6 +20995,7 @@
 					that.boxesCreated++;
 				}
 
+				document.getElementById("outerLoader").style.opacity = "0";
 				that.domElements = mainUl;
 				document.querySelector(that.divSelector).appendChild(that.domElements);
 				var $slides = $('.slide');
@@ -21006,6 +21009,10 @@
 						"-o-transition": "opacity " + that.fadeTime + "ms ease-in-out",
 						"transition": "opacity " + that.fadeTime + "ms ease-in-out"
 					});
+				}
+
+				if (that.boxesCreated < 15 && that.autoplay) {
+					that.play(that.trackList[0]);
 				}
 			} else {
 				console.log('error: attempt to create songboxes without master json');
@@ -21168,12 +21175,14 @@
 				that.nextArrow.addEventListener('click', function () {
 					that.next();
 				}, false);
+				that.nextArrow.style.visibility = "visible";
 				var nextArrow = true;
 			}
 			if (that.prevArrow) {
 				that.prevArrow.addEventListener('click', function () {
 					that.prev();
 				}, false);
+				that.prevArrow.style.visibility = "visible";
 				var prevArrow = true;
 			}
 
@@ -21270,6 +21279,7 @@
 			//check if liked, to change like button color in case it is
 			var isLiked = that.getMatchingTrackInTrackList(track).isLiked ? true : false;
 			isLiked ? that.pressLikeButton() : that.unpressLikeButton();
+			that.playButton.value = "pause";
 		},
 
 		stopTrack: function stopTrack() {
