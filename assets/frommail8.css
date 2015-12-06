@@ -417,6 +417,7 @@ cursor: pointer;
 .slider
 {
   width: 65.1vh;
+  height: 65.1vh;
   display: inline-block;
   text-align: left;
   position : relative;
@@ -1475,3 +1476,58 @@ and (orientation : portrait) {
   height: 0 !important; 
   transition: height 100ms ease-in;
 }
+
+/*Player loader*/
+
+
+.outerLoader {
+  position: absolute;
+  height: 65.1vh;
+  width: 65.1vh;
+  min-width: 150px;
+  min-height: 150px;
+  opacity: 1;
+  transition: opacity 250ms;
+}
+
+.containerLoader {
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 65.1vh;
+      height: 65.1vh;
+      margin: auto;
+}
+
+#part {
+  width: 65.1vh;
+  position: absolute;
+}
+
+.svgpath {
+  fill: rgba(255,255,255,0);
+  stroke: #18FFFF;
+  stroke-width: 1.5px;
+  stroke-dasharray: 1000;
+  stroke-linecap: round;
+  z-index: 2;
+}
+
+.svgbg {
+  fill: rgba(255,255,255,0.2);
+  z-index: 1;
+ }
+
+#playload {
+  animation: dash 2.5s reverse ease-in-out infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 2000;
+  }
+}
+
+

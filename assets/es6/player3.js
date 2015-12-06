@@ -73,6 +73,7 @@ Player.prototype = {
 		console.log('createTrackBoxes' + that);
 		if(that.masterJson)
 		{
+			document.getElementById("mainPlayerLoader").style.display = "none";
 			if(that.boxesCreated > 0)
 			{
 				mainUl = document.getElementById('sliderTest');
@@ -99,6 +100,7 @@ Player.prototype = {
 				that.boxesCreated++
 			}
 
+			document.getElementById("outerLoader").style.opacity = "0";
 			that.domElements = mainUl;
 			document.querySelector(that.divSelector).appendChild(that.domElements);
 			var $slides = $('.slide');
