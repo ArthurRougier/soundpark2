@@ -1307,6 +1307,26 @@ input[type="checkbox"] {
     text-align: center;
   }
 
+  /* Loader player */
+
+  #mainPlayerLoader
+  {
+    color: rgba(83,25,49,0.6);
+  }
+
+  .svgpath {
+    fill: rgba(83,25,49,0);
+    stroke: #531931;
+    stroke-width: 1px;
+    stroke-dasharray: 1000;
+    stroke-linecap: round;
+    z-index: 2;
+  }
+
+  .svgbg {
+    fill: rgba(83,25,49,0.2);
+   }
+
 }
 
 /* Small PCs ----------- */
