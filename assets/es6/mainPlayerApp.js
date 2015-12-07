@@ -12,7 +12,7 @@ SC.initialize({
 
 
 $.ajax({
-  url: "../model/get_player_songs.php?playlistId=74&displayResults",
+  url: "../model/get_player_songs.php?playlistId=75&displayResults",
   dataType: 'json',
   cache: false,
   
