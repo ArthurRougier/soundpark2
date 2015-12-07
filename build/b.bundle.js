@@ -20735,7 +20735,7 @@
 	});
 
 	$.ajax({
-	  url: "../model/get_player_songs.php?playlistId=74&displayResults",
+	  url: "../model/get_player_songs.php?playlistId=current&displayResults",
 	  dataType: 'json',
 	  cache: false,
 
@@ -20769,21 +20769,36 @@
 	    _get(Object.getPrototypeOf(DropDownMenu.prototype), 'constructor', this).call(this, props);
 	    this.state = {
 	      isDisplayed: false,
+	      isCuratorPanelDisplayed: false,
 	      userName: "",
 	      isCurator: true,
 	      userAvatarUrl: ""
 	    };
 
-	    this.handleUrlChange = this.handleUrlChange.bind(this);
+	    this.handleChange = this.handleChange.bind(this);
 	    this.loadUserPseudo = this.loadUserPseudo.bind(this);
 	    this.loadUserAvatar = this.loadUserAvatar.bind(this);
 	    this.loadUserType = this.loadUserType.bind(this);
+	    this.handleCuratorPanelClick = this.handleCuratorPanelClick.bind(this);
+	    this.closeCuratorTab = this.closeCuratorTab.bind(this);
 	  }
 
 	  _createClass(DropDownMenu, [{
-	    key: 'handleUrlChange',
-	    value: function handleUrlChange(e) {
+	    key: 'handleChange',
+	    value: function handleChange(e) {
 	      this.setState({ isDisplayed: !this.state.isDisplayed });
+	      console.log(e);
+	    }
+	  }, {
+	    key: 'handleCuratorPanelClick',
+	    value: function handleCuratorPanelClick() {
+	      this.setState({ isCuratorPanelDisplayed: !this.state.isCuratorPanelDisplayed });
+	      this.setState({ isDisplayed: !this.state.isDisplayed });
+	    }
+	  }, {
+	    key: 'closeCuratorTab',
+	    value: function closeCuratorTab() {
+	      this.setState({ isCuratorPanelDisplayed: !this.state.isCuratorPanelDisplayed });
 	    }
 	  }, {
 	    key: 'loadUserPseudo',
@@ -20839,7 +20854,6 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.handleUrlChange();
 	      this.loadUserPseudo();
 	      this.loadUserAvatar();
 	      this.loadUserType();
@@ -20850,38 +20864,34 @@
 
 	      var pseudo = this.state.userName.length > 13 ? this.state.userName.substring(0, 13) : this.state.userName;
 	      var imagetag = this.state.userAvatarUrl ? _react2['default'].createElement('img', { id: 'toggler', src: this.state.userAvatarUrl }) : _react2['default'].createElement('div', { id: 'togglerDiv' }, this.state.userName.substring(0, 1).toUpperCase());
-	      var secondLink = this.state.isCurator ? _react2['default'].createElement('li', null, _react2['default'].createElement('a', { href: '../view/curator_index.php', target: '_blank' }, 'Curator space')) : _react2['default'].createElement('li', null, _react2['default'].createElement('a', { href: '#', onclick: 'curatorPopup()' }, 'Become a curator'));
-
-	      return _react2['default'].createElement('div', { className: 'container-dropdown' }, _react2['default'].createElement('ul', null, _react2['default'].createElement('li', { className: 'dropdown' }, _react2['default'].createElement('input', { type: 'checkbox', id: 'dropdownCheckbox', onChange: this.handleChange }), _react2['default'].createElement('a', { href: '#', 'data-toggle': 'dropdown' }, pseudo, imagetag), _react2['default'].createElement('ul', { className: 'account-dropdown-menu' }, secondLink, _react2['default'].createElement('li', null, _react2['default'].createElement('a', { href: '../view/settings.php', target: '_blank' }, 'My account')), _react2['default'].createElement('li', null, _react2['default'].createElement('a', { href: '../control/logout.php' }, 'Log out'))))));
+	      var secondLink = this.state.isCurator ? _react2['default'].createElement('li', null, _react2['default'].createElement('a', { onClick: this.handleCuratorPanelClick, href: '#' }, 'Curator space')) : _react2['default'].createElement('li', null, _react2['default'].createElement('a', { href: '#', onclick: 'curatorPopup()' }, 'Become a curator'));
+	      var curatorPannelTag = this.state.isCuratorPanelDisplayed ? _react2['default'].createElement(CuratorPannel, { isDisplayed: true, closeCuratorTab: this.closeCuratorTab }) : _react2['default'].createElement(CuratorPannel, { isDisplayed: false });
+	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { className: 'container-dropdown' }, _react2['default'].createElement('ul', null, _react2['default'].createElement('li', { className: 'dropdown' }, _react2['default'].createElement('input', { type: 'checkbox', checked: this.state.isDisplayed, id: 'dropdownCheckbox', onChange: this.handleChange }), _react2['default'].createElement('a', { href: '#', 'data-toggle': 'dropdown' }, pseudo, imagetag), _react2['default'].createElement('ul', { className: 'account-dropdown-menu' }, secondLink, _react2['default'].createElement('li', null, _react2['default'].createElement('a', { href: '../view/settings.php', target: '_blank' }, 'My account')), _react2['default'].createElement('li', null, _react2['default'].createElement('a', { href: '../control/logout.php' }, 'Log out')))))), _react2['default'].createElement('div', null, ' ', curatorPannelTag, ' '));
 	    }
 	  }]);
 
 	  return DropDownMenu;
 	})(_react2['default'].Component);
 
-	var CuratorPannelText = (function (_React$Component2) {
-	  _inherits(CuratorPannelText, _React$Component2);
+	var CuratorPannel = (function (_React$Component2) {
+	  _inherits(CuratorPannel, _React$Component2);
 
-	  function CuratorPannelText() {
-	    _classCallCheck(this, CuratorPannelText);
+	  function CuratorPannel() {
+	    _classCallCheck(this, CuratorPannel);
 
-	    _get(Object.getPrototypeOf(CuratorPannelText.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(CuratorPannel.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _createClass(CuratorPannelText, [{
+	  _createClass(CuratorPannel, [{
 	    key: 'render',
 	    value: function render() {
-	      if (this.props.isDisplayed) {
-	        var pannel = _react2['default'].createElement('div', { id: 'left-pannel' }, _react2['default'].createElement('h1', null, ' Hello lzala '));
-	      } else {
-	        var pannel = "";
-	      }
-	      console.log('isrendered, isDisplayed: ' + this.props.isDisplayed);
-	      return _react2['default'].createElement(_reactAddonsCssTransitionGroup2['default'], { transitionName: 'example', transitionEnterTimeout: 500, transitionLeaveTimeout: 300 }, pannel);
+	      //console.log('isrendered, isDisplayed: '+ this.props.isDisplayed);
+	      var tag = this.props.isDisplayed ? _react2['default'].createElement('div', { id: 'left-pannel' }, _react2['default'].createElement('h1', null, ' Hello lzala '), _react2['default'].createElement('div', { className: 'closeTab', onClick: this.props.closeCuratorTab }, 'Close v'), _react2['default'].createElement('div', { className: 'overlay' })) : "";
+	      return _react2['default'].createElement(_reactAddonsCssTransitionGroup2['default'], { transitionName: 'example', transitionEnterTimeout: 500, transitionLeaveTimeout: 300 }, tag);
 	    }
 	  }]);
 
-	  return CuratorPannelText;
+	  return CuratorPannel;
 	})(_react2['default'].Component);
 
 	_reactDom2['default'].render(_react2['default'].createElement(DropDownMenu, null), document.getElementById('extraOptions'));

@@ -1476,8 +1476,26 @@ and (orientation : portrait) {
   bottom: 0;
   z-index: 10000000;
   width: 100vw;
-  height: 70vh;
-  background-color: pink;
+  height: 86vh;
+  background: url(pictures/curatorSoundDropPage.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover; /* pour Chrome et Safari */
+  -moz-background-size: cover; /* pour Firefox */
+  -o-background-size: cover; /* pour Opera */
+  background-size: cover; /* version standardisée */
+  opacity: 0.97;
+  z-index: 1000000000;
+}
+
+#left-pannel .overlay
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.35;
 }
 
 .example-enter {
@@ -1485,17 +1503,35 @@ and (orientation : portrait) {
 }
 
 .example-enter.example-enter-active {
-  height: 70vh !important; 
-  transition: height 100ms ease-in;
+  height: 86vh !important; 
+  transition: height 300ms ease-out;
 }
 
 .example-leave {
-  height: 70vh !important; 
+  height: 86vh !important; 
 }
 
 .example-leave.example-leave-active {
   height: 0 !important; 
-  transition: height 100ms ease-in;
+  transition: height 300ms ease-in;
+}
+
+
+.closeTab
+{
+  position: relative;
+  display: inline-block;
+  float: right;
+  font-family: 'Open Sans';
+  font-weight: 100;
+  color: rgba(255,255,255, 0.5);
+  font-size: 24px;
+  z-index: 1000000001;
+}
+
+.closeTab:hover
+{
+  border-bottom: 1px solid rgba(255,255,255, 0.5);
 }
 
 /*Player loader*/

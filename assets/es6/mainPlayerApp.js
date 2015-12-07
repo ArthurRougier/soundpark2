@@ -12,7 +12,7 @@ SC.initialize({
 
 
 $.ajax({
-  url: "../model/get_player_songs.php?playlistId=74&displayResults",
+  url: "../model/get_player_songs.php?playlistId=current&displayResults",
   dataType: 'json',
   cache: false,
   
@@ -39,20 +39,34 @@ class DropDownMenu extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      isDisplayed     : false,
-      userName        : "",
-      isCurator       : true,
-      userAvatarUrl   : ""
+      isDisplayed               : false,
+      isCuratorPanelDisplayed   : false,
+      userName                  : "",
+      isCurator                 : true,
+      userAvatarUrl             : ""
     };
 
-     this.handleUrlChange     = this.handleUrlChange.bind(this);
-     this.loadUserPseudo      = this.loadUserPseudo.bind(this);
-     this.loadUserAvatar      = this.loadUserAvatar.bind(this);
-     this.loadUserType        = this.loadUserType.bind(this);
+     this.handleChange              = this.handleChange.bind(this);
+     this.loadUserPseudo            = this.loadUserPseudo.bind(this);
+     this.loadUserAvatar            = this.loadUserAvatar.bind(this);
+     this.loadUserType              = this.loadUserType.bind(this);
+     this.handleCuratorPanelClick   = this.handleCuratorPanelClick.bind(this);
+     this.closeCuratorTab           = this.closeCuratorTab.bind(this);
   }
 
-  handleUrlChange(e) {
+  handleChange(e) {
     this.setState({isDisplayed: !this.state.isDisplayed});
+    console.log(e);
+  }
+
+  handleCuratorPanelClick() {
+    this.setState({isCuratorPanelDisplayed: !this.state.isCuratorPanelDisplayed});
+    this.setState({isDisplayed: !this.state.isDisplayed});
+
+  }
+
+  closeCuratorTab() {
+    this.setState({isCuratorPanelDisplayed: !this.state.isCuratorPanelDisplayed});
   }
 
   loadUserPseudo() {
@@ -104,7 +118,6 @@ class DropDownMenu extends React.Component {
   }
 
   componentDidMount() {
-    this.handleUrlChange(); 
     this.loadUserPseudo();
     this.loadUserAvatar();
     this.loadUserType();
@@ -112,45 +125,41 @@ class DropDownMenu extends React.Component {
 
   render() {  
 
-  var pseudo      = this.state.userName.length > 13 ? this.state.userName.substring(0, 13) : this.state.userName;
-  var imagetag    = this.state.userAvatarUrl ? <img id="toggler" src={this.state.userAvatarUrl}/>  : <div id="togglerDiv">{this.state.userName.substring(0, 1).toUpperCase()}</div>;
-  var secondLink  = this.state.isCurator ? <li><a href="../view/curator_index.php" target="_blank">Curator space</a></li> : <li><a href="#" onclick="curatorPopup()">Become a curator</a></li>;
-
-  return (
-     <div className="container-dropdown">
-        <ul>
-          <li className="dropdown">
-            <input type="checkbox" id="dropdownCheckbox" onChange={this.handleChange} />
-            <a href="#" data-toggle="dropdown">
-              {pseudo}
-              {imagetag}        
-            </a>
-            <ul className="account-dropdown-menu">
-              {secondLink}
-              <li><a href="../view/settings.php" target="_blank">My account</a></li>
-              <li><a href="../control/logout.php">Log out</a></li>
-            </ul>
-         </li>
-        </ul>
-     </div>
-      )
-    }
+    var pseudo            = this.state.userName.length > 13 ? this.state.userName.substring(0, 13) : this.state.userName;
+    var imagetag          = this.state.userAvatarUrl ? <img id="toggler" src={this.state.userAvatarUrl}/>  : <div id="togglerDiv">{this.state.userName.substring(0, 1).toUpperCase()}</div>;
+    var secondLink        = this.state.isCurator ? <li><a onClick={this.handleCuratorPanelClick} href="#">Curator space</a></li> : <li><a href="#" onclick="curatorPopup()">Become a curator</a></li>;
+    var curatorPannelTag  = this.state.isCuratorPanelDisplayed ? <CuratorPannel isDisplayed={true} closeCuratorTab={this.closeCuratorTab}/> : <CuratorPannel isDisplayed={false}/>;
+    return (
+      <div>
+        <div className="container-dropdown">
+          <ul>
+            <li className="dropdown">
+              <input type="checkbox" checked={this.state.isDisplayed} id="dropdownCheckbox" onChange={this.handleChange} />
+              <a href="#" data-toggle="dropdown">
+                {pseudo}
+                {imagetag}        
+              </a>
+              <ul className="account-dropdown-menu">
+                {secondLink}
+                <li><a href="../view/settings.php" target="_blank">My account</a></li>
+                <li><a href="../control/logout.php">Log out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div> {curatorPannelTag} </div>
+      </div>
+    )
+  }
 }
 
-class CuratorPannelText extends React.Component {
+class CuratorPannel extends React.Component {
   render() {
-    if(this.props.isDisplayed)
-    {
-      var pannel = <div id="left-pannel"><h1> Hello lzala </h1></div>;
-    }
-    else
-    {
-     var pannel = "";
-    }
-    console.log('isrendered, isDisplayed: '+ this.props.isDisplayed);
+    //console.log('isrendered, isDisplayed: '+ this.props.isDisplayed);
+    var tag = this.props.isDisplayed ? <div id="left-pannel"><h1> Hello lzala </h1><div className="closeTab" onClick={this.props.closeCuratorTab}>Close v</div><div className="overlay"></div></div> : "";
       return (
         <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-          {pannel}
+          {tag}
         </ReactCSSTransitionGroup>
       )
     }
