@@ -26876,7 +26876,7 @@
 	        pollInterval: this.props.pollInterval,
 	        trackListCuratorBacklogProper: this.props.trackListCuratorBacklogProper,
 	        isCuratorBacklogLoaded: this.props.isCuratorBacklogLoaded,
-	        removeTrackFromSubmissions: this.props.removeTrackFromSubmissions })), _react2.default.createElement(_tab2.default, { label: 'HISTORY' }, '(Tab content...)'), _react2.default.createElement(_tab2.default, {
+	        removeTrackFromSubmissions: this.props.removeTrackFromSubmissions })), _react2.default.createElement(_tab2.default, { label: 'HISTORY' }, 'Under (re)construction, will come back soon!'), _react2.default.createElement(_tab2.default, {
 	        label: 'TRACKS LIKED',
 	        onActive: this.props.loadLikedTracksFromServer }, _react2.default.createElement(TracksLiked, {
 	        userId: this.props.userId,

@@ -610,7 +610,7 @@ class CuratorPanel extends React.Component {
                 removeTrackFromSubmissions    ={this.props.removeTrackFromSubmissions}/> 
             </Tab>
             <Tab label="HISTORY" >
-              (Tab content...)
+              Under (re)construction, will come back soon!
             </Tab>
             <Tab 
               label="TRACKS LIKED"
