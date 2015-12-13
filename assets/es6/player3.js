@@ -28,8 +28,6 @@ var Player = function(trackListUrl, divSelector, playButtonSelector, arrowSelect
 	// Helpers
 	this.currentTrack 			= null; 
 	var that 					= this;
-	console.log(that);  
-
 	that.prepareNavigationButtons();
 }
 
@@ -66,12 +64,11 @@ Player.prototype = {
 	createTrackBoxes: function (numberOfBoxes, playerObject){
 
 		var that					= playerObject || this || that;
-		console.log(that);
 		numberOfBoxes 				= numberOfBoxes || 10;
 		var numberOfBoxesWithOffset = numberOfBoxes + that.boxesCreated;
 		var trackListCopy 			= that.trackList;
 		var masterJsonCopy 			= that.masterJson || {};
-		console.log('createTrackBoxes' + that);
+		//console.log('createTrackBoxes' + that);
 		if(that.masterJson)
 		{
 			document.getElementById("mainPlayerLoader").style.display = "none";
@@ -154,7 +151,7 @@ Player.prototype = {
 		var ajaxRequestNumber 		= 0;
 		var ajaxRequestCompleted 	= 0;
 		var trackListProper 		= [];
-		console.log('masterJson' + that);
+		//console.log('masterJson' + that);
 
 		for(var indexTrackList 	= 0, trackListLength = trackList.length ; indexTrackList < trackListLength ; indexTrackList++)
 		{
@@ -237,7 +234,6 @@ Player.prototype = {
 			            var json 										= JSON.parse(xhrDb[indexTrackList].responseText);
 			            if(json)
 			            {
-			            	console.log(json.id);
 			            	trackListProper[indexTrackList].id 				= json.id || 0;
 			            	trackListProper[indexTrackList].curatorPseudo 	= json.pseudo || "";
 			            	trackListProper[indexTrackList].curatorLink 	= json.link || "";
@@ -284,8 +280,8 @@ Player.prototype = {
 
 		var isFinished = function(index){
 			ajaxRequestCompleted++;
-			console.log('Ajax Req Number: ' + ajaxRequestNumber);
-			console.log('Ajax Req Completed: ' + ajaxRequestCompleted);
+			//console.log('Ajax Req Number: ' + ajaxRequestNumber);
+			//console.log('Ajax Req Completed: ' + ajaxRequestCompleted);
 			if(ajaxRequestCompleted === ajaxRequestNumber){
 				console.log('completed! Launching callback...');
 				return true;
@@ -385,7 +381,7 @@ Player.prototype = {
           })
           .eq(position - 1)
           .fadeIn(that.fadeTime, function () {
-          	console.log( $(this));
+          	//console.log( $(this));
             $(this)
               .addClass(that.visibleClass)
               .css(that.visible);

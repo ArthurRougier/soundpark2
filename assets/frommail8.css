@@ -919,6 +919,11 @@ display: none;
   width: 15px;
 }
 
+#closeCross:hover
+{
+  cursor: pointer;
+}
+
 .helper 
 {
     display: inline-block;
@@ -951,7 +956,7 @@ display: none;
 .submitButton
 {
   display: inline-block;
-  height: 30px !important;
+  height: 20px !important;
   font-family: 'Open Sans';
   font-weight: 300;
   font-size: 16px;
@@ -1473,65 +1478,213 @@ and (orientation : portrait) {
 #left-pannel
 {
   position: absolute;
-  bottom: 0;
   z-index: 10000000;
   width: 100vw;
   height: 86vh;
-  background: url(pictures/curatorSoundDropPage.jpg) no-repeat center center fixed;
+  bottom:0;
+  background: url(pictures/curatorSoundDropPageDarker.jpg) no-repeat center center fixed;
   -webkit-background-size: cover; /* pour Chrome et Safari */
   -moz-background-size: cover; /* pour Firefox */
   -o-background-size: cover; /* pour Opera */
   background-size: cover; /* version standardisée */
-  opacity: 0.97;
+  opacity: 0.98;
   z-index: 1000000000;
+  overflow: scroll;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0px -1px 20px 0 rgba(27,27,27,0.5);
+  -moz-box-shadow: 0px -1px 20px 0 rgba(27,27,27,0.5);
+  -webkit-box-shadow: 0px -1px 20px 0 rgba(27,27,27,0.5);
+  -o-box-shadow: 0px -1px 20px 0 rgba(27,27,27,0.5);
 }
 
-#left-pannel .overlay
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  opacity: 0.35;
-}
-
-.example-enter {
-  height: 0 !important; 
-}
-
-.example-enter.example-enter-active {
-  height: 86vh !important; 
-  transition: height 300ms ease-out;
-}
-
-.example-leave {
-  height: 86vh !important; 
-}
-
-.example-leave.example-leave-active {
-  height: 0 !important; 
-  transition: height 300ms ease-in;
-}
-
-
-.closeTab
+.pannelTabs
 {
   position: relative;
+  width: 60vw;
+  min-width: 700px;
+  margin: auto;
+  z-index: 1000000001;
+  margin-top: 5vh;
+}
+
+.closePannel
+{
+  position: relative;
+  top: 5vh;
+  right: 20px;
   display: inline-block;
   float: right;
   font-family: 'Open Sans';
   font-weight: 100;
   color: rgba(255,255,255, 0.5);
-  font-size: 24px;
+  font-size: 16px;
   z-index: 1000000001;
+  vertical-align: middle;
 }
 
-.closeTab:hover
+.closePannel,
+.closePannelIcon
 {
-  border-bottom: 1px solid rgba(255,255,255, 0.5);
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  transition: color 250ms;
+}
+
+.closePannelIcon
+{
+  vertical-align: middle;
+}
+
+.closePannel:hover
+{
+   color: rgba(255,255,255,0.8);
+   cursor: pointer;
+}
+
+.pannelSubContainer
+{
+  width: 100%;
+  position: relative;
+  z-index: 1000000001;
+  display: inline-block;
+  background-color: rgba(50,183,162, 0.13);
+  padding: 2.8vh 20px 5vh 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+   -webkit-transition: 250ms; /* Safari */
+  transition: 250ms ease-out;
+}
+
+
+.pannelTitle
+{
+  color: rgba(255,255,255, 0.6);
+  margin: 5% auto 0 auto;
+  font-size: 16px;
+  font-family: 'Roboto';
+  text-align: left;
+}
+
+.panel-enter {
+  transform:translateY(100vh) !important; 
+}
+
+.panel-enter.panel-enter-active {
+  transform:translateY(0) !important; 
+  transition: transform 300ms ease-out;
+}
+
+.panel-leave {
+  transform:translateY(0) !important; 
+}
+
+.panel-leave.panel-leave-active {
+  transform:translateY(100vh) !important; 
+  transition: transform 300ms ease-in;
+}
+
+
+
+
+.checkMark
+{
+  display: inline-block;
+  font-size: 12px !important;
+  position: relative;
+  vertical-align: middle;
+  color: #32B7A2;
+}
+
+.failMark
+{
+  display: inline-block;
+  font-size: 12px !important;
+  position: relative;
+  vertical-align: middle;
+  color: #CC7178
+}
+
+.successMessageForm
+{
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px !important;
+  font-weight: 300;
+  color: #32B7A2;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+
+.failMessageForm
+{
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px !important;
+  font-weight: 300;
+  color: #CC7178;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+
+/* Animating success message */
+
+.successMessage-enter, 
+.failMessage-enter {
+  opacity: 0.01;
+}
+
+.successMessage-enter.successMessage-enter-active,
+.failMessage-enter.failMessage-enter-active
+ {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.successMessage-leave,
+.failMessage-leave
+ {
+  opacity: 1;
+}
+
+.successMessage-leave.successMessage-leave-active,
+.failMessage-leave.failMessage-leave-active
+ {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+/* Curator track table */
+
+.curatorTrackTableActions
+{
+  color: rgba(255,255,255,0.3);
+  font-weight: 300;
+  margin-right: 10px;
+  text-decoration: none;
+  transition: color 250ms;
+}
+
+.curatorTrackTableActions:hover
+{
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+}
+
+.curatorTrackTableActions .failMark
+{
+  margin-right: 5px;
+  padding-bottom: 2px;
+  color: inherit;
+}
+
+.curatorTrackTableActions a
+{
+  color: inherit;
+  margin-right: 20px;
 }
 
 /*Player loader*/
@@ -1539,7 +1692,7 @@ and (orientation : portrait) {
 
 #mainPlayerLoader
 {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.8);
   position: absolute;
   width: 100%;
 }
@@ -1594,4 +1747,169 @@ and (orientation : portrait) {
   }
 }
 
+/* Liked tracks part */
+#tilesContainer 
+{
+  overflow: hidden;
+  margin: 0 0 0 0;
+}
+
+
+#tilesContainer h3
+{
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  z-index: 10;
+  font-size: 12px;
+  line-height: 12px;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  overflow: hidden;
+}
+
+.curatorStuff .curatorPicture
+{
+  height: 2.3vh !important;
+  width: 2.3vh !important;
+  border-radius: 1.15vh !important;
+}
+
+
+.box {
+  display: inline-block;
+  position: relative;
+  width: 25%;
+  padding-bottom: 25%;
+}
+.boxInner {
+   position: absolute;
+   left: 20px;
+   right: 0;
+   top: 10px;
+   bottom: 10px;
+   overflow: visible;
+   text-align: center;
+}
+
+.boxInner.loading {
+   animation-duration: 3s;
+   animation-fill-mode: forwards;
+   animation-iteration-count: infinite;
+   animation-name: placeHolderShimmer;
+   animation-timing-function: linear;
+   background: rgba(255,255,255,0.1) !important;
+   background: linear-gradient(to right,  rgba(255,255,255,0.11) 8%,rgba(255,255,255,0.12) 18%,rgba(255,255,255,0.13) 33%) !important;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+}
+
+.boxInner img {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.likeTilesTrackTitle
+{
+  position: absolute;
+  background-color: rgba(0,0,0,0.85);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: -50px;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-size: 90% !important;
+  margin-bottom: 0px !important;
+  vertical-align: bottom; 
+  transition: 250ms ease-in; 
+}
+
+.likeTilesTrackTitle a
+{
+  color: inherit;
+  text-decoration: none;
+}
+
+.likeTilesTrackTitle:hover
+{
+  color: rgba(255,255,255,0.8);
+  background-color: rgba(0,0,0,0.95);
+  cursor: pointer;
+}
+
+
+
+.likeTilesTrackTitle .strong
+{
+  font-weight: 600;
+  color: #32B7A2;
+}
+
+
+body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
+   margin-bottom: 0;
+}
+@media only screen and (max-width : 680px) {
+   /* Smartphone view: 1 tile */
+   .box {
+       width: 100%;
+      padding-bottom: 100%;
+   }
+}
+@media only screen and (max-width : 850px) and (min-width : 681px) {
+   /* Tablet view: 2 tiles */
+   .box {
+      width: 50%;
+      padding-bottom: 50%;
+   }
+}
+@media only screen and (max-width : 1250px) and (min-width : 851px) {
+   /* Small desktop / ipad view: 3 tiles */
+   .box {
+      width: 33.3%;
+      padding-bottom: 33.3%;
+   }
+}
+@media only screen and (max-width : 1600px) and (min-width : 1251px) {
+   /* Medium desktop: 4 tiles */
+   .box {
+       width: 25%;
+      padding-bottom: 25%;
+   }
+}
+
+/* Tiles loading animation */
+
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+
+.animated-background {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8 !important;
+    background: linear-gradient(to right,  #eeeeee 8%,#dddddd 18%,#eeeeee 33%) !important;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
 

@@ -1,5 +1,5 @@
 <?php
-	if(isset($_COOKIE['current_user']) && isset($_POST['curatorName']))
+	if(isset($_COOKIE['current_user']) && isset($_GET['curatorPseudo']))
 	{
 		include_once('../model/connect_sql.php');
 		$req=$bdd->prepare('UPDATE user SET type=2 WHERE user.ID = ? ');
@@ -19,9 +19,7 @@
 		$req = $bdd->prepare('INSERT INTO curator(ID_user, pseudo, genre, avatar_url) VALUES (?, ?, "1", ?)') or die(print_r($bdd->errorInfo()));
 		$req->execute(array(
 			$_COOKIE['current_user'],
-			$_POST['curatorName'],
+			$_GET['curatorPseudo'],
 			$pictureUrl
 		));
-
-		header('location: ../view/curator_index.php');
 	}
