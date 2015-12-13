@@ -52,7 +52,7 @@ $.ajax({
     trackList = trackList.filter(function(item, pos) {
       return trackList.indexOf(item) == pos;
     })
-    var playerTest            = new Player(trackList, '.slider', '.play', arrowSelectors, false);
+    var playerTest            = new Player(trackList, '.slider', '.play', arrowSelectors, true);
     setTimeout(function(){
       var likerTest           = new Liker(likeDislikeSelectors, playerTest);
       console.log(playerTest);
