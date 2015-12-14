@@ -26713,6 +26713,7 @@
 	    _this.displayCuratorPopUp = function () {
 	      console.log('hejbfzn');
 	      (0, _popUps2.default)((function () {
+	        this.setState({ isCurator: true });
 	        this.setState({ isPanelDisplayed: true });
 	      }).bind(_this));
 	    };

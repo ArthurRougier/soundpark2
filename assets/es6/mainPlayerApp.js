@@ -471,6 +471,7 @@ class DropDownMenu extends React.Component {
   displayCuratorPopUp = () => {
     console.log('hejbfzn');
     curatorPopup(function(){
+      this.setState({isCurator: true});
       this.setState({isPanelDisplayed: true});
     }.bind(this));
   }
@@ -596,18 +597,18 @@ class CuratorPanel extends React.Component {
             label="SUBMIT TRACKS" 
             onActive={this.props.loadCuratorsSongsFromServer}>
               <SubmitTracksForm 
-                handleCuratorFormSuccess      ={this.props.handleCuratorFormSuccess} 
-                handleCuratorFormFail         ={this.props.handleCuratorFormFail}
-                curatorId                     ={this.props.curatorId} 
-                curatorFormSuccessMessage     ={this.props.curatorFormSuccessMessage} 
-                curatorFormFailMessage        ={this.props.curatorFormFailMessage}
-                handleCuratorUrlSubmit        ={this.props.handleCuratorUrlSubmit}/>
+                handleCuratorFormSuccess      = {this.props.handleCuratorFormSuccess} 
+                handleCuratorFormFail         = {this.props.handleCuratorFormFail}
+                curatorId                     = {this.props.curatorId} 
+                curatorFormSuccessMessage     = {this.props.curatorFormSuccessMessage} 
+                curatorFormFailMessage        = {this.props.curatorFormFailMessage}
+                handleCuratorUrlSubmit        = {this.props.handleCuratorUrlSubmit}/>
               <TrackCuratorBacklog 
-                curatorId                     ={this.props.curatorId} 
-                pollInterval                  ={this.props.pollInterval}
-                trackListCuratorBacklogProper ={this.props.trackListCuratorBacklogProper}
-                isCuratorBacklogLoaded        ={this.props.isCuratorBacklogLoaded}
-                removeTrackFromSubmissions    ={this.props.removeTrackFromSubmissions}/> 
+                curatorId                     = {this.props.curatorId} 
+                pollInterval                  = {this.props.pollInterval}
+                trackListCuratorBacklogProper = {this.props.trackListCuratorBacklogProper}
+                isCuratorBacklogLoaded        = {this.props.isCuratorBacklogLoaded}
+                removeTrackFromSubmissions    = {this.props.removeTrackFromSubmissions}/> 
             </Tab>
             <Tab label="HISTORY" >
               Under (re)construction, will come back soon!

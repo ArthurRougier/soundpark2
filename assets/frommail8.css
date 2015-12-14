@@ -1495,6 +1495,7 @@ and (orientation : portrait) {
   -moz-box-shadow: 0px -1px 20px 0 rgba(27,27,27,0.5);
   -webkit-box-shadow: 0px -1px 20px 0 rgba(27,27,27,0.5);
   -o-box-shadow: 0px -1px 20px 0 rgba(27,27,27,0.5);
+  will-change: top;
 }
 
 .pannelTabs
