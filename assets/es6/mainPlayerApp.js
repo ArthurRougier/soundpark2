@@ -346,7 +346,7 @@ class DropDownMenu extends React.Component {
         }
         else
         {
-          this.props.handleCuratorFormFail();
+          this.handleCuratorFormFail();
           this.refs.url.setErrorText();
           //console.log(this.refs.url);
         }
