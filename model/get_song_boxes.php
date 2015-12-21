@@ -22,9 +22,10 @@ else if($playlistId == 59 OR $playlistId == 77 OR $playlistId == 78)
 			FROM song, curator,  `like` 
 			WHERE  `like`.ID_song = song.ID
 			AND song.ID_curator = curator.ID
+			AND song.ID_playlist > 45
 			GROUP BY artwork_url, artist, title, song.genre, pseudo, trackId, permalink_url
 			ORDER BY COUNT( DISTINCT  `like`.ID ) DESC 
-			LIMIT 25
+			LIMIT 50
 		)a'
 	);
 }
