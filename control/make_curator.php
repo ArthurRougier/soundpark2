@@ -22,4 +22,9 @@
 			$_GET['curatorPseudo'],
 			$pictureUrl
 		));
+
+		include_once('../model/get_user_email.php');
+		include_once('../control/mailchimpCuratorNewSubscribe.php');
+
+		header('location: ../view/curator_index.php');
 	}

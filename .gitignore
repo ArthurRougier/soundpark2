@@ -1,6 +1,7 @@
 
 assets/pictures/uploaded_avatars/Rsima.jpg
 
+<<<<<<< HEAD
 node_modules/
 
 apache_error.log
@@ -15,9 +16,15 @@ mysql_error.log
 
 apache_error.log
 
+=======
+>>>>>>> master
 *.log
 
 apache_error.log
 
+<<<<<<< HEAD
 mysql_error.log
 
+=======
+node_modules/
+>>>>>>> master

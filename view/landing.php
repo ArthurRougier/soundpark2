@@ -1,26 +1,29 @@
 <?php 
-  /*error_reporting(E_ALL);
-  ini_set('display_errors', 1);*/
+  // error_reporting(E_ALL);
+  // ini_set('display_errors', 1);
 	session_start();
   if (null !== getenv('ENVIRONMENT'))
   {
     if (getenv('ENVIRONMENT') == 'staging')
     {
-      $root = "http://staging.soundpark.fm/";
+      $root2 = "http://staging.soundpark.fm/";
     }
     else if (getenv('ENVIRONMENT') == 'production')
     {
-      $root = "http://soundpark.fm/";
+      $root2 = "http://soundpark.fm/";
     }
     else
     {
-      $root = "http://localhost:8888/";
+      $root2 = "http://localhost:8888/";
     }
   }
+
+  $root = $_SERVER["DOCUMENT_ROOT"];
+
+
 	require($_SERVER['DOCUMENT_ROOT'].'/control/decide_lang.php');
-	include_once($root.'model/connect_sql.php');
-  include($root.'control/session_check.php');
-  include_once($root.'control/redirect_user_to_playlist.php');
+  include($_SERVER["DOCUMENT_ROOT"].'/control/session_check.php');
+  include_once($_SERVER["DOCUMENT_ROOT"].'/control/redirect_user_to_playlist.php');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -28,25 +31,28 @@
   <head>
     <title><?php echo TXT_LANDING_HEADTITLE; ?></title>
     <meta name="description" content="<?php echo TXT_LANDING_HEADDESCRIPTION; ?>">
-    <link href="<?php echo $root; ?>assets/landingNew.css" media="all" rel="stylesheet" />
+    <link href="<?php echo $root2; ?>assets/landingNew.css" media="all" rel="stylesheet" />
 
    	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <meta property="og:site_name" content="Soundpark.fm"/>
-    <meta property="og:description" content="Toutes les semaines, le lundi matin, le meilleur de la musique sélectionné par la crème de la crème, au chaud dans ta boîte mail" />
-    <meta property="og:image" content="http://soundpark.fm/assets/pictures/thumbnail_fb.jpg" />
+    <meta property="og:url" content="http://soundpark.fm/view/landing.php" />
+    <meta property="fb:app_id" content="623682164399249" />
+    <meta property="og:title" content="<?php echo TXT_LANDING_HEADTITLE; ?>" />
+    <meta property="og:description" content="<?php echo TXT_LANDING_HEADDESCRIPTION; ?>" />
+    <meta property="og:image" content="http://soundpark.fm/assets/pictures/uploaded_avatars/Sandrine.jpg" />
 
 
 
-    	<link rel="shortcut icon" href="<?php echo $root; ?>/assets/pictures/favicon.ico" type="image/x-icon">
-    	<link rel="icon" href="<?php echo $root; ?>/assets/pictures/favicon.ico" type="image/x-icon">
+    	<link rel="shortcut icon" href="<?php echo $root2; ?>/assets/pictures/favicon.ico" type="image/x-icon">
+    	<link rel="icon" href="<?php echo $root2; ?>/assets/pictures/favicon.ico" type="image/x-icon">
 
     <script src="http://connect.soundcloud.com/sdk.js"></script>
-    <script type="text/javascript" src="<?php echo $root; ?>assets/jquery.js"></script>
-    <script type="text/javascript" src="<?php echo $root; ?>assets/cookies.js"></script>
-    <script type="text/javascript" src="<?php echo $root; ?>assets/AJAX/update_player_position.js"></script>
-    <script type="text/javascript" src="<?php echo $root; ?>assets/AJAX/add_like_dislike.js"></script>
-    <script type="text/javascript" src="<?php echo $root; ?>assets/AJAX/display_user_past_likes.js"></script>
-    <script type="text/javascript" src="<?php echo $root; ?>skrollr/dist/skrollr.min.js"></script>
+    <script type="text/javascript" src="<?php echo $root2; ?>assets/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo $root2; ?>assets/cookies.js"></script>
+    <script type="text/javascript" src="<?php echo $root2; ?>assets/AJAX/update_player_position.js"></script>
+    <script type="text/javascript" src="<?php echo $root2; ?>assets/AJAX/add_like_dislike.js"></script>
+    <script type="text/javascript" src="<?php echo $root2; ?>assets/AJAX/display_user_past_likes.js"></script>
+    <script type="text/javascript" src="<?php echo $root2; ?>skrollr/dist/skrollr.min.js"></script>
 
       
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -83,9 +89,9 @@
  	<header id="mainHeader">
  		<h1>SOUNDPARK.FM</h1>
  		<ul>
- 			<li><a id="headerCuratorSignUp" href="#">Become a curator</a></li>
- 			<li><a id="headerLogIn" href="#">Log in</a></li>
- 			<li><a id="headerSignUp" data-scroll href="#page1">Sign up</a></li>
+ 			<li><a id="headerCuratorSignUp" href="#"><?php echo TXT_LANDING_HEADERCURATOR;?></a></li>
+ 			<li><a id="headerLogIn" href="#"><?php echo TXT_LANDING_HEADERLOGIN;?></a></li>
+ 			<li><a id="headerSignUp" data-scroll href="#page1"><?php echo TXT_LANDING_HEADERSIGNUP;?></a></li>
 		</ul>
 	</header>
 	<div id="page1" data-center-bottom="opacity: 1;" data--620-top="opacity: 0">
@@ -100,11 +106,11 @@
           <div id="facebookLogin">
             <div id="message">
               <h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2>
-              <img id="explainArrow" src="<?php echo $root; ?>assets/pictures/explain_arrow.png" data-no-retina></br>
+              <img id="explainArrow" src="<?php echo $root2; ?>assets/pictures/explain_arrow.png" data-no-retina></br>
             </div>
             <div id="fbButton">
               <span class="helper"></span>
-              <img id="fbIcon" src="<?php echo $root; ?>assets/pictures/facebook_f.svg" data-no-retina>
+              <img id="fbIcon" src="<?php echo $root2; ?>assets/pictures/facebook_f.svg" data-no-retina>
               <h2 id="fbButtonText">Sign up with facebook</h2>
             </div>
             </br>
@@ -125,8 +131,8 @@
       </div>
       <div id="backroundOverlay"></div>
     	<div id="container1">
-    		<h1>We delight you with <span class="strong"> great new music</br></span> in the <span class="strong">simplest way.</span></h1>
-    		<a class="CTA" id="CTAP1" href="#">Give it a try!</a>
+    		<h1><?php echo TXT_LANDING_PAGEONEHEADLINE;?></h1>
+    		<a class="CTA" id="CTAP1" href="#"><?php echo TXT_LANDING_PAGEONECTA;?></a>
         </br>
         <a id="chevronLink" data-scroll href="#page2"><svg id="svg_down_chevron" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="36.3 26.1 30.3 16.4" enable-background="new 36.3 26.1 30.3 16.4" xml:space="preserve">
           <path id="down_chevron" fill="#FFFFFF" d="M50.8,41.5c0.1,0.1,0.3,0.2,0.5,0.2c0.2,0,0.4-0.1,0.5-0.2l13.1-13.1c0.3-0.3,0.3-0.7,0-1c-0.3-0.3-0.7-0.3-1,0L51.3,39.9L38.7,27.4c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.3,0.7,0,1L50.8,41.5z"/>
@@ -137,11 +143,11 @@
     	<div id="container2">
      		<span class="helper"></span>
         <div class="img-container first">
-          <img src="<?php echo $root; ?>assets/pictures/macbook.png" data-at2x="<?php echo $root; ?>assets/pictures/macbook@2x.png" data-bottom="opacity:0" data--40-bottom="opacity: 1"/>
+          <img src="<?php echo $root2; ?>assets/pictures/macbook.png" data-at2x="<?php echo $root2; ?>assets/pictures/macbook@2x.png" data-bottom="opacity:0" data--40-bottom="opacity: 1"/>
         </div>
      		<aside class="second" data--140-bottom="opacity: 0" data--180-bottom="opacity: 1">
-     			<h1>A <span class="strong">one-click</span> music </br>experience.</h1>
-     			<p>No complicated platform with shitloads of tracks and filtering options. </br><span class="jumpline">Just a slick player with one stream.</span></p> 
+     			<h1><?php echo TXT_LANDING_PAGETWOHEADLINE;?></h1>
+     			<p><?php echo TXT_LANDING_PAGETWOPARONE;?></br><span class="jumpline"><?php echo TXT_LANDING_PAGETWOPARTWO;?></span></p> 
      			<!--<a class="CTA" id="CTAP2" data-scroll href="#page1">Give it a try!</a>-->
         </aside>
 		</div
@@ -149,14 +155,14 @@
   <div id="page3">
     <div id="backroundOverlay"></div>
     <div id="container3" data-1950-end="opacity: 0; background-attachment: scroll;" data-1850-end="opacity: 1; background-attachment: fixed;">
-      <h1><span class="strong">Hand-curated</span> with love.</h1>
-      <p>Every monday morning, we release our new stream of music composed of tracks found by music lovers.</br> We believe in human taste, not in algorithms.</p>
-      <a class="CTA" id="CTAP3" data-scroll href="#page1">Become a curator</a>
+      <h1><?php echo TXT_LANDING_PAGETHREEHEADLINE;?></h1>
+      <p><?php echo TXT_LANDING_PAGETHREEPAR;?></p>
+      <a class="CTA" id="CTAP3" data-scroll href="#page1"><?php echo TXT_LANDING_PAGETHREECTA;?></a>
       </br>
     </div>
   </div>
   <!--<div id="page4"
-    ><div id="headerPage4"><span class="helper"></span><h1>This week <span class="strong">most liked tracks:</span></h1> </div
+    ><div id="headerPage4"><span class="helper"></span><h1><?php echo TXT_LANDING_PAGESONGSHEADLINE;?></h1> </div
     <?php include_once('../control/display_landing_song_boxes.php'); ?>
       <?php 
         $req = $bdd->query('SELECT trackId, count(distinct like.ID) FROM song, playlist, `like` WHERE song.ID_playlist=playlist.ID AND like.ID_song = song.ID AND playlist.date_end >= NOW() AND playlist.date_start <= NOW() GROUP BY trackId order by count(distinct `like`.ID) DESC LIMIT 3');
@@ -173,13 +179,13 @@
     <div id="container5">
       <div id="curatorsNumber">
         <?php
-         include_once('../model/get_curators_number.php');
+         include_once($root.'/model/get_curators_number.php');
          echo $curatorsNumber;
         ?>
       </div>
-      <h1> Curators today with us to delight you</h1>
+      <h1><?php echo TXT_LANDING_PAGECURATORSHEADLINE;?></h1>
       <?php
-        include_once('../control/display_curators_photo.php');
+        include_once($root.'/control/display_curators_photo.php');
       ?>
       <div id="number22"><span class="helper"></span><p>...</p></div>
       <a id="youCuratorLink" href="#page3" data-scroll><div id="you"><span class="helper"></span>You?</div></a>
@@ -189,8 +195,8 @@
   <footer>
     <span class="helper"></span>
     <ul>
-      <li><a href="mailto:contact@soundpark.fm">Contact us</a></li>
-      <li><a href="mailto:jobs@soundpark.fm">Jobs</a></li>
+      <li><a href="mailto:contact@soundpark.fm"><?php echo TXT_LANDING_FOOTERCONTACT;?></a></li>
+      <li><a href="mailto:jobs@soundpark.fm"><?php echo TXT_LANDING_FOOTERJOBS;?></a></li>
     </ul>
     <div id="mixpanel">
       <span class="helper"></span>
@@ -198,15 +204,15 @@
     </div>
     <div id="soundcloudLogo">
       <span class="helper"></span>
-      <a href="http://www.soundcloud.com"><img src="<?php echo $root; ?>assets/pictures/powered_by_soundcloud.png" data-no-retina/></a>
+      <a href="http://www.soundcloud.com"><img src="<?php echo $root2; ?>assets/pictures/powered_by_soundcloud.png" data-no-retina/></a>
     </div>
 
      
   </footer>
-  <script type="text/javascript" src="<?php echo $root; ?>assets/retina.js"></script>
-  <script type="text/javascript" src="<?php echo $root; ?>assets/facebook.js"></script>
-  <script type="text/javascript" src="<?php echo $root; ?>assets/smooth-scroll.min.js"></script>
-  <script type="text/javascript" src="<?php echo $root; ?>assets/on_load_landing2.js"></script>
+  <script type="text/javascript" src="<?php echo $root2; ?>assets/retina.js"></script>
+  <script type="text/javascript" src="<?php echo $root2; ?>assets/facebook.js"></script>
+  <script type="text/javascript" src="<?php echo $root2; ?>assets/smooth-scroll.min.js"></script>
+  <script type="text/javascript" src="<?php echo $root2; ?>assets/on_load_landing2.js"></script>
 
 </body>
    

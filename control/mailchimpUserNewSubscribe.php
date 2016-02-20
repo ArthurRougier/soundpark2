@@ -3,7 +3,7 @@
 if(isset($_POST['user_email']))
 {
 	include('../vendor/drewm/mailchimp-api/MailChimp.php');
-	$MailChimp = new \Drewm\MailChimp('b325e66745372713e98fc83055649de9-us8');
+	$MailChimp = new \Drewm\MailChimp(getenv('MAILCHIMP_API_KEY'));
 	$result = $MailChimp->call('lists/subscribe', array(
 	                'id'                => '6b7043da5e',
 	                'email'             => array('email'=>$_POST['user_email']),
@@ -23,7 +23,7 @@ if(isset($_POST['user_email']))
 else if(isset($_GET['user_email']))
 {
 	include('../vendor/drewm/mailchimp-api/MailChimp.php');
-	$MailChimp = new \Drewm\MailChimp('b325e66745372713e98fc83055649de9-us8');
+	$MailChimp = new \Drewm\MailChimp(getenv('MAILCHIMP_API_KEY'));
 	$result = $MailChimp->call('lists/subscribe', array(
 	                'id'                => '6b7043da5e',
 	                'email'             => array('email'=>$_GET['user_email']),
@@ -36,7 +36,7 @@ else if(isset($_GET['user_email']))
 	$resultDecoded = json_decode($result, true);
 	if($resultDecoded['status']='error')
 	{
-		header('Location: ../view/landing.php?error=1');
+		header('Location: ../view/landing.php?error=2');
 	}
 }
 

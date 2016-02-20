@@ -4,13 +4,44 @@
 	// landing.php
 	//---------------------------------------------------------
 
+	
+	//PAGE1
+	define('TXT_LANDING_PAGEONEHEADLINE', 'Ta dose hebdo de sons <span class="strong">sélectionnés par des passionnés</span> dans ta boite mail');
+	define('TXT_LANDING_PAGEONECTA', 'Je veux ma dose!');
 
+	//PAGE2
+	define('TXT_LANDING_PAGETWOHEADLINE','<span class="strong">Simple</span> comme bonjour');
+	define('TXT_LANDING_PAGETWOPARONE','Ecoute ta playlist, récupère ce que tu aimes, jette le reste et fais toi plaisir');
+	define('TXT_LANDING_PAGETWOPARTWO','Laisse-nous faire le sale boulot.');
+
+	//PAGE3
+	define('TXT_LANDING_PAGETHREEHEADLINE', '<span class="strong">Fait maison</span> et avec amour.');
+	define('TXT_LANDING_PAGETHREEPAR', 'Nous sommes une communauté réunie autour d\'une passion : le son.</br>  Toutes les pépites que tu découvriras ont été découvertes à la force du clic.');
+	define('TXT_LANDING_PAGETHREECTA', 'Deviens un influenceur');
+
+	//PAGESONGS
+	define('TXT_LANDING_PAGESONGSHEADLINE', 'Les sons préférés de la semaine:');
+
+	//PAGECURATORS
+	define('TXT_LANDING_PAGECURATORSHEADLINE', ' Passionnés qui cherchent pour vous:');
+
+	//PAGEFOOOTER
+	define('TXT_LANDING_FOOTERCONTACT', 'Ecris-nous');
+	define('TXT_LANDING_FOOTERJOBS', 'Jobs');
+
+	//PAGEHEADER
+	define('TXT_LANDING_HEADERCURATOR', 'Deviens un influenceur');
+	define('TXT_LANDING_HEADERLOGIN', 'Connexion ');
+	define('TXT_LANDING_HEADERSIGNUP', 'Inscription');
+
+	//META
 	define('TXT_LANDING_HEADTITLE', 'Soundpark.fm - La radio 2.0, découvrez la meilleure musique du web');
-	define('TXT_LANDING_HEADDESCRIPTION', 'Toutes les semaines, le lundi matin, le meilleur de la musique sélectionné par la crème de la crème</span>, au chaud dans ta boîte mail.');
-	define('TXT_LANDING_TAGLINE', 'Toutes les semaines, le lundi matin, <span class="tagline">le meilleur de la musique</span> sélectionné par <span class="tagline">la crème de la crème</span>, au chaud <span class="tagline">dans ta boîte mail</span>.');
-	define('TXT_LANDING_CTA', 'Inscris toi et profite :</br>');
+	define('TXT_LANDING_HEADDESCRIPTION', 'Reçois tous les lundis matins le meilleur de la musique sélectionné des passionnés</span>, directement dans ta boîte mail.');
+
+	//ERRORS
 	define('TXT_LANDING_DOUBLESUB', 'Malheureusement, tu ne peux pas t\'inscrire deux fois.</br>');
-	define('TXT_LANDING_EMAILPB', 'Souci d\'email vieux. Essaye encore.</br>');
+	define('TXT_LANDING_EMAILPB', 'Problème d\'email. Essaye encore.</br>');
+
 
 	//---------------------------------------------------------
 	// curators.php

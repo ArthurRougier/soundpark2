@@ -2,7 +2,8 @@
 	include_once("../model/get_complete_track_list.php");				
 	if($trackList = $req->fetch())
 	{
-		echo('<form accept-charset="UTF-8" action="../control/modify_songs.php" class="modifyPlaylist" id="modifyPlaylist" method="post">');
+		echo('<form accept-charset="UTF-8" action="../control/modify_songs.php?source=admin_index.php" class="modifyPlaylist" id="modifyPlaylist" method="post">');
+		echo('<input name="commit" type="submit" value=" Update! " /></br></br>');
 		echo '<ol id="sortable">';
 		$index = 0;
 		
@@ -36,13 +37,12 @@
 				include('../control/display_tag_options.php');
 				
 
-				echo('    <a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a target="_blank" href="'.$trackList[9].'">Link</a></br><a href="../control/delete_track.php?idSong='.$trackList[0].'">Delete</a></br><a href="../control/move_track_to_next_playlist.php?idSong='.$trackList[0].'&idPlaylist='.$_GET['idPlaylist'].'">Move to next playlist</a></br><a href="../control/move_track_to_previous_playlist.php?idSong='.$trackList[0].'&idPlaylist='.$_GET['idPlaylist'].'">Move to previous playlist</a></div><input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="songOrder" id="songOrder'.($index+1).'" name="songOrder'.($index+1).'" value="'.$trackList[8].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[7].'" type="hidden"/></br></li>');
+				echo('    <a id="optionLink'.$index.'" class="optionLink" href="#">options</a><div id="optionsMenuBo'.$index.'" class="optionsMenuBo"><a target="_blank" href="'.$trackList[9].'">Link</a></br><a href="../control/store_track_from_playlist.php?idSong='.$trackList[0].'&source=admin_index.php">Store</a></br><a href="../control/move_track_to_next_playlist.php?idSong='.$trackList[0].'&idPlaylist='.$_GET['idPlaylist'].'">Move to next playlist</a></br><a href="../control/move_track_to_previous_playlist.php?idSong='.$trackList[0].'&idPlaylist='.$_GET['idPlaylist'].'">Move to previous playlist</a></div><input autofocus="autofocus" class="songId" id="songId'.$index.'" name="songId'.$index.'" value="'.$trackList[0].'" type="hidden"/><input autofocus="autofocus" class="songOrder" id="songOrder'.($index+1).'" name="songOrder'.($index+1).'" value="'.$trackList[8].'" type="hidden"/><input autofocus="autofocus" class="trackId" id="trackId'.$index.'" name="trackId'.$index.'" value="'.$trackList[7].'" type="hidden"/></br></li>');
 				$index++;
 		} while($trackList = $req->fetch());	
 		echo '</ol>';
 		echo('<input autofocus="autofocus" class="numberOfTracks" id="numberOfTracks" name="numberOfTracks" value="'.$index.'" type="hidden"/>');
 		echo('<input autofocus="autofocus" class="idPlaylist" id="idPlaylist" name="idPlaylist" value="'.$_GET['idPlaylist'].'" type="hidden"/>');
-		echo('<input name="commit" type="submit" value=" Update! " /></br></br>');
 		echo('<a href="../view/frommail.php?pwd=thomas.bouttefort@gmail.com&playlistId='.$playlistId.'"> Ecoute cette playlist </a>');
 
 	}

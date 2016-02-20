@@ -50,7 +50,7 @@ $_SESSION['id_curator']=$resultat[0];
 				//Code permettant de faire un retour sur le post
 				if(isset($_GET['message']))
 				{
-					echo('<h1>'.$_GET['message'].' !</h1></br>');
+					echo('<h1>'.urldecode($_GET['message']).' !</h1></br>');
 				}
 			?>
 			<div id="DropSpace">

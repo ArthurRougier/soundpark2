@@ -38,7 +38,7 @@
 
 				 ?>" id="playlist_overlay<?php echo($i);?>"
 					> -->
-					<a href="../view/frommail.php?playlistId=<?php echo($playlistBoxes[0]); ?>" target="_blank"><h2><?php
+					<a href="../view/frommail.php?playlistId=<?php echo($playlistBoxes[0]); ?>&standalonePlaylist" target="_blank"><h2><?php
 						$ddate = $playlistBoxes[1];
 						$date = new DateTime($ddate);
 						$week = $date->format("W");

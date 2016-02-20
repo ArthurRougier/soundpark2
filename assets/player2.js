@@ -5,8 +5,6 @@
 	s = new slider("#galerie");
 });*/
 
-
-
 var slider = function(id){
 	var self=this;
 	this.div = $(id);
@@ -107,8 +105,9 @@ var slider = function(id){
 
 SC.initialize({
 
-    client_id: "17f3a8c69cb36c955df82f908611e27e"
+    client_id: soundcloudApiKey
 });
+
 
 var onPlay = false;
 var position = 0;
@@ -129,8 +128,17 @@ for(var i = 0 ; i<trackIds.length ; i++)
 //alert(songTable.length);
 
 var currentTrack;
-updateCurrentTrack(songTable[0]);
-getLikeState();
+
+console.log('is playlist well loaded: '+playlistReady);
+
+setTimeout(function(){ 
+
+	updateCurrentTrack(songTable[0]);
+	getLikeState();
+
+ }, 3000);
+
+
 var coverWidth = document.getElementById('sound_cover1').offsetWidth;
 
 
@@ -159,7 +167,7 @@ $('#play').click(function() //Gestion du bouton de lecture/pause en toggle
 
 function updateCurrentTrack(trackId, comeFromPrevious) 
 {
-	
+	console.log('updateCurrentTrack with trackId'+ trackId);
 	SC.stream("/tracks/"+trackId,
 		{
 			onfinish: function()
@@ -217,6 +225,7 @@ function updateCurrentTrack(trackId, comeFromPrevious)
 							var coverWidth = document.getElementById('sound_cover'+ playerPosition).offsetWidth;
 							//console.log(document.getElementById('blurred_sound_cover_container'+ playerPosition));
 							var step = (eventPosition/1000*coverWidth/(currentTrack.durationEstimate/1000));
+
 							document.getElementById('blurred_sound_cover_container'+ playerPosition).style.width=(step+"px");
 							document.getElementById('cover_overlay'+ playerPosition).style.width=((step)+"px");
 							/*END On fait avancer l'overlay*/
@@ -252,6 +261,8 @@ function updateCurrentTrack(trackId, comeFromPrevious)
 		}, 
 			function(sound)
 			{
+
+				console.log('Soundcloud loaded song:'+ sound);
 				currentTrack = sound;
 				if ($('#play').val() == "pause") 
 				{	

@@ -4,12 +4,46 @@
 	// landing.php
 	//---------------------------------------------------------
 
-  	define('TXT_LANDING_HEADTITLE', 'Soundpark.fm - The new music radio.');
-	define('TXT_LANDING_HEADDESCRIPTION', 'Every Monday, receive 1 hour of music hand-curated by passionate people. Tired of looking everywhere for new music gems? We got you covered.');
-	define('TXT_LANDING_TAGLINE', 'Every <span class="tagline">Monday</span>, receive 1 hour of music <span class="tagline">hand-curated by passionate people</span>. Tired of looking everywhere for new music gems? We got you covered.');
-	define('TXT_LANDING_CTA', 'Start discovering now:</br>');
-	define('TXT_LANDING_DOUBLESUB', 'Unfortunately, you cannot subscribe twice!</br>');
+
+	//PAGE1
+	define('TXT_LANDING_PAGEONEHEADLINE', 'Your weekly <span class="strong">community-curated playlist</span> directly in your email');
+	define('TXT_LANDING_PAGEONECTA', 'Let\'s get in!');
+
+	//PAGE2
+	define('TXT_LANDING_PAGETWOHEADLINE', '<span class="strong">Simplicity</span> first.');
+	define('TXT_LANDING_PAGETWOPARONE', 'Just one stream: take the songs you love, dump the ones you don\'t and simply enjoy.');
+	define('TXT_LANDING_PAGETWOPARTWO', 'Let us do the dirty work.');
+
+	//PAGE3
+	define('TXT_LANDING_PAGETHREEHEADLINE', '<span class="strong">Hand-curated</span> with love.');
+	define('TXT_LANDING_PAGETHREEPAR', 'We are a community of different people united around our passion: music.</br> Everything gem you\'ll discover has been dug by a human, not a rebot. ');
+	define('TXT_LANDING_PAGETHREECTA', 'Become a curator');
+
+	//PAGESONGS
+	define('TXT_LANDING_PAGESONGSHEADLINE', 'This week <span class="strong">most liked tracks:</span>');
+
+	//PAGECURATORS
+	define('TXT_LANDING_PAGECURATORSHEADLINE', '<span class="strong"> Curators</span> in the crew who dig for you:');
+
+	//PAGEFOOOTER
+	define('TXT_LANDING_FOOTERCONTACT', 'Contact us');
+	define('TXT_LANDING_FOOTERJOBS', 'Jobs');
+
+	//PAGEHEADER
+	define('TXT_LANDING_HEADERCURATOR', 'Become a curator');
+	define('TXT_LANDING_HEADERLOGIN', 'Log in');
+	define('TXT_LANDING_HEADERSIGNUP', 'Sign up');
+
+	//META
+	define('TXT_LANDING_HEADTITLE', 'Soundpark.fm - The radio as it should be in 2016');
+	define('TXT_LANDING_HEADDESCRIPTION', 'Every Monday, receive your community-curated playlist direcly in your email. Tired of looking everywhere for new music gems? We got you covered.');
+
+
+	//ERRORS
+	define('TXT_LANDING_DOUBLESUB', 'Unfortunately you cannot subscribe twice');
 	define('TXT_LANDING_EMAILPB', 'Wrong mail mate. Try again:</br>');
+
+
 
 	//---------------------------------------------------------
 	// curators.php
