@@ -22,8 +22,8 @@
 
 
 	require($_SERVER['DOCUMENT_ROOT'].'/control/decide_lang.php');
-  include($_SERVER["DOCUMENT_ROOT"].'/control/session_check.php');
-  include_once($_SERVER["DOCUMENT_ROOT"].'/control/redirect_user_to_playlist.php');
+  include($root.'/control/session_check.php');
+  include_once($root.'/control/redirect_user_to_playlist.php');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">

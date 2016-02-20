@@ -2,7 +2,7 @@
 
 	if(isset($root))
 	{
-		include_once($root.'model/connect_sql.php');
+		include_once($root.'/model/connect_sql.php');
 	}
 	else
 	{	
