@@ -155,7 +155,7 @@
       </br>
     </div>
   </div>
-  <div id="page4"
+  <!--<div id="page4"
     ><div id="headerPage4"><span class="helper"></span><h1>This week <span class="strong">most liked tracks:</span></h1> </div
     <?php include_once('../control/display_landing_song_boxes.php'); ?>
       <?php 
@@ -167,7 +167,7 @@
         };
 
       ?>  
-  ></div>
+  ></div>-->
   <div id="page5">
     <span class="helper"></span>
     <div id="container5">
@@ -204,7 +204,6 @@
      
   </footer>
   <script type="text/javascript" src="<?php echo $root; ?>assets/retina.js"></script>
-  <script type="text/javascript" src="<?php echo $root; ?>assets/player_landing.js"></script>
   <script type="text/javascript" src="<?php echo $root; ?>assets/facebook.js"></script>
   <script type="text/javascript" src="<?php echo $root; ?>assets/smooth-scroll.min.js"></script>
   <script type="text/javascript" src="<?php echo $root; ?>assets/on_load_landing2.js"></script>
