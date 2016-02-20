@@ -2,10 +2,25 @@
   /*error_reporting(E_ALL);
   ini_set('display_errors', 1);*/
 	session_start();
-	require('../control/decide_lang.php');
-	include_once('../model/connect_sql.php');
-  include($_SERVER['DOCUMENT_ROOT'].'/control/session_check.php');
-  include_once($_SERVER['DOCUMENT_ROOT'].'/control/redirect_user_to_playlist.php');
+  if (null !== getenv('ENVIRONMENT'))
+  {
+    if (getenv('ENVIRONMENT') == 'staging')
+    {
+      $root = "http://staging.soundpark.fm/";
+    }
+    else if (getenv('ENVIRONMENT') == 'production')
+    {
+      $root = "http://soundpark.fm/";
+    }
+    else
+    {
+      $root = "http://localhost:8888/";
+    }
+  }
+	require($_SERVER['DOCUMENT_ROOT'].'/control/decide_lang.php');
+	include_once($root.'model/connect_sql.php');
+  include($root.'control/session_check.php');
+  include_once($root.'control/redirect_user_to_playlist.php');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -13,7 +28,7 @@
   <head>
     <title><?php echo TXT_LANDING_HEADTITLE; ?></title>
     <meta name="description" content="<?php echo TXT_LANDING_HEADDESCRIPTION; ?>">
-    <link href="../assets/landingNew.css" media="all" rel="stylesheet" />
+    <link href="<?php echo $root; ?>assets/landingNew.css" media="all" rel="stylesheet" />
 
    	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <meta property="og:site_name" content="Soundpark.fm"/>
@@ -22,16 +37,16 @@
 
 
 
-    	<link rel="shortcut icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
-    	<link rel="icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
+    	<link rel="shortcut icon" href="<?php echo $root; ?>/assets/pictures/favicon.ico" type="image/x-icon">
+    	<link rel="icon" href="<?php echo $root; ?>/assets/pictures/favicon.ico" type="image/x-icon">
 
     <script src="http://connect.soundcloud.com/sdk.js"></script>
-    <script type="text/javascript" src="../assets/jquery.js"></script>
-    <script type="text/javascript" src="../assets/cookies.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/update_player_position.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/add_like_dislike.js"></script>
-    <script type="text/javascript" src="../assets/AJAX/display_user_past_likes.js"></script>
-    <script type="text/javascript" src="../skrollr/dist/skrollr.min.js"></script>
+    <script type="text/javascript" src="<?php echo $root; ?>assets/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo $root; ?>assets/cookies.js"></script>
+    <script type="text/javascript" src="<?php echo $root; ?>assets/AJAX/update_player_position.js"></script>
+    <script type="text/javascript" src="<?php echo $root; ?>assets/AJAX/add_like_dislike.js"></script>
+    <script type="text/javascript" src="<?php echo $root; ?>assets/AJAX/display_user_past_likes.js"></script>
+    <script type="text/javascript" src="<?php echo $root; ?>skrollr/dist/skrollr.min.js"></script>
 
       
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -85,11 +100,11 @@
           <div id="facebookLogin">
             <div id="message">
               <h2>Only the ones using Facebook to sign up will receive a birthday gift. Life is unfair.</h2>
-              <img id="explainArrow" src="../assets/pictures/explain_arrow.png" data-no-retina></br>
+              <img id="explainArrow" src="<?php echo $root; ?>assets/pictures/explain_arrow.png" data-no-retina></br>
             </div>
             <div id="fbButton">
               <span class="helper"></span>
-              <img id="fbIcon" src="../assets/pictures/facebook_f.svg" data-no-retina>
+              <img id="fbIcon" src="<?php echo $root; ?>assets/pictures/facebook_f.svg" data-no-retina>
               <h2 id="fbButtonText">Sign up with facebook</h2>
             </div>
             </br>
@@ -122,7 +137,7 @@
     	<div id="container2">
      		<span class="helper"></span>
         <div class="img-container first">
-          <img src="../assets/pictures/macbook.png" data-at2x="../assets/pictures/macbook@2x.png" data-bottom="opacity:0" data--40-bottom="opacity: 1"/>
+          <img src="<?php echo $root; ?>assets/pictures/macbook.png" data-at2x="<?php echo $root; ?>assets/pictures/macbook@2x.png" data-bottom="opacity:0" data--40-bottom="opacity: 1"/>
         </div>
      		<aside class="second" data--140-bottom="opacity: 0" data--180-bottom="opacity: 1">
      			<h1>A <span class="strong">one-click</span> music </br>experience.</h1>
@@ -183,17 +198,16 @@
     </div>
     <div id="soundcloudLogo">
       <span class="helper"></span>
-      <a href="http://www.soundcloud.com"><img src="../assets/pictures/powered_by_soundcloud.png" data-no-retina/></a>
+      <a href="http://www.soundcloud.com"><img src="<?php echo $root; ?>assets/pictures/powered_by_soundcloud.png" data-no-retina/></a>
     </div>
 
      
   </footer>
-
-  <script type="text/javascript" src="../assets/retina.js"></script>
-  <script type="text/javascript" src="../assets/player_landing.js"></script>
-  <script type="text/javascript" src="../assets/facebook.js"></script>
-  <script type="text/javascript" src="../assets/smooth-scroll.min.js"></script>
-  <script type="text/javascript" src="../assets/on_load_landing2.js"></script>
+  <script type="text/javascript" src="<?php echo $root; ?>assets/retina.js"></script>
+  <script type="text/javascript" src="<?php echo $root; ?>assets/player_landing.js"></script>
+  <script type="text/javascript" src="<?php echo $root; ?>assets/facebook.js"></script>
+  <script type="text/javascript" src="<?php echo $root; ?>assets/smooth-scroll.min.js"></script>
+  <script type="text/javascript" src="<?php echo $root; ?>assets/on_load_landing2.js"></script>
 
 </body>
    

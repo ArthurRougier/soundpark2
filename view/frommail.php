@@ -1,9 +1,25 @@
 <?php 
 	/*error_reporting(E_ALL);
 	ini_set('display_errors', 1);*/
+	if (null !== getenv('ENVIRONMENT'))
+		{
+			if (getenv('ENVIRONMENT') == 'staging')
+			{
+				$root = "http://staging.soundpark.fm/";
+			}
+			else if (getenv('ENVIRONMENT') == 'production')
+			{
+				$root = "http://soundpark.fm/";
+			}
+			else
+			{
+				$root = "http://localhost:8888/";
+			}
+		}
+
 	session_start();
 	header('Access-Control-Allow-Origin: *');
-	include_once('../model/connect_sql.php');
+	include_once($_SERVER['DOCUMENT_ROOT'].'/model/connect_sql.php');
 	include($_SERVER['DOCUMENT_ROOT'].'/control/session_check.php');
 	include_once($_SERVER['DOCUMENT_ROOT'].'/control/control_user.php');
 	include_once($_SERVER['DOCUMENT_ROOT'].'/model/get_userEmail_from_userId.php');
@@ -15,8 +31,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
   <head>
     <title>Soundpark</title>
-    <link href="../assets/frommail8.css" media="all" rel="stylesheet" />
-    <link href="../assets/css_dropdown_menu.css" media="all" rel="stylesheet" />
+    <link href="<?php echo $root;?>assets/frommail8.css" media="all" rel="stylesheet" />
+    <link href="<?php echo $root;?>assets/css_dropdown_menu.css" media="all" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,100' rel='stylesheet' type='text/css'>
     
@@ -26,10 +42,11 @@
 	<link rel="icon" href="http://soundpark.fm/assets/pictures/favicon.ico" type="image/x-icon">
 
 
-    <script src="http://connect.soundcloud.com/sdk.js"></script>
-    <script type="text/javascript" src="../assets/jquery.js"></script>
-    <script type="text/javascript" src="../assets/cookies.js"></script>
-    <script type="text/javascript" src="../assets/date.js"></script>
+   	<script src="http://connect.soundcloud.com/sdk.js"></script>
+    <!--<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>-->
+    <script type="text/javascript" src="<?php echo $root;?>assets/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo $root;?>assets/cookies.js"></script>
+    <script type="text/javascript" src="<?php echo $root;?>assets/date.js"></script>
     <!--<script type="text/javascript" src="../zeroclipboard-2.1.6/dist/ZeroClipboard.min.js"></script>-->
     
 
@@ -67,7 +84,7 @@
 		</script>
 		
 		<?php
-			include_once('../model/get_user_subscription_date.php');
+			include_once($root.'model/get_user_subscription_date.php');
 		?>
 
 		<script type="text/javascript">
@@ -109,7 +126,7 @@
 			<div class="slider">
 			<?php 
 				
-				include_once('../model/get_current_playlist_id.php'); // renvoi $currentPlaylistId
+				include_once($root.'model/get_current_playlist_id.php'); // renvoi $currentPlaylistId
 				if(isset($_GET['playlistId']))
 				{
 					$playlistId = $_GET['playlistId'];
@@ -166,7 +183,7 @@
 	{
 		if (getenv('ENVIRONMENT') == 'staging' OR getenv('ENVIRONMENT') == 'production')
 		{
-			echo('<script src="../build/b.bundle.js"></script>');
+			echo('<script src="'.$root.'build/b.bundle.js"></script>');
 		}
 		else
 		{
@@ -174,23 +191,11 @@
 		}
 	}
 ?>
-    <script type="text/javascript" src="../assets/popUps.js"></script>
-    <script type="text/javascript" src="../assets/on_load.js"></script>
+    <script type="text/javascript" src="<?php echo $root;?>assets/popUps.js"></script>
+    <script type="text/javascript" src="<?php echo $root;?>assets/on_load.js"></script>
     <!--<script type="text/javascript" src="../assets/mixpanel_logs.js"></script>-->
 
     <script>
-
-    $(document).mouseup(function (e)
-	{
-	    var container = $(".dropdown");
-
-	    if (!container.is(e.target) // if the target of the click isn't the container...
-	        && container.has(e.target).length === 0) // ... nor a descendant of the container
-	    {
-	        document.getElementById("dropdownCheckbox").checked = false;
-	    }
-	});
-
 
 	// var curatorPics = document.querySelectorAll('.curatorPicture');
 	// for(var indexCuratorPicture = 0 ; indexCuratorPicture <= curatorPics.length ; indexCuratorPicture++)

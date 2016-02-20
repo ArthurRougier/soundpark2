@@ -26359,7 +26359,7 @@
 	  }).bind(undefined),
 
 	  error: (function (xhr, status, err) {
-	    console.error("kjbkj", status, err.toString());
+	    console.error("First AJAX request to get songs failed. Player not mounted", status, err.toString());
 	  }).bind(undefined)
 	});
 
@@ -26877,7 +26877,7 @@
 	        pollInterval: this.props.pollInterval,
 	        trackListCuratorBacklogProper: this.props.trackListCuratorBacklogProper,
 	        isCuratorBacklogLoaded: this.props.isCuratorBacklogLoaded,
-	        removeTrackFromSubmissions: this.props.removeTrackFromSubmissions })), _react2.default.createElement(_tab2.default, { label: 'HISTORY' }, 'Under (re)construction, will come back soon!'), _react2.default.createElement(_tab2.default, {
+	        removeTrackFromSubmissions: this.props.removeTrackFromSubmissions })), _react2.default.createElement(_tab2.default, {
 	        label: 'TRACKS LIKED',
 	        onActive: this.props.loadLikedTracksFromServer }, _react2.default.createElement(TracksLiked, {
 	        userId: this.props.userId,
@@ -26968,7 +26968,7 @@
 	        inputStyle: { color: "rgba(255,255,255, 0.8)", fontWeight: "300" },
 	        floatingLabelStyle: { color: "#32B7A2", fontWeight: "300" },
 	        type: 'url',
-	        floatingLabelText: 'Paste a Soundcloud or Youtube URL here:',
+	        floatingLabelText: 'Paste a Youtube or Soundcloud URL here:',
 	        defaultValue: '',
 	        ref: 'url',
 	        value: this.state.url,
@@ -27009,7 +27009,7 @@
 	        //console.log(rowTags);
 	      }
 
-	      return _react2.default.createElement('div', { className: 'trackBacklog' }, _react2.default.createElement('h2', { className: 'pannelTitle' }, 'Tracks Already Submitted, pending for validation:'), _react2.default.createElement('div', { className: 'pannelSubContainer' }, _react2.default.createElement(_table2.default, {
+	      return _react2.default.createElement('div', { className: 'trackBacklog' }, _react2.default.createElement('h2', { className: 'pannelTitle' }, 'Tracks waiting to be published next week'), _react2.default.createElement('div', { className: 'pannelSubContainer' }, _react2.default.createElement(_table2.default, {
 	        height: '300px',
 	        fixedHeader: true,
 	        fixedFooter: false,
@@ -27051,7 +27051,7 @@
 	            songTags.push(_react2.default.createElement('div', { key: index, id: 'box1', className: 'box' }, _react2.default.createElement('div', { className: 'boxInner loading .animated-background' })));
 	          }
 	        }
-	      return _react2.default.createElement('div', { id: 'tilesContainer' }, songTags);
+	      return _react2.default.createElement('div', { id: 'tilesContainer', style: { marginTop: "20px" } }, songTags);
 	    }
 	  }]);
 

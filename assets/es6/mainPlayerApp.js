@@ -37,7 +37,7 @@ injectTapEventPlugin();
 
 SC.initialize({
       client_id: "17f3a8c69cb36c955df82f908611e27e"
-  });
+});
 
 
 $.ajax({
@@ -60,7 +60,7 @@ $.ajax({
   }.bind(this),
 
   error: function(xhr, status, err) {
-    console.error("kjbkj", status, err.toString());
+    console.error("First AJAX request to get songs failed. Player not mounted", status, err.toString());
   }.bind(this)
 });
 
@@ -610,9 +610,6 @@ class CuratorPanel extends React.Component {
                 isCuratorBacklogLoaded        = {this.props.isCuratorBacklogLoaded}
                 removeTrackFromSubmissions    = {this.props.removeTrackFromSubmissions}/> 
             </Tab>
-            <Tab label="HISTORY" >
-              Under (re)construction, will come back soon!
-            </Tab>
             <Tab 
               label="TRACKS LIKED"
               onActive={this.props.loadLikedTracksFromServer}>
@@ -707,7 +704,7 @@ class SubmitTracksForm extends React.Component {
             inputStyle={{color: "rgba(255,255,255, 0.8)", fontWeight: "300"}}
             floatingLabelStyle={{color: "#32B7A2", fontWeight: "300"}}
             type="url"
-            floatingLabelText="Paste a Soundcloud or Youtube URL here:"
+            floatingLabelText="Paste a Youtube or Soundcloud URL here:"
             defaultValue=""
             ref="url"
             value={this.state.url}
@@ -762,7 +759,7 @@ class TrackCuratorBacklog extends React.Component {
 
     return (
       <div className="trackBacklog">
-        <h2 className="pannelTitle">Tracks Already Submitted, pending for validation:</h2>
+        <h2 className="pannelTitle">Tracks waiting to be published next week</h2>
         <div className="pannelSubContainer">
           <Table
             height={'300px'}
@@ -833,7 +830,7 @@ class TracksLiked extends React.Component {
       }
     }
     return (
-      <div id="tilesContainer">{songTags}</div>
+      <div id="tilesContainer" style={{marginTop: "20px"}}>{songTags}</div>
     );
   }
 }

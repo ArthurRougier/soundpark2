@@ -4,9 +4,16 @@
 
 	if(isset($_SESSION['id_curator']) OR isset($_GET['curatorId']))
 	{
+		$req2 = $bdd->query('SELECT ID FROM playlist WHERE playlist.date_end >= NOW() AND playlist.date_start <= NOW()');
+		$playlistIdTab = $req2->fetch();
+		$currentPlaylistId = $playlistIdTab[0];
+
 		$curatorId = $_SESSION['id_curator'] ?: $_GET['curatorId'];
-		$req= $bdd->prepare('SELECT url, date_add, ID FROM songNew WHERE songNew.ID_curator=? AND songNew.treated = FALSE ORDER BY date_add DESC');
-		$req->execute(array($curatorId));
+		$req= $bdd->prepare('SELECT url, date_add, songNew.ID FROM songNew, playlist WHERE songNew.ID_curator=? AND playlist.date_end >= songNew.date_add AND playlist.date_start <= songNew.date_add AND playlist.id = ? ORDER BY date_add DESC');
+		$req->execute(array(
+			$curatorId,
+			$currentPlaylistId
+		));
 	}
 
 	if(isset($_GET['displayResults']))
