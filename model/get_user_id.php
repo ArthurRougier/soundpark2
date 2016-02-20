@@ -1,5 +1,9 @@
 <?php
-	if(isset($_GET['pwd']))
+	if(isset($_COOKIE['current_user']))
+	{
+		$userId = $_COOKIE['current_user'];
+	}
+	else if(isset($_GET['pwd']))
 	{
 		include_once('connect_sql.php');
 		$req=$bdd->prepare('SELECT ID FROM user WHERE user.email = ? ');
@@ -20,4 +24,8 @@
 		}
 	}
 
+	if(isset($_GET['displayResults']))
+	{
+		echo $userId;
+	}
 	

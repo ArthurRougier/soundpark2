@@ -13,7 +13,7 @@
   font-family: "Open Sans", Helvetica, Arial;
   font-weight: 300;
   font-size: 12px;
-  z-index: 1000000000;
+  z-index: 1000000000000000;
 }
 
 .container-dropdown > ul {
@@ -49,14 +49,12 @@
   top: 4px;
   right: 10px;
   height: 28px;
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -moz-transition: -moz-transform 0.6s;
-  -o-transition: -o-transform 0.6s;
-  -webkit-transition: -webkit-transform 0.6s;
-  transition: transform 0.6s;
+  -webkit-filter: brightness(0.9) grayscale(40%);
+  filter: brightness(0.9) grayscale(40%);
+  -moz-transition: -webkit-filter filter 0.6s;
+  -o-transition: -webkit-filter filter 0.6s;
+  -webkit-transition: -webkit-filter filter 0.6s;
+  transition: -webkit-filter filter 0.6s;
 }
 
 .dropdown [data-toggle="dropdown"] #togglerDiv {
@@ -73,14 +71,12 @@
   font-family: Code;
   text-align: center;
   background-color: #1F5673;
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -moz-transition: -moz-transform 0.6s;
-  -o-transition: -o-transform 0.6s;
-  -webkit-transition: -webkit-transform 0.6s;
-  transition: transform 0.6s;
+  -webkit-filter: brightness(0.9) grayscale(40%);
+  filter: brightness(0.9) grayscale(40%);
+  -moz-transition: -moz-transform filter 0.6s;
+  -o-transition: -webkit-filter filter 0.6s;
+  -webkit-transition: -webkit-filter filter0.6s;
+  transition: -webkit-filter filter 0.6s;
 }
 
 .dropdown > .account-dropdown-menu {
@@ -152,25 +148,15 @@
   transition: max-height 2s ease-in-out;
 }
 .dropdown > input[type="checkbox"]:checked + a[data-toggle="dropdown"] #toggler {
-  -moz-transform: rotate(5deg);
-  -ms-transform: rotate(5deg);
-  -webkit-transform: rotate(5deg);
-  transform: rotate(5deg);
-  -moz-transition: -moz-transform 0.4s;
-  -o-transition: -o-transform 0.4s;
-  -webkit-transition: -webkit-transform 0.4s;
-  transition: transform 0.4s;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  transition: -webkit-filter filter 0.4s linear;
 }
 
 .dropdown > input[type="checkbox"]:checked + a[data-toggle="dropdown"] #togglerDiv {
-  -moz-transform: rotate(5deg);
-  -ms-transform: rotate(5deg);
-  -webkit-transform: rotate(5deg);
-  transform: rotate(5deg);
-  -moz-transition: -moz-transform 0.4s;
-  -o-transition: -o-transform 0.4s;
-  -webkit-transition: -webkit-transform 0.4s;
-  transition: transform 0.4s;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  transition: -webkit-filter filter 0.4s linear;
 }
 
 @keyframes showAnimation {

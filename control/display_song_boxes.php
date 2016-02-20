@@ -1,9 +1,5 @@
 <?php
 include_once('../model/get_song_boxes.php');
-
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
-
 $i = 1;
 $playlist = array();
 
@@ -88,3 +84,4 @@ for($i = 0; $i <= count($playlist); $i++)
 			}
 			console.log(songTable);
 </script>
+

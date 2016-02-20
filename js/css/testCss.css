@@ -1,0 +1,411 @@
+@font-face {
+	font-family: 'Code';
+	src: url('../../assets/fonts/code_light.otf');
+	src: url('../../assets/fonts/code_light.eot#iefix') format('embedded-opentype'),
+	   url('../../assets/fonts/code_light.ttf') format('truetype'),
+	   url('../../assets/fonts/code_light.woff') format('woff');
+}
+@font-face {
+	font-family: 'CodeBold';
+	src: url("../../assets/fonts/code_bold.otf");
+}
+   
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+
+* { margin:0; }
+
+html, body{
+    width: 100%;
+}
+
+
+/* Header and left menu style */
+
+header
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #531931;
+	width: 100%;
+	height: 50px;
+	z-index: 10;
+}
+
+header h1
+{
+	font-family: 'Code';
+	font-size: 30px;
+	margin: 8px 0 10px 10px; 
+	float: left;
+	color: white;
+}
+
+header h1 #BOTitle
+{
+	font-family: 'Architects Daughter', cursive;
+	font-size: 20px;
+	color: #32B7A2;
+	display: inline-block;
+}
+
+header ul
+{
+
+	display: inline-block;
+	float: right;
+	text-transform: uppercase;
+	list-style-type: none;
+	margin-right: 30px;
+
+}
+
+header li
+{
+
+	display: inline-block;
+	margin: 13px 5px 0 0;
+	
+}
+
+header li a
+{
+	text-decoration: none;
+	text-indent: none;
+	font-size: 16px;
+	font-family: 'Open Sans';
+	font-weight: 300;
+	color: #C5CFD0;	
+}
+
+
+header li a:hover
+{
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+/* Left menu style */
+
+aside
+{
+	display: inline-block;
+	height: 100%;
+	width: 180px;
+	background-color: rgba(197, 207, 208, 0.13);
+	border-right: 1px solid rgba(197, 207, 208, 0.23);
+	position: absolute;
+	top:  0;
+	left: 0;
+}
+
+aside ul
+{
+	margin-top: 90px;
+	margin-left: 0;
+	list-style-type: none;
+	text-indent: none;
+	line-height: 40px;
+	list-style:none;
+    padding-left:0;
+    /*text-transform: uppercase;*/
+}
+
+aside ul li
+{
+	transition: 0.25s;
+}
+
+aside li a
+{
+	display: inline-block;
+	text-decoration: none;
+	text-indent: none;
+	font-size: 14px;
+	font-family: 'Open Sans';
+	font-weight: 300;
+	color: rgb(80, 80, 80);
+	padding-left: 20px;
+	padding-right: 40px;
+	border-left: 8px solid transparent;
+	width: 62%;
+}
+
+aside li:hover
+{
+	background-color: rgba(83, 25, 49, 0.02);
+}
+
+aside li a:hover
+{
+	color: black;
+}
+
+
+.secondaryMenu
+{
+	display: inline-block;
+	margin-top: 20px;
+	width: 90vw;
+	height: 40px;
+}
+
+.activeBoMain
+{
+	color: white;
+	border-bottom: 1px solid white;
+}
+
+.activeBoSecondary
+{
+	border-left: 8px solid rgba(83, 25, 49, 0.5);
+	background-color: rgba(83, 25, 49, 0.05);
+}
+
+
+
+/* container style */
+
+#container
+{
+	display: inline-block;
+	margin: 70px 0 0 200px;
+	font-family: 'Open Sans';
+	font-weight: 300;
+}
+
+#containerWithoutMenu 
+{
+	margin-top: 84px;
+	display: inline-block;
+	width: 100vw;
+	text-align: center;
+}
+
+#container h1
+{
+	font-size: 30px;
+	margin-bottom: 0;
+	font-weight: 300;
+	font-family: 'Open Sans';
+	color: #C5CFD0;
+}
+
+#container h2
+{
+	font-size: 24px;
+	color: #727272;
+	font-weight: 400;
+	margin-bottom: 10px;
+	margin-top: 0;
+	font-family: 'Open Sans';
+}
+
+#container h3
+{
+
+	font-size: 16px;
+	margin-bottom: 15px;
+	font-family: 'Open Sans';
+	font-weight: 300;
+}
+#container ul li
+{
+	list-style-type: none;
+}
+
+form
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+input[type="text"]
+{
+	width: 150px;
+}
+
+select[class="song_curator"]
+{
+	width: 80px;
+}
+
+input[class="song_genre"]
+{
+	width: 80px;
+}
+
+input[class="song_playlist"]
+{
+	width: 30px;
+}
+
+input[class="song_artist"]
+{
+	width: 100px;
+}
+
+
+
+
+
+
+
+/*  NEW REACT MATERIAL UI FIELDS STYLING */
+
+
+.boFieldParent
+{
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.boFieldParent div
+{
+	font-size: 12px;
+}
+
+.boField
+{
+	vertical-align: top;
+	display: inline-block;
+	position: relative;
+	margin-right: 20px;
+	font-size: 13px;
+
+}
+
+.boSelectField
+{
+	vertical-align: bottom;
+	margin-bottom: 8px;
+	padding-bottom: 7px;
+	-webkit-appearance: none;
+	border: none;
+	border-bottom: 1px solid #E0E0E0;
+	background-color: transparent;
+	border-radius: 0;
+	transition: border-color 500ms;
+	-webkit-transition: border-color 500ms;
+}
+
+.boSelectField:focus
+{
+	outline: none;
+	padding-bottom: 6px;
+	border-bottom: 2px solid #00bcd4;
+
+}
+
+.songIcons
+{
+	vertical-align: middle;
+}
+
+.song
+{
+	position: relative;
+	display: block;
+}
+
+.songList
+{
+	width: 1200px;
+	min-height: 400px;
+	padding: 0;
+	overflow: hidden;
+}
+
+#heightSecureBlock
+{
+	display: inline-block;
+	height: 50px;
+}
+
+/* SongList animations */
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+
+/* END NEW REACT MATERIAL UI FIELDS STYLING */
+
+
+#track_list input[type="submit"]
+{
+	margin-top: 20px;
+	font-size: 20px;
+	font-family: 'Open Sans';
+	font-weight: 300;
+	width: 100px;
+	height: 60px;
+}
+
+#curators_displaying ul li
+{
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 10px 5px 10px;
+}
+
+#curators_displaying ul li img
+{
+	width: 50px;
+	height: 50px;
+}
+
+/* Player space for youtube */
+
+#youtubeContainer
+{
+	position: fixed;
+	bottom: 50px;
+	right: 0;
+	width: 200px;
+	height: auto;
+	display: inline-block;
+}
+
+/* PLayer command */
+#timer
+{
+	display: inline-block;
+	vertical-align:  middle;
+	position: relative;
+	top: -54px;
+	color: #32B7A2;
+	font-weight: 400;
+	margin-right: 5px;
+    font-family: 'Open sans';
+    font-size: 14px;
+}
+
+#playerCommands
+{
+	text-align: center;
+	display: inline-block;
+	position: fixed;
+	height: 50px;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+    background-color: #f2f2f2;
+    border-top: 1px solid rgba(0,0,0,.15);
+    z-index: 10;
+}

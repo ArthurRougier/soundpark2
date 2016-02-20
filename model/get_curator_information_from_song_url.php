@@ -1,7 +1,8 @@
 <?php
 
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+	/*error_reporting(E_ALL);
+	ini_set('display_errors', 1);*/
+
 
 	session_start();
 	include_once('../model/connect_sql.php');

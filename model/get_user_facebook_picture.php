@@ -7,5 +7,9 @@
 		if($result = $req->fetch())
 		{
 			$pictureUrl = $result[0];
+			if(isset($_GET['displayResult']))
+			{
+				echo $pictureUrl;
+			}
 		}
 	}

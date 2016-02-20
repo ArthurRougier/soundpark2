@@ -1,5 +1,7 @@
 <?php
+
 include_once('../model/get_landing_song_boxes.php');
+
 
 $i = 1;
 while($songBoxes = $req->fetch())

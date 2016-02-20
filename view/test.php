@@ -68,14 +68,24 @@
 		</footer>		
 </body>
     <script type="text/javascript" src="../assets/popUps.js"></script>
+    <script src="http://connect.soundcloud.com/sdk.js"></script>
     <script src="../assets/player3.js"></script>
 
 
     <script>
+
+    SC.initialize({
+        client_id: "17f3a8c69cb36c955df82f908611e27e"
+    });
+
+
     var trackListTest = ['https://soundcloud.com/nicolashaelg/nicolas-haelg-alfie-rhodes-callin-your-name-feat-syren-1',
     'https://soundcloud.com/thefallingapple/tracy-chapman-fast-car-bauke-top-remix',
     'https://www.youtube.com/watch?v=JrlfFTS9kGU'];
 
-    var playerTest = new Player(trackListTest);
+    var playerTest = new Player(trackListTest, '#container');
+    //playerTest.getMasterJson();
+    //playerTest.createTenFirstTrackBoxes();
+     
     </script>
 </html>

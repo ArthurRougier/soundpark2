@@ -7,7 +7,7 @@
 
 	//PAGE1
 	define('TXT_LANDING_PAGEONEHEADLINE', 'Your weekly <span class="strong">community-curated playlist</span> directly in your email');
-	define('TXT_LANDING_PAGEONECTA', 'I want in!');
+	define('TXT_LANDING_PAGEONECTA', 'Let\'s get in!');
 
 	//PAGE2
 	define('TXT_LANDING_PAGETWOHEADLINE', '<span class="strong">Simplicity</span> first.');
@@ -35,7 +35,7 @@
 	define('TXT_LANDING_HEADERSIGNUP', 'Sign up');
 
 	//META
-	define('TXT_LANDING_HEADTITLE', 'Soundpark.fm - The radio as it should be in 2015');
+	define('TXT_LANDING_HEADTITLE', 'Soundpark.fm - The radio as it should be in 2016');
 	define('TXT_LANDING_HEADDESCRIPTION', 'Every Monday, receive your community-curated playlist direcly in your email. Tired of looking everywhere for new music gems? We got you covered.');
 
 
