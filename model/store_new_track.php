@@ -16,6 +16,7 @@
 			$playlistIdTab = $req2->fetch();
 			$currentPlaylistId = $playlistIdTab[0];
 			$playlistId = $currentPlaylistId + 1;
+			$treated = 1;
 		}
 
 		$req = $bdd->prepare(

@@ -1,0 +1,3 @@
+RewriteEngine On 
+RewriteRule    ^back-office  /index2.php
+RewriteRule    ^radio  /view/frommail.php
