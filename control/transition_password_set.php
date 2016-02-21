@@ -19,7 +19,7 @@
 			setcookie('currentSession', $userId.'-'.$randomString, time() + 31*24*3600,  "/", null, false, true);
 			setcookie('current_user', $userId, time() + 31*24*3600, "/", null, false, false);
 			//echo($_COOKIE['currentSession']);
-	       	header('Location: ../view/frommail.php'); 
+	       	header('Location: ../radio'); 
 		}
 		else
 		{

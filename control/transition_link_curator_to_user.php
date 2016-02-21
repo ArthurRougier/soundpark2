@@ -24,7 +24,7 @@
 				$exists = $req->fetch();
 				if ($exists[0])
 				{
-					header('Location: ../view/frommail.php');
+					header('Location: ../radio');
 				}
 				else
 				{

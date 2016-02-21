@@ -36,7 +36,7 @@
 					}
 					else
 					{
-						header('Location: ../view/frommail.php?pwd='.$email); 
+						header('Location: ../radio?pwd='.$email); 
 					}
 	        	}
 	        	else

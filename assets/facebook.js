@@ -152,7 +152,7 @@ function updateFacebookDb(profilePicUrl)
                 else
                 {
                   var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                  signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
+                  signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../radio">here</a></h2></br>';
                   
                   //tracking
 
@@ -181,7 +181,7 @@ function updateFacebookDb(profilePicUrl)
                 else
                 {
                   var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                  signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
+                  signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../radio">here</a></h2></br>';
                   
                   // tracking
 
@@ -209,7 +209,7 @@ function updateFacebookDb(profilePicUrl)
                 else
                 {
                   var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                  signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
+                  signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../radio">here</a></h2></br>';
                 
                    //tracking
 
@@ -237,7 +237,7 @@ function updateFacebookDb(profilePicUrl)
                 else
                 {
                   var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                  signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
+                  signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../radio">here</a></h2></br>';
                  
                    //tracking
 
@@ -295,7 +295,7 @@ function updateFacebookDb(profilePicUrl)
               else
               {
                 var signUpOverlayContainer = document.getElementById('signUpOverlayContainer');
-                signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../view/frommail.php">here</a></h2></br>';
+                signUpOverlayContainer.innerHTML = '<h2 id="message"><img id="checkMark" src="../assets/pictures/check_icon.svg" /></br> You\'re in bro! The playlist <a href="../radio">here</a></h2></br>';
               }
               //console.log('yes');
             }

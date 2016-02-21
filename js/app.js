@@ -41,6 +41,8 @@ class PlaylistManager extends React.Component {
 				<ul>
 				  <li><IndexLink activeClassName="activeBoSecondary" to="/">Current</IndexLink></li>
 				  <li><Link activeClassName="activeBoSecondary" to="/n+1">Next one</Link></li>
+				  <li><Link activeClassName="activeBoSecondary" to="/n+2">N + 2</Link></li>
+				  <li><Link activeClassName="activeBoSecondary" to="/n+3">N + 3</Link></li>
 				</ul>
 			</aside>
 			<div id="container">
@@ -86,6 +88,22 @@ class NextPlaylist extends React.Component {
 	  }
 }
 
+class NextPlaylistBis extends React.Component {
+	render() {
+	    return (
+	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_playlists.php" } playlistGetterUrl="../model/get_next_playlist_id.php?display=TRUE&offset=1" pollInterval={1000} />
+	    )
+	  }
+}
+
+class NextPlaylistTris extends React.Component {
+	render() {
+	    return (
+	      <PlayerBo urlTrackListUrl={"../model/get_all_songs_json_playlists.php" } playlistGetterUrl="../model/get_next_playlist_id.php?display=TRUE&offset=2" pollInterval={1000} />
+	    )
+	  }
+}
+
 class UntreatedTracks extends React.Component {
 	render() {
 	    return (
@@ -117,6 +135,8 @@ ReactDOM.render(
 	     	<Route path="/" component={PlaylistManager}>
 	     		<IndexRoute component={CurrentPlaylist}/>
 	     		<Route path="/n+1" component={NextPlaylist}/>
+	     		<Route path="/n+2" component={NextPlaylistBis}/>
+	     		<Route path="/n+3" component={NextPlaylistTris}/>
       		</Route>
       		<Route path="SongsBacklogManager" component={SongsBacklogManager}>
       			<IndexRoute component={UntreatedTracks}/>

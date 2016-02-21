@@ -29,7 +29,7 @@ $_SESSION['id_curator']=$resultat[0];
 		<header>
 			<h1>Soundpark.<span style="color: white;">fm</span></h1>
 			<ul>
-				<li><a id="playlist_tab" href="../view/frommail.php">Playlist</a></li>
+				<li><a id="playlist_tab" href="../radio">Playlist</a></li>
 			</ul>
 		</header>
 

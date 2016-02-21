@@ -38,7 +38,7 @@
 			        {
 			        	if($exists[0] != '') // tester le cas de la string vide
 			        	{
-			        		header('Location: /login.php?source=/view/frommail.php');
+			        		header('Location: /login.php?source=/radio');
 			        	}
 			        	else
 			        	{
@@ -47,7 +47,7 @@
 							$exists = $req->fetch();
 				        	if($exists[0]) // si le password existe, sinon tester facebook
 				        	{
-				        		header('Location: /login.php?source=/view/frommail.php');
+				        		header('Location: /login.php?source=/radio');
 				        	}
 				        	else
 				        	{

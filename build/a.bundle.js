@@ -141,7 +141,7 @@
 		_createClass(PlaylistManager, [{
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement('div', { id: 'body' }, _react2.default.createElement('aside', null, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, _react2.default.createElement(_reactRouter.IndexLink, { activeClassName: 'activeBoSecondary', to: '/' }, 'Current')), _react2.default.createElement('li', null, _react2.default.createElement(_reactRouter.Link, { activeClassName: 'activeBoSecondary', to: '/n+1' }, 'Next one')))), _react2.default.createElement('div', { id: 'container' }, this.props.children));
+				return _react2.default.createElement('div', { id: 'body' }, _react2.default.createElement('aside', null, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, _react2.default.createElement(_reactRouter.IndexLink, { activeClassName: 'activeBoSecondary', to: '/' }, 'Current')), _react2.default.createElement('li', null, _react2.default.createElement(_reactRouter.Link, { activeClassName: 'activeBoSecondary', to: '/n+1' }, 'Next one')), _react2.default.createElement('li', null, _react2.default.createElement(_reactRouter.Link, { activeClassName: 'activeBoSecondary', to: '/n+2' }, 'N + 2')), _react2.default.createElement('li', null, _react2.default.createElement(_reactRouter.Link, { activeClassName: 'activeBoSecondary', to: '/n+3' }, 'N + 3')))), _react2.default.createElement('div', { id: 'container' }, this.props.children));
 			}
 		}]);
 
@@ -205,8 +205,46 @@
 		return NextPlaylist;
 	})(_react2.default.Component);
 
-	var UntreatedTracks = (function (_React$Component6) {
-		_inherits(UntreatedTracks, _React$Component6);
+	var NextPlaylistBis = (function (_React$Component6) {
+		_inherits(NextPlaylistBis, _React$Component6);
+
+		function NextPlaylistBis() {
+			_classCallCheck(this, NextPlaylistBis);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(NextPlaylistBis).apply(this, arguments));
+		}
+
+		_createClass(NextPlaylistBis, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(_PlayerBo2.default, { urlTrackListUrl: "../model/get_all_songs_json_playlists.php", playlistGetterUrl: '../model/get_next_playlist_id.php?display=TRUE&offset=1', pollInterval: 1000 });
+			}
+		}]);
+
+		return NextPlaylistBis;
+	})(_react2.default.Component);
+
+	var NextPlaylistTris = (function (_React$Component7) {
+		_inherits(NextPlaylistTris, _React$Component7);
+
+		function NextPlaylistTris() {
+			_classCallCheck(this, NextPlaylistTris);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(NextPlaylistTris).apply(this, arguments));
+		}
+
+		_createClass(NextPlaylistTris, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(_PlayerBo2.default, { urlTrackListUrl: "../model/get_all_songs_json_playlists.php", playlistGetterUrl: '../model/get_next_playlist_id.php?display=TRUE&offset=2', pollInterval: 1000 });
+			}
+		}]);
+
+		return NextPlaylistTris;
+	})(_react2.default.Component);
+
+	var UntreatedTracks = (function (_React$Component8) {
+		_inherits(UntreatedTracks, _React$Component8);
 
 		function UntreatedTracks() {
 			_classCallCheck(this, UntreatedTracks);
@@ -224,8 +262,8 @@
 		return UntreatedTracks;
 	})(_react2.default.Component);
 
-	var UsedTracks = (function (_React$Component7) {
-		_inherits(UsedTracks, _React$Component7);
+	var UsedTracks = (function (_React$Component9) {
+		_inherits(UsedTracks, _React$Component9);
 
 		function UsedTracks() {
 			_classCallCheck(this, UsedTracks);
@@ -243,8 +281,8 @@
 		return UsedTracks;
 	})(_react2.default.Component);
 
-	var StoredTracks = (function (_React$Component8) {
-		_inherits(StoredTracks, _React$Component8);
+	var StoredTracks = (function (_React$Component10) {
+		_inherits(StoredTracks, _React$Component10);
 
 		function StoredTracks() {
 			_classCallCheck(this, StoredTracks);
@@ -262,7 +300,7 @@
 		return StoredTracks;
 	})(_react2.default.Component);
 
-	_reactDom2.default.render(_react2.default.createElement(_reactRouter.Router, null, _react2.default.createElement(_reactRouter.Route, { component: App }, _react2.default.createElement(_reactRouter.Route, { path: '/', component: PlaylistManager }, _react2.default.createElement(_reactRouter.IndexRoute, { component: CurrentPlaylist }), _react2.default.createElement(_reactRouter.Route, { path: '/n+1', component: NextPlaylist })), _react2.default.createElement(_reactRouter.Route, { path: 'SongsBacklogManager', component: SongsBacklogManager }, _react2.default.createElement(_reactRouter.IndexRoute, { component: UntreatedTracks }), _react2.default.createElement(_reactRouter.Route, { path: '/used', component: UsedTracks }), _react2.default.createElement(_reactRouter.Route, { path: '/storage', component: StoredTracks })))), document.getElementById('react'));
+	_reactDom2.default.render(_react2.default.createElement(_reactRouter.Router, null, _react2.default.createElement(_reactRouter.Route, { component: App }, _react2.default.createElement(_reactRouter.Route, { path: '/', component: PlaylistManager }, _react2.default.createElement(_reactRouter.IndexRoute, { component: CurrentPlaylist }), _react2.default.createElement(_reactRouter.Route, { path: '/n+1', component: NextPlaylist }), _react2.default.createElement(_reactRouter.Route, { path: '/n+2', component: NextPlaylistBis }), _react2.default.createElement(_reactRouter.Route, { path: '/n+3', component: NextPlaylistTris })), _react2.default.createElement(_reactRouter.Route, { path: 'SongsBacklogManager', component: SongsBacklogManager }, _react2.default.createElement(_reactRouter.IndexRoute, { component: UntreatedTracks }), _react2.default.createElement(_reactRouter.Route, { path: '/used', component: UsedTracks }), _react2.default.createElement(_reactRouter.Route, { path: '/storage', component: StoredTracks })))), document.getElementById('react'));
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/ArthurRougier/Dropbox/Soundpark.fm 2.0/1. Produit/01. MVP/IT/codesource/soundpark2/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "app.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
