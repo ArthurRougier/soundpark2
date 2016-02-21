@@ -21,7 +21,7 @@ class App extends React.Component {
 			<header>
 				<h1>Soundpark.fm <span id="BOTitle">Bakauphisse</span></h1>
 				<ul>
-				  <li><Link activeClassName="activeBoMain" to="PlaylistManager">Playlists</Link></li>
+				  <li><Link activeClassName="activeBoMain" to="/">Playlists</Link></li>
 				  <li><Link activeClassName="activeBoMain" to="SongsBacklogManager">Songs</Link></li>
 				  <li><a href={domain+"/view/admin_curator.php"}>Curators</a></li>
 				  <li><a href={domain+"/view/admin_genre.php"}>Songs</a></li>
@@ -39,7 +39,7 @@ class PlaylistManager extends React.Component {
     	<div id="body">
 			<aside>
 				<ul>
-				  <li><IndexLink activeClassName="activeBoSecondary" to="/PlaylistManager">Current</IndexLink></li>
+				  <li><IndexLink activeClassName="activeBoSecondary" to="/">Current</IndexLink></li>
 				  <li><Link activeClassName="activeBoSecondary" to="/n+1">Next one</Link></li>
 				</ul>
 			</aside>
@@ -113,8 +113,8 @@ class StoredTracks extends React.Component {
 
 ReactDOM.render(
 	<Router>
-	    <Route path="/" component={App}>
-	     	<Route path="PlaylistManager" component={PlaylistManager}>
+	    <Route component={App}>
+	     	<Route path="/" component={PlaylistManager}>
 	     		<IndexRoute component={CurrentPlaylist}/>
 	     		<Route path="/n+1" component={NextPlaylist}/>
       		</Route>
