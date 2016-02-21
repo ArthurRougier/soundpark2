@@ -11,7 +11,7 @@
 
 	$result = $req1->fetch();
 	$minimumPlaylist = $result[0] - 1;
-	$maximumPlaylist = $result[0] + 1;
+	$maximumPlaylist = $result[0] + 3;
 
 	$i = 0;
 

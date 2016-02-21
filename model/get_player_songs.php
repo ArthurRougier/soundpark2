@@ -12,8 +12,8 @@ if(isset($_GET['playlistId']))
 	if($_GET['playlistId'] == "current")
 	{
 		$req3 = $bdd->query('SELECT ID FROM playlist WHERE playlist.date_end >= NOW() AND playlist.date_start <= NOW()');
-			$playlistIdTab = $req3->fetch();
-			$currentPlaylistId = $playlistIdTab[0];
+		$playlistIdTab = $req3->fetch();
+		$currentPlaylistId = $playlistIdTab[0];
 		$playlistId = $currentPlaylistId;
 	}
 	else
