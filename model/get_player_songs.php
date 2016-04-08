@@ -38,6 +38,20 @@ if (isset($_GET['playlistId']) AND isset($_GET['standalonePlaylist']))
 						  ORDER BY songNew.id');
 	$req->execute(array($playlistId));
 }
+else if($playlistId == 59 OR $playlistId >= 90)
+{
+	$req = $bdd->query('SELECT * 
+		FROM 
+		(
+			SELECT url, COUNT( DISTINCT  `like`.ID ) AS like_number, songNew.ID
+			FROM songNew, `like` 
+			WHERE  `like`.ID_song = songNew.ID
+			GROUP BY url
+			ORDER BY COUNT( DISTINCT  `like`.ID ) DESC 
+			LIMIT 25
+		)a'
+	);
+}
 else if (isset($_COOKIE['current_user']) AND isset($playlistId))
 {
 	$req = $bdd->query(
@@ -88,20 +102,6 @@ else if (isset($_COOKIE['current_user']) AND isset($playlistId))
 							AND user.ID = '.$_COOKIE['current_user'].' GROUP BY Id_Song) a WHERE a.numberAN > 3 ) b) 
 		GROUP BY url 
 		ORDER BY count(distinct like.ID) DESC LIMIT 40 offset 4)a where a.like_number > 5');
-}
-else if($playlistId == 59)
-{
-	$req = $bdd->query('SELECT * 
-		FROM 
-		(
-			SELECT url, COUNT( DISTINCT  `like`.ID ) AS like_number, songNew.ID
-			FROM songNew, `like` 
-			WHERE  `like`.ID_song = songNew.ID
-			GROUP BY url
-			ORDER BY COUNT( DISTINCT  `like`.ID ) DESC 
-			LIMIT 25
-		)a'
-	);
 }
 else if($playlistId)
 {
